@@ -1,0 +1,127 @@
+---
+title: "Mapas comunales"
+description: "Uso de {territorial} para facilitar la creación de mapas comunales con {chilemapas}"
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: '#>'
+---
+
+El paquete `{territorial}` puede ser usado para facilitar la visualización de datos espaciales de nivel comunal. Con un par de funciones de limpieza podemos hacer que cualquier base de datos con nombres de comunas (incluso mal escritos) puedan convertirse en mapas.
+
+En este tutorial crearemos datos de ejemplos, usaremos `{territorial}` para limpiarlos, les agregaremos los polígonos comunales desde `{chilemapas}`, y finalmente los visualizaremos con `{ggplot2}`.
+
+### Datos de ejemplo
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(dplyr)
+```
+
+Creemos una tabla de datos de ejemplo:
+
+```{r}
+datos <- tribble(
+  ~comuna, ~valor,
+  "LA FLORIDA", 3,
+  "PUENTE ALTO", 2,
+  "LA PINTANA", 1)
+
+datos
+```
+
+Confirmamos que estos datos tienen nombres de comuna incorrectos (escritos con mayúsculas) gracias a `territorial::validar_comunas()`:
+
+```{r}
+library(territorial)
+```
+
+```{r}
+datos |> 
+  validar_comunas(comuna)
+```
+
+### Obtener mapas comunales
+
+En el ecosistema de R, [el paquete `{chilemapas}`](https://pacha.dev/chilemapas/), desarrollado por [Mauricio Vargas](https://pacha.dev) facilita el acceso a polígonos comunales y regionales de Chile, perfectos para visualizar datos en mapas. Pero quizás la principal dificultad al crear mapas comunales de Chile es agregarle los polígonos a los datos de nivel comunal.
+
+Con `{chilemapas}` obtenemos los polígonos de las comunas de Chile con `chilemapas::mapa_comunas`:
+
+```{r}
+# install.packages("chilemapas")
+library(chilemapas)
+```
+
+```{r}
+mapa <- chilemapas::mapa_comunas
+
+mapa
+```
+
+Para agregar estos polígonos a los datos podemos usar `left_join()` ([revisa este tutorial](https://bastianolea.rbind.io/blog/left_join/)), pero tenemos el problema de los polígonos vienen solamente con códigos comunales, y nuestros datos no tienen esa variable, sino apenas los nombres de las comunas en mayúscula.
+
+### Limpiar datos comunales
+
+Podemos usar `{territorial}` para limpiar los nombres de comunas y luego convertirlos a [códigos únicos territoriales](https://bastianolea.github.io/territorial/articles/codigos_unicos_territoriales.html).
+
+Primero limpiamos los nombres de comunas para llevarlos a una escritura estandarizada y correcta con `territorial::limpiar_comunas()`: 
+
+```{r}
+datos_2 <- datos |> 
+  mutate(comuna = limpiar_comunas(comuna)) 
+
+datos_2
+```
+
+Luego podemos agregar los códigos comunales a partir de los nuevos nombres de las comunas con `territorial::as_codigo_comuna()`:
+
+```{r}
+datos_3 <- datos_2 |> 
+  mutate(codigo_comuna = as_codigo_comuna(comuna))
+
+datos_3
+```
+
+
+### Agregar polígonos comunales a datos comunales
+
+Ahora que los datos tienen códigos comunales, podemos agregarle los polígonos con un `left_join()`, pero primero tenemos que convertir los códigos comunales del mapa a formato numérico:
+
+```{r}
+mapa <- mapa |> 
+  mutate(codigo_comuna = as.numeric(codigo_comuna))
+```
+
+
+```{r}
+datos_4 <- datos_3 |> 
+  left_join(
+    mapa,
+    join_by(codigo_comuna)
+    )
+```
+
+### Visualizar mapas de comunas
+
+Ahora los datos cuentan con los polígonos apropiados, y podemos visualizarlos [siguiendo este tutorial](https://bastianolea.rbind.io/blog/tutorial_mapa_chile/):
+
+```{r}
+library(ggplot2)
+library(sf)
+
+datos_4 |> 
+  st_as_sf() |> 
+  ggplot() +
+  aes(fill = valor) +
+  geom_sf(color = "white") +
+  geom_sf_text(
+    aes(label = comuna),
+    color = "white"
+  ) +
+  theme_minimal()
+```
+
+[Revisa este tutorial](https://bastianolea.rbind.io/blog/tutorial_mapa_chile/) para conocer el proceso completo.

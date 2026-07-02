@@ -46,9 +46,14 @@ articles:
   - territorial
   - localidades
   - codigos_unicos_territoriales
+- title: Tutoriales
+  navbar: Tutoriales
+  desc: Guías explicativas para usar el paquete
+  contents:
+  - articles/mapas_comunales
 - title: Ejemplos
   navbar: Ejemplos
-  desc: Casos de uso del paquete
+  desc: Casos de uso del paquete con datos reales
   contents:
   - articles/ejemplo_servel
   - articles/ejemplo_bibliotecas
