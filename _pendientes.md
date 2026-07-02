@@ -1,6 +1,7 @@
 
 ## Ideas
-- [ ] clasificar regiones por zona (norte, centro, sur)
+- [ ] obtener comunas de la región, entregar como vector o redactada 
+- [x] clasificar regiones por zona (norte, centro, sur)
 - [ ] convertir códigos DEIS a comunas
 - [ ] `revisar_comunas()` = cuántas comunas únicas incluye, y si todas son válidas
 - [ ] `confirmar_comunas()` = comparar si los códigos comunales corresponden con los nombres de comuna

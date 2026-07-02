@@ -1,3 +1,6 @@
+# territorial 0.8.4 (2026/07/03)
+- Nueva función `agregar_macrozona()` para clasificar regiones de Chile, incluyendo 4 tipos de macrozonas
+
 # territorial 0.8.3 (2026/07/02)
 - Mejores avisos y errores en `territorial::is_nombre_comuna()`, `territorial::as_nombre_comuna()`, `territorial::is_codigo_comuna()` y  `territorial::as_codigo_comuna()`
 
