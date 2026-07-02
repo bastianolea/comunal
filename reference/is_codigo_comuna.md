@@ -15,11 +15,20 @@ is_codigo_comuna(codigo_comuna)
 
 - codigo_comuna:
 
-  Elemento/s a evaluar
+  Códigos territoriales a evaluar, en formato numérico. Si vienen en
+  formato caracter, se convierten.
 
 ## Valor
 
-TRUE o FALSE si es o no es un código único territorial válido
+Retorna TRUE o FALSE si es o no es un código único territorial válido
+(ver
+[territorios](https://bastianolea.github.io/territorial/reference/territorios.md))
+
+## Detalles
+
+Para más información sobre los códigos únicos territoriales, revisa la
+viñeta
+[`vignette("codigos_unicos_territoriales")`](https://bastianolea.github.io/territorial/articles/codigos_unicos_territoriales.md)
 
 ## Ejemplos
 

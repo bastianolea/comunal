@@ -8,7 +8,7 @@ oficiales, disponibles en la función
 ## Uso
 
 ``` r
-is_nombre_comuna(nombre_comuna)
+is_nombre_comuna(nombre_comuna, intentar = FALSE)
 ```
 
 ## Argumentos
@@ -16,6 +16,11 @@ is_nombre_comuna(nombre_comuna)
 - nombre_comuna:
 
   Elemento/s a evaluar
+
+- intentar:
+
+  Si la comuna no es válida, tratar de interpretarla con
+  [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
 
 ## Valor
 
