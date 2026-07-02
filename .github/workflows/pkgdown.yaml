@@ -31,8 +31,17 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, local::., any::readxl, any::here, any::janitor, any::tidyr, any::ggplot2, any::chilemapas
+          extra-packages: any::pkgdown, local::., any::readxl, any::here, any::janitor, any::tidyr, any::ggplot2
           needs: website
+
+      - name: Instalar dependencias para chilemapas
+        run: sudo apt install libv8-dev libudunits2-dev libprotobuf-dev protobuf-compiler libgeos-dev libgdal-dev
+
+      - name: Instalar pak
+        run: Rscript -e 'install.packages("pak", repos = "http://cran.us.r-project.org")'
+
+      - name: Instalar chilemapas
+        run: Rscript -e 'pak::pak("pachadotdev/chilemapas")'
 
       - name: Set locale to Spanish
         run: |
@@ -46,7 +55,7 @@ jobs:
         env:
           LANG: es_ES.UTF-8
 
-      - name: Deploy to GitHub pages 🚀
+      - name: Deploy to GitHub pages
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
         with:

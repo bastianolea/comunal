@@ -24,10 +24,6 @@ Imports:
     stringi,
     stringr
 Suggests: 
-    chilemapas,
-    ggplot2,
-    here,
-    janitor,
     knitr,
     quarto,
     readxl,
