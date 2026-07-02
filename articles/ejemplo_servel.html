@@ -258,8 +258,16 @@
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">region</span>, <span class="op">-</span><span class="va">comuna</span><span class="op">)</span> <span class="co"># remover columnas originales</span></span>
 <span><span class="co">#&gt; ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna</span></span></code></pre></div>
 </div>
+<p>Repetimos la validación para confirmar:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">servel_limpio</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/validar_regiones.html">validar_regiones</a></span><span class="op">(</span><span class="va">nombre_region</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Todas las regiones están correctas!</span></span></code></pre></div>
+</div>
+<p>Terminamos con datos territoriales limpios!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">servel_limpio</span></span>
 <span><span class="co">#&gt; # A tibble: 12,091 × 9</span></span>
 <span><span class="co">#&gt;    codigo_region nombre_region codigo_provincia nombre_provincia codigo_comuna</span></span>
@@ -291,7 +299,6 @@
 <span><span class="co">#&gt; $ sexo             &lt;chr&gt; "M", "V", "M", "V", "M", "V", "M", "V", "M", "V", "M"…</span></span>
 <span><span class="co">#&gt; $ afiliados        &lt;dbl&gt; 748, 676, 294, 288, 38, 24, 10, 20, 8, 12, 8, 6, 14, …</span></span></code></pre></div>
 </div>
-<p>Terminamos con datos territoriales limpios!</p>
 
 
 

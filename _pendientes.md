@@ -1,10 +1,28 @@
 # NA
 
+## Ideas
+
+clasificar regiones por zona (norte, centro, sur)
+
 ## Pendientes
 
-`is_comuna()`: poner error si no se entrega comuna
+al convertir comuna a código territorial, si no se encuentra la comuna,
+limpiar con warning
 
-`is_comuna()`: poner error si no es caracter
+al ubicar comuna en la región, si no se encuentra la comuna, limpiar con
+warning
+
+función para convertir a nombres cortos de regiones
+
+qué pasa en is_nombre_region con los nombres cortos de regiones?
+
+[`contextualizar()`](https://bastianolea.github.io/territorial/reference/contextualizar.md):
+qué pasa cuando es a nivel regional?
+
+ver guía de estilo para pensar nombres de funciones
+
+[`is_nombre_comuna()`](https://bastianolea.github.io/territorial/reference/is_nombre_comuna.md):
+poner error si no es caracter
 
 editar vignettes/territorial.qmd
 
@@ -12,7 +30,7 @@ editar vignettes/territorial.qmd
 
 subir a github pages
 
-cambiar a español
+cambiar pkgdown a español
 
 escribir readme
 
@@ -24,16 +42,9 @@ hacer hex logo
 
 tabla con formas alternativas de escribir comunas
 
-ver guía de estilo para pensar nombres de funciones
-
-\[-\] cambiar tildes por ascii: stringi::stri_escape_unicode(“Lélàô”)
+cambiar tildes por ascii: stringi::stri_escape_unicode(“Lélàô”)
 
 explicar leves modificaciones de tabla de territorios
-
-[`contextualizar()`](https://bastianolea.github.io/territorial/reference/contextualizar.md):
-qué pasa cuando es a nivel regional?
-
-¿es un buen nombre?
 
 buscar y limpiar datos de localidades
 
@@ -47,10 +58,6 @@ hacer tests de
 [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md)
 
 función para averiguar en qué región está una comuna
-
-qué pasa en is_nombre_region con los nombres cortos de regiones?
-
-convertir a nombres cortos de regiones
 
 ## Idea general
 

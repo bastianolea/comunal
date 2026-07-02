@@ -231,6 +231,17 @@ servel_limpio <- servel_limpio |>
 #> ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
 ```
 
+Repetimos la validación para confirmar:
+
+``` r
+
+servel_limpio |> 
+  validar_regiones(nombre_region)
+#> ✔ Todas las regiones están correctas!
+```
+
+Terminamos con datos territoriales limpios!
+
 ``` r
 
 servel_limpio
@@ -264,5 +275,3 @@ glimpse(servel_limpio)
 #> $ sexo             <chr> "M", "V", "M", "V", "M", "V", "M", "V", "M", "V", "M"…
 #> $ afiliados        <dbl> 748, 676, 294, 288, 38, 24, 10, 20, 8, 12, 8, 6, 14, …
 ```
-
-Terminamos con datos territoriales limpios!
