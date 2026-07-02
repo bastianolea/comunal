@@ -1,5 +1,11 @@
 # Registro de cambios
 
+## territorial 0.8.4 (2026/07/03)
+
+- Nueva función
+  [`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md)
+  para clasificar regiones de norte a sur
+
 ## territorial 0.8.3 (2026/07/02)
 
 - Mejores avisos y errores en
