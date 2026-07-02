@@ -7,13 +7,16 @@
 is_codigo_comuna(codigo_comuna)
 }
 \arguments{
-\item{codigo_comuna}{Elemento/s a evaluar}
+\item{codigo_comuna}{Códigos territoriales a evaluar, en formato numérico. Si vienen en formato caracter, se convierten.}
 }
 \value{
-TRUE o FALSE si es o no es un código único territorial válido
+Retorna TRUE o FALSE si es o no es un código único territorial válido (ver \link{territorios})
 }
 \description{
 Dado un vector de cualquier largo, retorna TRUE o FALSE para cada elemento de acuerdo si se corresponde con los códigos únicos territoriales de comunas de Chile, disponibles en \link{territorios}.
+}
+\details{
+Para más información sobre los códigos únicos territoriales, revisa la viñeta \code{vignette("codigos_unicos_territoriales")}
 }
 \examples{
 is_codigo_comuna(1101)

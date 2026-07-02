@@ -2,14 +2,26 @@
 #'
 #' Dado un vector de cualquier largo, retorna TRUE o FALSE para cada elemento de acuerdo si se corresponde con los códigos únicos territoriales de comunas de Chile, disponibles en [territorial::territorios].
 #'
-#' @param codigo_comuna Elemento/s a evaluar
+#' Para más información sobre los códigos únicos territoriales, revisa la viñeta \code{vignette("codigos_unicos_territoriales")}
 #'
-#' @returns TRUE o FALSE si es o no es un código único territorial válido
+#' @param codigo_comuna Códigos territoriales a evaluar, en formato numérico. Si vienen en formato caracter, se convierten.
+#'
+#' @returns Retorna TRUE o FALSE si es o no es un código único territorial válido (ver [territorial::territorios])
 #' @export
 #'
 #' @examples
 #' is_codigo_comuna(1101)
 is_codigo_comuna <- function(codigo_comuna) {
-  stopifnot("debe ser numérico" = is.numeric(codigo_comuna))
-  codigo_comuna %in% territorial::territorios$codigo_comuna
+  # codigo_comuna = "1101"
+  # si no es numérico, avisar y convertir
+  if (class(codigo_comuna) == "character") {
+    cli::cli_alert_warning(
+      "El código comunal {codigo_comuna} no es de tipo numérico. Se recomienda convertir con {.fun base::as.numeric}"
+    )
+    codigo_comuna <- as.numeric(codigo_comuna)
+  }
+
+  resultado <- codigo_comuna %in% territorial::territorios$codigo_comuna
+
+  return(resultado)
 }

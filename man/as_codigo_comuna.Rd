@@ -7,11 +7,18 @@
 as_codigo_comuna(nombres_comunas)
 }
 \arguments{
-\item{nombres_comunas}{Nombres de comuna (como los que aparecen en \code{\link[=comunas]{comunas()}})}
+\item{nombres_comunas}{Nombres de comuna (como los que aparecen en \code{\link[=comunas]{comunas()}}) en formato caracter.}
 }
 \value{
-Vector numérico con códigos de comuna
+Vector numérico con códigos de comuna.
 }
 \description{
 Entregando nombres de comuna correctos (como los que aparecen en \code{\link[=comunas]{comunas()}} o en \link{territorios}), retorna los códigos de comuna correspondientes en formato numérico. Retorna NA si no corresponde con ninguna.
+}
+\details{
+Para más información sobre los códigos únicos territoriales, revisa la viñeta \code{vignette("codigos_unicos_territoriales")}
+}
+\examples{
+as_codigo_comuna("La Florida")
+
 }

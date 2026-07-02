@@ -2,18 +2,33 @@
 #'
 #' Entregando nombres de comuna correctos (como los que aparecen en [territorial::comunas()] o en [territorial::territorios]), retorna los códigos de comuna correspondientes en formato numérico. Retorna NA si no corresponde con ninguna.
 #'
-#' @param nombres_comunas Nombres de comuna (como los que aparecen en [territorial::comunas()])
+#' Para más información sobre los códigos únicos territoriales, revisa la viñeta \code{vignette("codigos_unicos_territoriales")}
 #'
-#' @returns Vector numérico con códigos de comuna
+#' @param nombres_comunas Nombres de comuna (como los que aparecen en [territorial::comunas()]) en formato caracter.
+#'
+#' @returns Vector numérico con códigos de comuna.
 #' @export
+#'
+#' @examples
+#' as_codigo_comuna("La Florida")
+#'
 as_codigo_comuna <- function(nombres_comunas) {
+  # nombres_comunas = c("La Florida", "Puente Altosh")
+  #   nombres_comunas = 11191
+  if (class(nombres_comunas) == "numeric") {
+    cli::cli_abort("Nombres de comuna deben ser de tipo caracter (texto)")
+  }
 
-  codigos_comunas <- territorial::territorios$codigo_comuna
+  codigos_encontrados <- territorial::territorios$codigo_comuna[match(
+    nombres_comunas,
+    territorial::territorios$nombre_comuna
+  )]
 
-  codigos_encontrados <- codigos_comunas[match(nombres_comunas, territorial::territorios$nombre_comuna)]
-
+  # si hay NA, recomendar limpieza
+  if (any(is.na(codigos_encontrados))) {
+    cli::cli_alert_warning(
+      "Algunos nombres de comunas no fueron reconocidos correctamente. Considera aplicar {.fun territorial::limpiar_comunas} antes."
+    )
+  }
   return(codigos_encontrados)
 }
-
-
-

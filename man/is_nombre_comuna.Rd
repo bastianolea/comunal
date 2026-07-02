@@ -4,10 +4,12 @@
 \alias{is_nombre_comuna}
 \title{Evaluar si un texto corresponde al nombre válido de una comuna de Chile}
 \usage{
-is_nombre_comuna(nombre_comuna)
+is_nombre_comuna(nombre_comuna, intentar = FALSE)
 }
 \arguments{
 \item{nombre_comuna}{Elemento/s a evaluar}
+
+\item{intentar}{Si la comuna no es válida, tratar de interpretarla con \code{\link[=limpiar_comunas]{limpiar_comunas()}}}
 }
 \value{
 TRUE o FALSE si es o no es una comuna válida

@@ -1,29 +1,34 @@
 
+## Ideas
+- [ ] clasificar regiones por zona (norte, centro, sur)
+
+
 ## Pendientes
-- [ ] `is_comuna()`: poner error si no se entrega comuna
-- [ ] `is_comuna()`: poner error si no es caracter
+- [ ] al convertir comuna a código territorial, si no se encuentra la comuna, limpiar con warning
+- [ ] al ubicar comuna en la región, si no se encuentra la comuna, limpiar con warning
+- [ ] función para convertir a nombres cortos de regiones
+- [ ] qué pasa en is_nombre_region con los nombres cortos de regiones?
+- [ ] `contextualizar()`: qué pasa cuando es a nivel regional?
+- [ ] ver guía de estilo para pensar nombres de funciones
+- [x] `is_nombre_comuna()`: poner error si no es caracter
 - [x] editar vignettes/territorial.qmd
 - [-] agregar github action de tests (no porque webea el warning)
 - [x] subir a github pages
-  - [x] cambiar a español
+- [x] cambiar pkgdown a español
 - [x] escribir readme
 - [x] crear ejemplos con datos reales
 - [x] crear examples para cada función
 - [x] hacer hex logo
 - [x] tabla con formas alternativas de escribir comunas
-- [ ] ver guía de estilo para pensar nombres de funciones
-- [-] cambiar tildes por ascii: stringi::stri_escape_unicode("Lélàô ")
+- [x] cambiar tildes por ascii: stringi::stri_escape_unicode("Lélàô ")
 - [x] explicar leves modificaciones de tabla de territorios
-- [ ] `contextualizar()`: qué pasa cuando es a nivel regional?
-  - [ ] ¿es un buen nombre?
 - [x] buscar y limpiar datos de localidades
 - [x] cambiar puntos por guiones bajos
 - [x] `validar_regiones()`
 - [x] arreglar: no se llaman artículos, sino preposiciones
 - [x] hacer tests de `validar_comunas()`
 - [x] función para averiguar en qué región está una comuna
-- [ ] qué pasa en is_nombre_region con los nombres cortos de regiones?
-- [ ] convertir a nombres cortos de regiones 
+
 
 
 
