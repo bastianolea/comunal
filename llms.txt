@@ -303,9 +303,19 @@ Información general sobre el paquete
   Información sobre la tabla de códigos únicos territoriales (CUT) de
   comunas, provincias y regiones.
 
+### Tutoriales
+
+Guías explicativas para usar el paquete
+
+- [Mapas
+  comunales](https://bastianolea.github.io/territorial/articles/mapas_comunales.md):
+
+  Uso de {territorial} para facilitar la creación de mapas comunales con
+  {chilemapas}
+
 ### Ejemplos
 
-Casos de uso del paquete
+Casos de uso del paquete con datos reales
 
 - [Ejemplo: datos
   electorales](https://bastianolea.github.io/territorial/articles/ejemplo_servel.md):
