@@ -326,6 +326,79 @@ regiones |>
 #> 16            12 Magallanes y de la Antártica Chilena
 ```
 
+### Acortar nombres de regiones de Chile
+
+Hay regiones de Chile con nombres extensos, y que en ciertos contextos
+requieren de una versión más breve. Por ejemplo, no siempre es relevante
+leer “Libertador General” o “General Carlos Ibáñez del Campo”. Para eso
+podemos
+[`acortar_regiones()`](https://bastianolea.github.io/territorial/reference/acortar_regiones.md):
+
+``` r
+
+regiones |> 
+  ordenar_regiones() |> 
+  mutate(nombre_region_corto = acortar_regiones(nombre_region))
+#> # A tibble: 16 × 3
+#>    codigo_region nombre_region                             nombre_region_corto
+#>            <dbl> <fct>                                     <chr>              
+#>  1            15 Arica y Parinacota                        Arica y Parinacota 
+#>  2             1 Tarapacá                                  Tarapacá           
+#>  3             2 Antofagasta                               Antofagasta        
+#>  4             3 Atacama                                   Atacama            
+#>  5             4 Coquimbo                                  Coquimbo           
+#>  6             5 Valparaíso                                Valparaíso         
+#>  7            13 Metropolitana de Santiago                 Metropolitana      
+#>  8             6 Libertador General Bernardo O'Higgins     O'Higgins          
+#>  9             7 Maule                                     Maule              
+#> 10            16 Ñuble                                     Ñuble              
+#> 11             8 Biobío                                    Biobío             
+#> 12             9 La Araucanía                              La Araucanía       
+#> 13            14 Los Ríos                                  Los Ríos           
+#> 14            10 Los Lagos                                 Los Lagos          
+#> 15            11 Aysén del General Carlos Ibáñez del Campo Aysén              
+#> 16            12 Magallanes y de la Antártica Chilena      Magallanes
+```
+
+### Clasificar regiones de Chile en macrozonas
+
+Algunos análisis requieren de agrupar las regiones de Chile en grupos,
+usualmente derivados de su posición geográfica. Con la función
+[`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md)
+se pueden clasificar las regiones del país en varios tipos de macrozona
+a partir de sus códigos regionales:
+
+``` r
+
+regiones |> 
+  ordenar_regiones() |> 
+  mutate(
+    macrozona_1 = agregar_macrozona(codigo_region, tipo = 1),
+    macrozona_2 = agregar_macrozona(codigo_region, tipo = 2),
+    macrozona_3 = agregar_macrozona(codigo_region, tipo = 3),
+    macrozona_4 = agregar_macrozona(codigo_region, tipo = 4)
+  )
+#> # A tibble: 16 × 6
+#>    codigo_region nombre_region   macrozona_1 macrozona_2 macrozona_3 macrozona_4
+#>            <dbl> <fct>           <chr>       <chr>       <chr>       <chr>      
+#>  1            15 Arica y Parina… Norte       Norte       Norte       Norte Gran…
+#>  2             1 Tarapacá        Norte       Norte       Norte       Norte Gran…
+#>  3             2 Antofagasta     Norte       Norte       Norte       Norte Gran…
+#>  4             3 Atacama         Norte       Norte       Norte       Norte Chico
+#>  5             4 Coquimbo        Norte       Centro      Centro      Norte Chico
+#>  6             5 Valparaíso      Centro      Centro      Centro      Norte Chico
+#>  7            13 Metropolitana … Centro      Centro      Metropolit… Zona centr…
+#>  8             6 Libertador Gen… Centro      Centro      Centro sur  Zona centr…
+#>  9             7 Maule           Centro      Centro/sur  Centro sur  Zona centr…
+#> 10            16 Ñuble           Sur         Centro/sur  Centro sur  Zona centr…
+#> 11             8 Biobío          Sur         Centro/sur  Centro sur  Zona centr…
+#> 12             9 La Araucanía    Sur         Centro/sur  Sur         Zona Sur   
+#> 13            14 Los Ríos        Sur         Sur         Sur         Zona Sur   
+#> 14            10 Los Lagos       Sur         Sur         Sur         Zona Sur   
+#> 15            11 Aysén del Gene… Austral     Sur         Austral     Zona Austr…
+#> 16            12 Magallanes y d… Austral     Sur         Austral     Zona Austr…
+```
+
 ### Validación de calidad de nombres de regiones
 
 Otro problema que podemos tener son datos de regiones con los nombres

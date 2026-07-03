@@ -342,10 +342,71 @@
 <span><span class="co">#&gt; 15            11 Aysén del General Carlos Ibáñez del Campo</span></span>
 <span><span class="co">#&gt; 16            12 Magallanes y de la Antártica Chilena</span></span></code></pre></div>
 </div>
+</section><section class="level3"><h3 id="acortar-nombres-de-regiones-de-chile">Acortar nombres de regiones de Chile<a class="anchor" aria-label="anchor" href="#acortar-nombres-de-regiones-de-chile"></a>
+</h3>
+<p>Hay regiones de Chile con nombres extensos, y que en ciertos contextos requieren de una versión más breve. Por ejemplo, no siempre es relevante leer “Libertador General” o “General Carlos Ibáñez del Campo”. Para eso podemos <code><a href="../reference/acortar_regiones.html">acortar_regiones()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">regiones</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/ordenar_regiones.html">ordenar_regiones</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>nombre_region_corto <span class="op">=</span> <span class="fu"><a href="../reference/acortar_regiones.html">acortar_regiones</a></span><span class="op">(</span><span class="va">nombre_region</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 16 × 3</span></span>
+<span><span class="co">#&gt;    codigo_region nombre_region                             nombre_region_corto</span></span>
+<span><span class="co">#&gt;            &lt;dbl&gt; &lt;fct&gt;                                     &lt;chr&gt;              </span></span>
+<span><span class="co">#&gt;  1            15 Arica y Parinacota                        Arica y Parinacota </span></span>
+<span><span class="co">#&gt;  2             1 Tarapacá                                  Tarapacá           </span></span>
+<span><span class="co">#&gt;  3             2 Antofagasta                               Antofagasta        </span></span>
+<span><span class="co">#&gt;  4             3 Atacama                                   Atacama            </span></span>
+<span><span class="co">#&gt;  5             4 Coquimbo                                  Coquimbo           </span></span>
+<span><span class="co">#&gt;  6             5 Valparaíso                                Valparaíso         </span></span>
+<span><span class="co">#&gt;  7            13 Metropolitana de Santiago                 Metropolitana      </span></span>
+<span><span class="co">#&gt;  8             6 Libertador General Bernardo O'Higgins     O'Higgins          </span></span>
+<span><span class="co">#&gt;  9             7 Maule                                     Maule              </span></span>
+<span><span class="co">#&gt; 10            16 Ñuble                                     Ñuble              </span></span>
+<span><span class="co">#&gt; 11             8 Biobío                                    Biobío             </span></span>
+<span><span class="co">#&gt; 12             9 La Araucanía                              La Araucanía       </span></span>
+<span><span class="co">#&gt; 13            14 Los Ríos                                  Los Ríos           </span></span>
+<span><span class="co">#&gt; 14            10 Los Lagos                                 Los Lagos          </span></span>
+<span><span class="co">#&gt; 15            11 Aysén del General Carlos Ibáñez del Campo Aysén              </span></span>
+<span><span class="co">#&gt; 16            12 Magallanes y de la Antártica Chilena      Magallanes</span></span></code></pre></div>
+</div>
+</section><section class="level3"><h3 id="clasificar-regiones-de-chile-en-macrozonas">Clasificar regiones de Chile en macrozonas<a class="anchor" aria-label="anchor" href="#clasificar-regiones-de-chile-en-macrozonas"></a>
+</h3>
+<p>Algunos análisis requieren de agrupar las regiones de Chile en grupos, usualmente derivados de su posición geográfica. Con la función <code><a href="../reference/agregar_macrozona.html">agregar_macrozona()</a></code> se pueden clasificar las regiones del país en varios tipos de macrozona a partir de sus códigos regionales:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">regiones</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/ordenar_regiones.html">ordenar_regiones</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    macrozona_1 <span class="op">=</span> <span class="fu"><a href="../reference/agregar_macrozona.html">agregar_macrozona</a></span><span class="op">(</span><span class="va">codigo_region</span>, tipo <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    macrozona_2 <span class="op">=</span> <span class="fu"><a href="../reference/agregar_macrozona.html">agregar_macrozona</a></span><span class="op">(</span><span class="va">codigo_region</span>, tipo <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>    macrozona_3 <span class="op">=</span> <span class="fu"><a href="../reference/agregar_macrozona.html">agregar_macrozona</a></span><span class="op">(</span><span class="va">codigo_region</span>, tipo <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,</span>
+<span>    macrozona_4 <span class="op">=</span> <span class="fu"><a href="../reference/agregar_macrozona.html">agregar_macrozona</a></span><span class="op">(</span><span class="va">codigo_region</span>, tipo <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 16 × 6</span></span>
+<span><span class="co">#&gt;    codigo_region nombre_region   macrozona_1 macrozona_2 macrozona_3 macrozona_4</span></span>
+<span><span class="co">#&gt;            &lt;dbl&gt; &lt;fct&gt;           &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt;  1            15 Arica y Parina… Norte       Norte       Norte       Norte Gran…</span></span>
+<span><span class="co">#&gt;  2             1 Tarapacá        Norte       Norte       Norte       Norte Gran…</span></span>
+<span><span class="co">#&gt;  3             2 Antofagasta     Norte       Norte       Norte       Norte Gran…</span></span>
+<span><span class="co">#&gt;  4             3 Atacama         Norte       Norte       Norte       Norte Chico</span></span>
+<span><span class="co">#&gt;  5             4 Coquimbo        Norte       Centro      Centro      Norte Chico</span></span>
+<span><span class="co">#&gt;  6             5 Valparaíso      Centro      Centro      Centro      Norte Chico</span></span>
+<span><span class="co">#&gt;  7            13 Metropolitana … Centro      Centro      Metropolit… Zona centr…</span></span>
+<span><span class="co">#&gt;  8             6 Libertador Gen… Centro      Centro      Centro sur  Zona centr…</span></span>
+<span><span class="co">#&gt;  9             7 Maule           Centro      Centro/sur  Centro sur  Zona centr…</span></span>
+<span><span class="co">#&gt; 10            16 Ñuble           Sur         Centro/sur  Centro sur  Zona centr…</span></span>
+<span><span class="co">#&gt; 11             8 Biobío          Sur         Centro/sur  Centro sur  Zona centr…</span></span>
+<span><span class="co">#&gt; 12             9 La Araucanía    Sur         Centro/sur  Sur         Zona Sur   </span></span>
+<span><span class="co">#&gt; 13            14 Los Ríos        Sur         Sur         Sur         Zona Sur   </span></span>
+<span><span class="co">#&gt; 14            10 Los Lagos       Sur         Sur         Sur         Zona Sur   </span></span>
+<span><span class="co">#&gt; 15            11 Aysén del Gene… Austral     Sur         Austral     Zona Austr…</span></span>
+<span><span class="co">#&gt; 16            12 Magallanes y d… Austral     Sur         Austral     Zona Austr…</span></span></code></pre></div>
+</div>
 </section><section class="level3"><h3 id="validación-de-calidad-de-nombres-de-regiones">Validación de calidad de nombres de regiones<a class="anchor" aria-label="anchor" href="#validaci%C3%B3n-de-calidad-de-nombres-de-regiones"></a>
 </h3>
 <p>Otro problema que podemos tener son datos de regiones con los nombres mal escritos. Para eso tenemos la función <code><a href="../reference/validar_regiones.html">validar_regiones()</a></code>, que revisará los nombres de las regiones y reportará los problemas existentes:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/validar_regiones.html">validar_regiones</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"los lagos"</span>, <span class="st">"nuble"</span>, <span class="st">"OHIGGINS"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ! mayúsculas: 1 caso de regiones escritas en mayúsculas</span></span>
 <span><span class="co">#&gt; ! mayúsculas: 2 casos de regiones escritas en minúsculas</span></span>
@@ -355,7 +416,7 @@
 </h3>
 <p>Un típico problema es que tenemos las regiones y necesitamos incluirlas en un texto, pero si anteponemos “Región de” no siempre queda bien: por ejemplo, no se dice “Región de Metropolitana”, ni tampoco se dice “Región de Maule”, sino que cada región tiene su preposición apropiada. Para esto usamos la función <code><a href="../reference/redactar_region.html">redactar_region()</a></code>, que a su vez usa <code><a href="../reference/preposicion_region.html">preposicion_region()</a></code> para identificar la preposición correcta:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/redactar_region.html">redactar_region</a></span><span class="op">(</span><span class="st">"Metropolitana"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Región Metropolitana"</span></span>
 <span><span class="fu"><a href="../reference/redactar_region.html">redactar_region</a></span><span class="op">(</span><span class="st">"Maule"</span><span class="op">)</span></span>
@@ -452,7 +513,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Desarrollado por Bastián Olea Herrera.</p>
+  <p>Desarrollado por <a href="https://bastianolea.rbind.io" class="external-link">Bastián Olea Herrera</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

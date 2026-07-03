@@ -270,6 +270,8 @@ ellos
   : Redactar nombres de regiones de Chile
 - [`abreviar_comunas()`](https://bastianolea.github.io/territorial/reference/abreviar_comunas.md)
   : Crear abreviaciones de 3 letras desde nombres comunas
+- [`acortar_regiones()`](https://bastianolea.github.io/territorial/reference/acortar_regiones.md)
+  : Acortar nombres de las regiones de Chile
 
 ## Complementar datos territoriales
 

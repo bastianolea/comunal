@@ -2,7 +2,9 @@
 
 ## Autores
 
-- **Bastián Olea Herrera**. Autor-a, mantenedor-a.
+- **[Bastián Olea Herrera](https://bastianolea.rbind.io)**. Autor-a,
+  mantenedor-a. [](https://orcid.org/0000-0001-6541-0367)  
+  https://bastianolea.rbind.io
 
 ## Cita
 

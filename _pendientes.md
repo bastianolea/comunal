@@ -2,6 +2,8 @@
 
 ## Ideas
 
+obtener comunas de la región, entregar como vector o redactada
+
 clasificar regiones por zona (norte, centro, sur)
 
 convertir códigos DEIS a comunas

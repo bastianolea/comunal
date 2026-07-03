@@ -4,7 +4,10 @@
 
 - Nueva función
   [`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md)
-  para clasificar regiones de norte a sur
+  para clasificar regiones de Chile, incluyendo 4 tipos de macrozonas
+- Nueva función
+  [`acortar_regiones()`](https://bastianolea.github.io/territorial/reference/acortar_regiones.md)
+  para acortar el nombre de las regiones de Chile
 
 ## territorial 0.8.3 (2026/07/02)
 
