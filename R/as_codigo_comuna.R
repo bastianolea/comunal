@@ -15,7 +15,7 @@
 as_codigo_comuna <- function(nombres_comunas) {
   # nombres_comunas = c("La Florida", "Puente Altosh")
   #   nombres_comunas = 11191
-  if (class(nombres_comunas) == "numeric") {
+  if (is.numeric(nombres_comunas)) {
     cli::cli_abort("Nombres de comuna deben ser de tipo caracter (texto)")
   }
 

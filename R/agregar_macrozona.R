@@ -16,12 +16,21 @@
 #'
 #' @examples
 #' agregar_macrozona(c(15, 13, 12), tipo = 1)
+#'
+#' territorial::territorios |>
+#'   ordenar_regiones() |>
+#'   dplyr::mutate(
+#'     macrozona_1 = agregar_macrozona(codigo_region, tipo = 1),
+#'     macrozona_2 = agregar_macrozona(codigo_region, tipo = 2),
+#'     macrozona_3 = agregar_macrozona(codigo_region, tipo = 3),
+#'     macrozona_4 = agregar_macrozona(codigo_region, tipo = 4)
+#'  )
 agregar_macrozona <- function(
   codigo_region,
   tipo = 1
 ) {
   # revisar tipo
-  if (class(codigo_region) == "character") {
+  if (is.character(codigo_region)) {
     cli::cli_alert_warning(
       "Se entregaron códigos regionales en formato caracter. Se recomienda convertir a numérico."
     )

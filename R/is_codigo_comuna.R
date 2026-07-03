@@ -14,7 +14,7 @@
 is_codigo_comuna <- function(codigo_comuna) {
   # codigo_comuna = "1101"
   # si no es numérico, avisar y convertir
-  if (class(codigo_comuna) == "character") {
+  if (is.character(codigo_comuna)) {
     cli::cli_alert_warning(
       "El código comunal {codigo_comuna} no es de tipo numérico. Se recomienda convertir con {.fun base::as.numeric}"
     )

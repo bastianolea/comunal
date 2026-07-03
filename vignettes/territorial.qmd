@@ -215,6 +215,33 @@ regiones
 regiones |> 
   ordenar_regiones()
 ```
+### Acortar nombres de regiones de Chile
+
+Hay regiones de Chile con nombres extensos, y que en ciertos contextos requieren de una versión más breve. Por ejemplo, no siempre es relevante leer "Libertador General" o "General Carlos Ibáñez del Campo". Para eso podemos `acortar_regiones()`:
+
+```{r}
+regiones |> 
+  ordenar_regiones() |> 
+  mutate(nombre_region_corto = acortar_regiones(nombre_region))
+```
+
+
+
+### Clasificar regiones de Chile en macrozonas
+
+Algunos análisis requieren de agrupar las regiones de Chile en grupos, usualmente derivados de su posición geográfica. Con la función `agregar_macrozona()` se pueden clasificar las regiones del país en varios tipos de macrozona a partir de sus códigos regionales:
+
+```{r}
+regiones |> 
+  ordenar_regiones() |> 
+  mutate(
+    macrozona_1 = agregar_macrozona(codigo_region, tipo = 1),
+    macrozona_2 = agregar_macrozona(codigo_region, tipo = 2),
+    macrozona_3 = agregar_macrozona(codigo_region, tipo = 3),
+    macrozona_4 = agregar_macrozona(codigo_region, tipo = 4)
+  )
+```
+
 
 ### Validación de calidad de nombres de regiones
 

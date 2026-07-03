@@ -28,4 +28,13 @@ Como no existe una clasificación fija de macrozonas, existen varias alternativa
 }
 \examples{
 agregar_macrozona(c(15, 13, 12), tipo = 1)
+
+territorial::territorios |>
+  ordenar_regiones() |>
+  dplyr::mutate(
+    macrozona_1 = agregar_macrozona(codigo_region, tipo = 1),
+    macrozona_2 = agregar_macrozona(codigo_region, tipo = 2),
+    macrozona_3 = agregar_macrozona(codigo_region, tipo = 3),
+    macrozona_4 = agregar_macrozona(codigo_region, tipo = 4)
+ )
 }
