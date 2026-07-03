@@ -5,6 +5,17 @@ template:
 project:
   render: ['*.qmd']
 
+authors:
+  "Bastián Olea Herrera":
+    href: "https://bastianolea.rbind.io"
+
+home:
+  links:
+  - text: Blog sobre análisis de datos con R
+    href: https://bastianolea.rbind.io/blog
+  - text: Aprende a programar en R
+    href: https://bastianolea.github.io/aprende_r/
+
 reference:
 - title: Datos territoriales
   desc:  Funciones y tablas de datos que entregan datos de uso territorial
@@ -33,6 +44,7 @@ reference:
   - preposicion_region
   - starts_with("redactar_")
   - starts_with("abreviar_")
+  - starts_with("acortar_")
 - title: Complementar datos territoriales
   desc: Funciones para agregar nuevas variables a partir de datos territoriales existentes
   contents:
