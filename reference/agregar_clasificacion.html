@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -52,7 +52,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Uso<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">agregar_clasificacion</span><span class="op">(</span><span class="va">codigo_comuna</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">agregar_clasificacion</span><span class="op">(</span><span class="va">codigo_comuna</span>, ordenar <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -62,16 +62,21 @@
 <dl><dt id="arg-codigo-comuna">codigo_comuna<a class="anchor" aria-label="anchor" href="#arg-codigo-comuna"></a></dt>
 <dd><p>Vector de códigos de comuna, idealmente <code>codigo_comuna</code></p></dd>
 
+
+<dt id="arg-ordenar">ordenar<a class="anchor" aria-label="anchor" href="#arg-ordenar"></a></dt>
+<dd><p>Entregar resultados como un factor ordenado (Rural, Mixta, Urbana), o como textos sin orden. Por defecto entrega factor.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="valor">Valor<a class="anchor" aria-label="anchor" href="#valor"></a></h2>
-    <p>Vector con clasificación comunal (Rural, Mixta o Urbana)</p>
+    <p>Factor con clasificación comunal (Rural, Mixta o Urbana)</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Ejemplos<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">agregar_clasificacion</span><span class="op">(</span><span class="fl">8107</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Mixta"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] Mixta</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: Rural Mixta Urbana</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Índice de contenidos"><h2>En esta página</h2>

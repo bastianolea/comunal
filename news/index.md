@@ -1,5 +1,14 @@
 # Registro de cambios
 
+## territorial 0.8.5 (2026/07/06)
+
+- Funciones
+  [`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md)
+  y
+  [`agregar_clasificacion()`](https://bastianolea.github.io/territorial/reference/agregar_clasificacion.md)
+  ahora entregan sus resultados en factores ordenados (para poder
+  ordenar de norte a sur, o para tener las clasificaciones en orden).
+
 ## territorial 0.8.4 (2026/07/03)
 
 - Nueva función

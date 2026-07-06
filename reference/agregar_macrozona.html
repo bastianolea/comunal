@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -52,7 +52,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Uso<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">agregar_macrozona</span><span class="op">(</span><span class="va">codigo_region</span>, tipo <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">agregar_macrozona</span><span class="op">(</span><span class="va">codigo_region</span>, tipo <span class="op">=</span> <span class="fl">1</span>, ordenar <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -66,10 +66,14 @@
 <dt id="arg-tipo">tipo<a class="anchor" aria-label="anchor" href="#arg-tipo"></a></dt>
 <dd><p>Tipo de macrozonas a aplicar. Por defecto se usa el tipo 1. Ver la documentación más arriba.</p></dd>
 
+
+<dt id="arg-ordenar">ordenar<a class="anchor" aria-label="anchor" href="#arg-ordenar"></a></dt>
+<dd><p>Entregar resultados como un factor ordenado (de norte a sur), o como textos sin orden. Por defecto entrega factor.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="valor">Valor<a class="anchor" aria-label="anchor" href="#valor"></a></h2>
-    <p>Vector con macrozonas regionales, de acuerdo al tipo de clasificación de regiones elegido.</p>
+    <p>Factor con macrozonas regionales, de acuerdo al tipo de clasificación de regiones elegido.</p>
     </div>
     <div class="section level2">
     <h2 id="detalles">Detalles<a class="anchor" aria-label="anchor" href="#detalles"></a></h2>
@@ -82,7 +86,8 @@
     <div class="section level2">
     <h2 id="ref-examples">Ejemplos<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">agregar_macrozona</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">13</span>, <span class="fl">12</span><span class="op">)</span>, tipo <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Norte"   "Centro"  "Austral"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] Norte   Centro  Austral</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: Norte Centro Sur Austral</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">territorial</span><span class="fu">::</span><span class="va"><a href="territorios.html">territorios</a></span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="ordenar_regiones.html">ordenar_regiones</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
@@ -106,8 +111,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>             1 Tarapacá                      14 Tamarugal                 <span style="text-decoration: underline;">1</span>403</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>             1 Tarapacá                      14 Tamarugal                 <span style="text-decoration: underline;">1</span>404</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 336 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: nombre_comuna &lt;chr&gt;, macrozona_1 &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   macrozona_2 &lt;chr&gt;, macrozona_3 &lt;chr&gt;, macrozona_4 &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: nombre_comuna &lt;chr&gt;, macrozona_1 &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   macrozona_2 &lt;fct&gt;, macrozona_3 &lt;fct&gt;, macrozona_4 &lt;fct&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Índice de contenidos"><h2>En esta página</h2>

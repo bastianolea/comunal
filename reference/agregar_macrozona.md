@@ -8,7 +8,7 @@ correspondientes a cada región.
 ## Uso
 
 ``` r
-agregar_macrozona(codigo_region, tipo = 1)
+agregar_macrozona(codigo_region, tipo = 1, ordenar = TRUE)
 ```
 
 ## Argumentos
@@ -22,9 +22,14 @@ agregar_macrozona(codigo_region, tipo = 1)
   Tipo de macrozonas a aplicar. Por defecto se usa el tipo 1. Ver la
   documentación más arriba.
 
+- ordenar:
+
+  Entregar resultados como un factor ordenado (de norte a sur), o como
+  textos sin orden. Por defecto entrega factor.
+
 ## Valor
 
-Vector con macrozonas regionales, de acuerdo al tipo de clasificación de
+Factor con macrozonas regionales, de acuerdo al tipo de clasificación de
 regiones elegido.
 
 ## Detalles
@@ -55,7 +60,8 @@ alternativas para elegir:
 
 ``` r
 agregar_macrozona(c(15, 13, 12), tipo = 1)
-#> [1] "Norte"   "Centro"  "Austral"
+#> [1] Norte   Centro  Austral
+#> Levels: Norte Centro Sur Austral
 
 territorial::territorios |>
   ordenar_regiones() |>
@@ -79,6 +85,6 @@ territorial::territorios |>
 #>  9             1 Tarapacá                      14 Tamarugal                 1403
 #> 10             1 Tarapacá                      14 Tamarugal                 1404
 #> # ℹ 336 more rows
-#> # ℹ 5 more variables: nombre_comuna <chr>, macrozona_1 <chr>,
-#> #   macrozona_2 <chr>, macrozona_3 <chr>, macrozona_4 <chr>
+#> # ℹ 5 more variables: nombre_comuna <chr>, macrozona_1 <fct>,
+#> #   macrozona_2 <fct>, macrozona_3 <fct>, macrozona_4 <fct>
 ```
