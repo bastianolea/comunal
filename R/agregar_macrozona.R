@@ -10,8 +10,9 @@
 #'
 #' @param codigo_region Vector de códigos de región (del 1 al 16)
 #' @param tipo Tipo de macrozonas a aplicar. Por defecto se usa el tipo 1. Ver la documentación más arriba.
+#' @param ordenar Entregar resultados como un factor ordenado (de norte a sur), o como textos sin orden. Por defecto entrega factor.
 #'
-#' @returns Vector con macrozonas regionales, de acuerdo al tipo de clasificación de regiones elegido.
+#' @returns Factor con macrozonas regionales, de acuerdo al tipo de clasificación de regiones elegido.
 #' @export
 #'
 #' @examples
@@ -27,7 +28,8 @@
 #'  )
 agregar_macrozona <- function(
   codigo_region,
-  tipo = 1
+  tipo = 1,
+  ordenar = TRUE
 ) {
   # revisar tipo
   if (is.character(codigo_region)) {
@@ -60,6 +62,11 @@ agregar_macrozona <- function(
       codigo_region %in% c(16, 8, 9, 14, 10) ~ "Sur",
       codigo_region %in% c(11, 12) ~ "Austral"
     )
+
+    if (ordenar) {
+      macrozonas <- macrozonas |>
+        factor(levels = c("Norte", "Centro", "Sur", "Austral"))
+    }
   } else if (tipo == 2) {
     macrozonas <- dplyr::case_when(
       codigo_region %in% c(15, 1, 2, 3) ~ "Norte",
@@ -67,6 +74,11 @@ agregar_macrozona <- function(
       codigo_region %in% c(7, 16, 8, 9) ~ "Centro/sur",
       codigo_region %in% c(14, 10, 11, 12) ~ "Sur"
     )
+
+    if (ordenar) {
+      macrozonas <- macrozonas |>
+        factor(levels = c("Norte", "Centro", "Centro/sur", "Sur"))
+    }
   } else if (tipo == 3) {
     macrozonas <- dplyr::case_when(
       codigo_region %in% c(15, 1, 2, 3) ~ "Norte",
@@ -76,6 +88,20 @@ agregar_macrozona <- function(
       codigo_region %in% c(9, 14, 10) ~ "Sur",
       codigo_region %in% c(11, 12) ~ "Austral"
     )
+
+    if (ordenar) {
+      macrozonas <- macrozonas |>
+        factor(
+          levels = c(
+            "Norte",
+            "Centro",
+            "Metropolitana",
+            "Centro sur",
+            "Sur",
+            "Austral"
+          )
+        )
+    }
   } else if (tipo == 4) {
     macrozonas <- dplyr::case_when(
       codigo_region %in% c(15, 1, 2) ~ "Norte Grande",
@@ -84,6 +110,19 @@ agregar_macrozona <- function(
       codigo_region %in% c(9, 14, 10) ~ "Zona Sur",
       codigo_region %in% c(11, 12) ~ "Zona Austral"
     )
+
+    if (ordenar) {
+      macrozonas <- macrozonas |>
+        factor(
+          levels = c(
+            "Norte Grande",
+            "Norte Chico",
+            "Zona central",
+            "Zona Sur",
+            "Zona Austral"
+          )
+        )
+    }
   }
 
   if (length(macrozonas) != length(codigo_region)) {

@@ -4,13 +4,15 @@
 \alias{agregar_clasificacion}
 \title{Agregar clasificación comunal PNDR a comunas}
 \usage{
-agregar_clasificacion(codigo_comuna)
+agregar_clasificacion(codigo_comuna, ordenar = TRUE)
 }
 \arguments{
 \item{codigo_comuna}{Vector de códigos de comuna, idealmente \code{codigo_comuna}}
+
+\item{ordenar}{Entregar resultados como un factor ordenado (Rural, Mixta, Urbana), o como textos sin orden. Por defecto entrega factor.}
 }
 \value{
-Vector con clasificación comunal (Rural, Mixta o Urbana)
+Factor con clasificación comunal (Rural, Mixta o Urbana)
 }
 \description{
 Para un vector de comunas, entrega la clasificación comunal PNDR correspondiente (Rural, Mixta o Urbana), tal como aparecen en \link{clasificacion}.

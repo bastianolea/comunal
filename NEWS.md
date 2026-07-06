@@ -1,3 +1,6 @@
+# territorial 0.8.5 (2026/07/06)
+- Funciones `agregar_macrozona()` y `agregar_clasificacion()` ahora entregan sus resultados en factores ordenados (para poder ordenar de norte a sur, o para tener las clasificaciones en orden).
+
 # territorial 0.8.4 (2026/07/03)
 - Nueva función `agregar_macrozona()` para clasificar regiones de Chile, incluyendo 4 tipos de macrozonas
 - Nueva función `acortar_regiones()` para acortar el nombre de las regiones de Chile
