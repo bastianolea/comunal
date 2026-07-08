@@ -45,6 +45,8 @@ ordenarlos, etc.
   : Convertir nombres de comunas a códigos comunales
 - [`as_nombre_comuna()`](https://bastianolea.github.io/territorial/reference/as_nombre_comuna.md)
   : Convertir códigos comunales a nombres de comunas
+- [`as_nombre_region()`](https://bastianolea.github.io/territorial/reference/as_nombre_region.md)
+  : Convertir códigos regionales a nombres de regiones
 - [`ordenar_regiones()`](https://bastianolea.github.io/territorial/reference/ordenar_regiones.md)
   : Ordenar regiones de Chile geográficamente
 - [`ubicar_comunas()`](https://bastianolea.github.io/territorial/reference/ubicar_comunas.md)

@@ -1,5 +1,11 @@
 # Registro de cambios
 
+## territorial 0.8.6 (2026/07/08)
+
+- Nueva función
+  [`as_nombre_region()`](https://bastianolea.github.io/territorial/reference/as_nombre_region.md)
+  para convertir códigos de región a nombres de región.
+
 ## territorial 0.8.5 (2026/07/06)
 
 - Funciones

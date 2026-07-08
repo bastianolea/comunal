@@ -1,0 +1,22 @@
+# Convertir códigos regionales a nombres de regiones
+
+Entregando códigos regionales (como los que aparecen en
+[territorios](https://bastianolea.github.io/territorial/reference/territorios.md)),
+retorna los nombres de región correspondientes. Retorna NA si no
+corresponde con ninguna.
+
+## Uso
+
+``` r
+as_nombre_region(codigos_regiones)
+```
+
+## Argumentos
+
+- codigos_regiones:
+
+  Códigos regionales en formato numérico
+
+## Valor
+
+Vector con nombres de región
