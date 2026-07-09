@@ -246,6 +246,8 @@ ordenarlos, etc.
 
 - [`as_codigo_comuna()`](https://bastianolea.github.io/territorial/reference/as_codigo_comuna.md)
   : Convertir nombres de comunas a códigos comunales
+- [`as_codigo_region()`](https://bastianolea.github.io/territorial/reference/as_codigo_region.md)
+  : Convertir nombres de regiones a códigos regionales
 - [`as_nombre_comuna()`](https://bastianolea.github.io/territorial/reference/as_nombre_comuna.md)
   : Convertir códigos comunales a nombres de comunas
 - [`as_nombre_region()`](https://bastianolea.github.io/territorial/reference/as_nombre_region.md)

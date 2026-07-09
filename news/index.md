@@ -4,7 +4,9 @@
 
 - Nueva función
   [`as_nombre_region()`](https://bastianolea.github.io/territorial/reference/as_nombre_region.md)
-  para convertir códigos de región a nombres de región.
+  para convertir códigos de región (del 1 al 16) a nombres de región, y
+  [`as_codigo_region()`](https://bastianolea.github.io/territorial/reference/as_codigo_region.md)
+  para convertir nombres de región a códigos de región.
 
 ## territorial 0.8.5 (2026/07/06)
 
