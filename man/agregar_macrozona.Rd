@@ -32,6 +32,7 @@ Como no existe una clasificación fija de macrozonas, existen varias alternativa
 agregar_macrozona(c(15, 13, 12), tipo = 1)
 
 territorial::territorios |>
+  dplyr::distinct(codigo_region, nombre_region) |>
   ordenar_regiones() |>
   dplyr::mutate(
     macrozona_1 = agregar_macrozona(codigo_region, tipo = 1),
