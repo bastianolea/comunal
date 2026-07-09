@@ -114,3 +114,14 @@ test_that("prueba de limpieza de comunas 6, casos especiales", {
   )
 }) |>
   suppressMessages()
+
+test_that("prueba de limpieza de comunas donde la limpieza habría dejado texto de 0 caracteres", {
+  expect_equal(
+    limpiar_comunas(
+      c("658145002"),
+      mostrar_proceso = FALSE
+    ),
+    NA_character_
+  )
+}) |>
+  suppressMessages()

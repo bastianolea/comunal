@@ -51,7 +51,14 @@ limpiar_comunas <- function(
 
   # optimizar ----
   resultados <- resultados |>
-    dplyr::mutate(comunas_limpias = limpiar_texto(nombre_comuna))
+    dplyr::mutate(comunas_limpias = limpiar_texto(nombre_comuna)) |>
+    dplyr::mutate(
+      comunas_limpias = ifelse(
+        comunas_limpias == "",
+        NA_character_,
+        comunas_limpias
+      )
+    )
 
   # correctas ----
 
