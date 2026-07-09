@@ -64,6 +64,7 @@ agregar_macrozona(c(15, 13, 12), tipo = 1)
 #> Levels: Norte Centro Sur Austral
 
 territorial::territorios |>
+  dplyr::distinct(codigo_region, nombre_region) |>
   ordenar_regiones() |>
   dplyr::mutate(
     macrozona_1 = agregar_macrozona(codigo_region, tipo = 1),
@@ -71,20 +72,23 @@ territorial::territorios |>
     macrozona_3 = agregar_macrozona(codigo_region, tipo = 3),
     macrozona_4 = agregar_macrozona(codigo_region, tipo = 4)
  )
-#> # A tibble: 346 × 10
-#>    codigo_region nombre_region   codigo_provincia nombre_provincia codigo_comuna
-#>            <dbl> <fct>                      <dbl> <chr>                    <dbl>
-#>  1            15 Arica y Parina…              151 Arica                    15101
-#>  2            15 Arica y Parina…              151 Arica                    15102
-#>  3            15 Arica y Parina…              152 Parinacota               15201
-#>  4            15 Arica y Parina…              152 Parinacota               15202
-#>  5             1 Tarapacá                      11 Iquique                   1101
-#>  6             1 Tarapacá                      11 Iquique                   1107
-#>  7             1 Tarapacá                      14 Tamarugal                 1401
-#>  8             1 Tarapacá                      14 Tamarugal                 1402
-#>  9             1 Tarapacá                      14 Tamarugal                 1403
-#> 10             1 Tarapacá                      14 Tamarugal                 1404
-#> # ℹ 336 more rows
-#> # ℹ 5 more variables: nombre_comuna <chr>, macrozona_1 <fct>,
-#> #   macrozona_2 <fct>, macrozona_3 <fct>, macrozona_4 <fct>
+#> # A tibble: 16 × 6
+#>    codigo_region nombre_region   macrozona_1 macrozona_2 macrozona_3 macrozona_4
+#>            <dbl> <fct>           <fct>       <fct>       <fct>       <fct>      
+#>  1            15 Arica y Parina… Norte       Norte       Norte       Norte Gran…
+#>  2             1 Tarapacá        Norte       Norte       Norte       Norte Gran…
+#>  3             2 Antofagasta     Norte       Norte       Norte       Norte Gran…
+#>  4             3 Atacama         Norte       Norte       Norte       Norte Chico
+#>  5             4 Coquimbo        Norte       Centro      Centro      Norte Chico
+#>  6             5 Valparaíso      Centro      Centro      Centro      Norte Chico
+#>  7            13 Metropolitana … Centro      Centro      Metropolit… Zona centr…
+#>  8             6 Libertador Gen… Centro      Centro      Centro sur  Zona centr…
+#>  9             7 Maule           Centro      Centro/sur  Centro sur  Zona centr…
+#> 10            16 Ñuble           Sur         Centro/sur  Centro sur  Zona centr…
+#> 11             8 Biobío          Sur         Centro/sur  Centro sur  Zona centr…
+#> 12             9 La Araucanía    Sur         Centro/sur  Sur         Zona Sur   
+#> 13            14 Los Ríos        Sur         Sur         Sur         Zona Sur   
+#> 14            10 Los Lagos       Sur         Sur         Sur         Zona Sur   
+#> 15            11 Aysén del Gene… Austral     Sur         Austral     Zona Austr…
+#> 16            12 Magallanes y d… Austral     Sur         Austral     Zona Austr…
 ```

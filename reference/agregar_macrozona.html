@@ -90,6 +90,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: Norte Centro Sur Austral</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">territorial</span><span class="fu">::</span><span class="va"><a href="territorios.html">territorios</a></span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">codigo_region</span>, <span class="va">nombre_region</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="ordenar_regiones.html">ordenar_regiones</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    macrozona_1 <span class="op">=</span> <span class="fu">agregar_macrozona</span><span class="op">(</span><span class="va">codigo_region</span>, tipo <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
@@ -97,22 +98,25 @@
 <span class="r-in"><span>    macrozona_3 <span class="op">=</span> <span class="fu">agregar_macrozona</span><span class="op">(</span><span class="va">codigo_region</span>, tipo <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    macrozona_4 <span class="op">=</span> <span class="fu">agregar_macrozona</span><span class="op">(</span><span class="va">codigo_region</span>, tipo <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span> <span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 346 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    codigo_region nombre_region   codigo_provincia nombre_provincia codigo_comuna</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>            15 Arica y Parina…              151 Arica                    <span style="text-decoration: underline;">15</span>101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>            15 Arica y Parina…              151 Arica                    <span style="text-decoration: underline;">15</span>102</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>            15 Arica y Parina…              152 Parinacota               <span style="text-decoration: underline;">15</span>201</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>            15 Arica y Parina…              152 Parinacota               <span style="text-decoration: underline;">15</span>202</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>             1 Tarapacá                      11 Iquique                   <span style="text-decoration: underline;">1</span>101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>             1 Tarapacá                      11 Iquique                   <span style="text-decoration: underline;">1</span>107</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>             1 Tarapacá                      14 Tamarugal                 <span style="text-decoration: underline;">1</span>401</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>             1 Tarapacá                      14 Tamarugal                 <span style="text-decoration: underline;">1</span>402</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>             1 Tarapacá                      14 Tamarugal                 <span style="text-decoration: underline;">1</span>403</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>             1 Tarapacá                      14 Tamarugal                 <span style="text-decoration: underline;">1</span>404</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 336 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: nombre_comuna &lt;chr&gt;, macrozona_1 &lt;fct&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   macrozona_2 &lt;fct&gt;, macrozona_3 &lt;fct&gt;, macrozona_4 &lt;fct&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    codigo_region nombre_region   macrozona_1 macrozona_2 macrozona_3 macrozona_4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>            15 Arica y Parina… Norte       Norte       Norte       Norte Gran…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>             1 Tarapacá        Norte       Norte       Norte       Norte Gran…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>             2 Antofagasta     Norte       Norte       Norte       Norte Gran…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>             3 Atacama         Norte       Norte       Norte       Norte Chico</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>             4 Coquimbo        Norte       Centro      Centro      Norte Chico</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>             5 Valparaíso      Centro      Centro      Centro      Norte Chico</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>            13 Metropolitana … Centro      Centro      Metropolit… Zona centr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>             6 Libertador Gen… Centro      Centro      Centro sur  Zona centr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>             7 Maule           Centro      Centro/sur  Centro sur  Zona centr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>            16 Ñuble           Sur         Centro/sur  Centro sur  Zona centr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>             8 Biobío          Sur         Centro/sur  Centro sur  Zona centr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span>             9 La Araucanía    Sur         Centro/sur  Sur         Zona Sur   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span>            14 Los Ríos        Sur         Sur         Sur         Zona Sur   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span>            10 Los Lagos       Sur         Sur         Sur         Zona Sur   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span>            11 Aysén del Gene… Austral     Sur         Austral     Zona Austr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span>            12 Magallanes y d… Austral     Sur         Austral     Zona Austr…</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Índice de contenidos"><h2>En esta página</h2>

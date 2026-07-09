@@ -7,6 +7,9 @@
   para convertir códigos de región (del 1 al 16) a nombres de región, y
   [`as_codigo_region()`](https://bastianolea.github.io/territorial/reference/as_codigo_region.md)
   para convertir nombres de región a códigos de región.
+- Mejora en
+  [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
+  para casos de comunas con nombres que contienen sólo números
 
 ## territorial 0.8.5 (2026/07/06)
 
