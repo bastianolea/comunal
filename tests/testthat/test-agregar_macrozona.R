@@ -31,7 +31,8 @@ test_that("macrozonas arrojan error con códigos comunales", {
   expect_warning(
     agregar_macrozona("hola", tipo = 1, ordenar = FALSE)
   )
-})
+}) |>
+  suppressMessages()
 
 
 test_that(

@@ -1,5 +1,5 @@
 # territorial 0.8.6 (2026/07/08)
-- Nueva función `as_nombre_region()` para convertir códigos de región a nombres de región.
+- Nueva función `as_nombre_region()` para convertir códigos de región (del 1 al 16) a nombres de región, y `as_codigo_region()` para convertir nombres de región a códigos de región.
 
 # territorial 0.8.5 (2026/07/06)
 - Funciones `agregar_macrozona()` y `agregar_clasificacion()` ahora entregan sus resultados en factores ordenados (para poder ordenar de norte a sur, o para tener las clasificaciones en orden).
