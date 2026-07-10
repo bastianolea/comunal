@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## territorial 0.8.7 (2026/07/10)
+
+- Tabla de datos con población comunal proyectada (2002-2035), base
+  Censo 2017:
+  [`territorial::poblacion_proyeccion`](https://bastianolea.github.io/territorial/reference/poblacion_proyeccion.md)
+- Función para agregar población comunal a comunas:
+  [`territorial::agregar_poblacion()`](https://bastianolea.github.io/territorial/reference/agregar_poblacion.md)
+
 ## territorial 0.8.6 (2026/07/08)
 
 - Nueva función

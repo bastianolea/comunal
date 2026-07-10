@@ -2,7 +2,8 @@
 
 ## Ideas
 
-obtener comunas de la región, entregar como vector o redactada
+`obtener_comunas()` obtener comunas de la región, entregar como vector o
+redactada
 
 clasificar regiones por zona (norte, centro, sur)
 
@@ -15,6 +16,23 @@ válidas
 con los nombres de comuna
 
 ## Pendientes
+
+agregar ejemplos de
+[`agregar_poblacion()`](https://bastianolea.github.io/territorial/reference/agregar_poblacion.md)
+a viñetas
+
+agregar ejemplos de
+[`as_nombre_region()`](https://bastianolea.github.io/territorial/reference/as_nombre_region.md)
+y
+[`as_codigo_region()`](https://bastianolea.github.io/territorial/reference/as_codigo_region.md)
+a viñetas
+
+agregar ejemplos de
+[`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md)
+a viñetas
+
+crear viñeta de
+[`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md)?
 
 al convertir comuna a código territorial, si no se encuentra la comuna,
 limpiar con warning

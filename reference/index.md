@@ -16,6 +16,9 @@ Funciones y tablas de datos que entregan datos de uso territorial
   : Contextualizar datos de nivel comunal con variables territoriales
 - [`localidades`](https://bastianolea.github.io/territorial/reference/localidades.md)
   : Tabla de localidades de Chile
+- [`poblacion_proyeccion`](https://bastianolea.github.io/territorial/reference/poblacion_proyeccion.md)
+  : Proyecciones de población a nivel comunal de Chile (2002-2035), base
+  Censo 2017
 
 ## Evaluación de unidades territoriales
 
@@ -85,3 +88,5 @@ existentes
   : Agregar macrozona del país a regiones
 - [`agregar_orden_region()`](https://bastianolea.github.io/territorial/reference/agregar_orden_region.md)
   : Agregar orden geográfico (norte a sur) a códigos de regiones
+- [`agregar_poblacion()`](https://bastianolea.github.io/territorial/reference/agregar_poblacion.md)
+  : Agregar población a códigos comunales
