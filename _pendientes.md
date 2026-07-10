@@ -1,13 +1,17 @@
 
 ## Ideas
-- [ ] obtener comunas de la región, entregar como vector o redactada 
+- [ ] `obtener_comunas()` obtener comunas de la región, entregar como vector o redactada 
 - [x] clasificar regiones por zona (norte, centro, sur)
 - [ ] convertir códigos DEIS a comunas
 - [ ] `revisar_comunas()` = cuántas comunas únicas incluye, y si todas son válidas
 - [ ] `confirmar_comunas()` = comparar si los códigos comunales corresponden con los nombres de comuna
 
 ## Pendientes
-- [ ] al convertir comuna a código territorial, si no se encuentra la comuna, limpiar con warning
+- [ ] agregar ejemplos de `agregar_poblacion()` a viñetas
+- [ ] agregar ejemplos de `as_nombre_region()` y `as_codigo_region()` a viñetas
+- [ ] agregar ejemplos de `agregar_macrozona()` a viñetas
+- [ ] crear viñeta de `agregar_macrozona()`?
+- [x] al convertir comuna a código territorial, si no se encuentra la comuna, limpiar con warning
 - [ ] al ubicar comuna en la región, si no se encuentra la comuna, limpiar con warning
 - [ ] función para convertir a nombres cortos de regiones
 - [ ] qué pasa en is_nombre_region con los nombres cortos de regiones?

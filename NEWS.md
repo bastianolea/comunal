@@ -1,3 +1,7 @@
+# territorial 0.8.7 (2026/07/10)
+- Tabla de datos con población comunal proyectada (2002-2035), base Censo 2017: `territorial::poblacion_proyeccion`
+- Función para agregar población comunal a comunas: `territorial::agregar_poblacion()`
+
 # territorial 0.8.6 (2026/07/08)
 - Nueva función `as_nombre_region()` para convertir códigos de región (del 1 al 16) a nombres de región, y `as_codigo_region()` para convertir nombres de región a códigos de región.
 - Mejora en `limpiar_comunas()` para casos de comunas con nombres que contienen sólo números
