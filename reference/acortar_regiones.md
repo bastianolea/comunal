@@ -28,22 +28,22 @@ Vector de texto con nombres de regiones breves.
 acortar_regiones("Libertador Gral. Bernardo O'Higgins")
 #> [1] "O'Higgins"
 
-territorial::territorios |>
+territorios |>
   ordenar_regiones() |>
-  dplyr::mutate(nombre_region_corto = acortar_regiones(nombre_region))
-#> # A tibble: 346 × 7
-#>    codigo_region nombre_region   codigo_provincia nombre_provincia codigo_comuna
-#>            <dbl> <fct>                      <dbl> <chr>                    <dbl>
-#>  1            15 Arica y Parina…              151 Arica                    15101
-#>  2            15 Arica y Parina…              151 Arica                    15102
-#>  3            15 Arica y Parina…              152 Parinacota               15201
-#>  4            15 Arica y Parina…              152 Parinacota               15202
-#>  5             1 Tarapacá                      11 Iquique                   1101
-#>  6             1 Tarapacá                      11 Iquique                   1107
-#>  7             1 Tarapacá                      14 Tamarugal                 1401
-#>  8             1 Tarapacá                      14 Tamarugal                 1402
-#>  9             1 Tarapacá                      14 Tamarugal                 1403
-#> 10             1 Tarapacá                      14 Tamarugal                 1404
+  dplyr::mutate(nombre_region_corto = acortar_regiones(nombre_region)) |>
+  dplyr::select(nombre_region, nombre_region_corto)
+#> # A tibble: 346 × 2
+#>    nombre_region      nombre_region_corto
+#>    <fct>              <chr>              
+#>  1 Arica y Parinacota Arica y Parinacota 
+#>  2 Arica y Parinacota Arica y Parinacota 
+#>  3 Arica y Parinacota Arica y Parinacota 
+#>  4 Arica y Parinacota Arica y Parinacota 
+#>  5 Tarapacá           Tarapacá           
+#>  6 Tarapacá           Tarapacá           
+#>  7 Tarapacá           Tarapacá           
+#>  8 Tarapacá           Tarapacá           
+#>  9 Tarapacá           Tarapacá           
+#> 10 Tarapacá           Tarapacá           
 #> # ℹ 336 more rows
-#> # ℹ 2 more variables: nombre_comuna <chr>, nombre_region_corto <chr>
 ```
