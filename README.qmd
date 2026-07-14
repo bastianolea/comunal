@@ -101,3 +101,8 @@ Así, un dataframe que solamente tiene nombres de comuna puede pasar a tener tod
 ---
 
 Estas son algunas de las funciones principales, pero existen muchas más que facilitan el trabajo con datos territoriales de Chile: [revisa el índice!](/reference/)
+
+
+## Código de conducta
+
+Ten en cuenta que este proyecto se publica con un [Código de Conducta para Colaboradores](https://bastianolea.github.io/territorial/CODE_OF_CONDUCT.html). Al contribuir a este proyecto, aceptas cumplir con sus términos.
