@@ -10,9 +10,10 @@
 #' @examples
 #' acortar_regiones("Libertador Gral. Bernardo O'Higgins")
 #'
-#' territorial::territorios |>
+#' territorios |>
 #'   ordenar_regiones() |>
-#'   dplyr::mutate(nombre_region_corto = acortar_regiones(nombre_region))
+#'   dplyr::mutate(nombre_region_corto = acortar_regiones(nombre_region)) |>
+#'   dplyr::select(nombre_region, nombre_region_corto)
 acortar_regiones <- function(nombre_region) {
   # territorial::territorios |>
   #   distinct(nombre_region)
