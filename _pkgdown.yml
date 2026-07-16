@@ -64,6 +64,7 @@ articles:
   desc: Guías explicativas para usar el paquete
   contents:
   - articles/mapas_comunales
+  - articles/mapas_regionales_macrozonas
 - title: Ejemplos
   navbar: Ejemplos
   desc: Casos de uso del paquete con datos reales

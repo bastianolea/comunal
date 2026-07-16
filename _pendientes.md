@@ -6,14 +6,40 @@
 - [ ] `revisar_comunas()` = cuántas comunas únicas incluye, y si todas son válidas
 - [ ] `confirmar_comunas()` = comparar si los códigos comunales corresponden con los nombres de comuna
 
+
+Cambios
+
+- [ ] crear un ejemplo de cómo aplicar funciones con mutate a un datafrme
+  - [ ] check que sea dataframe
+  - [ ] check que tenga la columna
+  - [ ] check que la columna sea del tipo apropiado
+  - [ ] check que tenga valores válidos del tipo apropiado
+
+- [ ] abreviar = abreviar_comunas
+- [ ] acortar = acortar_regiones (?)
+- [ ] macrozona = agregar_macrozona
+- [ ] clasificacion = agregar_clasificacion (no porque asi se llama la tabla)
+- [ ] orden_region = agregar_orden_region
+- [x] ordenar_regiones (pero agregarle checks)
+- [ ] poblacion = agregar_poblacion
+
+Qué pasa con estas que aplican a ambas?
+- [ ] limpiar = limpiar_comunas (pero y con las regiones?)
+- [ ] validar = validar_comunas, validar_regiones
+
+
 ## Pendientes
-- [ ] agregar ejemplos de `agregar_poblacion()` a viñetas
-- [ ] agregar ejemplos de `as_nombre_region()` y `as_codigo_region()` a viñetas
-- [ ] agregar ejemplos de `agregar_macrozona()` a viñetas
-- [ ] crear viñeta de `agregar_macrozona()`?
+- [ ] limpiar regiones
+- [ ] agregar población censo 2024
+- [ ] agregar superficie total, urbana
+- [ ] ejemplos
+  - [ ] agregar ejemplos de `agregar_poblacion()` a viñetas
+  - [ ] agregar ejemplos de `as_nombre_region()` y `as_codigo_region()` a viñetas
+  - [ ] agregar ejemplos de `agregar_macrozona()` a viñetas
+  - [ ] crear viñeta de `agregar_macrozona()`?
 - [x] al convertir comuna a código territorial, si no se encuentra la comuna, limpiar con warning
 - [ ] al ubicar comuna en la región, si no se encuentra la comuna, limpiar con warning
-- [ ] función para convertir a nombres cortos de regiones
+- [x] función para convertir a nombres cortos de regiones
 - [ ] qué pasa en is_nombre_region con los nombres cortos de regiones?
 - [ ] `contextualizar()`: qué pasa cuando es a nivel regional?
 - [ ] ver guía de estilo para pensar nombres de funciones
