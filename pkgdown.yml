@@ -8,8 +8,9 @@ articles:
   articles/ejemplo_servel: ejemplo_servel.html
   localidades: localidades.html
   articles/mapas_comunales: mapas_comunales.html
+  articles/mapas_regionales_macrozonas: mapas_regionales_macrozonas.html
   territorial: territorial.html
-last_built: 2026-07-14T21:06Z
+last_built: 2026-07-18T06:29Z
 urls:
   reference: https://bastianolea.github.io/territorial/reference
   article: https://bastianolea.github.io/territorial/articles

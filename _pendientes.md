@@ -15,7 +15,45 @@ válidas
 `confirmar_comunas()` = comparar si los códigos comunales corresponden
 con los nombres de comuna
 
+Cambios
+
+crear un ejemplo de cómo aplicar funciones con mutate a un datafrme
+
+check que sea dataframe
+
+check que tenga la columna
+
+check que la columna sea del tipo apropiado
+
+check que tenga valores válidos del tipo apropiado
+
+abreviar = abreviar_comunas
+
+acortar = acortar_regiones (?)
+
+macrozona = agregar_macrozona
+
+clasificacion = agregar_clasificacion (no porque asi se llama la tabla)
+
+orden_region = agregar_orden_region
+
+ordenar_regiones (pero agregarle checks)
+
+poblacion = agregar_poblacion
+
+Qué pasa con estas que aplican a ambas? - \[ \] limpiar =
+limpiar_comunas (pero y con las regiones?) - \[ \] validar =
+validar_comunas, validar_regiones
+
 ## Pendientes
+
+limpiar regiones
+
+agregar población censo 2024
+
+agregar superficie total, urbana
+
+ejemplos
 
 agregar ejemplos de
 [`agregar_poblacion()`](https://bastianolea.github.io/territorial/reference/agregar_poblacion.md)

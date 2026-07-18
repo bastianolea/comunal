@@ -30,6 +30,12 @@ Guías explicativas para usar el paquete
   Uso de {territorial} para facilitar la creación de mapas comunales con
   {chilemapas}
 
+- [Mapas regionales por
+  macrozona](https://bastianolea.github.io/territorial/articles/mapas_regionales_macrozonas.md):
+
+  Uso de {territorial} para clasificar regiones de Chile en macrozonas y
+  visualizarlas con {chilemapas}
+
 ### Ejemplos
 
 Casos de uso del paquete con datos reales
