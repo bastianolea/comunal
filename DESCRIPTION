@@ -31,7 +31,11 @@ Suggests:
     readxl,
     rmarkdown,
     testthat (>= 3.0.0),
-    tidyr
+    tidyr,
+    colorspace,
+    here,
+    janitor,
+    ggplot2
 VignetteBuilder: 
     knitr,
     quarto
