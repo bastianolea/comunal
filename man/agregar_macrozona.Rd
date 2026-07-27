@@ -26,6 +26,7 @@ Como no existe una clasificación fija de macrozonas, existen varias alternativa
 \item Macrozonas tipo 2: distribución balanceada por cantidad de regiones: 4 grupos de 4 regiones: \emph{Norte}, \emph{Centro}, \emph{Centro/sur} y \emph{Sur}.
 \item Macrozonas tipo 3: según las macrozonas del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación, que definr 5 macrozonas (\emph{Norte, Centro, Centro sur, Sur,} y \emph{Austral}), y excluye a la Región Metropolitana. Para más información, #' \href{https://www.bcn.cl/leychile/navegar?idNorma=1142798}{revisar el decreto} que establece a las Seremis del ministerio de Ciencia.
 \item Macrozonas tipo 4: basadas en el \href{https://es.wikipedia.org/wiki/Regiones_naturales_de_Chile}{programa curricular de educación básica} del Ministerio de Educación de Chile, existirían \emph{Norte grande, Norte chico, Zona central, Zona sur} y \emph{Zona austral}.
+\item Macrozonas tipo 5: dividen al país en \emph{norte, centro} y \emph{sur} según las agrupaciones del estudio Identificación de Localidades en Condición de Aislamiento 2012, de Subdere.
 }
 }
 \examples{

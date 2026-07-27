@@ -9,7 +9,7 @@ test_that("agregar macrozonas", {
   )
 })
 
-test_that("probar que macrozonas aplicana a todas las regiones", {
+test_that("probar que macrozonas aplican a todas las regiones", {
   expect_all_false(
     agregar_macrozona(1:16, tipo = 1, ordenar = FALSE) |> is.na()
   )
@@ -21,6 +21,9 @@ test_that("probar que macrozonas aplicana a todas las regiones", {
   )
   expect_all_false(
     agregar_macrozona(1:16, tipo = 4, ordenar = FALSE) |> is.na()
+  )
+  expect_all_false(
+    agregar_macrozona(1:16, tipo = 5, ordenar = FALSE) |> is.na()
   )
 })
 

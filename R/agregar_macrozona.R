@@ -7,6 +7,7 @@
 #' * Macrozonas tipo 2: distribución balanceada por cantidad de regiones: 4 grupos de 4 regiones: _Norte_, _Centro_, _Centro/sur_ y _Sur_.
 #' * Macrozonas tipo 3: según las macrozonas del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación, que definr 5 macrozonas (_Norte, Centro, Centro sur, Sur,_ y _Austral_), y excluye a la Región Metropolitana. Para más información, #' \href{https://www.bcn.cl/leychile/navegar?idNorma=1142798}{revisar el decreto} que establece a las Seremis del ministerio de Ciencia.
 #' * Macrozonas tipo 4: basadas en el \href{https://es.wikipedia.org/wiki/Regiones_naturales_de_Chile}{programa curricular de educación básica} del Ministerio de Educación de Chile, existirían _Norte grande, Norte chico, Zona central, Zona sur_ y _Zona austral_.
+#' * Macrozonas tipo 5: dividen al país en _norte, centro_ y _sur_ según las agrupaciones del estudio Identificación de Localidades en Condición de Aislamiento 2012, de Subdere.
 #'
 #' @param codigo_region Vector de códigos de región (del 1 al 16)
 #' @param tipo Tipo de macrozonas a aplicar. Por defecto se usa el tipo 1. Ver la documentación más arriba.
@@ -121,6 +122,23 @@ agregar_macrozona <- function(
             "Zona central",
             "Zona Sur",
             "Zona Austral"
+          )
+        )
+    }
+  } else if (tipo == 5) {
+    macrozonas <- dplyr::case_when(
+      codigo_region %in% c(15, 1, 2, 3, 4) ~ "Norte",
+      codigo_region %in% c(5, 13, 6, 7, 16, 8, 9, 14) ~ "Centro",
+      codigo_region %in% c(10, 11, 12) ~ "Sur"
+    )
+
+    if (ordenar) {
+      macrozonas <- macrozonas |>
+        factor(
+          levels = c(
+            "Norte",
+            "Centro",
+            "Sur"
           )
         )
     }
