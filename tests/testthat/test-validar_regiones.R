@@ -3,7 +3,8 @@ test_that("validar regiones correctas", {
     validar_regiones(territorial::regiones()),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
 
 test_that("validar regiones con mayúsculas", {
   expect_condition(
@@ -40,7 +41,8 @@ test_that("validar región con preposiciones bien escritas", {
     validar_regiones("Región del Maule"),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
 
 test_that("validar región Ñuble sin eñe", {
   expect_condition(
@@ -55,7 +57,8 @@ test_that("validar región Ñuble con eñe", {
     validar_regiones("Región de Ñuble"),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
 
 test_that("validar región O'Higgins sin apóstrofo", {
   expect_condition(
@@ -70,7 +73,8 @@ test_that("validar región O'Higgins con apóstrofo", {
     validar_regiones("Región del Libertador General Bernardo O'Higgins"),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
 
 test_that("validar región O'Higgins con apóstrofo incorrecto", {
   expect_condition(
@@ -94,7 +98,8 @@ test_that("validar región Aysén con y griega", {
     validar_regiones("Región de Aysén del General Carlos Ibáñez del Campo"),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
 
 test_that("validar regiones sin sus preposiciones", {
   expect_condition(
@@ -112,4 +117,41 @@ test_that("validar regiones desde dataframe", {
     regexp = "correcta"
   )
 }) |>
+  suppressMessages()
+
+
+test_that("validar regiones sin especificar columna", {
+  expect_no_error(
+    territorios |> validar_regiones()
+  )
+}) |>
+  suppressMessages()
+
+
+test_that(
+  "validar regiones desde vector",
+  expect_no_error(
+    territorios$nombre_region |>
+      validar_regiones()
+  )
+) |>
+  suppressMessages()
+
+
+test_that(
+  "validar regiones con columna que no existe",
+  expect_error(
+    territorios |> validar_regiones(nombre_mapache)
+  )
+) |>
+  suppressMessages()
+
+test_that(
+  "validar regiones sin especificar columna, y no existe nombre_region",
+  expect_error(
+    territorios |>
+      dplyr::rename(nombres = nombre_region) |>
+      validar_regiones()
+  )
+) |>
   suppressMessages()
