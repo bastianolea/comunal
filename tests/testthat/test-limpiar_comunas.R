@@ -125,3 +125,93 @@ test_that("prueba de limpieza de comunas donde la limpieza habría dejado texto 
   )
 }) |>
   suppressMessages()
+
+
+test_that("limpiar comunas sin especificar columna retorna dataframe", {
+  resultado <- territorios |>
+    limpiar_comunas() |>
+    suppressMessages()
+
+  expect_s3_class(resultado, "data.frame")
+})
+
+test_that(
+  "limpiar comunas desde dataframe especificando columna retorna dataframe",
+  {
+    resultado <- territorios |>
+      limpiar_comunas(nombre_comuna) |>
+      suppressMessages()
+
+    expect_s3_class(resultado, "data.frame")
+  }
+)
+
+test_that(
+  "limpiar comunas desde vector retorna vector",
+  {
+    resultado <- territorios$nombre_comuna |>
+      limpiar_comunas() |>
+      suppressMessages()
+
+    expect_true(is.vector(resultado))
+  }
+)
+
+test_that(
+  "limpiar comunas con columna que no existe",
+  expect_error(
+    territorios |> limpiar_comunas(nombre_mapache)
+  )
+) |>
+  suppressMessages()
+
+test_that(
+  "limpiar comunas sin especificar columna, y no existe nombre_comuna",
+  expect_error(
+    territorios |>
+      dplyr::rename(nombres = nombre_comuna) |>
+      limpiar_comunas()
+  )
+) |>
+  suppressMessages()
+
+
+test_that("limpiar comunas con aproximar = FALSE no rescata por fuzzy matching", {
+  # "cerritos" solo coincide con "Cerrillos" vía fuzzy; sin aproximar debe quedar NA
+  expect_equal(
+    limpiar_comunas(c("Cerrillos", "cerritos"), aproximar = FALSE) |>
+      suppressMessages(),
+    c("Cerrillos", NA_character_)
+  )
+})
+
+test_that("limpiar comunas con input todo-NA no falla", {
+  expect_no_error(
+    limpiar_comunas(c(NA, NA)) |>
+      suppressMessages()
+  )
+})
+
+test_that("limpiar comunas desde dataframe limpia efectivamente el contenido", {
+  datos_sucios <- dplyr::tibble(
+    nombre_comuna = c("CERRILLOS", "la florida"),
+    valor = c(1, 2)
+  )
+  resultado <- datos_sucios |>
+    limpiar_comunas() |>
+    suppressMessages()
+
+  expect_equal(resultado$nombre_comuna, c("Cerrillos", "La Florida"))
+})
+
+test_that("limpiar comunas desde dataframe con columna personalizada", {
+  datos_sucios <- dplyr::tibble(
+    municipio = c("CERRILLOS", "la florida"),
+    valor = c(1, 2)
+  )
+  resultado <- datos_sucios |>
+    limpiar_comunas(municipio) |>
+    suppressMessages()
+
+  expect_equal(resultado$municipio, c("Cerrillos", "La Florida"))
+})

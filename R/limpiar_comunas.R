@@ -1,19 +1,20 @@
 #' Limpieza de nombres de comunas de Chile a sus nombres oficiales
 #'
-#' A partir de un vector de nombres de columnas, se realizan tres pasos de limpieza (confirmación de nombres correctas, limpieza de texto, detección por coincidencia) para retornar los nombres de comunas oficiales apropiados. Los nombres de comunas son los que aparecen en [territorial::comunas()].
+#' A partir de un dataframe con una variable de nombres de comuna (idealmente `nombre_comuna`), o un vector de nombres de comunas, se realizan cuatro pasos de limpieza (confirmación de nombres correctos, limpieza de texto, limpieza de casos especiales, y detección por coincidencia) para retornar los nombres de comunas oficiales apropiados. Los nombres de comunas considerados _limpios_ son los que aparecen en [territorial::comunas()].
 #'
-#' Los nombres son limpiados en cuatro pasos:
+#' Los nombres se limpian en cuatro pasos:
 #' 1. Contrastando los nombres entregados con los nombres correctos de las comunas ([territorial::comunas()]), para ver si hay comunas bien escritas antes de proseguir con la limpieza de las demás.
 #' 2. Se _limpian_ los nombres de comunas entregados, transformándolos a minúsculas y eliminando todo tipo de símbolos posibles, para dejar las palabras en sus formas más básicas (por ejemplo, `Ñuñoa` se vuelve `nunoa`). Luego, se aplica el mismo proceso a los nombres de comunas correctos ([territorial::comunas()]), y se hace un cruce entre ambos conjuntos de nombres: si los nombres coinciden, significa que se entregaron nombres de comunas escritos en mayúsculas o minúsculas, comunas sin tildes o con tildes extra, comunas sin símbolos especiales o si eñe, entre otras, y son reemplazadas con sus versiones correctas.
 #' 3. Se buscan algunos casos especiales de comunas que son típicamente mal escritos, pero que son difíciles de identificar de manera automática, por ejemplo, cuando a la comuna de _Cabo de Hornos_ le ponen "Ex-Navarino".
 #' 4. Si en los pasos anteriores quedaron comunas que no coincidieron (es decir, que sus problemas van más allá de tildes, mayúsculas o símbolos), se realiza una coincidencia parcial de textos o _fuzzy matching_ usando la función `base::agrepl()`, que utiliza el [algoritmo de distancia de Levenshtein](https://es.wikipedia.org/wiki/Distancia_de_Levenshtein) para encontrar las comunas correctamente escritas que más se parecen a las comunas entregadas. Se esta forma, se pueden encontrar las comunas correctamente escritas para casos de comunas con faltas de ortografía (`Pobidencia` en vez de `Providencia`), comunas sin espacios entre sus palabras (`laflorida` en vez de `La Florida`), y formas alternativas de escribir las comunas (`llay-llay` en vez de `Llaillay`). En todos estos casos se emite una alerta que indica la coincidencia encontrada, ya que al ser una aproxmación, no se garantiza que la coincidencia sea correcta. Puedes desactivar este paso poniendo `aproximar = FALSE`.
 #' Finalmente, se muestra una tabla que describe el proceso de limpieza para su revisión (que puede ocultarse con `mostrar_proceso = FALSE`, y se retornan las comunas correctas.
 #'
-#' @param nombre_comuna Vector de nombres de comunas
+#' @param datos Dataframe con una columna de nombres de comunas, o vector de nombres de comunas
+#' @param variable Columna del dataframe con los nombres de comunas (se pasa sin comillas, p.ej. `comuna`). Si no se especifica, se asume `nombre_comuna`. Si se aplica a un vector, omitir este argumento.
 #' @param mostrar_proceso Mostrar una tabla con el resultado del proceso de limpieza. Elegir entre TRUE o FALSE.
 #' @param aproximar El paso de limpieza por aproximación y coincidencia de nombres puede entregar resultados inexactos. Cambiar a FALSE para omitir.
 #'
-#' @returns Vector de nombres de comunas con correcciones aplicadas.
+#' @returns Si la entrada es un dataframe, retorna el dataframe con la columna de comunas reemplazada. Si es un vector, retorna un vector de nombres de comunas con correcciones aplicadas.
 #' @export
 #'
 #' @examples
@@ -25,12 +26,41 @@
 #'   )
 #'
 #' datos |>
+#'   limpiar_comunas()
+#'
+#' datos |>
 #'   dplyr::mutate(nombre_corregido = limpiar_comunas(nombre_comuna))
 limpiar_comunas <- function(
-  nombre_comuna,
+  datos,
+  variable = NULL,
   aproximar = TRUE,
   mostrar_proceso = FALSE
 ) {
+  # la función funciona con tablas o vectores, y con o sin especificar la columna (se asume `nombre_comuna`)
+  if (any(class(datos) %in% "data.frame")) {
+    col_expr <- rlang::enquo(variable)
+
+    if (rlang::quo_is_null(col_expr)) {
+      col_expr <- rlang::sym("nombre_comuna")
+    }
+
+    if (!rlang::as_name(col_expr) %in% names(datos)) {
+      cli::cli_abort("La columna {.var {rlang::as_name(col_expr)}} no existe!")
+    }
+
+    nombre_comuna_vec <- dplyr::pull(dplyr::ungroup(datos), !!col_expr)
+    resultado_vec <- limpiar_comunas(
+      nombre_comuna_vec,
+      aproximar = aproximar,
+      mostrar_proceso = mostrar_proceso
+    )
+    return(dplyr::mutate(datos, !!col_expr := resultado_vec))
+  } else if (is.vector(datos)) {
+    nombre_comuna <- as.character(datos)
+  } else {
+    cli::cli_abort("Datos de tipo incompatible, debe ser dataframe o vector")
+  }
+
   # nombre_comuna <- c(territorial::comunas()[1:4], toupper(territorial::comunas()[5:8]), "coyiguay", "laflorida", "cerritos", "llay-llay", "asdf")
 
   # nombre_comuna <- c("Iquique", "COLCHANE", "Alto Hospicio", "probidencia", "Pozo Almonte", "Camiña", "HUARA", "PICA", "ANTOFAGASTA", "laflorida", "cerritos", "llay-llay", "asdf", NA )

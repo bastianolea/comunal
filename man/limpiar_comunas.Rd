@@ -4,23 +4,30 @@
 \alias{limpiar_comunas}
 \title{Limpieza de nombres de comunas de Chile a sus nombres oficiales}
 \usage{
-limpiar_comunas(nombre_comuna, aproximar = TRUE, mostrar_proceso = FALSE)
+limpiar_comunas(
+  datos,
+  variable = NULL,
+  aproximar = TRUE,
+  mostrar_proceso = FALSE
+)
 }
 \arguments{
-\item{nombre_comuna}{Vector de nombres de comunas}
+\item{datos}{Dataframe con una columna de nombres de comunas, o vector de nombres de comunas}
+
+\item{variable}{Columna del dataframe con los nombres de comunas (se pasa sin comillas, p.ej. \code{comuna}). Si no se especifica, se asume \code{nombre_comuna}. Si se aplica a un vector, omitir este argumento.}
 
 \item{aproximar}{El paso de limpieza por aproximación y coincidencia de nombres puede entregar resultados inexactos. Cambiar a FALSE para omitir.}
 
 \item{mostrar_proceso}{Mostrar una tabla con el resultado del proceso de limpieza. Elegir entre TRUE o FALSE.}
 }
 \value{
-Vector de nombres de comunas con correcciones aplicadas.
+Si la entrada es un dataframe, retorna el dataframe con la columna de comunas reemplazada. Si es un vector, retorna un vector de nombres de comunas con correcciones aplicadas.
 }
 \description{
-A partir de un vector de nombres de columnas, se realizan tres pasos de limpieza (confirmación de nombres correctas, limpieza de texto, detección por coincidencia) para retornar los nombres de comunas oficiales apropiados. Los nombres de comunas son los que aparecen en \code{\link[=comunas]{comunas()}}.
+A partir de un dataframe con una variable de nombres de comuna (idealmente \code{nombre_comuna}), o un vector de nombres de comunas, se realizan cuatro pasos de limpieza (confirmación de nombres correctos, limpieza de texto, limpieza de casos especiales, y detección por coincidencia) para retornar los nombres de comunas oficiales apropiados. Los nombres de comunas considerados \emph{limpios} son los que aparecen en \code{\link[=comunas]{comunas()}}.
 }
 \details{
-Los nombres son limpiados en cuatro pasos:
+Los nombres se limpian en cuatro pasos:
 \enumerate{
 \item Contrastando los nombres entregados con los nombres correctos de las comunas (\code{\link[=comunas]{comunas()}}), para ver si hay comunas bien escritas antes de proseguir con la limpieza de las demás.
 \item Se \emph{limpian} los nombres de comunas entregados, transformándolos a minúsculas y eliminando todo tipo de símbolos posibles, para dejar las palabras en sus formas más básicas (por ejemplo, \code{Ñuñoa} se vuelve \code{nunoa}). Luego, se aplica el mismo proceso a los nombres de comunas correctos (\code{\link[=comunas]{comunas()}}), y se hace un cruce entre ambos conjuntos de nombres: si los nombres coinciden, significa que se entregaron nombres de comunas escritos en mayúsculas o minúsculas, comunas sin tildes o con tildes extra, comunas sin símbolos especiales o si eñe, entre otras, y son reemplazadas con sus versiones correctas.
@@ -36,6 +43,9 @@ datos <- dplyr::tibble(
   nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "santiago", "prohibidencia", "CERRILLOS", "San José De Maipo", "OHiggins"),
   valores = c(4, 6, 2, 8, 6, 3, 5, 8)
   )
+
+datos |>
+  limpiar_comunas()
 
 datos |>
   dplyr::mutate(nombre_corregido = limpiar_comunas(nombre_comuna))

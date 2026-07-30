@@ -1,5 +1,6 @@
 # territorial 0.8.8 (2026/07/30)
-- Las funciones `validar_comunas()` y `validar_regiones()` ahora son más flexibles: se pueden usar sin especificar ningún argumento y asumirán que queremos validar las columnas `nombre_comuna` o `nombre_region` específicamente, entregando mejores avisos y errores.
+- Las funciones `limpiar_comunas()`, `validar_comunas()` y `validar_regiones()` ahora son más flexibles: se pueden usar sin especificar ningún argumento y asumirán que queremos validar las columnas `nombre_comuna` o `nombre_region` respectivamente, entregando mejores avisos y errores.
+- Nuevos tests para confirmar que `limpiar_comunas()` funciona bien.
 
 # territorial 0.8.7 (2026/07/10)
 - Tabla de datos con población comunal proyectada (2002-2035), base Censo 2017: `territorial::poblacion_proyeccion`
