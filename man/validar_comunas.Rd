@@ -15,11 +15,18 @@ validar_comunas(datos, variable = NULL)
 Dataframe o vector intacto pero en modo invisible, con mensajes de diagnóstico si se encuentran problemas de calidad
 }
 \description{
-Esta función recibe una columna con nombres de comunas de un dataframe (idealmente \code{nombre_comuna}), o un vector con nombres de comunas, y retorna una evaluación de posibles problemas con los nombres existentes. Funciona tanto con un dataframe con una columna \code{nombre_comuna}, o un vector que contenga los nombres de comunas a evaluar. La función solamente retorna avisos cuando existan problemas, por lo que si todos los datos son correctos, solo devolverá los datos tal cual.
+Esta función recibe una variable con nombres de comunas de un dataframe, o un vector con nombres de comunas, y retorna una evaluación de posibles problemas con los nombres existentes.
+}
+\details{
+Funciona tanto con un dataframe (si la columna se llama \code{nombre_comuna} no es necesario especificarla), o un vector que contenga los nombres de comunas a evaluar. La función solamente retorna avisos cuando existan problemas, y retorna los datos de manera invisible.
 }
 \examples{
 validar_comunas(c("chiguayante", "la florida", "paine"))
 
-territorial::territorios |>
+territorios |>
   validar_comunas(nombre_comuna)
+
+# si ya existe una columna `nombre_comuna`, puede omitirse el argumento
+territorios |>
+  validar_comunas()
 }

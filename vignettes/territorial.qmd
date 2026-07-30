@@ -71,7 +71,7 @@ Para empezar a trabajar con estos datos, validamos su calidad primero:
 
 ```{r}
 datos |> 
-  validar_comunas(nombre_comuna)
+  validar_comunas(nombre_comuna) # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
 ```
 
 ### Limpieza de nombres de comunas de Chile

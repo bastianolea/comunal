@@ -72,7 +72,7 @@ comunas con `validar_comunas()`, para detectar posibles problemas:
 
 ``` r
 datos |> 
-  validar_comunas(nombre_comuna)
+  validar_comunas(nombre_comuna) # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
 ```
 
     ! Resumen: 7 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): PIRQUE, Maipu, santiago, prohibidencia, CERRILLOS, San José De Maipo y OHiggins
@@ -177,3 +177,10 @@ datos.
 Estas son algunas de las funciones principales, pero existen muchas más
 que facilitan el trabajo con datos territoriales de Chile: [revisa el
 índice!](./reference/)
+
+## Código de conducta
+
+Ten en cuenta que este proyecto se publica con un [Código de Conducta
+para
+Colaboradores](https://bastianolea.github.io/territorial/CODE_OF_CONDUCT.html).
+Al contribuir a este proyecto, aceptas cumplir con sus términos.

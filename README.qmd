@@ -64,7 +64,7 @@ datos <- dplyr::tibble(
 
 ```{r}
 datos |> 
-  validar_comunas(nombre_comuna)
+  validar_comunas(nombre_comuna) # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
 ```
 
 También puedes limpiar automáticamente las comunas con `limpiar_comunas()`, y obtener una columna con las comunas correctas (que salen de la tabla `territorial::territorios`), obtenidas por medio de varias técnicas de limpieza de datos:

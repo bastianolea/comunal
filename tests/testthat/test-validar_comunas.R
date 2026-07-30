@@ -3,7 +3,8 @@ test_that("validar comunas correctas", {
     validar_comunas(territorial::comunas()),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
 
 test_that("validar comunas con mayúsculas", {
   expect_condition(
@@ -40,7 +41,8 @@ test_that("validar comuna con preposiciones bien escritas", {
     validar_comunas(c("San José de Maipo")),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
 
 test_that("validar comuna O'Higgins sin apóstrofo", {
   expect_condition(
@@ -55,7 +57,8 @@ test_that("validar comuna O'Higgins con apóstrofo", {
     validar_comunas("O'Higgins"),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
 
 # test_that("validar comuna O'Higgins con apóstrofo incorrecto", {
 #   expect_condition(
@@ -77,7 +80,8 @@ test_that("validar comuna Aysén con y griega", {
     validar_comunas("Aysén"),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
 
 
 test_that("validar comuna desde dataframe 1", {
@@ -117,4 +121,59 @@ test_that("validar escritura correcta de paiguano", {
     validar_comunas("Paihuano"),
     regexp = "correcta"
   )
-})
+}) |>
+  suppressMessages()
+
+
+test_that("validar escritura correcta de paiguano", {
+  expect_condition(
+    validar_comunas("Paihuano"),
+    regexp = "correcta"
+  )
+}) |>
+  suppressMessages()
+
+
+test_that("validar comunas sin especificar columna", {
+  expect_no_error(
+    territorios |> validar_comunas()
+  )
+}) |>
+  suppressMessages()
+
+
+test_that(
+  "validar comunas desde dataframe especificando columna",
+  expect_no_error(
+    territorios |> validar_comunas(nombre_comuna)
+  )
+) |>
+  suppressMessages()
+
+test_that(
+  "validar comunas desde vector",
+  expect_no_error(
+    territorios$nombre_comuna |>
+      validar_comunas()
+  )
+) |>
+  suppressMessages()
+
+
+test_that(
+  "validar comunas con columna que no existe",
+  expect_error(
+    territorios |> validar_comunas(nombre_mapache)
+  )
+) |>
+  suppressMessages()
+
+test_that(
+  "validar comunas sin especificar columna, y no existe nombre_comuna",
+  expect_error(
+    territorios |>
+      dplyr::rename(nombres = nombre_comuna) |>
+      validar_comunas()
+  )
+) |>
+  suppressMessages()

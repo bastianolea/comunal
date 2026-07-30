@@ -1,6 +1,8 @@
 #' Validación de calidad de nombres de comunas de Chile
 #'
-#' Esta función recibe una columna con nombres de comunas de un dataframe (idealmente `nombre_comuna`), o un vector con nombres de comunas, y retorna una evaluación de posibles problemas con los nombres existentes. Funciona tanto con un dataframe con una columna `nombre_comuna`, o un vector que contenga los nombres de comunas a evaluar. La función solamente retorna avisos cuando existan problemas, por lo que si todos los datos son correctos, solo devolverá los datos tal cual.
+#' Esta función recibe una variable con nombres de comunas de un dataframe, o un vector con nombres de comunas, y retorna una evaluación de posibles problemas con los nombres existentes.
+#'
+#' Funciona tanto con un dataframe (si la columna se llama `nombre_comuna` no es necesario especificarla), o un vector que contenga los nombres de comunas a evaluar. La función solamente retorna avisos cuando existan problemas, y retorna los datos de manera invisible.
 #'
 #' @param datos Dataframe con una columna de nombre de comunas, o vector de nombres de comunas
 #' @param variable Columna del dataframe con los nombres de comunas (se pasa sin comillas, p.ej. `comuna`)
@@ -11,25 +13,49 @@
 #' @examples
 #' validar_comunas(c("chiguayante", "la florida", "paine"))
 #'
-#' territorial::territorios |>
+#' territorios |>
 #'   validar_comunas(nombre_comuna)
+#'
+#' # si ya existe una columna `nombre_comuna`, puede omitirse el argumento
+#' territorios |>
+#'   validar_comunas()
 validar_comunas <- function(
   datos,
   variable = NULL
 ) {
+  # la función funciona con tablas o vectores, y con especificar la columna o sin especificarla (se asume que es `nombre_comuna`)
   # si es una tabla, extraer columna como vector
   if (any(class(datos) %in% "data.frame")) {
+    cli::cli_alert_info(
+      "Validando calidad de nombres de comuna desde tabla de datos"
+    )
+    # extraer la variable
     col_expr <- rlang::enquo(variable)
 
+    # si no se especificó la columna, asumir que es nombre_comuna
     if (rlang::quo_is_null(col_expr)) {
+      cli::cli_alert_info(
+        "No se especificó la variable: asumiendo columna `nombre_comuna`"
+      )
+      col_expr <- rlang::sym("nombre_comuna")
+    }
+
+    # revisar que la columna existe
+    if (!rlang::as_name(col_expr) %in% names(datos)) {
       cli::cli_abort(
-        "Debes especificar la columna de comunas, p.ej.: {.code validar_comunas(comuna)}"
+        "La columna {.var {rlang::as_name(col_expr)}} no existe!"
       )
     }
 
+    # extraer la columna del dataframe
     nombre_comuna <- dplyr::pull(dplyr::ungroup(datos), !!col_expr)
+
+    # si es un vector, se toma el vector
   } else if (is.vector(datos)) {
+    cli::cli_alert_info("Validando calidad de nombres de comuna desde vector")
     nombre_comuna <- as.character(datos)
+
+    # si no es ni dataframe ni vector, error
   } else {
     cli::cli_abort("Datos de tipo incompatible, debe ser dataframe o vector")
   }
