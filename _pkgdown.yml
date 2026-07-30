@@ -2,6 +2,12 @@ url: https://bastianolea.github.io/territorial/
 lang: es
 template:
   bootstrap: 5
+  theme: ayu-light
+  bslib:
+    fg: "#5c534a"
+    bg: "#f9f1e5"
+    navbar-bg: "#E1B280"
+    primary: "#7CB096"
 project:
   render: ['*.qmd']
 

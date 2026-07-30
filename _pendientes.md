@@ -9,6 +9,8 @@
 
 Cambios
 
+- [ ] flexibilizar agregar_poblacion
+
 - [ ] crear un ejemplo de cómo aplicar funciones con mutate a un datafrme
   - [ ] check que sea dataframe
   - [ ] check que tenga la columna
