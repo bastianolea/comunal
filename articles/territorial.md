@@ -80,7 +80,8 @@ Para empezar a trabajar con estos datos, validamos su calidad primero:
 ``` r
 
 datos |> 
-  validar_comunas(nombre_comuna)
+  validar_comunas(nombre_comuna) # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
+#> ℹ Validando calidad de nombres de comuna desde tabla de datos
 #> ! Resumen: 7 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): PIRQUE, Maipu, santiago, prohibidencia, CERRILLOS, San José De Maipo y OHiggins
 #> ! Mayúsculas: 2 casos de comunas escritas en mayúsculas: PIRQUE y CERRILLOS
 #> ! Minúsculas: 2 casos de comunas escritas en minúsculas: santiago y prohibidencia

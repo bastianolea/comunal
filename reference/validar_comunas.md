@@ -1,12 +1,8 @@
 # Validación de calidad de nombres de comunas de Chile
 
-Esta función recibe una columna con nombres de comunas de un dataframe
-(idealmente `nombre_comuna`), o un vector con nombres de comunas, y
-retorna una evaluación de posibles problemas con los nombres existentes.
-Funciona tanto con un dataframe con una columna `nombre_comuna`, o un
-vector que contenga los nombres de comunas a evaluar. La función
-solamente retorna avisos cuando existan problemas, por lo que si todos
-los datos son correctos, solo devolverá los datos tal cual.
+Esta función recibe una variable con nombres de comunas de un dataframe,
+o un vector con nombres de comunas, y retorna una evaluación de posibles
+problemas con los nombres existentes.
 
 ## Uso
 
@@ -31,15 +27,31 @@ validar_comunas(datos, variable = NULL)
 Dataframe o vector intacto pero en modo invisible, con mensajes de
 diagnóstico si se encuentran problemas de calidad
 
+## Detalles
+
+Funciona tanto con un dataframe (si la columna se llama `nombre_comuna`
+no es necesario especificarla), o un vector que contenga los nombres de
+comunas a evaluar. La función solamente retorna avisos cuando existan
+problemas, y retorna los datos de manera invisible.
+
 ## Ejemplos
 
 ``` r
 validar_comunas(c("chiguayante", "la florida", "paine"))
+#> ℹ Validando calidad de nombres de comuna desde vector
 #> ! Resumen: 3 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): chiguayante, la florida y paine
 #> ! Minúsculas: 3 casos de comunas escritas en minúsculas: chiguayante, la florida y paine
 #> ✖ Validación de comunas: se encontraron 6 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
 
-territorial::territorios |>
+territorios |>
   validar_comunas(nombre_comuna)
+#> ℹ Validando calidad de nombres de comuna desde tabla de datos
+#> ✔ Todas las comunas están correctas!
+
+# si ya existe una columna `nombre_comuna`, puede omitirse el argumento
+territorios |>
+  validar_comunas()
+#> ℹ Validando calidad de nombres de comuna desde tabla de datos
+#> ℹ No se especificó la variable: asumiendo columna `nombre_comuna`
 #> ✔ Todas las comunas están correctas!
 ```

@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.8</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -281,6 +281,7 @@
 <span></span>
 <span><span class="va">biblio_ancho</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_comunas.html">validar_comunas</a></span><span class="op">(</span><span class="va">unidad</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ℹ Validando calidad de nombres de comuna desde tabla de datos</span></span>
 <span><span class="co">#&gt; ! Resumen: 8 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): La Calera, Treguaco, Alto BioBío, Los Ángeles, Padre las Casas, Aisén, Coihaique y O’Higgins</span></span>
 <span><span class="co">#&gt; ℹ Escrituras alternativas: 2 casos de comunas escritas de una forma no recomendada, aunque válida: Treguaco y Aisén</span></span>
 <span><span class="co">#&gt; ✖ Validación de comunas: se encontraron 10 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.</span></span></code></pre></div>
@@ -356,6 +357,7 @@
 <div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">biblio_limpio</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_comunas.html">validar_comunas</a></span><span class="op">(</span><span class="va">nombre_comuna</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ℹ Validando calidad de nombres de comuna desde tabla de datos</span></span>
 <span><span class="co">#&gt; ✔ Todas las comunas están correctas!</span></span></code></pre></div>
 </div>
 <p>O podemos confirmar filtrando los datos que no son nombres de comuna correctos:</p>

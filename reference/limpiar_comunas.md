@@ -1,22 +1,36 @@
 # Limpieza de nombres de comunas de Chile a sus nombres oficiales
 
-A partir de un vector de nombres de columnas, se realizan tres pasos de
-limpieza (confirmación de nombres correctas, limpieza de texto,
-detección por coincidencia) para retornar los nombres de comunas
-oficiales apropiados. Los nombres de comunas son los que aparecen en
+A partir de un dataframe con una variable de nombres de comuna
+(idealmente `nombre_comuna`), o un vector de nombres de comunas, se
+realizan cuatro pasos de limpieza (confirmación de nombres correctos,
+limpieza de texto, limpieza de casos especiales, y detección por
+coincidencia) para retornar los nombres de comunas oficiales apropiados.
+Los nombres de comunas considerados *limpios* son los que aparecen en
 [`comunas()`](https://bastianolea.github.io/territorial/reference/comunas.md).
 
 ## Uso
 
 ``` r
-limpiar_comunas(nombre_comuna, aproximar = TRUE, mostrar_proceso = FALSE)
+limpiar_comunas(
+  datos,
+  variable = NULL,
+  aproximar = TRUE,
+  mostrar_proceso = FALSE
+)
 ```
 
 ## Argumentos
 
-- nombre_comuna:
+- datos:
 
-  Vector de nombres de comunas
+  Dataframe con una columna de nombres de comunas, o vector de nombres
+  de comunas
+
+- variable:
+
+  Columna del dataframe con los nombres de comunas (se pasa sin
+  comillas, p.ej. `comuna`). Si no se especifica, se asume
+  `nombre_comuna`. Si se aplica a un vector, omitir este argumento.
 
 - aproximar:
 
@@ -30,11 +44,13 @@ limpiar_comunas(nombre_comuna, aproximar = TRUE, mostrar_proceso = FALSE)
 
 ## Valor
 
-Vector de nombres de comunas con correcciones aplicadas.
+Si la entrada es un dataframe, retorna el dataframe con la columna de
+comunas reemplazada. Si es un vector, retorna un vector de nombres de
+comunas con correcciones aplicadas.
 
 ## Detalles
 
-Los nombres son limpiados en cuatro pasos:
+Los nombres se limpian en cuatro pasos:
 
 1.  Contrastando los nombres entregados con los nombres correctos de las
     comunas
@@ -109,6 +125,37 @@ datos <- dplyr::tibble(
   nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "santiago", "prohibidencia", "CERRILLOS", "San José De Maipo", "OHiggins"),
   valores = c(4, 6, 2, 8, 6, 3, 5, 8)
   )
+
+datos |>
+  limpiar_comunas()
+#> ℹ Limpiando 8 nombres de comunas (8 son distintas)
+#> 
+#> ── Paso 1: confirmar comunas correctas 
+#> ℹ De las 8 comunas distintas, 1 ya eran correctas: El Monte
+#> 
+#> ── Paso 2: coincidencias por limpieza de texto 
+#> ℹ A partir de la limpieza de texto, se limpiaron 7 de 8 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
+#> 
+#> ── Paso 3: casos especiales 
+#> ℹ Se encontraron 0 casos especiales: 
+#> 
+#> ── Paso 4: coincidencias aproximadas de texto 
+#> ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
+#> 
+#> ── Conclusión de limpieza de comunas 
+#> ✔ De las 8 comunas distintas, se limpiaron 8 en total (100%)
+#> 
+#> # A tibble: 8 × 2
+#>   nombre_comuna     valores
+#>   <chr>               <dbl>
+#> 1 Pirque                  4
+#> 2 El Monte                6
+#> 3 Maipú                   2
+#> 4 Santiago                8
+#> 5 Providencia             6
+#> 6 Cerrillos               3
+#> 7 San José de Maipo       5
+#> 8 O'Higgins               8
 
 datos |>
   dplyr::mutate(nombre_corregido = limpiar_comunas(nombre_comuna))

@@ -130,6 +130,7 @@ library(territorial)
 
 servel |> 
   validar_comunas(comuna)
+#> ℹ Validando calidad de nombres de comuna desde tabla de datos
 #> ! Resumen: 12091 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): ANTOFAGASTA, CALAMA, MARIA ELENA, MEJILLONES, OLLAGUE, SAN PEDRO DE ATACAMA, SIERRA GORDA, TALTAL, TOCOPILLA, ARICA y 337 comunas más
 #> ! Mayúsculas: 12091 casos de comunas escritas en mayúsculas: ANTOFAGASTA, CALAMA, MARIA ELENA, MEJILLONES, OLLAGUE, SAN PEDRO DE ATACAMA, SIERRA GORDA, TALTAL, TOCOPILLA, ARICA y 337 comunas más
 #> ℹ Tildes: 2335 casos de comunas que deberían tener tildes y no los tienen: MARIA ELENA, COPIAPO, AYSEN, RIO IBAÑEZ, COMBARBALA, RIO HURTADO, CURACAUTIN, PITRUFQUEN, PUCON, PUREN y 60 comunas más
@@ -212,6 +213,7 @@ Queda limpiar las regiones. Primero las validamos con
 
 servel_limpio |> 
   validar_regiones(region)
+#> ℹ Validando calidad de nombres de región desde tabla de datos
 #> ! Mayúsculas: 12091 casos de regiones escritas en mayúsculas
 #> ! Ortografía: 3205 casos de regiones escritas sin tilde
 #> ✖ Validación de regiones: se encontraron 15296 problemas con las regiones!
@@ -237,6 +239,7 @@ Repetimos la validación para confirmar:
 
 servel_limpio |> 
   validar_regiones(nombre_region)
+#> ℹ Validando calidad de nombres de región desde tabla de datos
 #> ✔ Todas las regiones están correctas!
 ```
 

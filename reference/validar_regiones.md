@@ -35,6 +35,7 @@ diagnóstico si se encuentran problemas de calidad
 
 ``` r
 validar_regiones(c("los lagos", "nuble", "OHIGGINS"))
+#> ℹ Validando calidad de nombres de región desde vector
 #> ! Mayúsculas: 1 caso de regiones escritas en mayúsculas
 #> ! Mayúsculas: 2 casos de regiones escritas en minúsculas
 #> ! Ortografía: 1 caso de la Región de Ñuble escrita sin eñe
@@ -43,5 +44,6 @@ validar_regiones(c("los lagos", "nuble", "OHIGGINS"))
 
 territorial::territorios |>
   validar_regiones(nombre_region)
+#> ℹ Validando calidad de nombres de región desde tabla de datos
 #> ✔ Todas las regiones están correctas!
 ```

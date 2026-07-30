@@ -56,6 +56,10 @@ alternativas para elegir:
   Ministerio de Educación de Chile, existirían *Norte grande, Norte
   chico, Zona central, Zona sur* y *Zona austral*.
 
+- Macrozonas tipo 5: dividen al país en *norte, centro* y *sur* según
+  las agrupaciones del estudio Identificación de Localidades en
+  Condición de Aislamiento 2012, de Subdere.
+
 ## Ejemplos
 
 ``` r

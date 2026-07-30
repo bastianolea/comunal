@@ -1,5 +1,20 @@
 # Registro de cambios
 
+## territorial 0.8.8 (2026/07/30)
+
+- Las funciones
+  [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md),
+  [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md)
+  y
+  [`validar_regiones()`](https://bastianolea.github.io/territorial/reference/validar_regiones.md)
+  ahora son más flexibles: se pueden usar sin especificar ningún
+  argumento y asumirán que queremos validar las columnas `nombre_comuna`
+  o `nombre_region` respectivamente, entregando mejores avisos y
+  errores.
+- Nuevos tests para confirmar que
+  [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
+  funciona bien.
+
 ## territorial 0.8.7 (2026/07/10)
 
 - Tabla de datos con población comunal proyectada (2002-2035), base

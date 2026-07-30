@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.8</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -187,6 +187,7 @@
 <span></span>
 <span><span class="va">servel</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_comunas.html">validar_comunas</a></span><span class="op">(</span><span class="va">comuna</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ℹ Validando calidad de nombres de comuna desde tabla de datos</span></span>
 <span><span class="co">#&gt; ! Resumen: 12091 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): ANTOFAGASTA, CALAMA, MARIA ELENA, MEJILLONES, OLLAGUE, SAN PEDRO DE ATACAMA, SIERRA GORDA, TALTAL, TOCOPILLA, ARICA y 337 comunas más</span></span>
 <span><span class="co">#&gt; ! Mayúsculas: 12091 casos de comunas escritas en mayúsculas: ANTOFAGASTA, CALAMA, MARIA ELENA, MEJILLONES, OLLAGUE, SAN PEDRO DE ATACAMA, SIERRA GORDA, TALTAL, TOCOPILLA, ARICA y 337 comunas más</span></span>
 <span><span class="co">#&gt; ℹ Tildes: 2335 casos de comunas que deberían tener tildes y no los tienen: MARIA ELENA, COPIAPO, AYSEN, RIO IBAÑEZ, COMBARBALA, RIO HURTADO, CURACAUTIN, PITRUFQUEN, PUCON, PUREN y 60 comunas más</span></span>
@@ -251,6 +252,7 @@
 <div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">servel_limpio</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_regiones.html">validar_regiones</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ℹ Validando calidad de nombres de región desde tabla de datos</span></span>
 <span><span class="co">#&gt; ! Mayúsculas: 12091 casos de regiones escritas en mayúsculas</span></span>
 <span><span class="co">#&gt; ! Ortografía: 3205 casos de regiones escritas sin tilde</span></span>
 <span><span class="co">#&gt; ✖ Validación de regiones: se encontraron 15296 problemas con las regiones!</span></span></code></pre></div>
@@ -268,6 +270,7 @@
 <div class="sourceCode cell-code" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">servel_limpio</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_regiones.html">validar_regiones</a></span><span class="op">(</span><span class="va">nombre_region</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ℹ Validando calidad de nombres de región desde tabla de datos</span></span>
 <span><span class="co">#&gt; ✔ Todas las regiones están correctas!</span></span></code></pre></div>
 </div>
 <p>Terminamos con datos territoriales limpios!</p>

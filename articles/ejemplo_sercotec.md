@@ -116,6 +116,7 @@ library(territorial)
 
 sercotec |> 
   validar_comunas(comuna_beneficiario)
+#> ℹ Validando calidad de nombres de comuna desde tabla de datos
 #> ! Resumen: 24 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): Aisén, Los Alamos, Los Ángeles, No Informada, OHiggins, Otro lugar, Puerto Saavedra, Ránquil y Treguaco
 #> ℹ Tildes: 3 casos de comunas que deberían tener tildes y no los tienen: Los Alamos
 #> ℹ Problemas comunes: 2 casos de comunas popularmente mal escritas: OHiggins
@@ -198,6 +199,7 @@ Opcionalmente, confirmamos que los datos están limpios:
 
 sercotec_limpio |> 
   validar_comunas(nombre_comuna)
+#> ℹ Validando calidad de nombres de comuna desde tabla de datos
 #> ✔ Todas las comunas están correctas!
 ```
 
