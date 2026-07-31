@@ -35,3 +35,8 @@ main img {
   border: solid 1px #D3CABD;
   border-radius: 6px;
 }
+
+pre code span.er {
+  color: #4cbf99;
+  text-decoration: none;
+}
