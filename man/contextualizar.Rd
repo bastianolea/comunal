@@ -17,6 +17,9 @@ El mismo dataframe con las columnas \code{codigo_region}, \code{nombre_region}, 
 \description{
 Para cualquier tabla de datos de nivel comunal que tenga al menos una variable territorial (\code{codigo_comuna} o \code{nombre_comuna}), indicar esta variable para agregar todo el resto de variables territoriales. De esta manera, se contextualizan territorialmente los datos al agregar todas las variables territoriales faltantes.
 }
+\details{
+Se usa, por ejemplo, cuando tienes una tabla de datos que tienen solamente los nombres de las comunas (primero valída con \code{\link[=validar_comunas]{validar_comunas()}} y/o limpia con \code{\link[=validar_comunas]{validar_comunas()}}), y quieres agregarle más variables territoriales como los códigos únicos territoriales, las provincias, regiones, etc.
+}
 \examples{
 datos <- dplyr::tribble(
   ~nombre_comuna, ~valor,
