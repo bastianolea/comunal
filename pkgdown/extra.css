@@ -1,15 +1,22 @@
+
+/* bloques de código */
 pre {
   background-color: #faf6ef !important;
   border: solid 1px #D3CABD !important;
 }
 
-code {
-  background-color: #faf6ef !important;
+pre code {
+  background-color: none !important;
 }
 
+/* código inline */
+p code, dt code, li code, a code, h1 code, h2 code, h3 code {
+  background-color: #ebe2d7 !important;
+}
 
+/* texto dentro de bloques de código */
 pre code span.va {
-color: #6c635a !important;
+  color: #6c635a !important;
 }
 
 code a:any-link {
@@ -21,14 +28,21 @@ pre code span.st {
   color: #575f66 !important;
 }
 
-p code, li code, a code, h1 code, h2 code, h3 code {
-  background-color: #ebe2d7 !important;
+pre code span.er {
+  color: #4cbf99;
+  text-decoration: none;
 }
 
+pre code span.co {
+  color: #b6ab9a;
+}
+
+/* logo del paquete */
 img.logo {
   border: none !important;
 }
 
+/* imágenes */
 main img {
   max-width: 100%;
   height: auto;
@@ -36,7 +50,3 @@ main img {
   border-radius: 6px;
 }
 
-pre code span.er {
-  color: #4cbf99;
-  text-decoration: none;
-}

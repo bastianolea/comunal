@@ -84,7 +84,7 @@ sólo una sugerencia).
 Probemos `{territorial}` con una tabla con datos de ejemplo:
 
 ``` r
-# creat una tabla con datos de ejemplo
+# crear una tabla con datos de ejemplo
 datos <- dplyr::tibble(
   nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "nunoa",
                     "santiago", "prohibidencia", "CERRILLOS", 
@@ -224,7 +224,7 @@ datos.
 
 Estas son algunas de las funciones principales, pero existen muchas más
 que facilitan el trabajo con datos territoriales de Chile: [revisa el
-índice!](./reference/)
+índice!](https://bastianolea.github.io/territorial/reference/index.html)
 
 ## Código de conducta
 
