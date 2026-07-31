@@ -3,7 +3,7 @@
 #' Para cualquier tabla de datos de nivel comunal que tenga al menos una variable territorial (`codigo_comuna` o `nombre_comuna`), indicar esta variable para agregar todo el resto de variables territoriales. De esta manera, se contextualizan territorialmente los datos al agregar todas las variables territoriales faltantes.
 #'
 #' @param datos Dataframe de datos comunales al que se quieren agregar columnas con variables territoriales
-#' @param variable Variable territorial ya existente en el dataframe (`codigo_comuna` o `nombre_comuna`)
+#' @param variable Variable territorial ya existente en el dataframe (`codigo_comuna` o `nombre_comuna`). Si se omite, se asume `nombre_comuna`.
 #'
 #' @returns El mismo dataframe con las columnas `codigo_region`, `nombre_region`, `codigo_provincia`, `nombre_provincia`, `codigo_comuna` y `nombre_comuna` agregadas al inicio.
 #' @export
@@ -17,9 +17,13 @@
 #'
 #' datos |>
 #'   contextualizar(nombre_comuna)
+#'
+#' # si ya existe una columna `nombre_comuna`, puede omitirse el argumento
+#' datos |>
+#'   contextualizar()
 contextualizar <- function(
   datos,
-  variable
+  variable = NULL
 ) {
   # datos <- dplyr::tribble(
   #   ~nombre_comuna, ~valor,
@@ -28,28 +32,38 @@ contextualizar <- function(
   #   "Putre",        3)
 
   # obtener variable entregada
-  variable <- rlang::as_name(rlang::enquo(variable))
+  col_expr <- rlang::enquo(variable)
 
-  # sólo una variable
-  if (length(variable) != 1) {
+  # caso 2: se pasó más de una variable o una expresión inválida
+  if (
+    !rlang::quo_is_null(col_expr) &&
+      !rlang::is_symbol(rlang::quo_get_expr(col_expr))
+  ) {
     cli::cli_abort(
-      "especificar sólo una variable, las otras variables territoriales ya existentes en los datos serán descartadas"
+      "se debe especificar solo una variable territorial sin comillas (p.ej. {.code nombre_comuna})"
     )
   }
 
-  # si es código comunal, chequear que son correctos
-  # si es nombre de comuna, chequear que son correctos
-
-  # verificar si existe alguna variable territorial
-  if (!any(names(datos) %in% names(territorial::territorios))) {
-    cli::cli_abort(
-      "los datos tienen que venir con alguna variable territorial, como {glue::glue_collapse(names(territorial::territorios), sep = ', ', last = ' o ')}"
+  # si no se especificó la columna, asumir que es nombre_comuna
+  if (rlang::quo_is_null(col_expr)) {
+    cli::cli_alert_info(
+      "No se especificó la variable: asumiendo columna {.var nombre_comuna}"
     )
+    col_expr <- rlang::sym("nombre_comuna")
   }
+
+  variable <- rlang::as_name(col_expr)
 
   # chequear si existe la variable
-  if (!any(names(datos) %in% variable)) {
-    cli::cli_abort("datos no contienen columna `{variable}`")
+  if (!variable %in% names(datos)) {
+    cli::cli_abort("los datos no contienen la columna {.var {variable}}")
+  }
+
+  # caso 3: codigo_comuna entregado como character en vez de numérico
+  if (variable == "codigo_comuna" && is.character(datos[[variable]])) {
+    cli::cli_abort(
+      "la columna {.var codigo_comuna} debe ser numérica, no de texto. Usa {.code as.numeric(codigo_comuna)} para convertirla!"
+    )
   }
 
   # revisar si existen otras variables territoriales aparte de la definida
@@ -81,6 +95,14 @@ contextualizar <- function(
       by = variable
     )
 
+  # caso 1: filas sin match en el catálogo territorial
+  filas_sin_match <- sum(is.na(datos_a$codigo_region))
+  if (filas_sin_match > 0) {
+    cli::cli_alert_warning(
+      "{filas_sin_match} fila{?s} no coincidi{?ó/eron} con {.code territorial::territorios} y quedar{?á/án} con NA"
+    )
+  }
+
   # ordenar datos
   datos_b <- datos_a |>
     dplyr::relocate(
@@ -92,14 +114,14 @@ contextualizar <- function(
   # confirmar que tengan las mismas filas
   if (!nrow(datos_b) == nrow(datos)) {
     cli::cli_alert_warning(
-      "problemas con el left_join(): cambió el número de filas"
+      "problemas con el {.code left_join()}: cambió el número de filas"
     )
   }
 
   # confirmar que tenga más columnas
   if (!length(datos_b) > length(datos)) {
     cli::cli_alert_warning(
-      "problemas con el left_join(): no aumentó el número de columnas"
+      "problemas con el {.code left_join()}: no aumentó el número de columnas"
     )
   }
 

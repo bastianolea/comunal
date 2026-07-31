@@ -4,12 +4,12 @@
 \alias{contextualizar}
 \title{Contextualizar datos de nivel comunal con variables territoriales}
 \usage{
-contextualizar(datos, variable)
+contextualizar(datos, variable = NULL)
 }
 \arguments{
 \item{datos}{Dataframe de datos comunales al que se quieren agregar columnas con variables territoriales}
 
-\item{variable}{Variable territorial ya existente en el dataframe (\code{codigo_comuna} o \code{nombre_comuna})}
+\item{variable}{Variable territorial ya existente en el dataframe (\code{codigo_comuna} o \code{nombre_comuna}). Si se omite, se asume \code{nombre_comuna}.}
 }
 \value{
 El mismo dataframe con las columnas \code{codigo_region}, \code{nombre_region}, \code{codigo_provincia}, \code{nombre_provincia}, \code{codigo_comuna} y \code{nombre_comuna} agregadas al inicio.
@@ -26,4 +26,8 @@ datos <- dplyr::tribble(
 
 datos |>
   contextualizar(nombre_comuna)
+
+# si ya existe una columna `nombre_comuna`, puede omitirse el argumento
+datos |>
+  contextualizar()
 }
