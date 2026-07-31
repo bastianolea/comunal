@@ -230,6 +230,7 @@ contextualicen dichas comunas en sus respectivas provincias y regiones:
 servel_limpio <- servel_limpio |> 
   contextualizar(nombre_comuna) |> # agregar columnas territoriales nuevas
   select(-region, -comuna) # remover columnas originales
+#> ! 46 filas no coincidieron con `territorial::territorios` y quedarán con NA
 #> ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
 ```
 

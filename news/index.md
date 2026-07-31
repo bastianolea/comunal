@@ -1,8 +1,9 @@
 # Registro de cambios
 
-## territorial 0.8.8 (2026/07/30)
+## territorial 0.8.9 (2026/07/30)
 
 - Las funciones
+  [`contextualizar()`](https://bastianolea.github.io/territorial/reference/contextualizar.md),
   [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md),
   [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md)
   y

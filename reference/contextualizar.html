@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.9</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -53,7 +53,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Uso<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">contextualizar</span><span class="op">(</span><span class="va">datos</span>, <span class="va">variable</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">contextualizar</span><span class="op">(</span><span class="va">datos</span>, variable <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -65,12 +65,16 @@
 
 
 <dt id="arg-variable">variable<a class="anchor" aria-label="anchor" href="#arg-variable"></a></dt>
-<dd><p>Variable territorial ya existente en el dataframe (<code>codigo_comuna</code> o <code>nombre_comuna</code>)</p></dd>
+<dd><p>Variable territorial ya existente en el dataframe (<code>codigo_comuna</code> o <code>nombre_comuna</code>). Si se omite, se asume <code>nombre_comuna</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="valor">Valor<a class="anchor" aria-label="anchor" href="#valor"></a></h2>
     <p>El mismo dataframe con las columnas <code>codigo_region</code>, <code>nombre_region</code>, <code>codigo_provincia</code>, <code>nombre_provincia</code>, <code>codigo_comuna</code> y <code>nombre_comuna</code> agregadas al inicio.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="detalles">Detalles<a class="anchor" aria-label="anchor" href="#detalles"></a></h2>
+    <p>Se usa, por ejemplo, cuando tienes una tabla de datos que tienen solamente los nombres de las comunas (primero valída con <code><a href="validar_comunas.html">validar_comunas()</a></code> y/o limpia con <code><a href="validar_comunas.html">validar_comunas()</a></code>), y quieres agregarle más variables territoriales como los códigos únicos territoriales, las provincias, regiones, etc.</p>
     </div>
 
     <div class="section level2">
@@ -83,6 +87,19 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">datos</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">contextualizar</span><span class="op">(</span><span class="va">nombre_comuna</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>            13 Metropolitana d…              131 Santiago                 <span style="text-decoration: underline;">13</span>102</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>            15 Arica y Parinac…              151 Arica                    <span style="text-decoration: underline;">15</span>101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>            15 Arica y Parinac…              152 Parinacota               <span style="text-decoration: underline;">15</span>201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: nombre_comuna &lt;chr&gt;, valor &lt;dbl&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># si ya existe una columna `nombre_comuna`, puede omitirse el argumento</span></span></span>
+<span class="r-in"><span><span class="va">datos</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">contextualizar</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> No se especificó la variable: asumiendo columna `nombre_comuna`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna</span>
