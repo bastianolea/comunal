@@ -5,6 +5,7 @@
 #' @param datos Tabla de datos que contenga las columnas `nombre_region` y `codigo_region`
 #' @param limpiar Para ordenar la variable `nombre_region`, se crea la variable intermedia `orden_region`, que por defecto se elimina después de usarla. Cambiar a FALSE para mantenerla.
 #' @param ordenar ¿Ordenar la tabla de datos según regiones? (por defecto TRUE)
+#' @param invertir Ordenar las regiones al revés, útil para visualizaciones de datos (para que al usar las regiones en el eje vertical de un gráfico, las regiones del norte aparezcan primero)
 #'
 #' @returns Tabla de datos con la variable `nombre_region` en formato factor, ordenado geogr\\u00e1ficamente (de norte a sur)
 #' @export
@@ -35,31 +36,44 @@
 ordenar_regiones <- function(
   datos,
   limpiar = TRUE,
-  ordenar = TRUE
+  ordenar = TRUE,
+  invertir = FALSE
 ) {
   if (!any(class(datos) %in% "data.frame")) {
-    cli::cli_abort("esta función requiere de un dataframe")
+    cli::cli_abort("Esta función requiere de un dataframe")
   }
 
   if (!all(c("nombre_region", "codigo_region") %in% names(datos))) {
     cli::cli_abort(
-      "se necesitan las columnas `codigo_region` y `nombre_region`"
+      "Se necesitan las columnas `codigo_region` y `nombre_region`"
     )
   }
 
   if (!is.numeric(datos$codigo_region)) {
-    cli::cli_abort("la columna `codigo_region` debe ser numérica")
+    cli::cli_abort("La columna `codigo_region` debe ser numérica")
   }
 
   # if (!"codigo_region" %in% names(data)) {
   #   cli::cli_abort("no se encontró columna `codigo_region`")
   # }
 
+  # revisar si datos vienen agrupados
+  if (dplyr::is_grouped_df(datos)) {
+    cli::cli_warn(
+      "Los datos vienen agrupados, así que se eliminarán los grupos antes de ordenar"
+    )
+  }
+
   datos_ordenados <- datos |>
+    dplyr::ungroup() |>
     dplyr::mutate(orden_region = agregar_orden_region(codigo_region)) |>
     # ordenar regiones
     dplyr::mutate(
-      nombre_region = forcats::fct_reorder(nombre_region, orden_region)
+      nombre_region = forcats::fct_reorder(
+        nombre_region,
+        orden_region,
+        .desc = invertir
+      )
     )
 
   # excluir o mantener variable intermedia

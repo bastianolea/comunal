@@ -4,7 +4,7 @@
 \alias{ordenar_regiones}
 \title{Ordenar regiones de Chile geográficamente}
 \usage{
-ordenar_regiones(datos, limpiar = TRUE, ordenar = TRUE)
+ordenar_regiones(datos, limpiar = TRUE, ordenar = TRUE, invertir = FALSE)
 }
 \arguments{
 \item{datos}{Tabla de datos que contenga las columnas \code{nombre_region} y \code{codigo_region}}
@@ -12,6 +12,8 @@ ordenar_regiones(datos, limpiar = TRUE, ordenar = TRUE)
 \item{limpiar}{Para ordenar la variable \code{nombre_region}, se crea la variable intermedia \code{orden_region}, que por defecto se elimina después de usarla. Cambiar a FALSE para mantenerla.}
 
 \item{ordenar}{¿Ordenar la tabla de datos según regiones? (por defecto TRUE)}
+
+\item{invertir}{Ordenar las regiones al revés, útil para visualizaciones de datos (para que al usar las regiones en el eje vertical de un gráfico, las regiones del norte aparezcan primero)}
 }
 \value{
 Tabla de datos con la variable \code{nombre_region} en formato factor, ordenado geogr\\u00e1ficamente (de norte a sur)
