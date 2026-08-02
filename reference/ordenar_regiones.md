@@ -7,7 +7,7 @@ partir de la columna `codigo_region`, resultando en una columna
 ## Uso
 
 ``` r
-ordenar_regiones(datos, limpiar = TRUE, ordenar = TRUE)
+ordenar_regiones(datos, limpiar = TRUE, ordenar = TRUE, invertir = FALSE)
 ```
 
 ## Argumentos
@@ -26,6 +26,12 @@ ordenar_regiones(datos, limpiar = TRUE, ordenar = TRUE)
 - ordenar:
 
   ¿Ordenar la tabla de datos según regiones? (por defecto TRUE)
+
+- invertir:
+
+  Ordenar las regiones al revés, útil para visualizaciones de datos
+  (para que al usar las regiones en el eje vertical de un gráfico, las
+  regiones del norte aparezcan primero)
 
 ## Valor
 

@@ -15,6 +15,9 @@
 - Nuevos tests para confirmar que
   [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
   funciona bien.
+- Nuevo argumento para
+  [`ordenar_regiones()`](https://bastianolea.github.io/territorial/reference/ordenar_regiones.md)
+  en orden inverso, útil para algunas visualizaciones de datos.
 
 ## territorial 0.8.7 (2026/07/10)
 
