@@ -5,6 +5,12 @@
 Herramientas para facilitar el trabajo con datos de comunas y regiones
 de Chile en R.
 
+<!-- badges: start -->
+
+[![Codecov test
+coverage](https://codecov.io/gh/bastianolea/territorial/graph/badge.svg)](https://app.codecov.io/gh/bastianolea/territorial)
+<!-- badges: end -->
+
 El objetivo de este paquete es simplificar el análisis de datos
 territoriales de Chile, facilitando tareas de limpieza y procesamiento
 de datos que suelen ser necesarias al trabajar con datos de Chile a
