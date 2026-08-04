@@ -22,3 +22,4 @@ _pendientes.md
 ^doc$
 ^Meta$
 ^CODE_OF_CONDUCT\.md$
+^codecov\.yml$
