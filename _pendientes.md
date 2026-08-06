@@ -1,5 +1,6 @@
 
 ## Ideas
+- [ ] `buscar_comunas()` con agrepl
 - [ ] `obtener_comunas()` obtener comunas de la región, entregar como vector o redactada 
 - [x] clasificar regiones por zona (norte, centro, sur)
 - [ ] convertir códigos DEIS a comunas

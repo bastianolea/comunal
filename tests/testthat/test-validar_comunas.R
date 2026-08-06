@@ -159,6 +159,24 @@ test_that(
 ) |>
   suppressMessages()
 
+test_that(
+  "validar comunas incorrectas desde vector",
+  expect_no_error(
+    c("Pedro aguirre Cerda", "Penco", "Penaflor", "Penalolen") |>
+      validar_comunas()
+  )
+) |>
+  suppressMessages()
+
+test_that(
+  "validar comunas desde lista da error",
+  expect_error(
+    list(c("Pedro aguirre Cerda", "Penco", "Penaflor", "Penalolen")) |>
+      validar_comunas()
+  )
+) |>
+  suppressMessages()
+
 
 test_that(
   "validar comunas con columna que no existe",
