@@ -1,6 +1,6 @@
 Package: territorial
 Title: Funciones para trabajar con datos comunales y regionales de Chile
-Version: 0.8.9
+Version: 0.8.9.2
 Authors@R: 
     person("Bastián", "Olea Herrera", , "bastianolea@gmail.com", role = c("aut", "cre"),
            comment = c(url = "https://bastianolea.rbind.io",
@@ -45,4 +45,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 8.0.0
+Config/roxygen2/version: 8.1.0

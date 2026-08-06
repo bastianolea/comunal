@@ -19,6 +19,7 @@ territorios <- codigos_comunales |>
   )
 
 # # revisar
-# territorios |> filter(str_detect(nombre_comuna, "Coy"))
+# territorios |> filter(stringr::str_detect(nombre_comuna, "Coy"))
+# territorios |> filter(stringr::str_detect(nombre_comuna, "Los "))
 
 usethis::use_data(territorios, overwrite = TRUE)

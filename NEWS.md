@@ -1,3 +1,9 @@
+# territorial 0.8.9.2 (2026/08/06)
+- Corrección de función `validar_comunas()` para arrojar error en caso de recibir listas
+- Corrección de comuna mal escrita! Qué bochorno
+- Nuevos tests para `comunas()`, para evitar nuevos bochornos
+- Más tests para `agregar_macrozona()` y `acortar_regiones()`
+
 # territorial 0.8.9 (2026/07/30)
 - Las funciones `contextualizar()`, `limpiar_comunas()`, `validar_comunas()` y `validar_regiones()` ahora son más flexibles: se pueden usar sin especificar ningún argumento y asumirán que queremos validar las columnas `nombre_comuna` o `nombre_region` respectivamente, entregando mejores avisos y errores.
 - Nuevos tests para confirmar que `limpiar_comunas()` funciona bien.
