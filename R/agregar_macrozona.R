@@ -33,6 +33,13 @@ agregar_macrozona <- function(
   tipo = 1,
   ordenar = TRUE
 ) {
+  # revisar que sea un vector atómico (rechazar listas, data frames, etc.)
+  if (!is.atomic(codigo_region) || is.null(codigo_region)) {
+    cli::cli_abort(
+      "Se necesita un vector de códigos de región, no una {.cls {class(codigo_region)}}"
+    )
+  }
+
   # revisar tipo
   if (is.character(codigo_region)) {
     cli::cli_alert_warning(
@@ -45,6 +52,16 @@ agregar_macrozona <- function(
   if (any(is_codigo_comuna(codigo_region))) {
     cli::cli_abort(
       "Se entregaron códigos comunales en vez de códigos regionales"
+    )
+  }
+
+  # revisar si hay códigos fuera del rango de regiones válidas (1 a 16)
+  fuera_de_rango <- !is.na(codigo_region) &
+    !(codigo_region %in% 1:16)
+
+  if (any(fuera_de_rango)) {
+    cli::cli_abort(
+      "Se entregaron códigos de región fuera de rango (deben estar entre 1 y 16): {codigo_region[fuera_de_rango]}"
     )
   }
 

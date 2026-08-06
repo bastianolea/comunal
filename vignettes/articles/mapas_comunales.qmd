@@ -108,7 +108,7 @@ datos_4 <- datos_3 |>
 
 Ahora los datos cuentan con los polígonos apropiados, y podemos visualizarlos [siguiendo este tutorial](https://bastianolea.rbind.io/blog/tutorial_mapa_chile/):
 
-```{r}
+```{r ejemplo_mapa_comunas_santiago}
 library(ggplot2)
 library(sf)
 
