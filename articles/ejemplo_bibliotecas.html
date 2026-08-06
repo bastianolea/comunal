@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.9.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -283,9 +283,9 @@
 <span><span class="va">biblio_ancho</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_comunas.html">validar_comunas</a></span><span class="op">(</span><span class="va">unidad</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ Validando calidad de nombres de comuna desde tabla de datos</span></span>
-<span><span class="co">#&gt; ! Resumen: 8 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): La Calera, Treguaco, Alto BioBío, Los Ángeles, Padre las Casas, Aisén, Coihaique y O’Higgins</span></span>
+<span><span class="co">#&gt; ! Resumen: 7 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): La Calera, Treguaco, Alto BioBío, Padre las Casas, Aisén, Coihaique y O’Higgins</span></span>
 <span><span class="co">#&gt; ℹ Escrituras alternativas: 2 casos de comunas escritas de una forma no recomendada, aunque válida: Treguaco y Aisén</span></span>
-<span><span class="co">#&gt; ✖ Validación de comunas: se encontraron 10 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.</span></span></code></pre></div>
+<span><span class="co">#&gt; ✖ Validación de comunas: se encontraron 9 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.</span></span></code></pre></div>
 </div>
 <p>Como vemos en el reporte, nos encontramos con varias comunas con problemas de escritura: entre ellas La Calera (debería ser <em>Calera)</em>, Alto BioBío (<em>Alto Biobío</em>), Aisén y Coihaique con redacciones alternativas y O’Higgins con un apóstrofo incorrecto.</p>
 <p>Para corregir estos problemas y limpiar los datos de nivel comunal usamos <code><a href="../reference/limpiar_comunas.html">limpiar_comunas()</a></code> sobre la columna que contiene las unidades territoriales:</p>
@@ -298,7 +298,7 @@
 <span><span class="co">#&gt; ℹ Limpiando 325 nombres de comunas (325 son distintas)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Paso 1: confirmar comunas correctas</span></span>
-<span><span class="co">#&gt; ℹ De las 325 comunas distintas, 317 ya eran correctas: Arica, Camarones, General Lagos, Putre, Alto Hospicio, Huara, Iquique, Pica, Pozo Almonte, Antofagasta y 307 comunas más</span></span>
+<span><span class="co">#&gt; ℹ De las 325 comunas distintas, 318 ya eran correctas: Arica, Camarones, General Lagos, Putre, Alto Hospicio, Huara, Iquique, Pica, Pozo Almonte, Antofagasta y 308 comunas más</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Paso 2: coincidencias por limpieza de texto</span></span>
 <span><span class="co">#&gt; ℹ A partir de la limpieza de texto, se limpiaron 321 de 325 comunas: Arica, Camarones, General Lagos, Putre, Alto Hospicio, Huara, Iquique, Pica, Pozo Almonte, Antofagasta y 311 comunas más</span></span>

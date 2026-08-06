@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.9.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -46,6 +46,14 @@
       <small>Código: <a href="https://github.com/bastianolea/territorial/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.8.9.2" id="territorial-0892-20260806">territorial 0.8.9.2 (2026/08/06)<a class="anchor" aria-label="anchor" href="#territorial-0892-20260806"></a></h2>
+<ul><li>Corrección de función <code><a href="../reference/validar_comunas.html">validar_comunas()</a></code> para arrojar error en caso de recibir listas</li>
+<li>Corrección de comuna mal escrita! Qué bochorno</li>
+<li>Nuevos tests para <code><a href="../reference/comunas.html">comunas()</a></code>, para evitar nuevos bochornos</li>
+<li>Más tests para <code><a href="../reference/agregar_macrozona.html">agregar_macrozona()</a></code> y <code><a href="../reference/acortar_regiones.html">acortar_regiones()</a></code>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.8.9" id="territorial-089-20260730">territorial 0.8.9 (2026/07/30)<a class="anchor" aria-label="anchor" href="#territorial-089-20260730"></a></h2>
 <ul><li>Las funciones <code><a href="../reference/contextualizar.html">contextualizar()</a></code>, <code><a href="../reference/limpiar_comunas.html">limpiar_comunas()</a></code>, <code><a href="../reference/validar_comunas.html">validar_comunas()</a></code> y <code><a href="../reference/validar_regiones.html">validar_regiones()</a></code> ahora son más flexibles: se pueden usar sin especificar ningún argumento y asumirán que queremos validar las columnas <code>nombre_comuna</code> o <code>nombre_region</code> respectivamente, entregando mejores avisos y errores.</li>

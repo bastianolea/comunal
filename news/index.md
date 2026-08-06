@@ -1,5 +1,19 @@
 # Registro de cambios
 
+## territorial 0.8.9.2 (2026/08/06)
+
+- Corrección de función
+  [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md)
+  para arrojar error en caso de recibir listas
+- Corrección de comuna mal escrita! Qué bochorno
+- Nuevos tests para
+  [`comunas()`](https://bastianolea.github.io/territorial/reference/comunas.md),
+  para evitar nuevos bochornos
+- Más tests para
+  [`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md)
+  y
+  [`acortar_regiones()`](https://bastianolea.github.io/territorial/reference/acortar_regiones.md)
+
 ## territorial 0.8.9 (2026/07/30)
 
 - Las funciones

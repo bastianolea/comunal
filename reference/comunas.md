@@ -71,7 +71,7 @@ comunas()
 #> [151] "Talcahuano"           "Tomé"                 "Hualpén"             
 #> [154] "Lebu"                 "Arauco"               "Cañete"              
 #> [157] "Contulmo"             "Curanilahue"          "Los Álamos"          
-#> [160] "Tirúa"                "Los Angeles"          "Antuco"              
+#> [160] "Tirúa"                "Los Ángeles"          "Antuco"              
 #> [163] "Cabrero"              "Laja"                 "Mulchén"             
 #> [166] "Nacimiento"           "Negrete"              "Quilaco"             
 #> [169] "Quilleco"             "San Rosendo"          "Santa Bárbara"       

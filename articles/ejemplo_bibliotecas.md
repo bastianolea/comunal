@@ -249,9 +249,9 @@ library(territorial)
 biblio_ancho |> 
   validar_comunas(unidad)
 #> ℹ Validando calidad de nombres de comuna desde tabla de datos
-#> ! Resumen: 8 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): La Calera, Treguaco, Alto BioBío, Los Ángeles, Padre las Casas, Aisén, Coihaique y O’Higgins
+#> ! Resumen: 7 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): La Calera, Treguaco, Alto BioBío, Padre las Casas, Aisén, Coihaique y O’Higgins
 #> ℹ Escrituras alternativas: 2 casos de comunas escritas de una forma no recomendada, aunque válida: Treguaco y Aisén
-#> ✖ Validación de comunas: se encontraron 10 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
+#> ✖ Validación de comunas: se encontraron 9 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
 ```
 
 Como vemos en el reporte, nos encontramos con varias comunas con
@@ -273,7 +273,7 @@ biblio_limpio <- biblio_ancho |>
 #> ℹ Limpiando 325 nombres de comunas (325 son distintas)
 #> 
 #> ── Paso 1: confirmar comunas correctas
-#> ℹ De las 325 comunas distintas, 317 ya eran correctas: Arica, Camarones, General Lagos, Putre, Alto Hospicio, Huara, Iquique, Pica, Pozo Almonte, Antofagasta y 307 comunas más
+#> ℹ De las 325 comunas distintas, 318 ya eran correctas: Arica, Camarones, General Lagos, Putre, Alto Hospicio, Huara, Iquique, Pica, Pozo Almonte, Antofagasta y 308 comunas más
 #> 
 #> ── Paso 2: coincidencias por limpieza de texto
 #> ℹ A partir de la limpieza de texto, se limpiaron 321 de 325 comunas: Arica, Camarones, General Lagos, Putre, Alto Hospicio, Huara, Iquique, Pica, Pozo Almonte, Antofagasta y 311 comunas más

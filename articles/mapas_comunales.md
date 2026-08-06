@@ -216,7 +216,7 @@ datos_4 |>
 #> give correct results for longitude/latitude data
 ```
 
-![](mapas_comunales_files/figure-html/unnamed-chunk-10-1.png)
+![](mapas_comunales_files/figure-html/ejemplo_mapa_comunas_santiago-1.png)
 
 [Revisa este
 tutorial](https://bastianolea.rbind.io/blog/tutorial_mapa_chile/) para

@@ -52,4 +52,5 @@ Un data frame con 346 filas y 6 columnas:
 Las modificaciones realizadas a los datos son: formas alternativas de
 escribir las comunas de Treguaco (Trehuaco) y Paiguano (Paihuano),
 optando por las formas que son usadas por sus municipios (Trehuaco y
-Paihuano, respectivamente).
+Paihuano, respectivamente), y comunas que deberían tener tilde (Los
+Ángeles, entre otras).

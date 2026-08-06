@@ -2,6 +2,8 @@
 
 ## Ideas
 
+`buscar_comunas()` con agrepl
+
 `obtener_comunas()` obtener comunas de la región, entregar como vector o
 redactada
 

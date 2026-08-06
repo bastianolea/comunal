@@ -117,11 +117,11 @@ library(territorial)
 sercotec |> 
   validar_comunas(comuna_beneficiario)
 #> ℹ Validando calidad de nombres de comuna desde tabla de datos
-#> ! Resumen: 24 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): Aisén, Los Alamos, Los Ángeles, No Informada, OHiggins, Otro lugar, Puerto Saavedra, Ránquil y Treguaco
+#> ! Resumen: 21 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): Aisén, Los Alamos, No Informada, OHiggins, Otro lugar, Puerto Saavedra, Ránquil y Treguaco
 #> ℹ Tildes: 3 casos de comunas que deberían tener tildes y no los tienen: Los Alamos
 #> ℹ Problemas comunes: 2 casos de comunas popularmente mal escritas: OHiggins
 #> ℹ Escrituras alternativas: 5 casos de comunas escritas de una forma no recomendada, aunque válida: Aisén y Treguaco
-#> ✖ Validación de comunas: se encontraron 34 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
+#> ✖ Validación de comunas: se encontraron 31 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
 ```
 
 La validación detecta varios problemas: *Los Alamos* le falta el tilde
@@ -142,7 +142,7 @@ sercotec_limpio <- sercotec |>
 #> ℹ Limpiando 958 nombres de comunas (346 son distintas)
 #> 
 #> ── Paso 1: confirmar comunas correctas
-#> ℹ De las 346 comunas distintas, 337 ya eran correctas: Algarrobo, Alhué, Alto Biobío, Alto Hospicio, Alto del Carmen, Ancud, Andacollo, Angol, Antofagasta, Antuco y 327 comunas más
+#> ℹ De las 346 comunas distintas, 338 ya eran correctas: Algarrobo, Alhué, Alto Biobío, Alto Hospicio, Alto del Carmen, Ancud, Andacollo, Angol, Antofagasta, Antuco y 328 comunas más
 #> 
 #> ── Paso 2: coincidencias por limpieza de texto
 #> ℹ A partir de la limpieza de texto, se limpiaron 341 de 346 comunas: Algarrobo, Alhué, Alto Biobío, Alto Hospicio, Alto del Carmen, Ancud, Andacollo, Angol, Antofagasta, Antuco y 331 comunas más

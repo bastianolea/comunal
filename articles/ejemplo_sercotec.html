@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.9.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -175,11 +175,11 @@
 <span><span class="va">sercotec</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_comunas.html">validar_comunas</a></span><span class="op">(</span><span class="va">comuna_beneficiario</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ Validando calidad de nombres de comuna desde tabla de datos</span></span>
-<span><span class="co">#&gt; ! Resumen: 24 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): Aisén, Los Alamos, Los Ángeles, No Informada, OHiggins, Otro lugar, Puerto Saavedra, Ránquil y Treguaco</span></span>
+<span><span class="co">#&gt; ! Resumen: 21 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): Aisén, Los Alamos, No Informada, OHiggins, Otro lugar, Puerto Saavedra, Ránquil y Treguaco</span></span>
 <span><span class="co">#&gt; ℹ Tildes: 3 casos de comunas que deberían tener tildes y no los tienen: Los Alamos</span></span>
 <span><span class="co">#&gt; ℹ Problemas comunes: 2 casos de comunas popularmente mal escritas: OHiggins</span></span>
 <span><span class="co">#&gt; ℹ Escrituras alternativas: 5 casos de comunas escritas de una forma no recomendada, aunque válida: Aisén y Treguaco</span></span>
-<span><span class="co">#&gt; ✖ Validación de comunas: se encontraron 34 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.</span></span></code></pre></div>
+<span><span class="co">#&gt; ✖ Validación de comunas: se encontraron 31 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.</span></span></code></pre></div>
 </div>
 <p>La validación detecta varios problemas: <em>Los Alamos</em> le falta el tilde (muchas personas siguen pensando que las letras mayúsculas no llevan tilde, un vestigio de la antigua imprenta), <em>OHiggins</em> tiene su apóstrofo omitido, mientras que <em>Aisén</em> y <em>Treguaco</em> están escritas de forma no recomendada. También hay valores como <em>No Informada</em> y <em>Otro lugar</em> que no corresponden a comunas reales.</p>
 <p>Para corregir estos problemas usamos <code><a href="../reference/limpiar_comunas.html">territorial::limpiar_comunas()</a></code> sobre la columna que contiene los nombres comunales:</p>
@@ -190,7 +190,7 @@
 <span><span class="co">#&gt; ℹ Limpiando 958 nombres de comunas (346 son distintas)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Paso 1: confirmar comunas correctas</span></span>
-<span><span class="co">#&gt; ℹ De las 346 comunas distintas, 337 ya eran correctas: Algarrobo, Alhué, Alto Biobío, Alto Hospicio, Alto del Carmen, Ancud, Andacollo, Angol, Antofagasta, Antuco y 327 comunas más</span></span>
+<span><span class="co">#&gt; ℹ De las 346 comunas distintas, 338 ya eran correctas: Algarrobo, Alhué, Alto Biobío, Alto Hospicio, Alto del Carmen, Ancud, Andacollo, Angol, Antofagasta, Antuco y 328 comunas más</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Paso 2: coincidencias por limpieza de texto</span></span>
 <span><span class="co">#&gt; ℹ A partir de la limpieza de texto, se limpiaron 341 de 346 comunas: Algarrobo, Alhué, Alto Biobío, Alto Hospicio, Alto del Carmen, Ancud, Andacollo, Angol, Antofagasta, Antuco y 331 comunas más</span></span>
