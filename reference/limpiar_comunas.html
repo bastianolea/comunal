@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.9.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.11</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -119,10 +119,13 @@ Finalmente, se muestra una tabla que describe el proceso de limpieza para su rev
 <span class="r-out co"><span class="r-pr">#&gt;</span> [5] "La Florida"    "Cerrillos"     "Llaillay"     </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  nombre_comuna <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PIRQUE"</span>, <span class="st">"El Monte"</span>, <span class="st">"Maipu"</span>, <span class="st">"santiago"</span>, <span class="st">"prohibidencia"</span>, <span class="st">"CERRILLOS"</span>, <span class="st">"San José De Maipo"</span>, <span class="st">"OHiggins"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  nombre_comuna <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PIRQUE"</span>, <span class="st">"El Monte"</span>, <span class="st">"Maipu"</span>,</span></span>
+<span class="r-in"><span>                    <span class="st">"santiago"</span>, <span class="st">"prohibidencia"</span>, <span class="st">"CERRILLOS"</span>,</span></span>
+<span class="r-in"><span>                    <span class="st">"San José De Maipo"</span>, <span class="st">"OHiggins"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  valores <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">2</span>, <span class="fl">8</span>, <span class="fl">6</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">8</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># si existe `nombre_comuna`, la función no requiere argumentos:</span></span></span>
 <span class="r-in"><span><span class="va">datos</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">limpiar_comunas</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Limpiando 8 nombres de comunas (8 son distintas)</span>
@@ -154,6 +157,7 @@ Finalmente, se muestra una tabla que describe el proceso de limpieza para su rev
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> San José de Maipo       5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> O'Higgins               8</span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># también puede usarse sobre un vector:</span></span></span>
 <span class="r-in"><span><span class="va">datos</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>nombre_corregido <span class="op">=</span> <span class="fu">limpiar_comunas</span><span class="op">(</span><span class="va">nombre_comuna</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Limpiando 8 nombres de comunas (8 son distintas)</span>

@@ -4,6 +4,8 @@
 
 `buscar_comunas()` con agrepl
 
+pero debería poder aplicar a otras tablas
+
 `obtener_comunas()` obtener comunas de la región, entregar como vector o
 redactada
 
@@ -17,9 +19,11 @@ válidas
 `confirmar_comunas()` = comparar si los códigos comunales corresponden
 con los nombres de comuna
 
-Cambios
+## Cambios
 
-flexibilizar agregar_poblacion
+Al final las mismas funciones ahora aplican igual a columnas o
+vectores - \[-\] flexibilizar agregar_poblacion (sacar de aquí y pasar
+al otro paquete)
 
 crear un ejemplo de cómo aplicar funciones con mutate a un datafrme
 
@@ -30,24 +34,6 @@ check que tenga la columna
 check que la columna sea del tipo apropiado
 
 check que tenga valores válidos del tipo apropiado
-
-abreviar = abreviar_comunas
-
-acortar = acortar_regiones (?)
-
-macrozona = agregar_macrozona
-
-clasificacion = agregar_clasificacion (no porque asi se llama la tabla)
-
-orden_region = agregar_orden_region
-
-ordenar_regiones (pero agregarle checks)
-
-poblacion = agregar_poblacion
-
-Qué pasa con estas que aplican a ambas? - \[ \] limpiar =
-limpiar_comunas (pero y con las regiones?) - \[ \] validar =
-validar_comunas, validar_regiones
 
 ## Pendientes
 

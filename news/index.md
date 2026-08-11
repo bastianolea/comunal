@@ -1,5 +1,19 @@
 # Registro de cambios
 
+## territorial 0.8.11 (2026/08/11)
+
+- Nueva función
+  [`buscar_comuna()`](https://bastianolea.github.io/territorial/reference/buscar_comuna.md),
+  que facilita la búsqueda de comunas por texto parcial o inexacto en
+  cualquier tabal de datos, o por defecto en
+  [`territorial::territorios`](https://bastianolea.github.io/territorial/reference/territorios.md).
+- Agregados ejemplos a
+  [`as_nombre_comuna()`](https://bastianolea.github.io/territorial/reference/as_nombre_comuna.md)
+  y
+  [`as_nombre_region()`](https://bastianolea.github.io/territorial/reference/as_nombre_region.md),
+  gracias a `pkgcheck::pkgcheck()`
+- Agregada participación de ROpenSci a DESCRIPTION
+
 ## territorial 0.8.9.2 (2026/08/06)
 
 - Corrección de función

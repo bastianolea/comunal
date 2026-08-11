@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.9.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.11</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -49,30 +49,27 @@
 
 <div class="section level2">
 <h2 id="ideas">Ideas<a class="anchor" aria-label="anchor" href="#ideas"></a></h2>
-<ul class="task-list"><li><label><input type="checkbox"><code>buscar_comunas()</code> con agrepl</label></li>
+<ul class="task-list"><li>
+<label><input type="checkbox" checked><code>buscar_comunas()</code> con agrepl</label>
+<ul class="task-list"><li><label><input type="checkbox">pero debería poder aplicar a otras tablas</label></li>
+</ul></li>
 <li><label><input type="checkbox"><code>obtener_comunas()</code> obtener comunas de la región, entregar como vector o redactada</label></li>
 <li><label><input type="checkbox" checked>clasificar regiones por zona (norte, centro, sur)</label></li>
 <li><label><input type="checkbox">convertir códigos DEIS a comunas</label></li>
 <li><label><input type="checkbox"><code>revisar_comunas()</code> = cuántas comunas únicas incluye, y si todas son válidas</label></li>
 <li><label><input type="checkbox"><code>confirmar_comunas()</code> = comparar si los códigos comunales corresponden con los nombres de comuna</label></li>
-</ul><p>Cambios</p>
-<ul class="task-list"><li><p><label><input type="checkbox">flexibilizar agregar_poblacion</label></p></li>
-<li>
-<p><label><input type="checkbox">crear un ejemplo de cómo aplicar funciones con mutate a un datafrme</label></p>
-<ul class="task-list"><li><label><input type="checkbox">check que sea dataframe</label></li>
-<li><label><input type="checkbox">check que tenga la columna</label></li>
-<li><label><input type="checkbox">check que la columna sea del tipo apropiado</label></li>
-<li><label><input type="checkbox">check que tenga valores válidos del tipo apropiado</label></li>
+</ul></div>
+<div class="section level2">
+<h2 id="cambios">Cambios<a class="anchor" aria-label="anchor" href="#cambios"></a></h2>
+<p>Al final las mismas funciones ahora aplican igual a columnas o vectores - [-] flexibilizar agregar_poblacion (sacar de aquí y pasar al otro paquete)</p>
+<ul class="task-list"><li>
+<label><input type="checkbox" checked>crear un ejemplo de cómo aplicar funciones con mutate a un datafrme</label>
+<ul class="task-list"><li><label><input type="checkbox" checked>check que sea dataframe</label></li>
+<li><label><input type="checkbox" checked>check que tenga la columna</label></li>
+<li><label><input type="checkbox" checked>check que la columna sea del tipo apropiado</label></li>
+<li><label><input type="checkbox" checked>check que tenga valores válidos del tipo apropiado</label></li>
 </ul></li>
-<li><p><label><input type="checkbox">abreviar = abreviar_comunas</label></p></li>
-<li><p><label><input type="checkbox">acortar = acortar_regiones (?)</label></p></li>
-<li><p><label><input type="checkbox">macrozona = agregar_macrozona</label></p></li>
-<li><p><label><input type="checkbox">clasificacion = agregar_clasificacion (no porque asi se llama la tabla)</label></p></li>
-<li><p><label><input type="checkbox">orden_region = agregar_orden_region</label></p></li>
-<li><p><label><input type="checkbox" checked>ordenar_regiones (pero agregarle checks)</label></p></li>
-<li><p><label><input type="checkbox">poblacion = agregar_poblacion</label></p></li>
-</ul><p>Qué pasa con estas que aplican a ambas? - [ ] limpiar = limpiar_comunas (pero y con las regiones?) - [ ] validar = validar_comunas, validar_regiones</p>
-</div>
+</ul></div>
 <div class="section level2">
 <h2 id="pendientes">Pendientes<a class="anchor" aria-label="anchor" href="#pendientes"></a></h2>
 <ul><li><label><input type="checkbox">limpiar regiones</label></li>

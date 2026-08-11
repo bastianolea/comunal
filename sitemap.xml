@@ -1,6 +1,7 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://bastianolea.github.io/territorial/404.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://bastianolea.github.io/territorial/CONTRIBUTING.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/LICENSE.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/_pendientes.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/articles/codigos_unicos_territoriales.html</loc></url>
@@ -25,6 +26,7 @@
 <url><loc>https://bastianolea.github.io/territorial/reference/as_codigo_region.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/as_nombre_comuna.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/as_nombre_region.html</loc></url>
+<url><loc>https://bastianolea.github.io/territorial/reference/buscar_comuna.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/clasificacion.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/comunas.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/contextualizar.html</loc></url>

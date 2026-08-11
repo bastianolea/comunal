@@ -20,3 +20,14 @@ as_nombre_region(codigos_regiones)
 ## Valor
 
 Vector con nombres de región
+
+## Ejemplos
+
+``` r
+as_nombre_region(16)
+#> [1] "Ñuble"
+
+as_nombre_region(c(15, 4, 10, 99))
+#> [1] "Arica y Parinacota" "Coquimbo"           "Los Lagos"         
+#> [4] NA                  
+```

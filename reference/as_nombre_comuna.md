@@ -20,3 +20,13 @@ as_nombre_comuna(codigos_comunas)
 ## Valor
 
 Vector con nombres de comuna
+
+## Ejemplos
+
+``` r
+as_nombre_comuna(1101)
+#> [1] "Iquique"
+
+as_nombre_comuna(c(1401, 1403, 9999, 1404))
+#> [1] "Pozo Almonte" "Colchane"     NA             "Huara"       
+```
