@@ -15,3 +15,9 @@ Vector con nombres de región
 \description{
 Entregando códigos regionales (como los que aparecen en \link{territorios}), retorna los nombres de región correspondientes. Retorna NA si no corresponde con ninguna.
 }
+\examples{
+as_nombre_region(16)
+
+as_nombre_region(c(15, 4, 10, 99))
+
+}

@@ -266,4 +266,4 @@ redactar_region("Maule")
 
 ----
 
-Estas son algunas de las funciones principales, pero existen muchas más que facilitan el trabajo con datos territoriales de Chile: [revisa el índice!](/reference/)
+Estas son algunas de las funciones principales, pero existen muchas más que facilitan el trabajo con datos territoriales de Chile: [revisa el índice!](https://bastianolea.github.io/territorial/reference/index.html)

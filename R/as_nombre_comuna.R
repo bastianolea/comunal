@@ -5,6 +5,11 @@
 #' @param codigos_comunas Códigos comunales en formato numérico
 #'
 #' @returns Vector con nombres de comuna
+#' @examples
+#' as_nombre_comuna(1101)
+#'
+#' as_nombre_comuna(c(1401, 1403, 9999, 1404))
+#'
 #' @export
 as_nombre_comuna <- function(codigos_comunas) {
   if (!is.numeric(codigos_comunas)) {

@@ -1,3 +1,8 @@
+# territorial 0.8.11 (2026/08/11)
+- Nueva función `buscar_comuna()`, que facilita la búsqueda de comunas por texto parcial o inexacto en cualquier tabal de datos, o por defecto en `territorial::territorios`.
+- Agregados ejemplos a `as_nombre_comuna()` y `as_nombre_region()`, gracias a `pkgcheck::pkgcheck()`
+- Agregada participación de ROpenSci a DESCRIPTION
+
 # territorial 0.8.9.2 (2026/08/06)
 - Corrección de función `validar_comunas()` para arrojar error en caso de recibir listas
 - Corrección de comuna mal escrita! Qué bochorno

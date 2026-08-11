@@ -21,13 +21,17 @@
 #' limpiar_comunas(c("COLCHANE", "Alto Ospicio", "probidencia", "huara", "laflorida", "cerritos", "llay-llay"))
 #'
 #' datos <- dplyr::tibble(
-#'   nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "santiago", "prohibidencia", "CERRILLOS", "San José De Maipo", "OHiggins"),
+#'   nombre_comuna = c("PIRQUE", "El Monte", "Maipu",
+#'                     "santiago", "prohibidencia", "CERRILLOS",
+#'                     "San José De Maipo", "OHiggins"),
 #'   valores = c(4, 6, 2, 8, 6, 3, 5, 8)
 #'   )
 #'
+#' # si existe `nombre_comuna`, la función no requiere argumentos:
 #' datos |>
 #'   limpiar_comunas()
 #'
+#' # también puede usarse sobre un vector:
 #' datos |>
 #'   dplyr::mutate(nombre_corregido = limpiar_comunas(nombre_comuna))
 limpiar_comunas <- function(

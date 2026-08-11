@@ -5,6 +5,11 @@
 #' @param codigos_regiones Códigos regionales en formato numérico
 #'
 #' @returns Vector con nombres de región
+#' @examples
+#' as_nombre_region(16)
+#'
+#' as_nombre_region(c(15, 4, 10, 99))
+#'
 #' @export
 as_nombre_region <- function(codigos_regiones) {
   if (!is.numeric(codigos_regiones)) {

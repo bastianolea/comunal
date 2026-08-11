@@ -15,3 +15,9 @@ Vector con nombres de comuna
 \description{
 Entregando códigos comunales (como los que aparecen en \link{territorios}), retorna los nombres de comuna correspondientes. Retorna NA si no corresponde con ninguna.
 }
+\examples{
+as_nombre_comuna(1101)
+
+as_nombre_comuna(c(1401, 1403, 9999, 1404))
+
+}
