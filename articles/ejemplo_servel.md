@@ -130,7 +130,6 @@ library(territorial)
 
 servel |> 
   validar_comunas(comuna)
-#> ℹ Validando calidad de nombres de comuna desde tabla de datos
 #> ! Resumen: 12091 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): ANTOFAGASTA, CALAMA, MARIA ELENA, MEJILLONES, OLLAGUE, SAN PEDRO DE ATACAMA, SIERRA GORDA, TALTAL, TOCOPILLA, ARICA y 337 comunas más
 #> ! Mayúsculas: 12091 casos de comunas escritas en mayúsculas: ANTOFAGASTA, CALAMA, MARIA ELENA, MEJILLONES, OLLAGUE, SAN PEDRO DE ATACAMA, SIERRA GORDA, TALTAL, TOCOPILLA, ARICA y 337 comunas más
 #> ℹ Tildes: 2373 casos de comunas que deberían tener tildes y no los tienen: MARIA ELENA, COPIAPO, AYSEN, RIO IBAÑEZ, COMBARBALA, RIO HURTADO, CURACAUTIN, PITRUFQUEN, PUCON, PUREN y 61 comunas más

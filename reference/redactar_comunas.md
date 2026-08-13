@@ -18,8 +18,9 @@ redactar_comunas(nombre_comuna, largo = 10)
 
 - largo:
 
-  Por defecto, si son demasiadas comunas, trunca el largo a `x` comunas.
-  Cambiar a 0 para que muestre todas las comunas.
+  Por defecto, si son demasiadas comunas, trunca el largo a 10 comunas e
+  indica "y `x` comunas más". Cambiar al número máximo de comunas, o 0
+  para que muestre todas las comunas.
 
 ## Valor
 

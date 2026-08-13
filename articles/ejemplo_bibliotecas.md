@@ -248,7 +248,6 @@ library(territorial)
 
 biblio_ancho |> 
   validar_comunas(unidad)
-#> ℹ Validando calidad de nombres de comuna desde tabla de datos
 #> ! Resumen: 7 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): La Calera, Treguaco, Alto BioBío, Padre las Casas, Aisén, Coihaique y O’Higgins
 #> ℹ Escrituras alternativas: 2 casos de comunas escritas de una forma no recomendada, aunque válida: Treguaco y Aisén
 #> ✖ Validación de comunas: se encontraron 9 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
@@ -350,7 +349,6 @@ no retorna ninguna alerta:
 
 biblio_limpio |> 
   validar_comunas(nombre_comuna)
-#> ℹ Validando calidad de nombres de comuna desde tabla de datos
 #> ✔ Todas las comunas están correctas!
 ```
 

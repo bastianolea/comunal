@@ -47,9 +47,7 @@ check que tenga valores válidos del tipo apropiado
 
 ejemplos
 
-agregar ejemplos de
-[`agregar_poblacion()`](https://bastianolea.github.io/territorial/reference/agregar_poblacion.md)
-a viñetas
+agregar ejemplos de `agregar_poblacion()` a viñetas
 
 agregar ejemplos de
 [`as_nombre_region()`](https://bastianolea.github.io/territorial/reference/as_nombre_region.md)

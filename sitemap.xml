@@ -21,7 +21,6 @@
 <url><loc>https://bastianolea.github.io/territorial/reference/agregar_clasificacion.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/agregar_macrozona.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/agregar_orden_region.html</loc></url>
-<url><loc>https://bastianolea.github.io/territorial/reference/agregar_poblacion.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/as_codigo_comuna.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/as_codigo_region.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/as_nombre_comuna.html</loc></url>
@@ -29,6 +28,7 @@
 <url><loc>https://bastianolea.github.io/territorial/reference/buscar_comuna.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/clasificacion.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/comunas.html</loc></url>
+<url><loc>https://bastianolea.github.io/territorial/reference/contar_comunas.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/contextualizar.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/index.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/is_codigo_comuna.html</loc></url>
@@ -37,7 +37,6 @@
 <url><loc>https://bastianolea.github.io/territorial/reference/limpiar_comunas.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/localidades.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/ordenar_regiones.html</loc></url>
-<url><loc>https://bastianolea.github.io/territorial/reference/poblacion_proyeccion.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/preposicion_region.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/redactar_comunas.html</loc></url>
 <url><loc>https://bastianolea.github.io/territorial/reference/redactar_region.html</loc></url>

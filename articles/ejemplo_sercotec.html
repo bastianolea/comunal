@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.11</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.12</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -174,7 +174,6 @@
 <span></span>
 <span><span class="va">sercotec</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_comunas.html">validar_comunas</a></span><span class="op">(</span><span class="va">comuna_beneficiario</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Validando calidad de nombres de comuna desde tabla de datos</span></span>
 <span><span class="co">#&gt; ! Resumen: 21 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): Aisén, Los Alamos, No Informada, OHiggins, Otro lugar, Puerto Saavedra, Ránquil y Treguaco</span></span>
 <span><span class="co">#&gt; ℹ Tildes: 3 casos de comunas que deberían tener tildes y no los tienen: Los Alamos</span></span>
 <span><span class="co">#&gt; ℹ Problemas comunes: 2 casos de comunas popularmente mal escritas: OHiggins</span></span>
@@ -236,7 +235,6 @@
 <div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sercotec_limpio</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_comunas.html">validar_comunas</a></span><span class="op">(</span><span class="va">nombre_comuna</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Validando calidad de nombres de comuna desde tabla de datos</span></span>
 <span><span class="co">#&gt; ✔ Todas las comunas están correctas!</span></span></code></pre></div>
 </div>
 <p>Finalmente, podemos usar <code><a href="../reference/ubicar_comunas.html">ubicar_comunas()</a></code> para agregar la región correspondiente a cada comuna, y <code><a href="../reference/as_codigo_comuna.html">as_codigo_comuna()</a></code> para transformar el nombre de la comuna en código único territorial (ver <code><a href="../articles/codigos_unicos_territoriales.html">vignette("codigos_unicos_territoriales")</a></code>):</p>

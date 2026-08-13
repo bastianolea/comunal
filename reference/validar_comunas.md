@@ -38,20 +38,16 @@ problemas, y retorna los datos de manera invisible.
 
 ``` r
 validar_comunas(c("chiguayante", "la florida", "paine"))
-#> ℹ Validando calidad de nombres de comuna desde vector
 #> ! Resumen: 3 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): chiguayante, la florida y paine
 #> ! Minúsculas: 3 casos de comunas escritas en minúsculas: chiguayante, la florida y paine
 #> ✖ Validación de comunas: se encontraron 6 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
 
 territorios |>
   validar_comunas(nombre_comuna)
-#> ℹ Validando calidad de nombres de comuna desde tabla de datos
 #> ✔ Todas las comunas están correctas!
 
 # si ya existe una columna `nombre_comuna`, puede omitirse el argumento
 territorios |>
   validar_comunas()
-#> ℹ Validando calidad de nombres de comuna desde tabla de datos
-#> ℹ No se especificó la variable: asumiendo columna `nombre_comuna`
 #> ✔ Todas las comunas están correctas!
 ```

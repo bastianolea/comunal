@@ -1,5 +1,17 @@
 # Registro de cambios
 
+## territorial 0.8.12 (2026/08/12)
+
+- Nueva función
+  [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
+  para revisar rápidamente si faltan comunas en una tabla de datos o
+  vector, o confirmar que estén todas.
+- Menos mensajes irrelevantes en
+  [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md).
+- Se eliminan `poblacion_proyeccion` y `agregar_poblacion()` porque se
+  traspasan al [nuevo paquete `{poblador}` especializado en datos de
+  población de Chile.](https://bastianolea.github.io/poblador/)
+
 ## territorial 0.8.11 (2026/08/11)
 
 - Nueva función
@@ -12,7 +24,6 @@
   y
   [`as_nombre_region()`](https://bastianolea.github.io/territorial/reference/as_nombre_region.md),
   gracias a `pkgcheck::pkgcheck()`
-- Agregada participación de ROpenSci a DESCRIPTION
 
 ## territorial 0.8.9.2 (2026/08/06)
 
@@ -50,10 +61,9 @@
 ## territorial 0.8.7 (2026/07/10)
 
 - Tabla de datos con población comunal proyectada (2002-2035), base
-  Censo 2017:
-  [`territorial::poblacion_proyeccion`](https://bastianolea.github.io/territorial/reference/poblacion_proyeccion.md)
+  Censo 2017: `territorial::poblacion_proyeccion`
 - Función para agregar población comunal a comunas:
-  [`territorial::agregar_poblacion()`](https://bastianolea.github.io/territorial/reference/agregar_poblacion.md)
+  `territorial::agregar_poblacion()`
 
 ## territorial 0.8.6 (2026/07/08)
 

@@ -51,7 +51,6 @@ library(territorial)
 
 datos |> 
   validar_comunas(comuna)
-#> ℹ Validando calidad de nombres de comuna desde tabla de datos
 #> ! Resumen: 3 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): LA FLORIDA, PUENTE ALTO y LA PINTANA
 #> ! Mayúsculas: 3 casos de comunas escritas en mayúsculas: LA FLORIDA, PUENTE ALTO y LA PINTANA
 #> ✖ Validación de comunas: se encontraron 6 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
