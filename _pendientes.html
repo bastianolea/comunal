@@ -48,6 +48,10 @@
 
 
 <div class="section level2">
+<h2 id="pendientes">Pendientes<a class="anchor" aria-label="anchor" href="#pendientes"></a></h2>
+<ul class="task-list"><li><label><input type="checkbox">limpiar regiones</label></li>
+</ul></div>
+<div class="section level2">
 <h2 id="ideas">Ideas<a class="anchor" aria-label="anchor" href="#ideas"></a></h2>
 <ul class="task-list"><li>
 <label><input type="checkbox" checked><code>buscar_comunas()</code> con agrepl</label>
@@ -71,19 +75,18 @@
 </ul></li>
 </ul></div>
 <div class="section level2">
-<h2 id="pendientes">Pendientes<a class="anchor" aria-label="anchor" href="#pendientes"></a></h2>
-<ul><li><label><input type="checkbox">limpiar regiones</label></li>
-<li><label><input type="checkbox">agregar población censo 2024</label></li>
-<li><label><input type="checkbox">agregar superficie total, urbana</label></li>
+<h2 id="pendientes-1">Pendientes<a class="anchor" aria-label="anchor" href="#pendientes-1"></a></h2>
+<ul><li>[-] agregar población censo 2024</li>
+<li>[-] agregar superficie total, urbana</li>
 <li>
 <label><input type="checkbox">ejemplos</label>
-<ul class="task-list"><li><label><input type="checkbox">agregar ejemplos de <code><a href="reference/agregar_poblacion.html">agregar_poblacion()</a></code> a viñetas</label></li>
-<li><label><input type="checkbox">agregar ejemplos de <code><a href="reference/as_nombre_region.html">as_nombre_region()</a></code> y <code><a href="reference/as_codigo_region.html">as_codigo_region()</a></code> a viñetas</label></li>
-<li><label><input type="checkbox">agregar ejemplos de <code><a href="reference/agregar_macrozona.html">agregar_macrozona()</a></code> a viñetas</label></li>
-<li><label><input type="checkbox">crear viñeta de <code><a href="reference/agregar_macrozona.html">agregar_macrozona()</a></code>?</label></li>
+<ul class="task-list"><li><label><input type="checkbox" checked>agregar ejemplos de <code><a href="reference/agregar_poblacion.html">agregar_poblacion()</a></code> a viñetas</label></li>
+<li><label><input type="checkbox" checked>agregar ejemplos de <code><a href="reference/as_nombre_region.html">as_nombre_region()</a></code> y <code><a href="reference/as_codigo_region.html">as_codigo_region()</a></code> a viñetas</label></li>
+<li><label><input type="checkbox" checked>agregar ejemplos de <code><a href="reference/agregar_macrozona.html">agregar_macrozona()</a></code> a viñetas</label></li>
+<li><label><input type="checkbox" checked>crear viñeta de <code><a href="reference/agregar_macrozona.html">agregar_macrozona()</a></code>?</label></li>
 </ul></li>
 <li><label><input type="checkbox" checked>al convertir comuna a código territorial, si no se encuentra la comuna, limpiar con warning</label></li>
-<li><label><input type="checkbox">al ubicar comuna en la región, si no se encuentra la comuna, limpiar con warning</label></li>
+<li><label><input type="checkbox" checked>al ubicar comuna en la región, si no se encuentra la comuna, limpiar con warning</label></li>
 <li><label><input type="checkbox" checked>función para convertir a nombres cortos de regiones</label></li>
 <li><label><input type="checkbox">qué pasa en is_nombre_region con los nombres cortos de regiones?</label></li>
 <li><label><input type="checkbox"><code><a href="reference/contextualizar.html">contextualizar()</a></code>: qué pasa cuando es a nivel regional?</label></li>
@@ -112,7 +115,7 @@
 <p>Funciones con datos - [x] <code>territorios</code> = tabla con todos los datos territoriales (comuna, region, provincia, clasificaciones) - [ ] cambiar a función o no???? - [x] <code><a href="reference/comunas.html">comunas()</a></code> = retorna un vector con los nombres de comunas - [x] <code><a href="reference/localidades.html">localidades()</a></code> = xxx - [x] <code>clasificacion</code> = clasificación territorial de odepa</p>
 <p>Funciones de pruebas - [x] <code><a href="reference/is_nombre_comuna.html">is_nombre_comuna()</a></code> = revisa si el o los elementos son comunas; recibe nombres de comunas limpios o CUT - [x] <code><a href="reference/is_codigo_comuna.html">is_codigo_comuna()</a></code> = revisa si el o los elementos son códigos de comunas válidos - [x] <code><a href="reference/validar_comunas.html">validar_comunas()</a></code> = revisa el nivel de suciedad de los datos - revisar si la versión en minúscula/mayúscula es igual a la entregada - [ ] <code>is_isla()</code>/<code>is_continental()</code>? detectar comunas específicas con características particulares - [ ] <code>revisar_comunas()</code> cuántas comunas únicas incluye, y si todas son válidas - [ ] <code>confirmar_comunas()</code> = función que compare si los códigos comunales corresponden con los nombres de comuna existentes???</p>
 <p>Funciones para corregir - [x] <code><a href="reference/limpiar_comunas.html">limpiar_comunas()</a></code> = limpia comunas y las deja estandarizadas - [x] <code><a href="reference/as_codigo_comuna.html">as_codigo_comuna()</a></code> = convierte nombre de comunas en CUT - [x] avisar si ninguno coincide con warnings - [x] <code><a href="reference/as_nombre_comuna.html">as_nombre_comuna()</a></code> = convierte CUT a nombre de comunas - [ ] <code>limpiar_regiones()</code> = limpiar nombres de regiones - [ ] <code>abreviar_regiones()</code> = cambiar nombres de regiones a nombres cortos - [x] <code><a href="reference/abreviar_comunas.html">abreviar_comunas()</a></code> = cambiar nombres de comunas a nombres cortos - [x] <code><a href="reference/ordenar_regiones.html">ordenar_regiones()</a></code> = ordenar regiones de norte a sur</p>
-<p>Funciones de complementar datos Estas deberían aplicar distinto dependiendo si se le entrega el CUT o el nombre? - [ ] <code>poblacion_comuna()</code> = agregar población de comunas - [ ] <code>superficie_comuna()</code> = agregar superficie - [ ] <code>coordenadas_municipio()</code> = agregar lat/long municipio - [x] <code><a href="reference/ubicar_localidades.html">ubicar_localidades()</a></code> = en qué comuna está una localidad - [x] <code><a href="reference/contextualizar.html">contextualizar()</a></code> = agrega variables territoriales faltantes - [x] <code><a href="reference/agregar_clasificacion.html">agregar_clasificacion()</a></code></p>
+<p>Funciones de complementar datos Estas deberían aplicar distinto dependiendo si se le entrega el CUT o el nombre? - [-] <code>poblacion_comuna()</code> = agregar población de comunas - [ ] <code>superficie_comuna()</code> = agregar superficie - [ ] <code>coordenadas_municipio()</code> = agregar lat/long municipio - [x] <code><a href="reference/ubicar_localidades.html">ubicar_localidades()</a></code> = en qué comuna está una localidad - [x] <code><a href="reference/contextualizar.html">contextualizar()</a></code> = agrega variables territoriales faltantes - [x] <code><a href="reference/agregar_clasificacion.html">agregar_clasificacion()</a></code></p>
 </div>
 
 

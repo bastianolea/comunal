@@ -1,5 +1,9 @@
 # NA
 
+## Pendientes
+
+limpiar regiones
+
 ## Ideas
 
 `buscar_comunas()` con agrepl
@@ -37,11 +41,9 @@ check que tenga valores válidos del tipo apropiado
 
 ## Pendientes
 
-limpiar regiones
+\[-\] agregar población censo 2024
 
-agregar población censo 2024
-
-agregar superficie total, urbana
+\[-\] agregar superficie total, urbana
 
 ejemplos
 
@@ -156,7 +158,7 @@ nombres de regiones a nombres cortos - \[x\]
 = ordenar regiones de norte a sur
 
 Funciones de complementar datos Estas deberían aplicar distinto
-dependiendo si se le entrega el CUT o el nombre? - \[ \]
+dependiendo si se le entrega el CUT o el nombre? - \[-\]
 `poblacion_comuna()` = agregar población de comunas - \[ \]
 `superficie_comuna()` = agregar superficie - \[ \]
 `coordenadas_municipio()` = agregar lat/long municipio - \[x\]
