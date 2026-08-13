@@ -1,3 +1,6 @@
+## Pendientes
+- [ ] limpiar regiones
+
 
 ## Ideas
 - [x] `buscar_comunas()` con agrepl
@@ -21,16 +24,15 @@ Al final las mismas funciones ahora aplican igual a columnas o vectores
 
 
 ## Pendientes
-- [ ] limpiar regiones
-- [ ] agregar población censo 2024
-- [ ] agregar superficie total, urbana
+- [-] agregar población censo 2024
+- [-] agregar superficie total, urbana
 - [ ] ejemplos
-  - [ ] agregar ejemplos de `agregar_poblacion()` a viñetas
-  - [ ] agregar ejemplos de `as_nombre_region()` y `as_codigo_region()` a viñetas
-  - [ ] agregar ejemplos de `agregar_macrozona()` a viñetas
-  - [ ] crear viñeta de `agregar_macrozona()`?
+  - [x] agregar ejemplos de `agregar_poblacion()` a viñetas
+  - [x] agregar ejemplos de `as_nombre_region()` y `as_codigo_region()` a viñetas
+  - [x] agregar ejemplos de `agregar_macrozona()` a viñetas
+  - [x] crear viñeta de `agregar_macrozona()`?
 - [x] al convertir comuna a código territorial, si no se encuentra la comuna, limpiar con warning
-- [ ] al ubicar comuna en la región, si no se encuentra la comuna, limpiar con warning
+- [x] al ubicar comuna en la región, si no se encuentra la comuna, limpiar con warning
 - [x] función para convertir a nombres cortos de regiones
 - [ ] qué pasa en is_nombre_region con los nombres cortos de regiones?
 - [ ] `contextualizar()`: qué pasa cuando es a nivel regional?
@@ -84,7 +86,7 @@ Funciones para corregir
 
 Funciones de complementar datos
 Estas deberían aplicar distinto dependiendo si se le entrega el CUT o el nombre?
-- [ ] `poblacion_comuna()` = agregar población de comunas
+- [-] `poblacion_comuna()` = agregar población de comunas
 - [ ] `superficie_comuna()` = agregar superficie
 - [ ] `coordenadas_municipio()` = agregar lat/long municipio
 - [x] `ubicar_localidades()` = en qué comuna está una localidad
