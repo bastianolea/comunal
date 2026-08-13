@@ -3,7 +3,7 @@
 #' Para un vector de nombres de comuna, retorna un texto con las comunas redactadas y separadas por comas. Por defecto, sólo redacta un texto de 10 comunas y al final pone "y x comunas más".
 #'
 #' @param nombre_comuna Nombres de comunas
-#' @param largo Por defecto, si son demasiadas comunas, trunca el largo a `x` comunas. Cambiar a 0 para que muestre todas las comunas.
+#' @param largo Por defecto, si son demasiadas comunas, trunca el largo a 10 comunas e indica "y `x` comunas más". Cambiar al número máximo de comunas, o 0 para que muestre todas las comunas.
 #'
 #' @returns Texto con comunas separadas por comas
 #' @export

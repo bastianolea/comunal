@@ -26,17 +26,17 @@ validar_comunas <- function(
   # la función funciona con tablas o vectores, y con especificar la columna o sin especificarla (se asume que es `nombre_comuna`)
   # si es una tabla, extraer columna como vector
   if (any(class(datos) %in% "data.frame")) {
-    cli::cli_alert_info(
-      "Validando calidad de nombres de comuna desde tabla de datos"
-    )
+    # cli::cli_alert_info(
+    #   "Validando calidad de nombres de comuna desde tabla de datos"
+    # )
     # extraer la variable
     col_expr <- rlang::enquo(variable)
 
     # si no se especificó la columna, asumir que es nombre_comuna
     if (rlang::quo_is_null(col_expr)) {
-      cli::cli_alert_info(
-        "No se especificó la variable: asumiendo columna `nombre_comuna`"
-      )
+      # cli::cli_alert_info(
+      #   "No se especificó la variable: asumiendo columna `nombre_comuna`"
+      # )
       col_expr <- rlang::sym("nombre_comuna")
     }
 
@@ -52,7 +52,7 @@ validar_comunas <- function(
 
     # si es un vector, se toma el vector
   } else if (is.vector(datos) & !is.list(datos)) {
-    cli::cli_alert_info("Validando calidad de nombres de comuna desde vector")
+    # cli::cli_alert_info("Validando calidad de nombres de comuna desde vector")
     nombre_comuna <- as.character(datos)
 
     # si no es ni dataframe ni vector, error
