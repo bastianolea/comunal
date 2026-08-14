@@ -9,6 +9,8 @@
 #'
 #' @examples
 #' preposicion_region("Ñuble")
+#'
+#' preposicion_region("O'Higgins")
 preposicion_region <- function(nombre_region) {
   if (!is.character(nombre_region)) {
     cli::cli_abort("nombres de regiones deben venir en texto")
@@ -21,14 +23,27 @@ preposicion_region <- function(nombre_region) {
     "Atacama",
     "Coquimbo",
     "Valparaíso",
+    "O'Higgins",
     "La Araucanía",
     "Los Lagos",
     "Aysén del General Carlos Ibáñez del Campo",
+    "Aysén",
     "Magallanes y de la Antártica Chilena",
+    "Magallanes",
     "Los Ríos",
     "Arica y Parinacota",
+    "Arica",
     "Ñuble",
     "Santiago"
+  )
+
+  regiones_de_la <- c(
+    "Araucanía"
+  )
+
+  regiones_de_los <- c(
+    "Lagos",
+    "Ríos"
   )
 
   regiones_del <- c(
@@ -42,10 +57,13 @@ preposicion_region <- function(nombre_region) {
     "Metropolitana"
   )
 
+  # decidir preposición
   preposicion <- dplyr::case_when(
     nombre_region %in% regiones_del ~ "del",
     nombre_region %in% regiones_de ~ "de",
-    nombre_region %in% regiones_sin ~ ""
+    nombre_region %in% regiones_sin ~ "",
+    nombre_region %in% regiones_de_la ~ "de la",
+    nombre_region %in% regiones_de_los ~ "de los"
   )
 
   if (!length(preposicion) == length(nombre_region)) {

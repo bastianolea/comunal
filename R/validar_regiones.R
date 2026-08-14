@@ -20,9 +20,9 @@ validar_regiones <- function(
   # la función funciona con tablas o vectores, y con especificar la columna o sin especificarla (se asume que es `nombre_region`)
   # si es una tabla, extraer columna como vector
   if (any(class(datos) %in% "data.frame")) {
-    cli::cli_alert_info(
-      "Validando calidad de nombres de región desde tabla de datos"
-    )
+    # cli::cli_alert_info(
+    #   "Validando calidad de nombres de región desde tabla de datos"
+    # )
     # extraer la variable
     col_expr <- rlang::enquo(variable)
 
@@ -46,7 +46,7 @@ validar_regiones <- function(
 
     # si es un vector, se toma el vector
   } else if (is.vector(datos)) {
-    cli::cli_alert_info("Validando calidad de nombres de región desde vector")
+    # cli::cli_alert_info("Validando calidad de nombres de región desde vector")
     nombre_region <- as.character(datos)
   } else {
     cli::cli_abort("Datos de tipo incompatible, debe ser dataframe o vector")

@@ -1,3 +1,8 @@
+# territorial 0.8.13 (2026/08/14)
+- Mejoras en `preposicion_region()` para formas alternativas de escribir regiones.
+- Mejoras en viñetas
+- Menos mensajes irrelevantes en `validar_comunas()`.
+
 # territorial 0.8.12 (2026/08/12)
 - Nueva función `contar_comunas()` para revisar rápidamente si faltan comunas en una tabla de datos o vector, o confirmar que estén todas.
 - Menos mensajes irrelevantes en `validar_comunas()`.

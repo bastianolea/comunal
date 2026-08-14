@@ -6,3 +6,13 @@ test_that("artículos de región funciona", {
     c("de", "del", "", "de")
   )
 })
+
+
+test_that("artículos de región funciona con nombres no estándar", {
+  expect_equal(
+    preposicion_region(
+      c("O'Higgins", "Araucanía", "Lagos")
+    ),
+    c("de", "de la", "de los")
+  )
+})

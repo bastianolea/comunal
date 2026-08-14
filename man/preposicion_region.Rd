@@ -17,4 +17,6 @@ Esta función entrega la preposición usada para cada región de Chile; por ejem
 }
 \examples{
 preposicion_region("Ñuble")
+
+preposicion_region("O'Higgins")
 }
