@@ -2,7 +2,8 @@
 
 ## Instalación
 
-Por ahora puedes instalar este paquete desde GitHub:
+Puedes instalar este paquete de R desde GitHub usando [el paquete
+`{pak}`](https://pak.r-lib.org):
 
 ``` r
 
@@ -10,39 +11,52 @@ Por ahora puedes instalar este paquete desde GitHub:
 pak::pak("bastianolea/territorial")
 ```
 
-``` r
+Los siguientes ejemplos te ayudarán a familiarizarte con algunas de las
+funciones de [territorial](https://bastianolea.github.io/territorial).
 
-library(territorial)
-```
-
-Los siguientes ejemplos muestran algunos usos de
-[territorial](https://bastianolea.github.io/territorial).
-
-## Ejemplos de datos comunales
+## Datos comunales
 
 ### Tabla de comunas, provincias y regiones de Chile
 
 El paquete ofrece una tabla de datos que contiene todas las comunas del
-país con sus nombres oficiales, sus códigos únicos territoriales, y lo
-mismo para las provincias y regiones del país.
+país con sus nombres oficiales, sus [códigos únicos
+territoriales](https://bastianolea.github.io/territorial/articles/codigos_unicos_territoriales.html),
+y lo mismo para las provincias y regiones del país.
+
+Para ver la tabla de comunas, provincias y regiones, ejecuta
+[`territorial::territorios`](https://bastianolea.github.io/territorial/reference/territorios.md):
 
 ``` r
 
 library(territorial)
 library(dplyr)
 
-head(territorial::territorios)
-#> # A tibble: 6 × 6
-#>   codigo_region nombre_region codigo_provincia nombre_provincia codigo_comuna
-#>           <dbl> <chr>                    <dbl> <chr>                    <dbl>
-#> 1             1 Tarapacá                    11 Iquique                   1101
-#> 2             1 Tarapacá                    11 Iquique                   1107
-#> 3             1 Tarapacá                    14 Tamarugal                 1401
-#> 4             1 Tarapacá                    14 Tamarugal                 1402
-#> 5             1 Tarapacá                    14 Tamarugal                 1403
-#> 6             1 Tarapacá                    14 Tamarugal                 1404
-#> # ℹ 1 more variable: nombre_comuna <chr>
+names(territorial::territorios)
 ```
+
+    [1] "codigo_region"    "nombre_region"    "codigo_provincia" "nombre_provincia"
+    [5] "codigo_comuna"    "nombre_comuna"   
+
+``` r
+
+territorios
+```
+
+    # A tibble: 346 × 6
+       codigo_region nombre_region codigo_provincia nombre_provincia codigo_comuna
+               <dbl> <chr>                    <dbl> <chr>                    <dbl>
+     1             1 Tarapacá                    11 Iquique                   1101
+     2             1 Tarapacá                    11 Iquique                   1107
+     3             1 Tarapacá                    14 Tamarugal                 1401
+     4             1 Tarapacá                    14 Tamarugal                 1402
+     5             1 Tarapacá                    14 Tamarugal                 1403
+     6             1 Tarapacá                    14 Tamarugal                 1404
+     7             1 Tarapacá                    14 Tamarugal                 1405
+     8             2 Antofagasta                 21 Antofagasta               2101
+     9             2 Antofagasta                 21 Antofagasta               2102
+    10             2 Antofagasta                 21 Antofagasta               2103
+    # ℹ 336 more rows
+    # ℹ 1 more variable: nombre_comuna <chr>
 
 Esta tabla es la fuente de toda la información territorial usada en el
 paquete, y corresponde a los datos oficiales de la [Subsecretría de
@@ -56,38 +70,61 @@ revisar la calidad de sus datos. La función
 [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md)
 indica qué posibles problemas existen con los nombres de las comunas.
 
-Imaginemos una tabla de datos con muy mala calidad de nombres de
-comunas:
+Imaginemos una tabla de datos con *muy mala calidad* de nombres de
+comunas. Usemos como ejemplo la siguiente tabla de datos:
+
+``` r
+
+library(dplyr)
+
+datos <- tibble(
+  nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "santiago", "prohibidencia", "CERRILLOS", "San José De Maipo", "OHiggins"),
+  valores = c(4, 6, 2, 8, 6, 3, 5, 8)
+)
+```
 
 ``` r
 
 datos
-#> # A tibble: 8 × 2
-#>   nombre_comuna     valores
-#>   <chr>               <dbl>
-#> 1 PIRQUE                  4
-#> 2 El Monte                6
-#> 3 Maipu                   2
-#> 4 santiago                8
-#> 5 prohibidencia           6
-#> 6 CERRILLOS               3
-#> 7 San José De Maipo       5
-#> 8 OHiggins                8
 ```
+
+    # A tibble: 8 × 2
+      nombre_comuna     valores
+      <chr>               <dbl>
+    1 PIRQUE                  4
+    2 El Monte                6
+    3 Maipu                   2
+    4 santiago                8
+    5 prohibidencia           6
+    6 CERRILLOS               3
+    7 San José De Maipo       5
+    8 OHiggins                8
 
 Para empezar a trabajar con estos datos, validamos su calidad primero:
 
 ``` r
 
 datos |> 
-  validar_comunas(nombre_comuna) # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
-#> ! Resumen: 7 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): PIRQUE, Maipu, santiago, prohibidencia, CERRILLOS, San José De Maipo y OHiggins
-#> ! Mayúsculas: 2 casos de comunas escritas en mayúsculas: PIRQUE y CERRILLOS
-#> ! Minúsculas: 2 casos de comunas escritas en minúsculas: santiago y prohibidencia
-#> ! Mayúsculas: 1 caso de comunas con preposiciones ('de', 'del') escritas en mayúsculas: San José De Maipo
-#> ℹ Tildes: 1 caso de comunas que deberían tener tildes y no los tienen: Maipu
-#> ℹ Problemas comunes: 1 caso de comunas popularmente mal escritas: OHiggins
-#> ✖ Validación de comunas: se encontraron 14 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
+  validar_comunas(nombre_comuna) 
+```
+
+    ! Resumen: 7 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): PIRQUE, Maipu, santiago, prohibidencia, CERRILLOS, San José De Maipo y OHiggins
+
+    ! Mayúsculas: 2 casos de comunas escritas en mayúsculas: PIRQUE y CERRILLOS
+
+    ! Minúsculas: 2 casos de comunas escritas en minúsculas: santiago y prohibidencia
+
+    ! Mayúsculas: 1 caso de comunas con preposiciones ('de', 'del') escritas en mayúsculas: San José De Maipo
+
+    ℹ Tildes: 1 caso de comunas que deberían tener tildes y no los tienen: Maipu
+
+    ℹ Problemas comunes: 1 caso de comunas popularmente mal escritas: OHiggins
+
+    ✖ Validación de comunas: se encontraron 14 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
+
+``` r
+
+  # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
 ```
 
 ### Limpieza de nombres de comunas de Chile
@@ -100,40 +137,77 @@ para corregir automáticamente los nombres de las comunas:
 ``` r
 
 datos |> 
-  mutate(nombre_corregido = limpiar_comunas(nombre_comuna))
-#> ℹ Limpiando 8 nombres de comunas (8 son distintas)
-#> 
-#> ── Paso 1: confirmar comunas correctas
-#> ℹ De las 8 comunas distintas, 1 ya eran correctas: El Monte
-#> 
-#> ── Paso 2: coincidencias por limpieza de texto
-#> ℹ A partir de la limpieza de texto, se limpiaron 7 de 8 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
-#> 
-#> ── Paso 3: casos especiales
-#> ℹ Se encontraron 0 casos especiales:
-#> 
-#> ── Paso 4: coincidencias aproximadas de texto
-#> ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
-#> 
-#> ── Conclusión de limpieza de comunas
-#> ✔ De las 8 comunas distintas, se limpiaron 8 en total (100%)
-#> 
-#> # A tibble: 8 × 3
-#>   nombre_comuna     valores nombre_corregido 
-#>   <chr>               <dbl> <chr>            
-#> 1 PIRQUE                  4 Pirque           
-#> 2 El Monte                6 El Monte         
-#> 3 Maipu                   2 Maipú            
-#> 4 santiago                8 Santiago         
-#> 5 prohibidencia           6 Providencia      
-#> 6 CERRILLOS               3 Cerrillos        
-#> 7 San José De Maipo       5 San José de Maipo
-#> 8 OHiggins                8 O'Higgins
+  limpiar_comunas()
 ```
+
+    ℹ Limpiando 8 nombres de comunas (8 son distintas)
+
+    ── Paso 1: confirmar comunas correctas 
+
+    ℹ De las 8 comunas distintas, 1 ya eran correctas: El Monte
+
+    ── Paso 2: coincidencias por limpieza de texto 
+
+    ℹ A partir de la limpieza de texto, se limpiaron 7 de 8 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
+
+    ── Paso 3: casos especiales 
+
+    ℹ Se encontraron 0 casos especiales: 
+
+    ── Paso 4: coincidencias aproximadas de texto 
+
+    ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
+
+    ── Conclusión de limpieza de comunas 
+
+    ✔ De las 8 comunas distintas, se limpiaron 8 en total (100%)
+
+    # A tibble: 8 × 2
+      nombre_comuna     valores
+      <chr>               <dbl>
+    1 Pirque                  4
+    2 El Monte                6
+    3 Maipú                   2
+    4 Santiago                8
+    5 Providencia             6
+    6 Cerrillos               3
+    7 San José de Maipo       5
+    8 O'Higgins               8
 
 Esta función realiza una limpieza de los nombres en tres pasos, que
 puedes leer en detalle en su documentación:
 [`?limpiar_comunas`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md).
+
+En este caso, simplemente se aplica la función porque la tabla contiene
+la columna `nombre_comuna`, pero si la columna con nombres se llama
+distinto, puedes indicarla en la función.
+
+También puedes limpiar las comunas creando una variable nueva usando la
+función dentro de
+[`mutate()`](https://dplyr.tidyverse.org/reference/mutate.html):
+
+``` r
+
+library(dplyr)
+
+datos |> 
+  mutate(nombre_corregido = limpiar_comunas(nombre_comuna))
+```
+
+    # A tibble: 8 × 3
+      nombre_comuna     valores nombre_corregido
+      <chr>               <dbl> <chr>
+    1 PIRQUE                  4 Pirque
+    2 El Monte                6 El Monte
+    3 Maipu                   2 Maipú
+    4 santiago                8 Santiago
+    5 prohibidencia           6 Providencia
+    6 CERRILLOS               3 Cerrillos
+    7 San José De Maipo       5 San José de Maipo
+    8 OHiggins                8 O'Higgins        
+
+En ambos casos, la función entrega mensajes relevantes sobre el proceso
+de limpieza y el tipo de problemas resueltos.
 
 #### Funciones para confirmar nombres de comunas
 
@@ -145,8 +219,9 @@ manualmente consultando si las comunas son válidas:
 comunas <- c("Providencia", "Vitacura", "Las Condes", "Lo Barnechea", "Ratas", NA)
 
 is_nombre_comuna(comunas)
-#> [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE
 ```
+
+    [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE
 
 Lo anterior sería equivalente a hacer
 `comunas %in% territorial::comunas()`. Esto puede servir, por ejemplo,
@@ -160,46 +235,166 @@ válidos:
 comunas <- c(1101, 1107, NA, 99999)
 
 is_codigo_comuna(comunas)
-#> [1]  TRUE  TRUE FALSE FALSE
 ```
+
+    [1]  TRUE  TRUE FALSE FALSE
+
+### Revisar presencia de comunas en una tabla
+
+Otro caso de validación de datos territoriales puede ser cuando nos
+encontramos con una tabla que tiene muchas observaciones, y queremos
+confirmar si tiene casos para todas las comunas del país, o bien, si hay
+comunas que están faltantes entre sus datos.
+
+Para el ejemplo, creemos una tabla de datos con muchas observaciones de
+comunas:
+
+``` r
+
+library(dplyr)
+
+n_comunas <- 324
+
+base <- territorios |> 
+  select(nombre_comuna, codigo_comuna) |> 
+  slice_sample(n = n_comunas) |> 
+  mutate(a = runif(n = n_comunas),
+         b = runif(n = n_comunas),
+         c = runif(n = n_comunas)) |> 
+  tidyr::pivot_longer(cols = c(a, b, c)) |> 
+  arrange(value)
+
+base
+```
+
+    # A tibble: 972 × 4
+       nombre_comuna codigo_comuna name     value
+       <chr>                 <dbl> <chr>    <dbl>
+     1 San Ramón             13131 a     0.000301
+     2 Los Lagos             14104 a     0.00100
+     3 Trehuaco              16207 c     0.00190
+     4 Pemuco                16105 c     0.00208
+     5 Cauquenes              7201 a     0.00239
+     6 Ercilla                9204 c     0.00298
+     7 Cochrane              11301 a     0.00373
+     8 Marchihue              6204 b     0.00487
+     9 Quilaco                8308 c     0.00773
+    10 Buin                  13402 c     0.00864
+    # ℹ 962 more rows
+
+Esta tabla tiene 972 filas, ¿cómo confirmar si existen datos para todas
+las comunas de Chile? Para eso está la función
+[`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md):
+
+``` r
+
+base |> 
+  contar_comunas()
+```
+
+    ℹ Cantidad de comunas únicas: 324
+
+    ! La cantidad de comunas es anómala: hay 324, pero deberían ser 346. Revísalas con `territorial::validar_comunas()`
+
+    → Las comunas faltantes son: Pica, Taltal, Illapel, Canela, Salamanca, La Ligua, Algarrobo, Quinta de Tilcoco, San Vicente, Curepto, Pelarco, Quilleco, Freire, Lautaro, Pitrufquén, Vilcún, Chonchi, Antártica, Primavera, Lo Barnechea, Providencia y Lago Ranco
+
+La función
+[`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
+nos indica cuántas comunas únicas hay, y las que faltan. Esto es útil
+porque muchas veces las bases de datos reales no tienen datos para todas
+las comunas, sobre todo las más pequeñas y remotas.
+
+Si dentro de esa tabla con comunas quieres confirmar si existe una en
+específico, o saber cómo viene escrita, usa la utilidad
+[`buscar_comuna()`](https://bastianolea.github.io/territorial/reference/buscar_comuna.md):
+
+``` r
+
+base |> 
+  buscar_comuna("Alto")
+```
+
+    ! Se encontraron 30 resultados, mostrando sólo 6.
+
+    ℹ Los resultados más cercanos al término `Alto` son: Alto del Carmen, Alto Biobío y Alto Hospicio
+
+    # A tibble: 6 × 5
+      nombre_comuna   codigo_comuna name   value puntaje
+      <chr>                   <dbl> <chr>  <dbl>   <dbl>
+    1 Alto del Carmen          3302 c     0.0924       1
+    2 Alto del Carmen          3302 a     0.256        1
+    3 Alto del Carmen          3302 b     0.286        1
+    4 Alto Biobío              8314 a     0.302        1
+    5 Alto Hospicio            1107 a     0.323        1
+    6 Alto Biobío              8314 c     0.504        1
 
 ### Crear nombres de comunas a partir de códigos únicos territoriales
 
-Algo que suele pasar es recibir datos comunales con las comunas mal
-escritas, pero que vienen con códigos únicos territoriales. En este caso
-podemos crear las comunas bien escritas a partir de los códigos únicos
+Algo que suele pasar es tener datos comunales con las comunas mal
+escritas, pero que vienen con códigos únicos territoriales. En este
+caso, aparte de limpiarlas con
+[`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md),
+podemos crear los nombres de comunas a partir de los códigos únicos
 territoriales:
 
 ``` r
 
-head(datos)
-#> # A tibble: 6 × 2
-#>   codigo_comuna municipio    
-#>           <dbl> <chr>        
-#> 1         13110 LA FLORIDA   
-#> 2         16103 CHILLAN VIEJO
-#> 3         10301 OSORNO       
-#> 4         16302 COIHUECO     
-#> 5         13132 VITACURA     
-#> 6         13501 MELIPILLA
+library(dplyr)
+
+datos <- tribble(
+  ~codigo_comuna,      ~municipio,
+  13110,    "LA FLORIDA",
+  16103, "CHILLAN VIEJO",
+  10301,        "OSORNO",
+  16302,      "COIHUECO",
+  13132,      "VITACURA",
+  13501,     "MELIPILLA",
+  14204,     "RIO BUENO",
+  11401,   "CHILE CHICO",
+  16202,    "COBQUECURA",
+  13116,     "LO ESPEJO"
+)
+```
+
+``` r
+
+datos
+```
+
+    # A tibble: 10 × 2
+       codigo_comuna municipio
+               <dbl> <chr>
+     1         13110 LA FLORIDA
+     2         16103 CHILLAN VIEJO
+     3         10301 OSORNO
+     4         16302 COIHUECO
+     5         13132 VITACURA
+     6         13501 MELIPILLA
+     7         14204 RIO BUENO
+     8         11401 CHILE CHICO
+     9         16202 COBQUECURA
+    10         13116 LO ESPEJO    
+
+``` r
 
 # crear nombres de comuna a partir de códigos comunales
 datos |> 
   mutate(nombre_comuna = as_nombre_comuna(codigo_comuna))
-#> # A tibble: 10 × 3
-#>    codigo_comuna municipio     nombre_comuna
-#>            <dbl> <chr>         <chr>        
-#>  1         13110 LA FLORIDA    La Florida   
-#>  2         16103 CHILLAN VIEJO Chillán Viejo
-#>  3         10301 OSORNO        Osorno       
-#>  4         16302 COIHUECO      Coihueco     
-#>  5         13132 VITACURA      Vitacura     
-#>  6         13501 MELIPILLA     Melipilla    
-#>  7         14204 RIO BUENO     Río Bueno    
-#>  8         11401 CHILE CHICO   Chile Chico  
-#>  9         16202 COBQUECURA    Cobquecura   
-#> 10         13116 LO ESPEJO     Lo Espejo
 ```
+
+    # A tibble: 10 × 3
+       codigo_comuna municipio     nombre_comuna
+               <dbl> <chr>         <chr>
+     1         13110 LA FLORIDA    La Florida
+     2         16103 CHILLAN VIEJO Chillán Viejo
+     3         10301 OSORNO        Osorno
+     4         16302 COIHUECO      Coihueco
+     5         13132 VITACURA      Vitacura
+     6         13501 MELIPILLA     Melipilla
+     7         14204 RIO BUENO     Río Bueno
+     8         11401 CHILE CHICO   Chile Chico
+     9         16202 COBQUECURA    Cobquecura
+    10         13116 LO ESPEJO     Lo Espejo    
 
 ### Obtener códigos únicos territoriales a partir de nombres de comunas
 
@@ -210,30 +405,50 @@ de comunas:
 
 ``` r
 
-head(datos)
-#> # A tibble: 6 × 2
-#>   nombre_comuna valor
-#>   <chr>         <dbl>
-#> 1 Pirque            1
-#> 2 Cerrillos         2
-#> 3 Puente Alto       1
-#> 4 La Florida        3
-#> 5 Ñuñoa             1
-#> 6 Conchalí          2
+library(dplyr)
+
+datos <- tribble(
+  ~nombre_comuna, ~valor,
+  "Pirque",       1,
+  "Cerrillos",    2,
+  "Puente Alto",  1,
+  "La Florida",   3,
+  "Ñuñoa",        1,
+  "Conchalí",     2
+)
+```
+
+``` r
+
+datos
+```
+
+    # A tibble: 6 × 2
+      nombre_comuna valor
+      <chr>         <dbl>
+    1 Pirque            1
+    2 Cerrillos         2
+    3 Puente Alto       1
+    4 La Florida        3
+    5 Ñuñoa             1
+    6 Conchalí          2
+
+``` r
 
 # agregar códigos comunales a partir de nombres de comunas
 datos |> 
   mutate(codigo_comuna = as_codigo_comuna(nombre_comuna))
-#> # A tibble: 6 × 3
-#>   nombre_comuna valor codigo_comuna
-#>   <chr>         <dbl>         <dbl>
-#> 1 Pirque            1         13202
-#> 2 Cerrillos         2         13102
-#> 3 Puente Alto       1         13201
-#> 4 La Florida        3         13110
-#> 5 Ñuñoa             1         13120
-#> 6 Conchalí          2         13104
 ```
+
+    # A tibble: 6 × 3
+      nombre_comuna valor codigo_comuna
+      <chr>         <dbl>         <dbl>
+    1 Pirque            1         13202
+    2 Cerrillos         2         13102
+    3 Puente Alto       1         13201
+    4 La Florida        3         13110
+    5 Ñuñoa             1         13120
+    6 Conchalí          2         13104
 
 Naturalmente, lo anterior requiere que los nombres de las comunas estén
 bien escritos, así que habría que haber confirmado con
@@ -250,27 +465,91 @@ agregarles todas las variables que les faltan con la función
 
 ``` r
 
-head(datos)
-#> # A tibble: 3 × 2
-#>   nombre_comuna valor
-#>   <chr>         <dbl>
-#> 1 Cerrillos         1
-#> 2 Arica             2
-#> 3 Putre             3
+datos <- tribble(
+  ~nombre_comuna, ~valor,
+  "Cerrillos",    1,
+  "Arica",        2,
+  "Putre",        3)
+```
+
+``` r
+
+datos
+```
+
+    # A tibble: 3 × 2
+      nombre_comuna valor
+      <chr>         <dbl>
+    1 Cerrillos         1
+    2 Arica             2
+    3 Putre             3
+
+``` r
 
 datos |>
   contextualizar(nombre_comuna)
-#> ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
-#> # A tibble: 3 × 7
-#>   codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna
-#>           <dbl> <chr>                       <dbl> <chr>                    <dbl>
-#> 1            13 Metropolitana d…              131 Santiago                 13102
-#> 2            15 Arica y Parinac…              151 Arica                    15101
-#> 3            15 Arica y Parinac…              152 Parinacota               15201
-#> # ℹ 2 more variables: nombre_comuna <chr>, valor <dbl>
 ```
 
-## Ejemplos de datos regionales
+    ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
+
+    # A tibble: 3 × 7
+      codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna
+              <dbl> <chr>                       <dbl> <chr>                    <dbl>
+    1            13 Metropolitana d…              131 Santiago                 13102
+    2            15 Arica y Parinac…              151 Arica                    15101
+    3            15 Arica y Parinac…              152 Parinacota               15201
+    # ℹ 2 more variables: nombre_comuna <chr>, valor <dbl>
+
+### Otras funciones para comunas
+
+Si tienes una comuna y quieres obtener la región a la que pertenece, usa
+[`ubicar_comunas()`](https://bastianolea.github.io/territorial/reference/ubicar_comunas.md):
+
+``` r
+
+comuna <- "Curacautín"
+
+ubicar_comunas(comuna)
+```
+
+    [1] "La Araucanía"
+
+Si tienes varias comunas y quieres crear un texto que las contenga, usa
+[`redactar_comunas()`](https://bastianolea.github.io/territorial/reference/redactar_comunas.md):
+
+``` r
+
+comunas <- c("Lo Espejo", "La Granja", "La Pintana", "Puente Alto")
+
+redactar_comunas(comunas)
+```
+
+    Lo Espejo, La Granja, La Pintana y Puente Alto
+
+Si quieres saber si una comuna clasifica como urbana, mixta o rural de
+acuerdo a la clasificación de la [Oficina de Estudios y Políticas
+Agrarias
+(Odepa)](https://bibliotecadigital.odepa.gob.cl/items/ce846880-f010-4868-a5d9-18c80f7ceabd),
+usa
+[`agregar_clasificacion()`](https://bastianolea.github.io/territorial/reference/agregar_clasificacion.md):
+
+``` r
+
+comunas <- c("Curanilahue", "Melipilla", "San Pedro")
+
+agregar_clasificacion(
+  as_codigo_comuna(comunas)
+  )  
+```
+
+    [1] Mixta  Urbana Rural
+    Levels: Rural Mixta Urbana
+
+Estas funciones son particularmente útiles para cuando estés [creando
+reportes](https://bastianolea.rbind.io/blog/quarto_reportes/) o
+[aplicaciones web Shiny.](https://bastianolea.rbind.io/blog/shiny/)
+
+## Datos regionales
 
 ### Ordenar regiones de Chile
 
@@ -282,49 +561,80 @@ decir, de norte a sur. Para ello existe la función
 
 ``` r
 
+regiones <- tribble(
+  ~codigo_region,                  ~nombre_region,
+  1,                                   "Tarapacá",
+  2,                                "Antofagasta",
+  3,                                    "Atacama",
+  4,                                   "Coquimbo",
+  5,                                 "Valparaíso",
+  6,      "Libertador General Bernardo O'Higgins",
+  7,                                      "Maule",
+  8,                                     "Biobío",
+  9,                               "La Araucanía",
+  10,                                 "Los Lagos",
+  11, "Aysén del General Carlos Ibáñez del Campo",
+  12,      "Magallanes y de la Antártica Chilena",
+  13,                 "Metropolitana de Santiago",
+  14,                                  "Los Ríos",
+  15,                        "Arica y Parinacota",
+  16,                                     "Ñuble"
+)
+```
+
+Aquí tenemos las regiones en orden según su numeración, pero queremos
+ordenarlas de norte a sur:
+
+``` r
+
 regiones
-#> # A tibble: 16 × 2
-#>    codigo_region nombre_region                            
-#>            <dbl> <chr>                                    
-#>  1             1 Tarapacá                                 
-#>  2             2 Antofagasta                              
-#>  3             3 Atacama                                  
-#>  4             4 Coquimbo                                 
-#>  5             5 Valparaíso                               
-#>  6             6 Libertador General Bernardo O'Higgins    
-#>  7             7 Maule                                    
-#>  8             8 Biobío                                   
-#>  9             9 La Araucanía                             
-#> 10            10 Los Lagos                                
-#> 11            11 Aysén del General Carlos Ibáñez del Campo
-#> 12            12 Magallanes y de la Antártica Chilena     
-#> 13            13 Metropolitana de Santiago                
-#> 14            14 Los Ríos                                 
-#> 15            15 Arica y Parinacota                       
-#> 16            16 Ñuble
+```
+
+    # A tibble: 16 × 2
+       codigo_region nombre_region
+               <dbl> <chr>
+     1             1 Tarapacá
+     2             2 Antofagasta
+     3             3 Atacama
+     4             4 Coquimbo
+     5             5 Valparaíso
+     6             6 Libertador General Bernardo O'Higgins
+     7             7 Maule
+     8             8 Biobío
+     9             9 La Araucanía
+    10            10 Los Lagos
+    11            11 Aysén del General Carlos Ibáñez del Campo
+    12            12 Magallanes y de la Antártica Chilena
+    13            13 Metropolitana de Santiago
+    14            14 Los Ríos
+    15            15 Arica y Parinacota
+    16            16 Ñuble                                    
+
+``` r
 
 regiones |> 
   ordenar_regiones()
-#> # A tibble: 16 × 2
-#>    codigo_region nombre_region                            
-#>            <dbl> <fct>                                    
-#>  1            15 Arica y Parinacota                       
-#>  2             1 Tarapacá                                 
-#>  3             2 Antofagasta                              
-#>  4             3 Atacama                                  
-#>  5             4 Coquimbo                                 
-#>  6             5 Valparaíso                               
-#>  7            13 Metropolitana de Santiago                
-#>  8             6 Libertador General Bernardo O'Higgins    
-#>  9             7 Maule                                    
-#> 10            16 Ñuble                                    
-#> 11             8 Biobío                                   
-#> 12             9 La Araucanía                             
-#> 13            14 Los Ríos                                 
-#> 14            10 Los Lagos                                
-#> 15            11 Aysén del General Carlos Ibáñez del Campo
-#> 16            12 Magallanes y de la Antártica Chilena
 ```
+
+    # A tibble: 16 × 2
+       codigo_region nombre_region
+               <dbl> <fct>
+     1            15 Arica y Parinacota
+     2             1 Tarapacá
+     3             2 Antofagasta
+     4             3 Atacama
+     5             4 Coquimbo
+     6             5 Valparaíso
+     7            13 Metropolitana de Santiago
+     8             6 Libertador General Bernardo O'Higgins
+     9             7 Maule
+    10            16 Ñuble
+    11             8 Biobío
+    12             9 La Araucanía
+    13            14 Los Ríos
+    14            10 Los Lagos
+    15            11 Aysén del General Carlos Ibáñez del Campo
+    16            12 Magallanes y de la Antártica Chilena     
 
 ### Acortar nombres de regiones de Chile
 
@@ -339,26 +649,27 @@ podemos
 regiones |> 
   ordenar_regiones() |> 
   mutate(nombre_region_corto = acortar_regiones(nombre_region))
-#> # A tibble: 16 × 3
-#>    codigo_region nombre_region                             nombre_region_corto
-#>            <dbl> <fct>                                     <chr>              
-#>  1            15 Arica y Parinacota                        Arica y Parinacota 
-#>  2             1 Tarapacá                                  Tarapacá           
-#>  3             2 Antofagasta                               Antofagasta        
-#>  4             3 Atacama                                   Atacama            
-#>  5             4 Coquimbo                                  Coquimbo           
-#>  6             5 Valparaíso                                Valparaíso         
-#>  7            13 Metropolitana de Santiago                 Metropolitana      
-#>  8             6 Libertador General Bernardo O'Higgins     O'Higgins          
-#>  9             7 Maule                                     Maule              
-#> 10            16 Ñuble                                     Ñuble              
-#> 11             8 Biobío                                    Biobío             
-#> 12             9 La Araucanía                              La Araucanía       
-#> 13            14 Los Ríos                                  Los Ríos           
-#> 14            10 Los Lagos                                 Los Lagos          
-#> 15            11 Aysén del General Carlos Ibáñez del Campo Aysén              
-#> 16            12 Magallanes y de la Antártica Chilena      Magallanes
 ```
+
+    # A tibble: 16 × 3
+       codigo_region nombre_region                             nombre_region_corto
+               <dbl> <fct>                                     <chr>
+     1            15 Arica y Parinacota                        Arica y Parinacota
+     2             1 Tarapacá                                  Tarapacá
+     3             2 Antofagasta                               Antofagasta
+     4             3 Atacama                                   Atacama
+     5             4 Coquimbo                                  Coquimbo
+     6             5 Valparaíso                                Valparaíso
+     7            13 Metropolitana de Santiago                 Metropolitana
+     8             6 Libertador General Bernardo O'Higgins     O'Higgins
+     9             7 Maule                                     Maule
+    10            16 Ñuble                                     Ñuble
+    11             8 Biobío                                    Biobío
+    12             9 La Araucanía                              La Araucanía
+    13            14 Los Ríos                                  Los Ríos
+    14            10 Los Lagos                                 Los Lagos
+    15            11 Aysén del General Carlos Ibáñez del Campo Aysén
+    16            12 Magallanes y de la Antártica Chilena      Magallanes         
 
 ### Clasificar regiones de Chile en macrozonas
 
@@ -378,26 +689,30 @@ regiones |>
     macrozona_3 = agregar_macrozona(codigo_region, tipo = 3),
     macrozona_4 = agregar_macrozona(codigo_region, tipo = 4)
   )
-#> # A tibble: 16 × 6
-#>    codigo_region nombre_region   macrozona_1 macrozona_2 macrozona_3 macrozona_4
-#>            <dbl> <fct>           <fct>       <fct>       <fct>       <fct>      
-#>  1            15 Arica y Parina… Norte       Norte       Norte       Norte Gran…
-#>  2             1 Tarapacá        Norte       Norte       Norte       Norte Gran…
-#>  3             2 Antofagasta     Norte       Norte       Norte       Norte Gran…
-#>  4             3 Atacama         Norte       Norte       Norte       Norte Chico
-#>  5             4 Coquimbo        Norte       Centro      Centro      Norte Chico
-#>  6             5 Valparaíso      Centro      Centro      Centro      Norte Chico
-#>  7            13 Metropolitana … Centro      Centro      Metropolit… Zona centr…
-#>  8             6 Libertador Gen… Centro      Centro      Centro sur  Zona centr…
-#>  9             7 Maule           Centro      Centro/sur  Centro sur  Zona centr…
-#> 10            16 Ñuble           Sur         Centro/sur  Centro sur  Zona centr…
-#> 11             8 Biobío          Sur         Centro/sur  Centro sur  Zona centr…
-#> 12             9 La Araucanía    Sur         Centro/sur  Sur         Zona Sur   
-#> 13            14 Los Ríos        Sur         Sur         Sur         Zona Sur   
-#> 14            10 Los Lagos       Sur         Sur         Sur         Zona Sur   
-#> 15            11 Aysén del Gene… Austral     Sur         Austral     Zona Austr…
-#> 16            12 Magallanes y d… Austral     Sur         Austral     Zona Austr…
 ```
+
+    # A tibble: 16 × 6
+       codigo_region nombre_region   macrozona_1 macrozona_2 macrozona_3 macrozona_4
+               <dbl> <fct>           <fct>       <fct>       <fct>       <fct>
+     1            15 Arica y Parina… Norte       Norte       Norte       Norte Gran…
+     2             1 Tarapacá        Norte       Norte       Norte       Norte Gran…
+     3             2 Antofagasta     Norte       Norte       Norte       Norte Gran…
+     4             3 Atacama         Norte       Norte       Norte       Norte Chico
+     5             4 Coquimbo        Norte       Centro      Centro      Norte Chico
+     6             5 Valparaíso      Centro      Centro      Centro      Norte Chico
+     7            13 Metropolitana … Centro      Centro      Metropolit… Zona centr…
+     8             6 Libertador Gen… Centro      Centro      Centro sur  Zona centr…
+     9             7 Maule           Centro      Centro/sur  Centro sur  Zona centr…
+    10            16 Ñuble           Sur         Centro/sur  Centro sur  Zona centr…
+    11             8 Biobío          Sur         Centro/sur  Centro sur  Zona centr…
+    12             9 La Araucanía    Sur         Centro/sur  Sur         Zona Sur
+    13            14 Los Ríos        Sur         Sur         Sur         Zona Sur
+    14            10 Los Lagos       Sur         Sur         Sur         Zona Sur
+    15            11 Aysén del Gene… Austral     Sur         Austral     Zona Austr…
+    16            12 Magallanes y d… Austral     Sur         Austral     Zona Austr…
+
+Para más información, [ver la viñeta sobre
+macrozonas.](https://bastianolea.github.io/territorial/articles/mapas_regionales_macrozonas.html)
 
 ### Validación de calidad de nombres de regiones
 
@@ -409,35 +724,70 @@ existentes:
 
 ``` r
 
-validar_regiones(c("los lagos", "nuble", "OHIGGINS"))
-#> ! mayúsculas: 1 caso de regiones escritas en mayúsculas
-#> ! mayúsculas: 2 casos de regiones escritas en minúsculas
-#> ! ortografía: 1 caso de la Región de Ñuble escrita sin eñe
-#> ! ortografía: 1 caso de la Región de O'Higgins escrita sin su apóstrofo (')
+regiones <- tibble(nombre_region = c("los lagos", "nuble", "OHIGGINS", "Araucania"))
+
+regiones
 ```
 
-### Uso de regiones para la redacción de textos
-
-Un típico problema es que tenemos las regiones y necesitamos incluirlas
-en un texto, pero si anteponemos “Región de” no siempre queda bien: por
-ejemplo, no se dice “Región de Metropolitana”, ni tampoco se dice
-“Región de Maule”, sino que cada región tiene su preposición apropiada.
-Para esto usamos la función
-[`redactar_region()`](https://bastianolea.github.io/territorial/reference/redactar_region.md),
-que a su vez usa
-[`preposicion_region()`](https://bastianolea.github.io/territorial/reference/preposicion_region.md)
-para identificar la preposición correcta:
+    # A tibble: 4 × 1
+      nombre_region
+      <chr>
+    1 los lagos
+    2 nuble
+    3 OHIGGINS
+    4 Araucania    
 
 ``` r
 
-redactar_region("Metropolitana")
-#> [1] "Región Metropolitana"
-redactar_region("Maule")
-#> [1] "Región del Maule"
+regiones |> 
+  validar_regiones()
 ```
+
+    ℹ No se especificó la variable: asumiendo columna `nombre_region`
+
+    ! Mayúsculas: 1 caso de regiones escritas en mayúsculas
+
+    ! Mayúsculas: 2 casos de regiones escritas en minúsculas
+
+    ! Ortografía: 1 caso de la Región de Ñuble escrita sin eñe
+
+    ! Ortografía: 1 caso de la Región de O'Higgins escrita sin su apóstrofo (')
+
+    ! Ortografía: 1 caso de regiones escritas sin tilde
+
+    ✖ Validación de regiones: se encontraron 6 problemas con las regiones!
+
+### Otras funciones para regiones
+
+Si tienes nombres de región y estás creando reportes o aplicaciones que
+usan las regiones dentro de párrafos, sabrás que hay regiones que se
+anteceden por preposiciones distintas (*Región “del” Maule, Región “de”
+O’Higgins*), e incluso sin preposiciones (no se escribe *Región “de”
+Metropolitana*). Para eso existe la función
+[`preposicion_region()`](https://bastianolea.github.io/territorial/reference/preposicion_region.md):
+
+``` r
+
+region <- c("Maule", "O'Higgins")
+
+preposicion_region(region)
+```
+
+    [1] "del" "de" 
+
+La mejor forma de obtener el nombre redactado de la región sería con,
+obviamente,
+[`redactar_region()`](https://bastianolea.github.io/territorial/reference/redactar_region.md):
+
+``` r
+
+redactar_region(region)
+```
+
+    [1] "Región del Maule"    "Región de O'Higgins"
 
 ------------------------------------------------------------------------
 
-Estas son algunas de las funciones principales, pero existen muchas más
-que facilitan el trabajo con datos territoriales de Chile: [revisa el
-índice!](https://bastianolea.github.io/territorial/reference/index.html)
+Estas son algunas de las funciones principales, pero existen muchas más:
+[revisa el índice de
+funciones!](https://bastianolea.github.io/territorial/reference/index.html)

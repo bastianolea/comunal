@@ -212,7 +212,6 @@ Queda limpiar las regiones. Primero las validamos con
 
 servel_limpio |> 
   validar_regiones(region)
-#> ℹ Validando calidad de nombres de región desde tabla de datos
 #> ! Mayúsculas: 12091 casos de regiones escritas en mayúsculas
 #> ! Ortografía: 3205 casos de regiones escritas sin tilde
 #> ✖ Validación de regiones: se encontraron 15296 problemas con las regiones!
@@ -239,7 +238,6 @@ Repetimos la validación para confirmar:
 
 servel_limpio |> 
   validar_regiones(nombre_region)
-#> ℹ Validando calidad de nombres de región desde tabla de datos
 #> ✔ Todas las regiones están correctas!
 ```
 

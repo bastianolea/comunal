@@ -27,4 +27,7 @@ detecta la región.
 ``` r
 preposicion_region("Ñuble")
 #> [1] "de"
+
+preposicion_region("O'Higgins")
+#> [1] "de"
 ```

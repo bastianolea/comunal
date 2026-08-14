@@ -1,5 +1,14 @@
 # Registro de cambios
 
+## territorial 0.8.13 (2026/08/14)
+
+- Mejoras en
+  [`preposicion_region()`](https://bastianolea.github.io/territorial/reference/preposicion_region.md)
+  para formas alternativas de escribir regiones.
+- Mejoras en viñetas
+- Menos mensajes irrelevantes en
+  [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md).
+
 ## territorial 0.8.12 (2026/08/12)
 
 - Nueva función
