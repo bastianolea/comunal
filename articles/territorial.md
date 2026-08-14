@@ -105,7 +105,7 @@ Para empezar a trabajar con estos datos, validamos su calidad primero:
 ``` r
 
 datos |> 
-  validar_comunas(nombre_comuna) 
+  validar_comunas(nombre_comuna) # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
 ```
 
     ! Resumen: 7 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): PIRQUE, Maipu, santiago, prohibidencia, CERRILLOS, San José De Maipo y OHiggins
@@ -121,11 +121,6 @@ datos |>
     ℹ Problemas comunes: 1 caso de comunas popularmente mal escritas: OHiggins
 
     ✖ Validación de comunas: se encontraron 14 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
-
-``` r
-
-  # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
-```
 
 ### Limpieza de nombres de comunas de Chile
 
@@ -268,18 +263,18 @@ base
 ```
 
     # A tibble: 972 × 4
-       nombre_comuna codigo_comuna name     value
-       <chr>                 <dbl> <chr>    <dbl>
-     1 San Ramón             13131 a     0.000301
-     2 Los Lagos             14104 a     0.00100
-     3 Trehuaco              16207 c     0.00190
-     4 Pemuco                16105 c     0.00208
-     5 Cauquenes              7201 a     0.00239
-     6 Ercilla                9204 c     0.00298
-     7 Cochrane              11301 a     0.00373
-     8 Marchihue              6204 b     0.00487
-     9 Quilaco                8308 c     0.00773
-    10 Buin                  13402 c     0.00864
+       nombre_comuna    codigo_comuna name     value
+       <chr>                    <dbl> <chr>    <dbl>
+     1 Quilleco                  8309 b     0.000232
+     2 San Pablo                10307 c     0.000411
+     3 Las Condes               13114 b     0.00469
+     4 San Vicente               6117 a     0.00686
+     5 Curaco de Vélez          10204 b     0.00792
+     6 Freirina                  3303 a     0.00863
+     7 Diego de Almagro          3202 a     0.00921
+     8 Pumanque                  6309 a     0.0103
+     9 Olmué                     5803 a     0.0107
+    10 Bulnes                   16102 a     0.0135
     # ℹ 962 more rows
 
 Esta tabla tiene 972 filas, ¿cómo confirmar si existen datos para todas
@@ -296,7 +291,7 @@ base |>
 
     ! La cantidad de comunas es anómala: hay 324, pero deberían ser 346. Revísalas con `territorial::validar_comunas()`
 
-    → Las comunas faltantes son: Pica, Taltal, Illapel, Canela, Salamanca, La Ligua, Algarrobo, Quinta de Tilcoco, San Vicente, Curepto, Pelarco, Quilleco, Freire, Lautaro, Pitrufquén, Vilcún, Chonchi, Antártica, Primavera, Lo Barnechea, Providencia y Lago Ranco
+    → Las comunas faltantes son: Pozo Almonte, Los Vilos, Río Hurtado, Quillota, Santo Domingo, Santa María, Longaví, Lota, Antuco, Negrete, Loncoche, Lumaco, Cabo de Hornos, Antártica, Porvenir, La Granja, Ñuñoa, San Ramón, Colina, Tiltil, Valdivia y San Ignacio
 
 La función
 [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
@@ -314,19 +309,19 @@ base |>
   buscar_comuna("Alto")
 ```
 
-    ! Se encontraron 30 resultados, mostrando sólo 6.
+    ! Se encontraron 24 resultados, mostrando sólo 6.
 
-    ℹ Los resultados más cercanos al término `Alto` son: Alto del Carmen, Alto Biobío y Alto Hospicio
+    ℹ Los resultados más cercanos al término `Alto` son: Alto Biobío, Alto Hospicio, Alto del Carmen y Puente Alto
 
     # A tibble: 6 × 5
-      nombre_comuna   codigo_comuna name   value puntaje
-      <chr>                   <dbl> <chr>  <dbl>   <dbl>
-    1 Alto del Carmen          3302 c     0.0924       1
-    2 Alto del Carmen          3302 a     0.256        1
-    3 Alto del Carmen          3302 b     0.286        1
-    4 Alto Biobío              8314 a     0.302        1
-    5 Alto Hospicio            1107 a     0.323        1
-    6 Alto Biobío              8314 c     0.504        1
+      nombre_comuna   codigo_comuna name  value puntaje
+      <chr>                   <dbl> <chr> <dbl>   <dbl>
+    1 Alto Biobío              8314 b     0.105       1
+    2 Alto Biobío              8314 a     0.298       1
+    3 Alto Hospicio            1107 a     0.313       1
+    4 Alto Hospicio            1107 c     0.475       1
+    5 Alto del Carmen          3302 c     0.512       1
+    6 Puente Alto             13201 a     0.640       1
 
 ### Crear nombres de comunas a partir de códigos únicos territoriales
 
