@@ -1,5 +1,6 @@
 ## Pendientes
 - [ ] limpiar regiones
+- [ ] revisar por qué en la viñeta de primeros pasos salen líneas vacías: https://bastianolea.github.io/territorial/articles/territorial.html#limpieza-de-nombres-de-comunas-de-chile
 
 
 ## Ideas
