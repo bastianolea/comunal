@@ -18,7 +18,7 @@ limpiar_comunas(
 
 \item{aproximar}{El paso de limpieza por aproximación y coincidencia de nombres puede entregar resultados inexactos. Cambiar a FALSE para omitir.}
 
-\item{mostrar_proceso}{Mostrar una tabla con el resultado del proceso de limpieza. Elegir entre TRUE o FALSE.}
+\item{mostrar_proceso}{Mostrar una tabla con los resultados intermedios del proceso de limpieza. Elegir entre TRUE o FALSE, por defecto FALSE.}
 }
 \value{
 Si la entrada es un dataframe, retorna el dataframe con la columna de comunas reemplazada. Si es un vector, retorna un vector de nombres de comunas con correcciones aplicadas.

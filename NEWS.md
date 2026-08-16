@@ -1,5 +1,6 @@
-# territorial 0.8.14 (2026/08/16)
-- Pruebas de funcionamiento mucho más estrictas para `limpiar_comunas()` usando [el paquete `{messy}` para ensuciar los datos](https://nrennie.rbind.io/messy/) en distintos niveles.
+# territorial 0.9 (2026/08/16)
+- Nueva función `limpiar_regiones()`, que funciona igual a `limpiar_comunas()` pero para las regiones de Chile, en versiones largas o cortas.
+- Pruebas de funcionamiento mucho más estrictas para `limpiar_comunas()` y `limpiar_regiones()` usando [el paquete `{messy}` para ensuciar los datos](https://nrennie.rbind.io/messy/) en distintos niveles: eliminar e insertar caracteres al azar, etc.
 - Mejora de limpieza en `limpiar_comunas()` para eliminar "Ilustre Municipalidad" y textos similares en nombres de comunas.
 
 # territorial 0.8.13 (2026/08/14)

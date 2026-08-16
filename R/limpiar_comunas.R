@@ -11,7 +11,7 @@
 #'
 #' @param datos Dataframe con una columna de nombres de comunas, o vector de nombres de comunas
 #' @param variable Columna del dataframe con los nombres de comunas (se pasa sin comillas, p.ej. `comuna`). Si no se especifica, se asume `nombre_comuna`. Si se aplica a un vector, omitir este argumento.
-#' @param mostrar_proceso Mostrar una tabla con el resultado del proceso de limpieza. Elegir entre TRUE o FALSE.
+#' @param mostrar_proceso Mostrar una tabla con los resultados intermedios del proceso de limpieza. Elegir entre TRUE o FALSE, por defecto FALSE.
 #' @param aproximar El paso de limpieza por aproximación y coincidencia de nombres puede entregar resultados inexactos. Cambiar a FALSE para omitir.
 #'
 #' @returns Si la entrada es un dataframe, retorna el dataframe con la columna de comunas reemplazada. Si es un vector, retorna un vector de nombres de comunas con correcciones aplicadas.
