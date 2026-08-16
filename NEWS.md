@@ -1,3 +1,7 @@
+# territorial 0.8.14 (2026/08/16)
+- Pruebas de funcionamiento mucho más estrictas para `limpiar_comunas()` usando [el paquete `{messy}` para ensuciar los datos](https://nrennie.rbind.io/messy/) en distintos niveles.
+- Mejora de limpieza en `limpiar_comunas()` para eliminar "Ilustre Municipalidad" y textos similares en nombres de comunas.
+
 # territorial 0.8.13 (2026/08/14)
 - Mejoras en `preposicion_region()` para formas alternativas de escribir regiones.
 - Mejoras en viñetas

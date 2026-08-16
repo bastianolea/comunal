@@ -41,27 +41,38 @@ limpiar_comunas <- function(
   mostrar_proceso = FALSE
 ) {
   # la función funciona con tablas o vectores, y con o sin especificar la columna (se asume `nombre_comuna`)
+  # si es dataframe, la columna se extrae como vector
   if (any(class(datos) %in% "data.frame")) {
     col_expr <- rlang::enquo(variable)
 
+    # si no se especifica columna, asumir `nombre_comuna`
     if (rlang::quo_is_null(col_expr)) {
       col_expr <- rlang::sym("nombre_comuna")
     }
 
+    # error si la columna exista no existe
     if (!rlang::as_name(col_expr) %in% names(datos)) {
       cli::cli_abort("La columna {.var {rlang::as_name(col_expr)}} no existe!")
     }
 
-    nombre_comuna_vec <- dplyr::pull(dplyr::ungroup(datos), !!col_expr)
-    resultado_vec <- limpiar_comunas(
-      nombre_comuna_vec,
-      aproximar = aproximar,
-      mostrar_proceso = mostrar_proceso
-    )
-    return(dplyr::mutate(datos, !!col_expr := resultado_vec))
+    # desagrupar tabla
+    datos <- dplyr::ungroup(datos)
+
+    # extraer columna como vector
+    nombre_comuna <- dplyr::pull(datos, !!col_expr)
+
+    # resultado_vec <- limpiar_comunas(
+    #   nombre_comuna_vec,
+    #   aproximar = aproximar,
+    #   mostrar_proceso = mostrar_proceso
+    # )
+    # return(dplyr::mutate(datos, !!col_expr := resultado_vec))
+    #
   } else if (is.vector(datos)) {
+    # si se entrega vector, continuar como vector
     nombre_comuna <- as.character(datos)
   } else {
+    # error si no es dataframe ni vector
     cli::cli_abort("Datos de tipo incompatible, debe ser dataframe o vector")
   }
 
@@ -74,7 +85,9 @@ limpiar_comunas <- function(
   # nombre_comuna <- c("PORVENIR", "PORVENIR", "NATALES", "NATALES", "CABO DE HORNOS(EX-NAVARINO)", "AISEN")
 
   # empezar a registrar resultados
+  # empezando por la versión original de los nombres
   comunas_originales <- dplyr::tibble(nombre_comuna)
+  # los nombres originales se usarán al final para un left join
 
   resultados <- comunas_originales |>
     dplyr::distinct()
@@ -83,9 +96,16 @@ limpiar_comunas <- function(
     "Limpiando {nrow(comunas_originales)} nombres de comuna{?s} ({dplyr::n_distinct(nombre_comuna)} son distintas)"
   )
 
-  # optimizar ----
+  # preprocesar ----
+  # limpiar comunas eliminando símbolos y bajando a minúsculas
   resultados <- resultados |>
     dplyr::mutate(comunas_limpias = limpiar_texto(nombre_comuna)) |>
+    dplyr::mutate(
+      comunas_limpias = stringr::str_remove(
+        comunas_limpias,
+        "(ilustre|i|ilus) municipalidad|municipalidad de|municipalidad|municipio de|municipio|^muni|alcald(ía|e|esa) de"
+      )
+    ) |>
     dplyr::mutate(
       comunas_limpias = ifelse(
         comunas_limpias == "",
@@ -95,7 +115,6 @@ limpiar_comunas <- function(
     )
 
   # correctas ----
-
   # buscar si son equivalentes a las comunas oficiales
   resultados <- resultados |>
     dplyr::mutate(
@@ -123,10 +142,10 @@ limpiar_comunas <- function(
       "De las {nrow(resultados)} comunas distintas, {length(comunas_correctas)} ya eran correctas: {redactar_comunas(comunas_correctas)}"
     )
   }
-  cli::cli_par()
+  # cli::cli_par()
 
   # limpiar ----
-  # bajar a minusculas y sacar tildes, comparar con correctas con mismo tratamiento
+  # bajar a minúsculas y sacar tildes, comparar con correctas con mismo tratamiento
   # si coinciden, usar correctas
   cli::cli_h3("Paso 2: coincidencias por limpieza de texto")
 
@@ -137,7 +156,6 @@ limpiar_comunas <- function(
   resultados <- resultados |>
     dplyr::mutate(
       limpieza = dplyr::if_else(
-        # !is.na(correctas) ~ NA_character_,
         comunas_limpias %in% comunas_oficiales_limpias,
         territorial::comunas()[match(
           comunas_limpias,
@@ -157,7 +175,7 @@ limpiar_comunas <- function(
   cli::cli_alert_info(
     "A partir de la limpieza de texto, se limpiaron {length(comunas_limpias)} de {nrow(resultados)} comunas: {redactar_comunas(comunas_limpias)}"
   )
-  cli::cli_par()
+  # cli::cli_par()
 
   # casos especiales ----
   cli::cli_h3("Paso 3: casos especiales")
@@ -187,7 +205,7 @@ limpiar_comunas <- function(
   cli::cli_alert_info(
     "{mensaje}: {redactar_comunas(comunas_especiales)}"
   )
-  cli::cli_par()
+  # cli::cli_par()
 
   # coincidir ----
   # las demás, aproximarlas con agrepl, retornar con advertencia
@@ -210,11 +228,13 @@ limpiar_comunas <- function(
       )
   }
 
+  # determinar las comunas que se requieren coincidir
   comunas_coincidir <- faltantes |>
     dplyr::select(coincidir) |>
     na.omit() |>
     dplyr::pull()
 
+  # por cada comuna faltante, buscar coincidencias aproximadas con agrep
   coincidencias <- purrr::map(
     faltantes$coincidir,
     \(comuna_faltante) {
@@ -237,13 +257,13 @@ limpiar_comunas <- function(
 
       if (length(resultado) == 0) {
         cli::cli_alert_warning(
-          "alerta, no se encontró ninguna coincidencia para la comuna `{comuna_faltante}`"
+          "Alerta, no se encontró ninguna coincidencia para la comuna `{comuna_faltante}`"
         )
       }
 
       if (length(resultado) > 1) {
         cli::cli_alert_warning(
-          "alerta, se encontraron más de una coincidencia para la comuna `{comuna_faltante}`: {redactar_comunas(resultado)}"
+          "Alerta, se encontraron {length(resultado)} coincidencias para la comuna `{comuna_faltante}`: {redactar_comunas(resultado)}"
         )
       }
 
@@ -258,6 +278,7 @@ limpiar_comunas <- function(
     comunas_oficiales_limpias
   )
 
+  # agregar a resultados
   resultados <- resultados |>
     dplyr::mutate(
       coincidencia = territorial::comunas()[coincidencias_proximidad]
@@ -279,17 +300,19 @@ limpiar_comunas <- function(
       "No se limpiaron comunas como parte de este paso"
     )
   }
-  cli::cli_par()
+  # cli::cli_par()
 
   # terminar ----
   cli::cli_h3("Conclusión de limpieza de comunas")
 
+  # separar las originales, y unir los resultados en una sola columna
   limpiado <- resultados |>
     dplyr::rename(original = nombre_comuna) |>
     dplyr::mutate(
       resultado = dplyr::coalesce(correctas, limpieza, especiales, coincidencia)
     )
 
+  # extraer las limpiadas
   comunas_limpiadas <- limpiado |>
     dplyr::select(resultado) |>
     na.omit() |>
@@ -302,6 +325,7 @@ limpiar_comunas <- function(
     "De las {nrow(resultados)} comunas distintas, se limpiaron {length(comunas_limpiadas)} en total ({round(porcentaje, 3) * 100}%)"
   )
 
+  # opcionalmente, mostrar una tabla con las columnas intermedias
   if (mostrar_proceso) {
     cli::cli_alert_info("Mostrando proceso:")
     limpiado |>
@@ -323,5 +347,10 @@ limpiar_comunas <- function(
     cli::cli_abort("El resultado no es del mismo largo que el input")
   }
 
-  return(resultado$resultado)
+  # si es dataframe, agregar columna; si es vector, retornar vector
+  if (any(class(datos) %in% "data.frame")) {
+    return(dplyr::mutate(datos, !!col_expr := resultado$resultado))
+  } else {
+    return(resultado$resultado)
+  }
 }

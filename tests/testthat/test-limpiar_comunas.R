@@ -1,13 +1,12 @@
 test_that("prueba de limpieza de comunas 1", {
   expect_equal(
     limpiar_comunas(
-      c("CERRILLOS", "la florida", "ñunoa", "nunoa"),
-      mostrar_proceso = FALSE
-    ) |>
-      suppressMessages(),
+      c("CERRILLOS", "la florida", "ñunoa", "nunoa")
+    ),
     c("Cerrillos", "La Florida", "Ñuñoa", "Ñuñoa")
   )
-})
+}) |>
+  suppressMessages()
 
 test_that("prueba de limpieza de comunas 2", {
   expect_equal(
@@ -135,27 +134,21 @@ test_that("limpiar comunas sin especificar columna retorna dataframe", {
   expect_s3_class(resultado, "data.frame")
 })
 
-test_that(
-  "limpiar comunas desde dataframe especificando columna retorna dataframe",
-  {
-    resultado <- territorios |>
-      limpiar_comunas(nombre_comuna) |>
-      suppressMessages()
+test_that("limpiar comunas desde dataframe especificando columna retorna dataframe", {
+  resultado <- territorios |>
+    limpiar_comunas(nombre_comuna) |>
+    suppressMessages()
 
-    expect_s3_class(resultado, "data.frame")
-  }
-)
+  expect_s3_class(resultado, "data.frame")
+})
 
-test_that(
-  "limpiar comunas desde vector retorna vector",
-  {
-    resultado <- territorios$nombre_comuna |>
-      limpiar_comunas() |>
-      suppressMessages()
+test_that("limpiar comunas desde vector retorna vector", {
+  resultado <- territorios$nombre_comuna |>
+    limpiar_comunas() |>
+    suppressMessages()
 
-    expect_true(is.vector(resultado))
-  }
-)
+  expect_true(is.vector(resultado))
+})
 
 test_that(
   "limpiar comunas con columna que no existe",
@@ -215,3 +208,151 @@ test_that("limpiar comunas desde dataframe con columna personalizada", {
 
   expect_equal(resultado$municipio, c("Cerrillos", "La Florida"))
 })
+
+
+# calidad ----
+test_that("prueba calidad de limpieza de comunas: minúscula sin símbolos", {
+  expect_message(
+    comunas() |>
+      limpiar_texto() |>
+      limpiar_comunas(),
+    regexp = "100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: mayúsculas sin símbolos", {
+  expect_message(
+    comunas() |>
+      limpiar_texto() |>
+      toupper() |>
+      limpiar_comunas(),
+    regexp = "100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: guiones bajo en vez de espacios", {
+  expect_message(
+    comunas() |>
+      limpiar_texto() |>
+      stringr::str_replace_all(" ", "_") |>
+      limpiar_comunas(),
+    regexp = "100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: espaciados extra", {
+  expect_message(
+    territorios |>
+      dplyr::select(nombre_comuna) |>
+      messy::add_whitespace() |>
+      limpiar_comunas(),
+    regexp = "100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: caracteres especiales, nivel 1", {
+  expect_message(
+    territorios |>
+      dplyr::select(nombre_comuna) |>
+      messy::add_special_chars(messiness = 0.1) |>
+      limpiar_comunas(),
+    regexp = "100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: caracteres especiales, nivel 2", {
+  expect_message(
+    territorios |>
+      dplyr::select(nombre_comuna) |>
+      messy::add_special_chars(messiness = 0.3) |>
+      limpiar_comunas(),
+    regexp = "[95-99].[1-9]%|100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: mayúsculas y símbolos", {
+  expect_message(
+    territorios |>
+      dplyr::select(nombre_comuna) |>
+      messy::change_case() |>
+      messy::add_special_chars() |>
+      limpiar_comunas(),
+    regexp = "100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: mayúsculas, espacios y símbolos", {
+  expect_message(
+    territorios |>
+      dplyr::select(nombre_comuna) |>
+      messy::change_case() |>
+      messy::add_whitespace() |>
+      messy::add_special_chars() |>
+      limpiar_comunas(),
+    regexp = "[95-99].[1-9]%|100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: caracteres faltantes", {
+  expect_message(
+    comunas() |>
+      eliminar_caracteres(porcentaje = 0.1) |>
+      limpiar_comunas(),
+    regexp = "100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: caracteres faltantes, nivel 2", {
+  expect_message(
+    comunas() |>
+      eliminar_caracteres(porcentaje = 0.3) |>
+      limpiar_comunas(),
+    regexp = "[95-99].[1-9]%|100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba calidad de limpieza de comunas: caracteres reemplazados", {
+  expect_message(
+    comunas() |>
+      reemplazar_caracteres(porcentaje = 0.1) |>
+      limpiar_comunas(),
+    regexp = "100%"
+  )
+}) |>
+  suppressMessages()
+
+
+test_that("prueba calidad de limpieza de comunas: caracteres reemplazados, nivel 2", {
+  expect_message(
+    comunas() |>
+      reemplazar_caracteres(porcentaje = 0.3) |>
+      limpiar_comunas(),
+    regexp = "[95-99].[1-9]%|100%"
+  )
+}) |>
+  suppressMessages()
+
+test_that("prueba de limpieza eliminando prefijos", {
+  expect_equal(
+    limpiar_comunas(
+      c(
+        "Ilustre Municipalidad de La Florida",
+        "I. Municipalidad de La Pintana",
+        "Municipalidad de Cerrillos",
+        "Muni Providencia"
+      )
+    ),
+    c("La Florida", "La Pintana", "Cerrillos", "Providencia")
+  )
+}) |>
+  suppressMessages()
