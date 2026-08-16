@@ -285,7 +285,6 @@ biblio_limpio <- biblio_ancho |>
 #> 
 #> ── Conclusión de limpieza de comunas
 #> ✔ De las 325 comunas distintas, se limpiaron 325 en total (100%)
-#> 
 
 biblio_limpio
 #> # A tibble: 325 × 4

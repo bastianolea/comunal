@@ -15,7 +15,7 @@ limpiar_comunas(
   datos,
   variable = NULL,
   aproximar = TRUE,
-  mostrar_proceso = FALSE
+  procedimiento = FALSE
 )
 ```
 
@@ -37,10 +37,10 @@ limpiar_comunas(
   El paso de limpieza por aproximación y coincidencia de nombres puede
   entregar resultados inexactos. Cambiar a FALSE para omitir.
 
-- mostrar_proceso:
+- procedimiento:
 
-  Mostrar una tabla con el resultado del proceso de limpieza. Elegir
-  entre TRUE o FALSE.
+  Mostrar una tabla con los resultados intermedios del proceso de
+  limpieza. Elegir entre TRUE o FALSE, por defecto FALSE.
 
 ## Valor
 
@@ -93,7 +93,7 @@ Los nombres se limpian en cuatro pasos:
     garantiza que la coincidencia sea correcta. Puedes desactivar este
     paso poniendo `aproximar = FALSE`. Finalmente, se muestra una tabla
     que describe el proceso de limpieza para su revisión (que puede
-    ocultarse con `mostrar_proceso = FALSE`, y se retornan las comunas
+    ocultarse con `procedimiento = FALSE`, y se retornan las comunas
     correctas.
 
 ## Ejemplos
@@ -112,12 +112,11 @@ limpiar_comunas(c("COLCHANE", "Alto Ospicio", "probidencia", "huara", "laflorida
 #> ℹ Se encontraron 0 casos especiales: 
 #> 
 #> ── Paso 4: coincidencias aproximadas de texto 
-#> ! alerta, se encontraron más de una coincidencia para la comuna `laflorida`: la florida y florida
+#> ! Alerta, se encontraron 2 coincidencias para la comuna `laflorida`: la florida y florida
 #> ℹ Se limpiaron 5 de 5 comunas por medio de coincidencias aproximadas de texto: Alto Hospicio, Providencia, La Florida, Cerrillos y Llaillay
 #> 
 #> ── Conclusión de limpieza de comunas 
 #> ✔ De las 7 comunas distintas, se limpiaron 7 en total (100%)
-#> 
 #> [1] "Colchane"      "Alto Hospicio" "Providencia"   "Huara"        
 #> [5] "La Florida"    "Cerrillos"     "Llaillay"     
 
@@ -147,7 +146,6 @@ datos |>
 #> 
 #> ── Conclusión de limpieza de comunas 
 #> ✔ De las 8 comunas distintas, se limpiaron 8 en total (100%)
-#> 
 #> # A tibble: 8 × 2
 #>   nombre_comuna     valores
 #>   <chr>               <dbl>
@@ -179,7 +177,6 @@ datos |>
 #> 
 #> ── Conclusión de limpieza de comunas 
 #> ✔ De las 8 comunas distintas, se limpiaron 8 en total (100%)
-#> 
 #> # A tibble: 8 × 3
 #>   nombre_comuna     valores nombre_corregido 
 #>   <chr>               <dbl> <chr>            

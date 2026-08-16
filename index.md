@@ -91,8 +91,7 @@ una tabla con datos de ejemplo:
 datos <- dplyr::tibble(
   nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "nunoa",
                     "santiago", "prohibidencia", "CERRILLOS", 
-                    "San José De Maipo", "OHiggins")
-)
+                    "San José De Maipo", "OHiggins"))
 
 datos
 ```
@@ -254,20 +253,7 @@ datos <- dplyr::tribble(
               13201,        14,
               13110,        23,
               13111,       156,
-              13129,        12
-     )
-
-datos
-```
-
-``` R
-# A tibble: 4 × 2
-  codigo_comuna personas
-          <dbl>    <dbl>
-1         13201       14
-2         13110       23
-3         13111      156
-4         13129       12
+              13129,        12)
 ```
 
 Ahora le aplicamos

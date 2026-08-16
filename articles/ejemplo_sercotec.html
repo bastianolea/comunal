@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.13</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -198,13 +198,12 @@
 <span><span class="co">#&gt; ℹ Se encontraron 3 casos especiales: Aysén, Cabo de Hornos y Saavedra</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Paso 4: coincidencias aproximadas de texto</span></span>
-<span><span class="co">#&gt; ! alerta, no se encontró ninguna coincidencia para la comuna `no informada`</span></span>
-<span><span class="co">#&gt; ! alerta, no se encontró ninguna coincidencia para la comuna `otro lugar`</span></span>
+<span><span class="co">#&gt; ! Alerta, no se encontró ninguna coincidencia para la comuna `no informada`</span></span>
+<span><span class="co">#&gt; ! Alerta, no se encontró ninguna coincidencia para la comuna `otro lugar`</span></span>
 <span><span class="co">#&gt; ℹ Se limpiaron 1 de 3 comunas por medio de coincidencias aproximadas de texto: Trehuaco</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Conclusión de limpieza de comunas</span></span>
-<span><span class="co">#&gt; ✔ De las 346 comunas distintas, se limpiaron 344 en total (99.4%)</span></span>
-<span><span class="co">#&gt; </span></span></code></pre></div>
+<span><span class="co">#&gt; ✔ De las 346 comunas distintas, se limpiaron 344 en total (99.4%)</span></span></code></pre></div>
 </div>
 <p>La función limpia automáticamente los tildes faltantes, las escrituras alternativas (como <em>Aisén</em> por <em>Aysén</em> y <em>Treguaco</em> por <em>Trehuaco</em>), y los casos especiales como <em>Puerto Saavedra</em> (que se estandariza como <em>Saavedra</em>) y <em>Cabo de Hornos</em> (que se le suele añadir el texto “Ex Navarino” o similar). También detecta que <em>No Informada</em> y <em>Otro lugar</em> no son comunas reales, dejándolas como <code>NA</code>.</p>
 <p>Filtramos las filas sin comuna identificada, eliminamos la columna de nombres de comunas originales, y verificamos el resultado:</p>

@@ -138,7 +138,6 @@ datos_2 <- datos |>
 #> 
 #> ── Conclusión de limpieza de comunas
 #> ✔ De las 3 comunas distintas, se limpiaron 3 en total (100%)
-#> 
 
 datos_2
 #> # A tibble: 3 × 2

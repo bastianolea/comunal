@@ -150,13 +150,12 @@ sercotec_limpio <- sercotec |>
 #> ℹ Se encontraron 3 casos especiales: Aysén, Cabo de Hornos y Saavedra
 #> 
 #> ── Paso 4: coincidencias aproximadas de texto
-#> ! alerta, no se encontró ninguna coincidencia para la comuna `no informada`
-#> ! alerta, no se encontró ninguna coincidencia para la comuna `otro lugar`
+#> ! Alerta, no se encontró ninguna coincidencia para la comuna `no informada`
+#> ! Alerta, no se encontró ninguna coincidencia para la comuna `otro lugar`
 #> ℹ Se limpiaron 1 de 3 comunas por medio de coincidencias aproximadas de texto: Trehuaco
 #> 
 #> ── Conclusión de limpieza de comunas
 #> ✔ De las 346 comunas distintas, se limpiaron 344 en total (99.4%)
-#> 
 ```
 
 La función limpia automáticamente los tildes faltantes, las escrituras

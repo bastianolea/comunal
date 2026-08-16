@@ -78,8 +78,8 @@ comunas. Usemos como ejemplo la siguiente tabla de datos:
 library(dplyr)
 
 datos <- tibble(
-  nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "santiago", "prohibidencia", "CERRILLOS", "San José De Maipo", "OHiggins"),
-  valores = c(4, 6, 2, 8, 6, 3, 5, 8)
+  nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "santiago", "prohibidencia", "CERRILLOS", "San José De Maipo", "Puerto Saavedra", "OHiggins"),
+  valores = c(4, 6, 2, 8, 6, 3, 5, 8, 10)
 )
 ```
 
@@ -88,7 +88,7 @@ datos <- tibble(
 datos
 ```
 
-    # A tibble: 8 × 2
+    # A tibble: 9 × 2
       nombre_comuna     valores
       <chr>               <dbl>
     1 PIRQUE                  4
@@ -98,7 +98,8 @@ datos
     5 prohibidencia           6
     6 CERRILLOS               3
     7 San José De Maipo       5
-    8 OHiggins                8
+    8 Puerto Saavedra         8
+    9 OHiggins               10
 
 Para empezar a trabajar con estos datos, validamos su calidad primero:
 
@@ -108,7 +109,7 @@ datos |>
   validar_comunas(nombre_comuna) # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
 ```
 
-    ! Resumen: 7 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): PIRQUE, Maipu, santiago, prohibidencia, CERRILLOS, San José De Maipo y OHiggins
+    ! Resumen: 8 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): PIRQUE, Maipu, santiago, prohibidencia, CERRILLOS, San José De Maipo, Puerto Saavedra y OHiggins
 
     ! Mayúsculas: 2 casos de comunas escritas en mayúsculas: PIRQUE y CERRILLOS
 
@@ -120,7 +121,7 @@ datos |>
 
     ℹ Problemas comunes: 1 caso de comunas popularmente mal escritas: OHiggins
 
-    ✖ Validación de comunas: se encontraron 14 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
+    ✖ Validación de comunas: se encontraron 15 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
 
 ### Limpieza de nombres de comunas de Chile
 
@@ -135,19 +136,19 @@ datos |>
   limpiar_comunas()
 ```
 
-    ℹ Limpiando 8 nombres de comunas (8 son distintas)
+    ℹ Limpiando 9 nombres de comunas (9 son distintas)
 
     ── Paso 1: confirmar comunas correctas 
 
-    ℹ De las 8 comunas distintas, 1 ya eran correctas: El Monte
+    ℹ De las 9 comunas distintas, 1 ya eran correctas: El Monte
 
     ── Paso 2: coincidencias por limpieza de texto 
 
-    ℹ A partir de la limpieza de texto, se limpiaron 7 de 8 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
+    ℹ A partir de la limpieza de texto, se limpiaron 7 de 9 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
 
     ── Paso 3: casos especiales 
 
-    ℹ Se encontraron 0 casos especiales: 
+    ℹ Se encontró 1 caso especial: Saavedra
 
     ── Paso 4: coincidencias aproximadas de texto 
 
@@ -155,9 +156,9 @@ datos |>
 
     ── Conclusión de limpieza de comunas 
 
-    ✔ De las 8 comunas distintas, se limpiaron 8 en total (100%)
+    ✔ De las 9 comunas distintas, se limpiaron 9 en total (100%)
 
-    # A tibble: 8 × 2
+    # A tibble: 9 × 2
       nombre_comuna     valores
       <chr>               <dbl>
     1 Pirque                  4
@@ -167,7 +168,8 @@ datos |>
     5 Providencia             6
     6 Cerrillos               3
     7 San José de Maipo       5
-    8 O'Higgins               8
+    8 Saavedra                8
+    9 O'Higgins              10
 
 Esta función realiza una limpieza de los nombres en tres pasos, que
 puedes leer en detalle en su documentación:
@@ -189,7 +191,7 @@ datos |>
   mutate(nombre_corregido = limpiar_comunas(nombre_comuna))
 ```
 
-    # A tibble: 8 × 3
+    # A tibble: 9 × 3
       nombre_comuna     valores nombre_corregido
       <chr>               <dbl> <chr>
     1 PIRQUE                  4 Pirque
@@ -199,10 +201,58 @@ datos |>
     5 prohibidencia           6 Providencia
     6 CERRILLOS               3 Cerrillos
     7 San José De Maipo       5 San José de Maipo
-    8 OHiggins                8 O'Higgins        
+    8 Puerto Saavedra         8 Saavedra
+    9 OHiggins               10 O'Higgins        
 
 En ambos casos, la función entrega mensajes relevantes sobre el proceso
 de limpieza y el tipo de problemas resueltos.
+
+Para evaluar el funcionamiento de la limpieza automática, usar el
+argumento `procedimiento = TRUE` para ver el paso a paso en columnas:
+
+``` r
+
+datos |> 
+  limpiar_comunas(procedimiento = TRUE) |> 
+  invisible()
+```
+
+    ℹ Limpiando 9 nombres de comunas (9 son distintas)
+
+    ── Paso 1: confirmar comunas correctas 
+
+    ℹ De las 9 comunas distintas, 1 ya eran correctas: El Monte
+
+    ── Paso 2: coincidencias por limpieza de texto 
+
+    ℹ A partir de la limpieza de texto, se limpiaron 7 de 9 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
+
+    ── Paso 3: casos especiales 
+
+    ℹ Se encontró 1 caso especial: Saavedra
+
+    ── Paso 4: coincidencias aproximadas de texto 
+
+    ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
+
+    ── Conclusión de limpieza de comunas 
+
+    ✔ De las 9 comunas distintas, se limpiaron 9 en total (100%)
+
+    ℹ Mostrando proceso:
+
+    # A tibble: 9 × 6
+      original          correctas limpieza         especiales coincidencia resultado
+      <chr>             <chr>     <chr>            <chr>      <chr>        <chr>
+    1 PIRQUE            <NA>      Pirque           <NA>       <NA>         Pirque
+    2 El Monte          El Monte  El Monte         <NA>       <NA>         El Monte
+    3 Maipu             <NA>      Maipú            <NA>       <NA>         Maipú
+    4 santiago          <NA>      Santiago         <NA>       <NA>         Santiago
+    5 prohibidencia     <NA>      <NA>             <NA>       Providencia  Providen…
+    6 CERRILLOS         <NA>      Cerrillos        <NA>       <NA>         Cerrillos
+    7 San José De Maipo <NA>      San José de Mai… <NA>       <NA>         San José…
+    8 Puerto Saavedra   <NA>      <NA>             Saavedra   <NA>         Saavedra
+    9 OHiggins          <NA>      O'Higgins        <NA>       <NA>         O'Higgins
 
 #### Funciones para confirmar nombres de comunas
 
@@ -263,18 +313,18 @@ base
 ```
 
     # A tibble: 972 × 4
-       nombre_comuna    codigo_comuna name     value
-       <chr>                    <dbl> <chr>    <dbl>
-     1 Quilleco                  8309 b     0.000232
-     2 San Pablo                10307 c     0.000411
-     3 Las Condes               13114 b     0.00469
-     4 San Vicente               6117 a     0.00686
-     5 Curaco de Vélez          10204 b     0.00792
-     6 Freirina                  3303 a     0.00863
-     7 Diego de Almagro          3202 a     0.00921
-     8 Pumanque                  6309 a     0.0103
-     9 Olmué                     5803 a     0.0107
-    10 Bulnes                   16102 a     0.0135
+       nombre_comuna codigo_comuna name     value
+       <chr>                 <dbl> <chr>    <dbl>
+     1 Illapel                4201 a     0.000421
+     2 Chiguayante            8103 c     0.000696
+     3 Putre                 15201 b     0.00390
+     4 Guaitecas             11203 c     0.00675
+     5 Pudahuel              13124 c     0.00711
+     6 Dalcahue              10205 b     0.0107
+     7 La Serena              4101 a     0.0116
+     8 Licantén               7303 c     0.0124
+     9 Pichilemu              6201 a     0.0141
+    10 Buin                  13402 b     0.0160
     # ℹ 962 more rows
 
 Esta tabla tiene 972 filas, ¿cómo confirmar si existen datos para todas
@@ -291,7 +341,7 @@ base |>
 
     ! La cantidad de comunas es anómala: hay 324, pero deberían ser 346. Revísalas con `territorial::validar_comunas()`
 
-    → Las comunas faltantes son: Pozo Almonte, Los Vilos, Río Hurtado, Quillota, Santo Domingo, Santa María, Longaví, Lota, Antuco, Negrete, Loncoche, Lumaco, Cabo de Hornos, Antártica, Porvenir, La Granja, Ñuñoa, San Ramón, Colina, Tiltil, Valdivia y San Ignacio
+    → Las comunas faltantes son: Canela, Juan Fernández, Quillota, Santo Domingo, Coinco, Palmilla, Placilla, Pelluhue, Colbún, Hualpén, Curanilahue, Los Sauces, Victoria, Quinchao, Río Ibáñez, Cerrillos, Puente Alto, San José de Maipo, Los Lagos, Arica, Coihueco y Ñiquén
 
 La función
 [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
@@ -311,17 +361,17 @@ base |>
 
     ! Se encontraron 24 resultados, mostrando sólo 6.
 
-    ℹ Los resultados más cercanos al término `Alto` son: Alto Biobío, Alto Hospicio, Alto del Carmen y Puente Alto
+    ℹ Los resultados más cercanos al término `Alto` son: Alto Biobío, Alto Hospicio y Alto del Carmen
 
     # A tibble: 6 × 5
-      nombre_comuna   codigo_comuna name  value puntaje
-      <chr>                   <dbl> <chr> <dbl>   <dbl>
-    1 Alto Biobío              8314 b     0.105       1
-    2 Alto Biobío              8314 a     0.298       1
-    3 Alto Hospicio            1107 a     0.313       1
-    4 Alto Hospicio            1107 c     0.475       1
-    5 Alto del Carmen          3302 c     0.512       1
-    6 Puente Alto             13201 a     0.640       1
+      nombre_comuna   codigo_comuna name   value puntaje
+      <chr>                   <dbl> <chr>  <dbl>   <dbl>
+    1 Alto Biobío              8314 a     0.0846       1
+    2 Alto Hospicio            1107 b     0.213        1
+    3 Alto Hospicio            1107 a     0.344        1
+    4 Alto del Carmen          3302 b     0.420        1
+    5 Alto Hospicio            1107 c     0.537        1
+    6 Alto del Carmen          3302 a     0.620        1
 
 ### Crear nombres de comunas a partir de códigos únicos territoriales
 
@@ -751,6 +801,75 @@ regiones |>
     ! Ortografía: 1 caso de regiones escritas sin tilde
 
     ✖ Validación de regiones: se encontraron 6 problemas con las regiones!
+
+### Limpieza de nombres de regiones de Chile
+
+Al igual que con la función
+[`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md),
+existe la función
+[`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md),
+que aplica varios pasos de limpieza automatizada de textos para obtener
+nombres de regiones válidos.
+
+Veamos un ejemplo con una tabla de datos donde las regiones vienen mal
+escritas:
+
+``` r
+
+regiones <- tibble(nombre_region = c("NUBLE", "AISEN", "OHIGINS", "RM"))
+
+regiones
+```
+
+    # A tibble: 4 × 1
+      nombre_region
+      <chr>
+    1 NUBLE
+    2 AISEN
+    3 OHIGINS
+    4 RM           
+
+Usamos
+[`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md)
+para obtener versiones válidas de los nombres:
+
+``` r
+
+regiones |> 
+  limpiar_regiones() # asume que la columna es `nombre_region`
+```
+
+    ℹ Limpiando 4 nombres de región (4 son distintos)
+
+    ── Paso 1: confirmar regiones correctas 
+
+    ℹ De las 4 regiones distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza
+
+    ── Paso 2: coincidencias por limpieza de texto 
+
+    ℹ A partir de la limpieza de texto, se limpiaron 1 de 4 regiones: Ñuble
+
+    ── Paso 3: casos especiales 
+
+    ℹ Se encontraron 2 casos especiales: Aysén del General Carlos Ibáñez del Campo y Metropolitana de Santiago
+
+    ── Paso 4: coincidencias aproximadas de texto 
+
+    ! Alerta, se encontraron 2 coincidencias para la región `ohigins`: ohiggins y libertador general bernardo ohiggins
+
+    ℹ Se limpiaron 1 de 1 regiones por medio de coincidencias aproximadas de texto: Libertador General Bernardo O'Higgins
+
+    ── Conclusión de limpieza de regiones 
+
+    ✔ De las 4 regiones distintas, se limpiaron 4 en total (100%)
+
+    # A tibble: 4 × 1
+      nombre_region
+      <chr>
+    1 Ñuble
+    2 Aysén del General Carlos Ibáñez del Campo
+    3 Libertador General Bernardo O'Higgins
+    4 Metropolitana de Santiago                
 
 ### Otras funciones para regiones
 

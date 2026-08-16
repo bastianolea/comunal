@@ -150,8 +150,9 @@ Funciones para corregir - \[x\]
 = convierte nombre de comunas en CUT - \[x\] avisar si ninguno coincide
 con warnings - \[x\]
 [`as_nombre_comuna()`](https://bastianolea.github.io/territorial/reference/as_nombre_comuna.md)
-= convierte CUT a nombre de comunas - \[ \] `limpiar_regiones()` =
-limpiar nombres de regiones - \[ \] `abreviar_regiones()` = cambiar
+= convierte CUT a nombre de comunas - \[ \]
+[`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md)
+= limpiar nombres de regiones - \[ \] `abreviar_regiones()` = cambiar
 nombres de regiones a nombres cortos - \[x\]
 [`abreviar_comunas()`](https://bastianolea.github.io/territorial/reference/abreviar_comunas.md)
 = cambiar nombres de comunas a nombres cortos - \[x\]

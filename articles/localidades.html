@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.13</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -94,73 +94,105 @@
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">territorial</span><span class="fu">::</span><span class="va"><a href="../reference/localidades.html">localidades</a></span></span>
-<span><span class="co">#&gt; # A tibble: 29,256 × 6</span></span>
-<span><span class="co">#&gt;    codigo_comuna localidad              tipo        subtipo habitantes viviendas</span></span>
-<span><span class="co">#&gt;            &lt;dbl&gt; &lt;chr&gt;                  &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1          1101 Indeterminada          Localidad … Indete…         30        12</span></span>
-<span><span class="co">#&gt;  2          1101 Río Seco               Localidad … Caserío        131       117</span></span>
-<span><span class="co">#&gt;  3          1101 Cholito                Localidad … Asenta…          2         2</span></span>
-<span><span class="co">#&gt;  4          1101 Complejo Aduana El Loa Localidad … Parcel…          0         1</span></span>
-<span><span class="co">#&gt;  5          1101 Caleta San Marcos      Localidad … Asenta…        259       153</span></span>
-<span><span class="co">#&gt;  6          1101 Caleta Chipana         Localidad … Caserío         84        57</span></span>
-<span><span class="co">#&gt;  7          1101 Ike Ike                Localidad … Asenta…         29        11</span></span>
-<span><span class="co">#&gt;  8          1101 Indeterminada          Localidad … Indete…         11         7</span></span>
-<span><span class="co">#&gt;  9          1101 Piedra Polo            Localidad … Asenta…          5         7</span></span>
-<span><span class="co">#&gt; 10          1101 Altos de Río Seco      Localidad … Caserío         14        13</span></span>
-<span><span class="co">#&gt; # ℹ 29,246 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">territorial</span><span class="fu">::</span><span class="va"><a href="../reference/localidades.html">localidades</a></span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 29,256 × 6
+   codigo_comuna localidad              tipo        subtipo habitantes viviendas
+           &lt;dbl&gt; &lt;chr&gt;                  &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;
+ 1          1101 Indeterminada          Localidad … Indete…         30        12
+ 2          1101 Río Seco               Localidad … Caserío        131       117
+ 3          1101 Cholito                Localidad … Asenta…          2         2
+ 4          1101 Complejo Aduana El Loa Localidad … Parcel…          0         1
+ 5          1101 Caleta San Marcos      Localidad … Asenta…        259       153
+ 6          1101 Caleta Chipana         Localidad … Caserío         84        57
+ 7          1101 Ike Ike                Localidad … Asenta…         29        11
+ 8          1101 Indeterminada          Localidad … Indete…         11         7
+ 9          1101 Piedra Polo            Localidad … Asenta…          5         7
+10          1101 Altos de Río Seco      Localidad … Caserío         14        13
+# ℹ 29,246 more rows</code></pre>
+</div>
 </div>
 <p>Esta tabla puede ser ampliada en sus columnas territoriales usando la función <code><a href="../reference/contextualizar.html">territorial::contextualizar()</a></code>, para agregar las comunas, regiones y provincias correspondientes a cada localidad:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">territorial</span><span class="fu">::</span><span class="va"><a href="../reference/localidades.html">localidades</a></span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/contextualizar.html">contextualizar</a></span><span class="op">(</span><span class="va">codigo_comuna</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y nombre_comuna</span></span>
-<span><span class="co">#&gt; Rows: 29,256</span></span>
-<span><span class="co">#&gt; Columns: 11</span></span>
-<span><span class="co">#&gt; $ codigo_region    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</span></span>
-<span><span class="co">#&gt; $ nombre_region    &lt;chr&gt; "Tarapacá", "Tarapacá", "Tarapacá", "Tarapacá", "Tara…</span></span>
-<span><span class="co">#&gt; $ codigo_provincia &lt;dbl&gt; 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 1…</span></span>
-<span><span class="co">#&gt; $ nombre_provincia &lt;chr&gt; "Iquique", "Iquique", "Iquique", "Iquique", "Iquique"…</span></span>
-<span><span class="co">#&gt; $ codigo_comuna    &lt;dbl&gt; 1101, 1101, 1101, 1101, 1101, 1101, 1101, 1101, 1101,…</span></span>
-<span><span class="co">#&gt; $ nombre_comuna    &lt;chr&gt; "Iquique", "Iquique", "Iquique", "Iquique", "Iquique"…</span></span>
-<span><span class="co">#&gt; $ localidad        &lt;chr&gt; "Indeterminada", "Río Seco", "Cholito", "Complejo Adu…</span></span>
-<span><span class="co">#&gt; $ tipo             &lt;chr&gt; "Localidad rural", "Localidad rural", "Localidad rura…</span></span>
-<span><span class="co">#&gt; $ subtipo          &lt;chr&gt; "Indeterminada", "Caserío", "Asentamiento minero", "P…</span></span>
-<span><span class="co">#&gt; $ habitantes       &lt;dbl&gt; 30, 131, 2, 0, 259, 84, 29, 11, 5, 14, 16, 63, 216, 2…</span></span>
-<span><span class="co">#&gt; $ viviendas        &lt;dbl&gt; 12, 117, 2, 1, 153, 57, 11, 7, 7, 13, 2, 35, 97, 1, 1…</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y nombre_comuna</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 29,256
+Columns: 11
+$ codigo_region    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ nombre_region    &lt;chr&gt; "Tarapacá", "Tarapacá", "Tarapacá", "Tarapacá", "Tara…
+$ codigo_provincia &lt;dbl&gt; 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 1…
+$ nombre_provincia &lt;chr&gt; "Iquique", "Iquique", "Iquique", "Iquique", "Iquique"…
+$ codigo_comuna    &lt;dbl&gt; 1101, 1101, 1101, 1101, 1101, 1101, 1101, 1101, 1101,…
+$ nombre_comuna    &lt;chr&gt; "Iquique", "Iquique", "Iquique", "Iquique", "Iquique"…
+$ localidad        &lt;chr&gt; "Indeterminada", "Río Seco", "Cholito", "Complejo Adu…
+$ tipo             &lt;chr&gt; "Localidad rural", "Localidad rural", "Localidad rura…
+$ subtipo          &lt;chr&gt; "Indeterminada", "Caserío", "Asentamiento minero", "P…
+$ habitantes       &lt;dbl&gt; 30, 131, 2, 0, 259, 84, 29, 11, 5, 14, 16, 63, 216, 2…
+$ viviendas        &lt;dbl&gt; 12, 117, 2, 1, 153, 57, 11, 7, 7, 13, 2, 35, 97, 1, 1…</code></pre>
+</div>
 </div>
 <p>Si se tiene el nombre de una localidad de Chile, y se de sea conocer dónde está ubicada, existe la función <code><a href="../reference/ubicar_localidades.html">territorial::ubicar_localidades()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ubicar_localidades.html">ubicar_localidades</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Chada"</span>, <span class="st">"La Dormida"</span>, <span class="st">"Mallarauco"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Buscando localidad 'Chada'</span></span>
-<span><span class="co">#&gt; ! Se encontraron 5 localidades coincidentes:</span></span>
-<span><span class="co">#&gt; # A tibble: 5 × 5</span></span>
-<span><span class="co">#&gt;   nombre_region                         nombre_comuna localidad tipo     subtipo</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt; 1 Metropolitana de Santiago             Paine         Chada     Localid… Parcel…</span></span>
-<span><span class="co">#&gt; 2 La Araucanía                          Pitrufquén    Chada     Localid… Parcel…</span></span>
-<span><span class="co">#&gt; 3 Metropolitana de Santiago             Paine         Chada     Localid… Fundo-…</span></span>
-<span><span class="co">#&gt; 4 Libertador General Bernardo O'Higgins Codegua       Chada     Localid… Fundo-…</span></span>
-<span><span class="co">#&gt; 5 Metropolitana de Santiago             Paine         Chada     Urbano   Pueblo</span></span>
-<span><span class="co">#&gt; ℹ Retornando la primera localidad: Chada, ubicada en la comuna de Paine, Región Metropolitana de Santiago</span></span>
-<span><span class="co">#&gt; ℹ Buscando localidad 'La Dormida'</span></span>
-<span><span class="co">#&gt; ! Se encontró 1 localidad coincidente:</span></span>
-<span><span class="co">#&gt; # A tibble: 1 × 5</span></span>
-<span><span class="co">#&gt;   nombre_region nombre_comuna localidad  tipo            subtipo          </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;            </span></span>
-<span><span class="co">#&gt; 1 Valparaíso    Olmué         La Dormida Localidad rural Parcela de agrado</span></span>
-<span><span class="co">#&gt; ℹ Localidad encontrada: La Dormida, ubicada en la comuna de Olmué, Región de Valparaíso</span></span>
-<span><span class="co">#&gt; ℹ Buscando localidad 'Mallarauco'</span></span>
-<span><span class="co">#&gt; ! Se encontró 1 localidad coincidente:</span></span>
-<span><span class="co">#&gt; # A tibble: 1 × 5</span></span>
-<span><span class="co">#&gt;   nombre_region             nombre_comuna localidad  tipo            subtipo    </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;                     &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      </span></span>
-<span><span class="co">#&gt; 1 Metropolitana de Santiago Peñaflor      Mallarauco Localidad rural Parcela de…</span></span>
-<span><span class="co">#&gt; ℹ Localidad encontrada: Mallarauco, ubicada en la comuna de Peñaflor, Región Metropolitana de Santiago</span></span>
-<span><span class="co">#&gt; [1] "Paine"    "Olmué"    "Peñaflor"</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/ubicar_localidades.html">ubicar_localidades</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Chada"</span>, <span class="st">"La Dormida"</span>, <span class="st">"Mallarauco"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Buscando localidad 'Chada'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Se encontraron 5 localidades coincidentes:</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  nombre_region                         nombre_comuna localidad tipo     subtipo
+  &lt;chr&gt;                                 &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;
+1 Metropolitana de Santiago             Paine         Chada     Localid… Parcel…
+2 La Araucanía                          Pitrufquén    Chada     Localid… Parcel…
+3 Metropolitana de Santiago             Paine         Chada     Localid… Fundo-…
+4 Libertador General Bernardo O'Higgins Codegua       Chada     Localid… Fundo-…
+5 Metropolitana de Santiago             Paine         Chada     Urbano   Pueblo </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Retornando la primera localidad: Chada, ubicada en la comuna de Paine, Región Metropolitana de Santiago</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Buscando localidad 'La Dormida'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Se encontró 1 localidad coincidente:</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  nombre_region nombre_comuna localidad  tipo            subtipo
+  &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;
+1 Valparaíso    Olmué         La Dormida Localidad rural Parcela de agrado</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Localidad encontrada: La Dormida, ubicada en la comuna de Olmué, Región de Valparaíso</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Buscando localidad 'Mallarauco'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Se encontró 1 localidad coincidente:</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  nombre_region             nombre_comuna localidad  tipo            subtipo
+  &lt;chr&gt;                     &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;
+1 Metropolitana de Santiago Peñaflor      Mallarauco Localidad rural Parcela de…</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Localidad encontrada: Mallarauco, ubicada en la comuna de Peñaflor, Región Metropolitana de Santiago</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Paine"    "Olmué"    "Peñaflor"</code></pre>
+</div>
 </div>
 <section class="level2"><h2 id="referencias">Referencias<a class="anchor" aria-label="anchor" href="#referencias"></a>
 </h2>

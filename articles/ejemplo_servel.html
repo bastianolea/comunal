@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.13</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -200,7 +200,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">servel_limpio</span> <span class="op">&lt;-</span> <span class="va">servel</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>nombre_comuna <span class="op">=</span> <span class="fu"><a href="../reference/limpiar_comunas.html">limpiar_comunas</a></span><span class="op">(</span><span class="va">comuna</span>, mostrar_proceso <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>nombre_comuna <span class="op">=</span> <span class="fu"><a href="../reference/limpiar_comunas.html">limpiar_comunas</a></span><span class="op">(</span><span class="va">comuna</span>, procedimiento <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ Limpiando 12091 nombres de comunas (347 son distintas)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Paso 1: confirmar comunas correctas</span></span>
@@ -213,13 +213,12 @@
 <span><span class="co">#&gt; ℹ Se encontró 1 caso especial: Cabo de Hornos</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Paso 4: coincidencias aproximadas de texto</span></span>
-<span><span class="co">#&gt; ! alerta, se encontraron más de una coincidencia para la comuna `marchigue`: marchihue y la higuera</span></span>
-<span><span class="co">#&gt; ! alerta, no se encontró ninguna coincidencia para la comuna `fuera del pais`</span></span>
+<span><span class="co">#&gt; ! Alerta, se encontraron 2 coincidencias para la comuna `marchigue`: marchihue y la higuera</span></span>
+<span><span class="co">#&gt; ! Alerta, no se encontró ninguna coincidencia para la comuna `fuera del pais`</span></span>
 <span><span class="co">#&gt; ℹ Se limpiaron 2 de 3 comunas por medio de coincidencias aproximadas de texto: Paihuano y Marchihue</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Conclusión de limpieza de comunas</span></span>
-<span><span class="co">#&gt; ✔ De las 347 comunas distintas, se limpiaron 346 en total (99.7%)</span></span>
-<span><span class="co">#&gt; </span></span></code></pre></div>
+<span><span class="co">#&gt; ✔ De las 347 comunas distintas, se limpiaron 346 en total (99.7%)</span></span></code></pre></div>
 </div>
 <p>La función nos informa que, de las 347 comunas distintas presentes en la tabla de datos, se limpiaron 346 en total (99.7%).</p>
 <p>Algunos casos que vemos en el registro son:</p>

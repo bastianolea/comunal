@@ -36,26 +36,27 @@ territorial::territorios |>
   select(ends_with("region")) |> 
   distinct() |> 
   print(n = Inf)
-#> # A tibble: 16 × 2
-#>    codigo_region nombre_region                            
-#>            <dbl> <chr>                                    
-#>  1             1 Tarapacá                                 
-#>  2             2 Antofagasta                              
-#>  3             3 Atacama                                  
-#>  4             4 Coquimbo                                 
-#>  5             5 Valparaíso                               
-#>  6             6 Libertador General Bernardo O'Higgins    
-#>  7             7 Maule                                    
-#>  8             8 Biobío                                   
-#>  9             9 La Araucanía                             
-#> 10            10 Los Lagos                                
-#> 11            11 Aysén del General Carlos Ibáñez del Campo
-#> 12            12 Magallanes y de la Antártica Chilena     
-#> 13            13 Metropolitana de Santiago                
-#> 14            14 Los Ríos                                 
-#> 15            15 Arica y Parinacota                       
-#> 16            16 Ñuble
 ```
+
+    # A tibble: 16 × 2
+       codigo_region nombre_region
+               <dbl> <chr>
+     1             1 Tarapacá
+     2             2 Antofagasta
+     3             3 Atacama
+     4             4 Coquimbo
+     5             5 Valparaíso
+     6             6 Libertador General Bernardo O'Higgins
+     7             7 Maule
+     8             8 Biobío
+     9             9 La Araucanía
+    10            10 Los Lagos
+    11            11 Aysén del General Carlos Ibáñez del Campo
+    12            12 Magallanes y de la Antártica Chilena
+    13            13 Metropolitana de Santiago
+    14            14 Los Ríos
+    15            15 Arica y Parinacota
+    16            16 Ñuble                                    
 
 ## Provincias
 
@@ -71,16 +72,17 @@ territorial::territorios |>
   filter(codigo_region == 13) |> 
   select(ends_with("provincia")) |> 
   distinct()
-#> # A tibble: 6 × 2
-#>   codigo_provincia nombre_provincia
-#>              <dbl> <chr>           
-#> 1              131 Santiago        
-#> 2              132 Cordillera      
-#> 3              133 Chacabuco       
-#> 4              134 Maipo           
-#> 5              135 Melipilla       
-#> 6              136 Talagante
 ```
+
+    # A tibble: 6 × 2
+      codigo_provincia nombre_provincia
+                 <dbl> <chr>
+    1              131 Santiago
+    2              132 Cordillera
+    3              133 Chacabuco
+    4              134 Maipo
+    5              135 Melipilla
+    6              136 Talagante       
 
 ## Comunas
 
@@ -94,17 +96,18 @@ Por ejemplo, las comunas de la región de Tarapacá son:
 territorial::territorios |> 
   filter(nombre_region == "Tarapacá") |> 
   select(ends_with("comuna"), ends_with("provincia"))
-#> # A tibble: 7 × 4
-#>   codigo_comuna nombre_comuna codigo_provincia nombre_provincia
-#>           <dbl> <chr>                    <dbl> <chr>           
-#> 1          1101 Iquique                     11 Iquique         
-#> 2          1107 Alto Hospicio               11 Iquique         
-#> 3          1401 Pozo Almonte                14 Tamarugal       
-#> 4          1402 Camiña                      14 Tamarugal       
-#> 5          1403 Colchane                    14 Tamarugal       
-#> 6          1404 Huara                       14 Tamarugal       
-#> 7          1405 Pica                        14 Tamarugal
 ```
+
+    # A tibble: 7 × 4
+      codigo_comuna nombre_comuna codigo_provincia nombre_provincia
+              <dbl> <chr>                    <dbl> <chr>
+    1          1101 Iquique                     11 Iquique
+    2          1107 Alto Hospicio               11 Iquique
+    3          1401 Pozo Almonte                14 Tamarugal
+    4          1402 Camiña                      14 Tamarugal
+    5          1403 Colchane                    14 Tamarugal
+    6          1404 Huara                       14 Tamarugal
+    7          1405 Pica                        14 Tamarugal       
 
 ## Referencias
 

@@ -15,7 +15,7 @@ información, ver la tabla
 ubicar_localidades(
   nombre_localidad = NULL,
   nombre_region = NULL,
-  mostrar_proceso = TRUE
+  procedimiento = TRUE
 )
 ```
 
@@ -31,7 +31,7 @@ ubicar_localidades(
   Opcionalmente, una región para circunscribir la búsqueda y así
   retornar mejores resultados.
 
-- mostrar_proceso:
+- procedimiento:
 
   Por defecto, muestra una tabla con el resultado del proceso de
   limpieza. Cambiar a FALSE para ocultar.

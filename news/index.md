@@ -1,5 +1,24 @@
 # Registro de cambios
 
+## territorial 0.9 (2026/08/16)
+
+- Nueva función
+  [`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md),
+  que funciona igual a
+  [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
+  pero para las regiones de Chile, en versiones largas o cortas.
+- Pruebas de funcionamiento mucho más estrictas para
+  [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
+  y
+  [`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md)
+  usando [el paquete `{messy}` para ensuciar los
+  datos](https://nrennie.rbind.io/messy/) en distintos niveles: eliminar
+  e insertar caracteres al azar, etc.
+- Mejora de limpieza en
+  [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
+  para eliminar “Ilustre Municipalidad” y textos similares en nombres de
+  comunas.
+
 ## territorial 0.8.13 (2026/08/14)
 
 - Mejoras en

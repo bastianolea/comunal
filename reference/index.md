@@ -61,6 +61,8 @@ ordenarlos, etc.
   : Ubicar localidades en la comuna que les corresponde
 - [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
   : Limpieza de nombres de comunas de Chile a sus nombres oficiales
+- [`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md)
+  : Limpieza de nombres de regiones de Chile a sus nombres oficiales
 
 ## Complementar nombres de territorios
 

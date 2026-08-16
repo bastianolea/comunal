@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.13</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -122,8 +122,7 @@
 <span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  nombre_comuna <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PIRQUE"</span>, <span class="st">"El Monte"</span>, <span class="st">"Maipu"</span>, <span class="st">"nunoa"</span>,</span>
 <span>                    <span class="st">"santiago"</span>, <span class="st">"prohibidencia"</span>, <span class="st">"CERRILLOS"</span>, </span>
-<span>                    <span class="st">"San José De Maipo"</span>, <span class="st">"OHiggins"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
+<span>                    <span class="st">"San José De Maipo"</span>, <span class="st">"OHiggins"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">datos</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># A tibble: 9 × 1</span></span>
@@ -228,31 +227,21 @@
 <span>              <span class="fl">13201</span>,        <span class="fl">14</span>,</span>
 <span>              <span class="fl">13110</span>,        <span class="fl">23</span>,</span>
 <span>              <span class="fl">13111</span>,       <span class="fl">156</span>,</span>
-<span>              <span class="fl">13129</span>,        <span class="fl">12</span></span>
-<span>     <span class="op">)</span></span>
-<span></span>
-<span><span class="va">datos</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># A tibble: 4 × 2</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  codigo_comuna personas</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>          <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="dv">1</span>         <span class="dv">13201</span>       <span class="dv">14</span></span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="dv">2</span>         <span class="dv">13110</span>       <span class="dv">23</span></span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="dv">3</span>         <span class="dv">13111</span>      <span class="dv">156</span></span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="dv">4</span>         <span class="dv">13129</span>       <span class="dv">12</span></span></code></pre></div>
+<span>              <span class="fl">13129</span>,        <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
 <p>Ahora le aplicamos <code><a href="reference/contextualizar.html">contextualizar()</a></code> y obtenemos una tabla con todas las variables que describen cada territorio de manera homogénea y estandarizada:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="reference/contextualizar.html">contextualizar</a></span><span class="op">(</span><span class="va">codigo_comuna</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>ℹ columnas agregadas<span class="sc">:</span> codigo_region, nombre_region, codigo_provincia, nombre_provincia y nombre_comuna</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># A tibble: 4 × 7</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>          <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="dv">1</span>            <span class="dv">13</span> Metropolitana d…              <span class="dv">132</span> Cordillera               <span class="dv">13201</span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="dv">2</span>            <span class="dv">13</span> Metropolitana d…              <span class="dv">131</span> Santiago                 <span class="dv">13110</span></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="dv">3</span>            <span class="dv">13</span> Metropolitana d…              <span class="dv">131</span> Santiago                 <span class="dv">13111</span></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="dv">4</span>            <span class="dv">13</span> Metropolitana d…              <span class="dv">131</span> Santiago                 <span class="dv">13129</span></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co"># ℹ 2 more variables: nombre_comuna &lt;chr&gt;, personas &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>ℹ columnas agregadas<span class="sc">:</span> codigo_region, nombre_region, codigo_provincia, nombre_provincia y nombre_comuna</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># A tibble: 4 × 7</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>          <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="dv">1</span>            <span class="dv">13</span> Metropolitana d…              <span class="dv">132</span> Cordillera               <span class="dv">13201</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="dv">2</span>            <span class="dv">13</span> Metropolitana d…              <span class="dv">131</span> Santiago                 <span class="dv">13110</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="dv">3</span>            <span class="dv">13</span> Metropolitana d…              <span class="dv">131</span> Santiago                 <span class="dv">13111</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="dv">4</span>            <span class="dv">13</span> Metropolitana d…              <span class="dv">131</span> Santiago                 <span class="dv">13129</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co"># ℹ 2 more variables: nombre_comuna &lt;chr&gt;, personas &lt;dbl&gt;</span></span></code></pre></div>
 <hr>
 <p>Estas son algunas de las funciones principales, pero existen muchas más que facilitan el trabajo con datos territoriales de Chile: <a href="https://bastianolea.github.io/territorial/reference/index.html">revisa el índice!</a></p>
 </div>
