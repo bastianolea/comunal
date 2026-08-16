@@ -17,4 +17,6 @@ A partir de los nombres de regiones de Chile (como aparecen en \code{\link[=regi
 }
 \examples{
 redactar_region("Maule")
+
+redactar_region("Aysén")
 }

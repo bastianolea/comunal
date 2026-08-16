@@ -33,6 +33,13 @@ agregar_macrozona <- function(
   tipo = 1,
   ordenar = TRUE
 ) {
+  # revisar que tipo sea válido
+  if (length(tipo) != 1 || is.na(tipo) || !(tipo %in% 1:5)) {
+    cli::cli_abort(
+      "El argumento {.code tipo} debe ser un número entre 1 y 5, no {tipo}"
+    )
+  }
+
   # revisar que sea un vector atómico (rechazar listas, data frames, etc.)
   if (!is.atomic(codigo_region) || is.null(codigo_region)) {
     cli::cli_abort(
@@ -75,89 +82,71 @@ agregar_macrozona <- function(
   # codigo_region <- c(15, 1, 2, 3, 4, 5, 13, 6, 7, 16, 8, 9, 14, 10, 11, 12)
 
   if (tipo == 1) {
+    niveles <- c("Norte", "Centro", "Sur", "Austral")
+
     macrozonas <- dplyr::case_when(
-      codigo_region %in% c(15, 1, 2, 3, 4) ~ "Norte",
-      codigo_region %in% c(5, 13, 6, 7) ~ "Centro",
-      codigo_region %in% c(16, 8, 9, 14, 10) ~ "Sur",
-      codigo_region %in% c(11, 12) ~ "Austral"
+      codigo_region %in% c(15, 1, 2, 3, 4) ~ niveles[1],
+      codigo_region %in% c(5, 13, 6, 7) ~ niveles[2],
+      codigo_region %in% c(16, 8, 9, 14, 10) ~ niveles[3],
+      codigo_region %in% c(11, 12) ~ niveles[4]
     )
 
     if (ordenar) {
-      macrozonas <- macrozonas |>
-        factor(levels = c("Norte", "Centro", "Sur", "Austral"))
+      macrozonas <- factor(macrozonas, levels = niveles)
     }
   } else if (tipo == 2) {
+    niveles <- c("Norte", "Centro", "Centro/sur", "Sur")
+
     macrozonas <- dplyr::case_when(
-      codigo_region %in% c(15, 1, 2, 3) ~ "Norte",
-      codigo_region %in% c(4, 5, 13, 6) ~ "Centro",
-      codigo_region %in% c(7, 16, 8, 9) ~ "Centro/sur",
-      codigo_region %in% c(14, 10, 11, 12) ~ "Sur"
+      codigo_region %in% c(15, 1, 2, 3) ~ niveles[1],
+      codigo_region %in% c(4, 5, 13, 6) ~ niveles[2],
+      codigo_region %in% c(7, 16, 8, 9) ~ niveles[3],
+      codigo_region %in% c(14, 10, 11, 12) ~ niveles[4]
     )
 
     if (ordenar) {
-      macrozonas <- macrozonas |>
-        factor(levels = c("Norte", "Centro", "Centro/sur", "Sur"))
+      macrozonas <- factor(macrozonas, levels = niveles)
     }
   } else if (tipo == 3) {
+    niveles <- c("Norte", "Centro", "Metropolitana", "Centro sur", "Sur", "Austral")
+
     macrozonas <- dplyr::case_when(
-      codigo_region %in% c(15, 1, 2, 3) ~ "Norte",
-      codigo_region %in% c(4, 5) ~ "Centro",
-      codigo_region %in% c(13) ~ "Metropolitana",
-      codigo_region %in% c(6, 7, 16, 8) ~ "Centro sur",
-      codigo_region %in% c(9, 14, 10) ~ "Sur",
-      codigo_region %in% c(11, 12) ~ "Austral"
+      codigo_region %in% c(15, 1, 2, 3) ~ niveles[1],
+      codigo_region %in% c(4, 5) ~ niveles[2],
+      codigo_region %in% c(13) ~ niveles[3],
+      codigo_region %in% c(6, 7, 16, 8) ~ niveles[4],
+      codigo_region %in% c(9, 14, 10) ~ niveles[5],
+      codigo_region %in% c(11, 12) ~ niveles[6]
     )
 
     if (ordenar) {
-      macrozonas <- macrozonas |>
-        factor(
-          levels = c(
-            "Norte",
-            "Centro",
-            "Metropolitana",
-            "Centro sur",
-            "Sur",
-            "Austral"
-          )
-        )
+      macrozonas <- factor(macrozonas, levels = niveles)
     }
   } else if (tipo == 4) {
+    niveles <- c("Norte Grande", "Norte Chico", "Zona central", "Zona Sur", "Zona Austral")
+
     macrozonas <- dplyr::case_when(
-      codigo_region %in% c(15, 1, 2) ~ "Norte Grande",
-      codigo_region %in% c(3, 4, 5) ~ "Norte Chico",
-      codigo_region %in% c(13, 6, 7, 16, 8) ~ "Zona central",
-      codigo_region %in% c(9, 14, 10) ~ "Zona Sur",
-      codigo_region %in% c(11, 12) ~ "Zona Austral"
+      codigo_region %in% c(15, 1, 2) ~ niveles[1],
+      codigo_region %in% c(3, 4, 5) ~ niveles[2],
+      codigo_region %in% c(13, 6, 7, 16, 8) ~ niveles[3],
+      codigo_region %in% c(9, 14, 10) ~ niveles[4],
+      codigo_region %in% c(11, 12) ~ niveles[5]
     )
 
     if (ordenar) {
-      macrozonas <- macrozonas |>
-        factor(
-          levels = c(
-            "Norte Grande",
-            "Norte Chico",
-            "Zona central",
-            "Zona Sur",
-            "Zona Austral"
-          )
-        )
+      macrozonas <- factor(macrozonas, levels = niveles)
     }
   } else if (tipo == 5) {
+    niveles <- c("Norte", "Centro", "Sur")
+
     macrozonas <- dplyr::case_when(
-      codigo_region %in% c(15, 1, 2, 3, 4) ~ "Norte",
-      codigo_region %in% c(5, 13, 6, 7, 16, 8, 9, 14) ~ "Centro",
-      codigo_region %in% c(10, 11, 12) ~ "Sur"
+      codigo_region %in% c(15, 1, 2, 3, 4) ~ niveles[1],
+      codigo_region %in% c(5, 13, 6, 7, 16, 8, 9, 14) ~ niveles[2],
+      codigo_region %in% c(10, 11, 12) ~ niveles[3]
     )
 
     if (ordenar) {
-      macrozonas <- macrozonas |>
-        factor(
-          levels = c(
-            "Norte",
-            "Centro",
-            "Sur"
-          )
-        )
+      macrozonas <- factor(macrozonas, levels = niveles)
     }
   }
 

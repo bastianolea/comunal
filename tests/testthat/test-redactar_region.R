@@ -4,3 +4,9 @@ test_that("redacción de regiones funciona", {
     c("Región del Maule", "Región de Ñuble")
   )
 })
+
+test_that("redacción de regiones numéricas", {
+  expect_error(
+    redactar_region(c(15, 1))
+  )
+})

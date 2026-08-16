@@ -9,8 +9,10 @@
 #'
 #' @examples
 #' redactar_region("Maule")
+#'
+#' redactar_region("Aysén")
 redactar_region <- function(nombre_region) {
-  # revisar si ya vienen, pero cnoflictá con Aydén, O'Higgins, y Magallanes
+  # revisar si ya vienen, pero conflictúa con Aysén, O'Higgins, y Magallanes
   # if (any(stringr::str_detect(nombre_region, "\\bde\\b|\\bdel\\b")))
 
   if (!is.character(nombre_region)) {
@@ -22,9 +24,9 @@ redactar_region <- function(nombre_region) {
   redaccion <- paste("Región", articulos, nombre_region) |>
     stringr::str_squish() # por la RM, que no tiene artículo
 
-  if (!length(redaccion) == length(nombre_region)) {
-    cli::cli_abort("resultado no es del mismo largo que input")
-  }
+  # if (!length(redaccion) == length(nombre_region)) {
+  #   cli::cli_abort("resultado no es del mismo largo que input")
+  # }
 
   return(redaccion)
 }

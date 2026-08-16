@@ -2,6 +2,7 @@
 - Nueva función `limpiar_regiones()`, que funciona igual a `limpiar_comunas()` pero para las regiones de Chile, en versiones largas o cortas.
 - Pruebas de funcionamiento mucho más estrictas para `limpiar_comunas()` y `limpiar_regiones()` usando [el paquete `{messy}` para ensuciar los datos](https://nrennie.rbind.io/messy/) en distintos niveles: eliminar e insertar caracteres al azar, etc.
 - Mejora de limpieza en `limpiar_comunas()` para eliminar "Ilustre Municipalidad" y textos similares en nombres de comunas.
+- Mejoras en `agregar_macrozona()` y en tests de `agregar_macrozona()`, `ubicar_comunas()` y `redactar_region()`.
 
 # territorial 0.8.13 (2026/08/14)
 - Mejoras en `preposicion_region()` para formas alternativas de escribir regiones.
@@ -29,7 +30,7 @@
 - Nuevo argumento para `ordenar_regiones()` en orden inverso, útil para algunas visualizaciones de datos.
 
 # territorial 0.8.7 (2026/07/10)
-- Tabla de datos con población comunal proyectada (2002-2035), base Censo 2017: `territorial::poblacion_proyeccion`
+- Tabla de datos con población comunal proyectada (2002-2035), base Censo 2017: `territorial::poblacion_proyeccion` (Nota: función removida y trasladada [al paquete `{poblador}`)](https://bastianolea.github.io/poblador/)
 - Función para agregar población comunal a comunas: `territorial::agregar_poblacion()`
 
 # territorial 0.8.6 (2026/07/08)
