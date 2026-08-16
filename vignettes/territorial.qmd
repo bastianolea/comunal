@@ -5,10 +5,6 @@ vignette: >
   %\VignetteIndexEntry{territorial}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
-  knitr:
-  opts_chunk:
-    collapse: true
-    comment: '#>'
 ---
 
 
@@ -77,8 +73,8 @@ Imaginemos una tabla de datos con _muy mala calidad_ de nombres de comunas. Usem
 library(dplyr)
 
 datos <- tibble(
-  nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "santiago", "prohibidencia", "CERRILLOS", "San José De Maipo", "OHiggins"),
-  valores = c(4, 6, 2, 8, 6, 3, 5, 8)
+  nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "santiago", "prohibidencia", "CERRILLOS", "San José De Maipo", "Puerto Saavedra", "OHiggins"),
+  valores = c(4, 6, 2, 8, 6, 3, 5, 8, 10)
 )
 
 ```
@@ -121,6 +117,14 @@ datos |>
 ```
 
 En ambos casos, la función entrega mensajes relevantes sobre el proceso de limpieza y el tipo de problemas resueltos.
+
+Para evaluar el funcionamiento de la limpieza automática, usar el argumento `procedimiento = TRUE` para ver el paso a paso en columnas:
+
+```{r}
+datos |> 
+  limpiar_comunas(procedimiento = TRUE) |> 
+  invisible()
+```
 
 
 #### Funciones para confirmar nombres de comunas
@@ -345,6 +349,7 @@ regiones |>
 ```
 
 
+
 ### Clasificar regiones de Chile en macrozonas
 
 Algunos análisis requieren de agrupar las regiones de Chile en grupos, usualmente derivados de su posición geográfica. Con la función `agregar_macrozona()` se pueden clasificar las regiones del país en varios tipos de macrozona a partir de sus códigos regionales:
@@ -375,6 +380,26 @@ regiones
 ```{r validar_regiones}
 regiones |> 
   validar_regiones()
+```
+
+
+### Limpieza de nombres de regiones de Chile
+
+Al igual que con la función `limpiar_comunas()`, existe la función `limpiar_regiones()`, que aplica varios pasos de limpieza automatizada de textos para obtener nombres de regiones válidos.
+
+Veamos un ejemplo con una tabla de datos donde las regiones vienen mal escritas:
+
+```{r}
+regiones <- tibble(nombre_region = c("NUBLE", "AISEN", "OHIGINS", "RM"))
+
+regiones
+```
+
+Usamos `limpiar_regiones()` para obtener versiones válidas de los nombres:
+
+```{r}
+regiones |> 
+  limpiar_regiones() # asume que la columna es `nombre_region`
 ```
 
 

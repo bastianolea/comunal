@@ -6,7 +6,7 @@
 #'
 #' @param nombre_localidad Nombres de localidades, idealmente como aparecen en [territorial::localidades].
 #' @param nombre_region Opcionalmente, una región para circunscribir la búsqueda y así retornar mejores resultados.
-#' @param mostrar_proceso Por defecto, muestra una tabla con el resultado del proceso de limpieza. Cambiar a FALSE para ocultar.
+#' @param procedimiento Por defecto, muestra una tabla con el resultado del proceso de limpieza. Cambiar a FALSE para ocultar.
 #'
 #' @returns Vector con nombres de comunas correspondientes
 #' @export
@@ -23,7 +23,7 @@
 ubicar_localidades <- function(
   nombre_localidad = NULL,
   nombre_region = NULL,
-  mostrar_proceso = TRUE
+  procedimiento = TRUE
 ) {
   localidades <- territorial::localidades |>
     territorial::contextualizar(codigo_comuna) |>
@@ -92,7 +92,7 @@ ubicar_localidades <- function(
         }
       }
 
-      if (mostrar_proceso) {
+      if (procedimiento) {
         # mostrar resultados
         resultados_localidades |>
           dplyr::select(-dplyr::where(is.numeric)) |>

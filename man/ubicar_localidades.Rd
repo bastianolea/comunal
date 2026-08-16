@@ -7,7 +7,7 @@
 ubicar_localidades(
   nombre_localidad = NULL,
   nombre_region = NULL,
-  mostrar_proceso = TRUE
+  procedimiento = TRUE
 )
 }
 \arguments{
@@ -15,7 +15,7 @@ ubicar_localidades(
 
 \item{nombre_region}{Opcionalmente, una región para circunscribir la búsqueda y así retornar mejores resultados.}
 
-\item{mostrar_proceso}{Por defecto, muestra una tabla con el resultado del proceso de limpieza. Cambiar a FALSE para ocultar.}
+\item{procedimiento}{Por defecto, muestra una tabla con el resultado del proceso de limpieza. Cambiar a FALSE para ocultar.}
 }
 \value{
 Vector con nombres de comunas correspondientes

@@ -1,4 +1,5 @@
-## code to prepare `territorios` dataset goes here
+# código de la tabla de datos principal del paquete, originada desde la planilla oficial de códigos únicos territoriales de Subdere
+# https://www.subdere.gov.cl/documentacion/códigos-únicos-territoriales-actualizados-al-06-de-septiembre-2018
 library(dplyr)
 
 codigos_comunales <- readxl::read_xls("data-raw/CUT_2018_v04.xls")

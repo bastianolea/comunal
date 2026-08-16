@@ -45,7 +45,7 @@ validar_regiones <- function(
     nombre_region <- dplyr::pull(dplyr::ungroup(datos), !!col_expr)
 
     # si es un vector, se toma el vector
-  } else if (is.vector(datos)) {
+  } else if (is.vector(datos) & !is.list(datos)) {
     # cli::cli_alert_info("Validando calidad de nombres de región desde vector")
     nombre_region <- as.character(datos)
   } else {

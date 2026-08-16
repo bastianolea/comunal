@@ -8,7 +8,7 @@ limpiar_comunas(
   datos,
   variable = NULL,
   aproximar = TRUE,
-  mostrar_proceso = FALSE
+  procedimiento = FALSE
 )
 }
 \arguments{
@@ -18,7 +18,7 @@ limpiar_comunas(
 
 \item{aproximar}{El paso de limpieza por aproximación y coincidencia de nombres puede entregar resultados inexactos. Cambiar a FALSE para omitir.}
 
-\item{mostrar_proceso}{Mostrar una tabla con los resultados intermedios del proceso de limpieza. Elegir entre TRUE o FALSE, por defecto FALSE.}
+\item{procedimiento}{Mostrar una tabla con los resultados intermedios del proceso de limpieza. Elegir entre TRUE o FALSE, por defecto FALSE.}
 }
 \value{
 Si la entrada es un dataframe, retorna el dataframe con la columna de comunas reemplazada. Si es un vector, retorna un vector de nombres de comunas con correcciones aplicadas.
@@ -33,7 +33,7 @@ Los nombres se limpian en cuatro pasos:
 \item Se \emph{limpian} los nombres de comunas entregados, transformándolos a minúsculas y eliminando todo tipo de símbolos posibles, para dejar las palabras en sus formas más básicas (por ejemplo, \code{Ñuñoa} se vuelve \code{nunoa}). Luego, se aplica el mismo proceso a los nombres de comunas correctos (\code{\link[=comunas]{comunas()}}), y se hace un cruce entre ambos conjuntos de nombres: si los nombres coinciden, significa que se entregaron nombres de comunas escritos en mayúsculas o minúsculas, comunas sin tildes o con tildes extra, comunas sin símbolos especiales o si eñe, entre otras, y son reemplazadas con sus versiones correctas.
 \item Se buscan algunos casos especiales de comunas que son típicamente mal escritos, pero que son difíciles de identificar de manera automática, por ejemplo, cuando a la comuna de \emph{Cabo de Hornos} le ponen "Ex-Navarino".
 \item Si en los pasos anteriores quedaron comunas que no coincidieron (es decir, que sus problemas van más allá de tildes, mayúsculas o símbolos), se realiza una coincidencia parcial de textos o \emph{fuzzy matching} usando la función \code{base::agrepl()}, que utiliza el \href{https://es.wikipedia.org/wiki/Distancia_de_Levenshtein}{algoritmo de distancia de Levenshtein} para encontrar las comunas correctamente escritas que más se parecen a las comunas entregadas. Se esta forma, se pueden encontrar las comunas correctamente escritas para casos de comunas con faltas de ortografía (\code{Pobidencia} en vez de \code{Providencia}), comunas sin espacios entre sus palabras (\code{laflorida} en vez de \verb{La Florida}), y formas alternativas de escribir las comunas (\code{llay-llay} en vez de \code{Llaillay}). En todos estos casos se emite una alerta que indica la coincidencia encontrada, ya que al ser una aproxmación, no se garantiza que la coincidencia sea correcta. Puedes desactivar este paso poniendo \code{aproximar = FALSE}.
-Finalmente, se muestra una tabla que describe el proceso de limpieza para su revisión (que puede ocultarse con \code{mostrar_proceso = FALSE}, y se retornan las comunas correctas.
+Finalmente, se muestra una tabla que describe el proceso de limpieza para su revisión (que puede ocultarse con \code{procedimiento = FALSE}, y se retornan las comunas correctas.
 }
 }
 \examples{

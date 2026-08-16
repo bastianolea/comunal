@@ -84,7 +84,7 @@ Para arreglar las comunas mal escritas, usaremos la función `limpiar_comunas()`
 
 ```{r}
 servel_limpio <- servel |> 
-  mutate(nombre_comuna = limpiar_comunas(comuna, mostrar_proceso = FALSE))
+  mutate(nombre_comuna = limpiar_comunas(comuna, procedimiento = FALSE))
 ```
 
 La función nos informa que, de las 347 comunas distintas presentes en la tabla de datos, se limpiaron 346 en total (99.7%).

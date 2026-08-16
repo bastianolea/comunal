@@ -2,7 +2,7 @@ test_that("prueba de limpieza de regiones 1", {
   expect_equal(
     limpiar_regiones(
       c("MAULE", "la araucania", "nuble", "biobio"),
-      mostrar_proceso = F
+      procedimiento = F
     ),
     c("Maule", "La Araucanía", "Ñuble", "Biobío")
   )
@@ -22,7 +22,7 @@ test_that("prueba de limpieza de regiones 2", {
         "asdf",
         NA
       ),
-      mostrar_proceso = F
+      procedimiento = F
     ) |>
       suppressMessages(),
     c(
@@ -42,7 +42,7 @@ test_that("prueba de limpieza de regiones 3, versiones cortas", {
   expect_equal(
     limpiar_regiones(
       c("Metropolitana", "O'Higgins", "Aysén", "Magallanes"),
-      mostrar_proceso = FALSE
+      procedimiento = FALSE
     ) |>
       suppressMessages(),
     c(
@@ -58,7 +58,7 @@ test_that("prueba de limpieza de regiones 4, casos especiales", {
   expect_equal(
     limpiar_regiones(
       c("RM", "aisen", "antartica", "parinacota", "lagos"),
-      mostrar_proceso = FALSE
+      procedimiento = FALSE
     ) |>
       suppressMessages(),
     c(
@@ -75,7 +75,7 @@ test_that("prueba de limpieza de regiones 5, coincidencia aproximada", {
   expect_equal(
     limpiar_regiones(
       c("rio", "La Araucania"),
-      mostrar_proceso = F
+      procedimiento = F
     ),
     c("Los Ríos", "La Araucanía")
   )
@@ -110,11 +110,20 @@ test_that("limpiar regiones desde dataframe especificando columna retorna datafr
 
 test_that("limpiar regiones desde vector retorna vector", {
   resultado <- territorios$nombre_region |>
-    limpiar_regiones() |>
-    suppressMessages()
+    limpiar_regiones()
 
   expect_true(is.vector(resultado))
-})
+}) |>
+  suppressMessages()
+
+
+test_that("limpiar regiones no aplica a listas", {
+  expect_error(
+    list(regiones = c(1, 2, 3)) |>
+      limpiar_regiones()
+  )
+}) |>
+  suppressMessages()
 
 test_that(
   "limpiar regiones con columna que no existe",
@@ -273,7 +282,7 @@ test_that("prueba calidad de limpieza de regiones: caracteres faltantes", {
   expect_message(
     regiones() |>
       eliminar_caracteres(porcentaje = 0.1) |>
-      limpiar_regiones(mostrar_proceso = F),
+      limpiar_regiones(procedimiento = F),
     regexp = "100%"
   )
 }) |>
@@ -283,7 +292,7 @@ test_that("prueba calidad de limpieza de regiones: caracteres faltantes, nivel 2
   expect_message(
     regiones() |>
       eliminar_caracteres(porcentaje = 0.2) |>
-      limpiar_regiones(mostrar_proceso = F),
+      limpiar_regiones(procedimiento = F),
     regexp = "[95-99].[1-9]%|100%"
   )
 }) |>
@@ -293,7 +302,7 @@ test_that("prueba calidad de limpieza de regiones: caracteres reemplazados", {
   expect_message(
     regiones() |>
       reemplazar_caracteres(porcentaje = 0.1) |>
-      limpiar_regiones(mostrar_proceso = F),
+      limpiar_regiones(procedimiento = F),
     regexp = "100%"
   )
 }) |>
@@ -303,7 +312,7 @@ test_that("prueba calidad de limpieza de regiones: caracteres reemplazados, nive
   expect_message(
     regiones() |>
       reemplazar_caracteres(porcentaje = 0.2) |>
-      limpiar_regiones(mostrar_proceso = F),
+      limpiar_regiones(procedimiento = F),
     regexp = "[95-99].[1-9]%|100%"
   )
 }) |>

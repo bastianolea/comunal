@@ -8,7 +8,7 @@ limpiar_regiones(
   datos,
   variable = NULL,
   aproximar = TRUE,
-  mostrar_proceso = FALSE
+  procedimiento = FALSE
 )
 }
 \arguments{
@@ -18,7 +18,7 @@ limpiar_regiones(
 
 \item{aproximar}{El paso de limpieza por aproximación y coincidencia de nombres puede entregar resultados inexactos. Cambiar a FALSE para omitir.}
 
-\item{mostrar_proceso}{Mostrar una tabla con los resultados intermedios del proceso de limpieza. Elegir entre TRUE o FALSE, por defecto FALSE.}
+\item{procedimiento}{Mostrar una tabla con los resultados intermedios del proceso de limpieza. Elegir entre TRUE o FALSE, por defecto FALSE.}
 }
 \value{
 Si la entrada es un dataframe, retorna el dataframe con la columna de regiones reemplazada. Si es un vector, retorna un vector de nombres de regiones oficiales (en su versión larga) con correcciones aplicadas.
@@ -33,7 +33,7 @@ Los nombres se limpian en cuatro pasos:
 \item Se \emph{limpian} los nombres de regiones entregados, transformándolos a minúsculas y eliminando todo tipo de símbolos posibles, para dejar las palabras en sus formas más básicas (por ejemplo, \code{Ñuble} se vuelve \code{nuble}). Luego, se aplica el mismo proceso a los nombres de regiones correctos (largos y cortos), y se hace un cruce entre ambos conjuntos de nombres: si los nombres coinciden, significa que se entregaron nombres de regiones escritos en mayúsculas o minúsculas, regiones sin tildes o con tildes extra, regiones sin símbolos especiales, entre otras, y son reemplazadas con sus versiones correctas.
 \item Se buscan algunos casos especiales de regiones que son típicamente mal escritos, pero que son difíciles de identificar de manera automática, por ejemplo, cuando a la Región Metropolitana le dicen "RM" o "Santiago", o cuando a la región de Aysén le ponen "Aisén" (con i latina).
 \item Si en los pasos anteriores quedaron regiones que no coincidieron (es decir, que sus problemas van más allá de tildes, mayúsculas o símbolos), se realiza una coincidencia parcial de textos o \emph{fuzzy matching} usando la función \code{base::agrepl()}, que utiliza el \href{https://es.wikipedia.org/wiki/Distancia_de_Levenshtein}{algoritmo de distancia de Levenshtein} para encontrar las regiones correctamente escritas que más se parecen a las regiones entregadas. En todos estos casos se emite una alerta que indica la coincidencia encontrada, ya que al ser una aproximación, no se garantiza que la coincidencia sea correcta. Puedes desactivar este paso poniendo \code{aproximar = FALSE}.
-Finalmente, se muestra una tabla que describe el proceso de limpieza para su revisión (que puede ocultarse con \code{mostrar_proceso = FALSE}), y se retornan los nombres de regiones oficiales (en su versión larga).
+Finalmente, se muestra una tabla que describe el proceso de limpieza para su revisión (que puede ocultarse con \code{procedimiento = FALSE}), y se retornan los nombres de regiones oficiales (en su versión larga).
 }
 }
 \examples{

@@ -27,7 +27,7 @@ test_that("prueba de limpieza de comunas 2", {
         "asdf",
         NA
       ),
-      mostrar_proceso = FALSE
+      procedimiento = FALSE
     ) |>
       suppressMessages(),
     c(
@@ -54,7 +54,7 @@ test_that("prueba de limpieza de comunas 3, antes no se la podía", {
   expect_equal(
     limpiar_comunas(
       c("La Florida", "Quirigue"),
-      mostrar_proceso = FALSE
+      procedimiento = FALSE
     ) |>
       suppressMessages(),
     c("La Florida", "Quirihue")
@@ -66,7 +66,7 @@ test_that("prueba de limpieza de comunas 4, antes no se la podía", {
   expect_equal(
     limpiar_comunas(
       c("O´HIGGINS", "TREGUACO"),
-      mostrar_proceso = FALSE
+      procedimiento = FALSE
     ) |>
       suppressMessages(),
     c("O'Higgins", "Trehuaco")
@@ -81,7 +81,7 @@ test_that("prueba de limpieza de comunas desde datos de prueba 1", {
       datos_limpios <- datos |>
         dplyr::tibble() |>
         dplyr::mutate(
-          nombre_comuna = limpiar_comunas(municipio, mostrar_proceso = FALSE)
+          nombre_comuna = limpiar_comunas(municipio, procedimiento = FALSE)
         ) |>
         suppressMessages()
 
@@ -95,7 +95,7 @@ test_that("prueba de limpieza de comunas 5, cabo de hornos", {
   expect_equal(
     limpiar_comunas(
       c("CABO DE HORNOS (EX-NAVARINO)"),
-      mostrar_proceso = FALSE
+      procedimiento = FALSE
     ),
     c("Cabo de Hornos")
   )
@@ -107,7 +107,7 @@ test_that("prueba de limpieza de comunas 6, casos especiales", {
   expect_equal(
     limpiar_comunas(
       c("coihaique", "la calera", "aisén"),
-      mostrar_proceso = FALSE
+      procedimiento = FALSE
     ),
     c("Coyhaique", "Calera", "Aysén")
   )
@@ -118,13 +118,12 @@ test_that("prueba de limpieza de comunas donde la limpieza habría dejado texto 
   expect_equal(
     limpiar_comunas(
       c("658145002"),
-      mostrar_proceso = FALSE
+      procedimiento = FALSE
     ),
     NA_character_
   )
 }) |>
   suppressMessages()
-
 
 test_that("limpiar comunas sin especificar columna retorna dataframe", {
   resultado <- territorios |>
@@ -148,6 +147,14 @@ test_that("limpiar comunas desde vector retorna vector", {
     suppressMessages()
 
   expect_true(is.vector(resultado))
+})
+
+
+test_that("limpiar comunas no aplica a listas", {
+  expect_error(
+    list(comunas = c(1, 2, 3)) |>
+      limpiar_comunas()
+  )
 })
 
 test_that(

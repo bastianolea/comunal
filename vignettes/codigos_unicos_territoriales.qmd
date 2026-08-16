@@ -5,10 +5,6 @@ vignette: >
   %\VignetteIndexEntry{codigos_unicos_territoriales}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
-knitr:
-  opts_chunk:
-    collapse: true
-    comment: '#>'
 ---
 
 ```{r}

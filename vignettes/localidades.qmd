@@ -5,10 +5,6 @@ vignette: >
   %\VignetteIndexEntry{localidades}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
-knitr:
-  opts_chunk:
-    collapse: true
-    comment: '#>'
 ---
 
 Según la definición del INE, una localidad es un "Área geográfica con nombre propio de conocimiento generalizado por la población. Puede estar poblada o no, aunque debe contener, a lo menos, una vivienda susceptible de ser habitada. Generalmente, se circunscribe dentro de un distrito censal; no obstante, puede rebasar a éste.” 

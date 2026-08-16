@@ -7,11 +7,11 @@
 #' 2. Se _limpian_ los nombres de regiones entregados, transformándolos a minúsculas y eliminando todo tipo de símbolos posibles, para dejar las palabras en sus formas más básicas (por ejemplo, `Ñuble` se vuelve `nuble`). Luego, se aplica el mismo proceso a los nombres de regiones correctos (largos y cortos), y se hace un cruce entre ambos conjuntos de nombres: si los nombres coinciden, significa que se entregaron nombres de regiones escritos en mayúsculas o minúsculas, regiones sin tildes o con tildes extra, regiones sin símbolos especiales, entre otras, y son reemplazadas con sus versiones correctas.
 #' 3. Se buscan algunos casos especiales de regiones que son típicamente mal escritos, pero que son difíciles de identificar de manera automática, por ejemplo, cuando a la Región Metropolitana le dicen "RM" o "Santiago", o cuando a la región de Aysén le ponen "Aisén" (con i latina).
 #' 4. Si en los pasos anteriores quedaron regiones que no coincidieron (es decir, que sus problemas van más allá de tildes, mayúsculas o símbolos), se realiza una coincidencia parcial de textos o _fuzzy matching_ usando la función `base::agrepl()`, que utiliza el [algoritmo de distancia de Levenshtein](https://es.wikipedia.org/wiki/Distancia_de_Levenshtein) para encontrar las regiones correctamente escritas que más se parecen a las regiones entregadas. En todos estos casos se emite una alerta que indica la coincidencia encontrada, ya que al ser una aproximación, no se garantiza que la coincidencia sea correcta. Puedes desactivar este paso poniendo `aproximar = FALSE`.
-#' Finalmente, se muestra una tabla que describe el proceso de limpieza para su revisión (que puede ocultarse con `mostrar_proceso = FALSE`), y se retornan los nombres de regiones oficiales (en su versión larga).
+#' Finalmente, se muestra una tabla que describe el proceso de limpieza para su revisión (que puede ocultarse con `procedimiento = FALSE`), y se retornan los nombres de regiones oficiales (en su versión larga).
 #'
 #' @param datos Dataframe con una columna de nombres de regiones, o vector de nombres de regiones
 #' @param variable Columna del dataframe con los nombres de regiones (se pasa sin comillas, p.ej. `region`). Si no se especifica, se asume `nombre_region`. Si se aplica a un vector, omitir este argumento.
-#' @param mostrar_proceso Mostrar una tabla con los resultados intermedios del proceso de limpieza. Elegir entre TRUE o FALSE, por defecto FALSE.
+#' @param procedimiento Mostrar una tabla con los resultados intermedios del proceso de limpieza. Elegir entre TRUE o FALSE, por defecto FALSE.
 #' @param aproximar El paso de limpieza por aproximación y coincidencia de nombres puede entregar resultados inexactos. Cambiar a FALSE para omitir.
 #'
 #' @returns Si la entrada es un dataframe, retorna el dataframe con la columna de regiones reemplazada. Si es un vector, retorna un vector de nombres de regiones oficiales (en su versión larga) con correcciones aplicadas.
@@ -37,7 +37,7 @@ limpiar_regiones <- function(
   datos,
   variable = NULL,
   aproximar = TRUE,
-  mostrar_proceso = FALSE
+  procedimiento = FALSE
 ) {
   # la función funciona con tablas o vectores, y con o sin especificar la columna (se asume `nombre_region`)
   # si es dataframe, la columna se extrae como vector
@@ -59,7 +59,7 @@ limpiar_regiones <- function(
 
     # extraer columna como vector
     nombre_region <- dplyr::pull(datos, !!col_expr)
-  } else if (is.vector(datos)) {
+  } else if (is.vector(datos) & !is.list(datos)) {
     # si se entrega vector, continuar como vector
     nombre_region <- as.character(datos)
   } else {
@@ -324,7 +324,7 @@ limpiar_regiones <- function(
   )
 
   # opcionalmente, mostrar una tabla con las columnas intermedias
-  if (mostrar_proceso) {
+  if (procedimiento) {
     cli::cli_alert_info("Mostrando proceso:")
     limpiado |>
       dplyr::distinct() |>
