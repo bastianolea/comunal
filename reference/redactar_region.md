@@ -30,4 +30,7 @@ para cada nombre de región.
 ``` r
 redactar_region("Maule")
 #> [1] "Región del Maule"
+
+redactar_region("Aysén")
+#> [1] "Región de Aysén"
 ```

@@ -18,6 +18,13 @@
   [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
   para eliminar “Ilustre Municipalidad” y textos similares en nombres de
   comunas.
+- Mejoras en
+  [`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md)
+  y en tests de
+  [`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md),
+  [`ubicar_comunas()`](https://bastianolea.github.io/territorial/reference/ubicar_comunas.md)
+  y
+  [`redactar_region()`](https://bastianolea.github.io/territorial/reference/redactar_region.md).
 
 ## territorial 0.8.13 (2026/08/14)
 
@@ -89,7 +96,9 @@
 ## territorial 0.8.7 (2026/07/10)
 
 - Tabla de datos con población comunal proyectada (2002-2035), base
-  Censo 2017: `territorial::poblacion_proyeccion`
+  Censo 2017: `territorial::poblacion_proyeccion` (Nota: función
+  removida y trasladada [al paquete
+  `{poblador}`)](https://bastianolea.github.io/poblador/)
 - Función para agregar población comunal a comunas:
   `territorial::agregar_poblacion()`
 

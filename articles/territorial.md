@@ -313,18 +313,18 @@ base
 ```
 
     # A tibble: 972 × 4
-       nombre_comuna codigo_comuna name     value
-       <chr>                 <dbl> <chr>    <dbl>
-     1 Illapel                4201 a     0.000421
-     2 Chiguayante            8103 c     0.000696
-     3 Putre                 15201 b     0.00390
-     4 Guaitecas             11203 c     0.00675
-     5 Pudahuel              13124 c     0.00711
-     6 Dalcahue              10205 b     0.0107
-     7 La Serena              4101 a     0.0116
-     8 Licantén               7303 c     0.0124
-     9 Pichilemu              6201 a     0.0141
-    10 Buin                  13402 b     0.0160
+       nombre_comuna   codigo_comuna name     value
+       <chr>                   <dbl> <chr>    <dbl>
+     1 Lampa                   13302 c     0.000122
+     2 Cabo de Hornos          12201 b     0.000364
+     3 Petorca                  5404 b     0.000385
+     4 Putre                   15201 c     0.00451
+     5 Los Ángeles              8301 b     0.00486
+     6 San Javier               7406 c     0.00499
+     7 Combarbalá               4302 b     0.00525
+     8 Curaco de Vélez         10204 a     0.00636
+     9 Huasco                   3304 c     0.00722
+    10 Laja                     8304 a     0.00789
     # ℹ 962 more rows
 
 Esta tabla tiene 972 filas, ¿cómo confirmar si existen datos para todas
@@ -341,7 +341,7 @@ base |>
 
     ! La cantidad de comunas es anómala: hay 324, pero deberían ser 346. Revísalas con `territorial::validar_comunas()`
 
-    → Las comunas faltantes son: Canela, Juan Fernández, Quillota, Santo Domingo, Coinco, Palmilla, Placilla, Pelluhue, Colbún, Hualpén, Curanilahue, Los Sauces, Victoria, Quinchao, Río Ibáñez, Cerrillos, Puente Alto, San José de Maipo, Los Lagos, Arica, Coihueco y Ñiquén
+    → Las comunas faltantes son: Mejillones, Tocopilla, María Elena, Algarrobo, Las Cabras, Pencahue, Río Claro, Villa Alegre, Hualpén, Vilcún, Puerto Montt, Dalcahue, Coyhaique, Cisnes, Río Verde, El Bosque, Lo Prado, Tiltil, San Pedro, Panguipulli, Pinto y San Carlos
 
 La función
 [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
@@ -359,19 +359,19 @@ base |>
   buscar_comuna("Alto")
 ```
 
-    ! Se encontraron 24 resultados, mostrando sólo 6.
+    ! Se encontraron 30 resultados, mostrando sólo 6.
 
-    ℹ Los resultados más cercanos al término `Alto` son: Alto Biobío, Alto Hospicio y Alto del Carmen
+    ℹ Los resultados más cercanos al término `Alto` son: Alto del Carmen, Alto Biobío, Puente Alto y Alto Hospicio
 
     # A tibble: 6 × 5
       nombre_comuna   codigo_comuna name   value puntaje
       <chr>                   <dbl> <chr>  <dbl>   <dbl>
-    1 Alto Biobío              8314 a     0.0846       1
-    2 Alto Hospicio            1107 b     0.213        1
-    3 Alto Hospicio            1107 a     0.344        1
-    4 Alto del Carmen          3302 b     0.420        1
-    5 Alto Hospicio            1107 c     0.537        1
-    6 Alto del Carmen          3302 a     0.620        1
+    1 Alto del Carmen          3302 c     0.0159       1
+    2 Alto Biobío              8314 c     0.0205       1
+    3 Alto Biobío              8314 a     0.228        1
+    4 Alto del Carmen          3302 b     0.274        1
+    5 Puente Alto             13201 c     0.479        1
+    6 Alto Hospicio            1107 c     0.587        1
 
 ### Crear nombres de comunas a partir de códigos únicos territoriales
 
