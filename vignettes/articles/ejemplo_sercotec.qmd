@@ -1,12 +1,6 @@
 ---
 title: "Ejemplo: beneficiarios Sercotec"
 description: Limpieza de datos comunales de beneficiarios de programas de Sercotec en Chile según sexo, obtenidos desde datos abiertos del Servicio de Cooperación Técnica.
-knitr:
-  opts_chunk:
-    collapse: true
-    comment: '#>'
-editor_options: 
-  chunk_output_type: console
 ---
 
 En este ejemplo se limpian datos territoriales sobre personas beneficiarias de programas de apoyo al emprendimiento de Sercotec (Servicio de Cooperación Técnica) en Chile, a nivel comunal y por sexo. Los datos corresponden al año 2024, y fueron obtenidos mediante solicitud de transparencia el año 2025.

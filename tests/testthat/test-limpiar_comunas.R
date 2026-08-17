@@ -21,15 +21,12 @@ test_that("prueba de limpieza de comunas 2", {
         "HUARA",
         "PICA",
         "ANTOFAGASTA",
-        "laflorida",
         "cerritos",
         "llay-llay",
         "asdf",
         NA
-      ),
-      procedimiento = FALSE
-    ) |>
-      suppressMessages(),
+      )
+    ),
     c(
       "Iquique",
       "Colchane",
@@ -40,14 +37,14 @@ test_that("prueba de limpieza de comunas 2", {
       "Huara",
       "Pica",
       "Antofagasta",
-      "La Florida",
       "Cerrillos",
       "Llaillay",
       NA,
       NA
     )
   )
-})
+}) |>
+  suppressMessages()
 
 
 test_that("prueba de limpieza de comunas 3, antes no se la podía", {
@@ -311,7 +308,7 @@ test_that("prueba calidad de limpieza de comunas: mayúsculas, espacios y símbo
 test_that("prueba calidad de limpieza de comunas: caracteres faltantes", {
   expect_message(
     comunas() |>
-      eliminar_caracteres(porcentaje = 0.1) |>
+      eliminar_texto(porcentaje = 0.1) |>
       limpiar_comunas(),
     regexp = "100%"
   )
@@ -321,7 +318,7 @@ test_that("prueba calidad de limpieza de comunas: caracteres faltantes", {
 test_that("prueba calidad de limpieza de comunas: caracteres faltantes, nivel 2", {
   expect_message(
     comunas() |>
-      eliminar_caracteres(porcentaje = 0.3) |>
+      eliminar_texto(porcentaje = 0.3) |>
       limpiar_comunas(),
     regexp = "[95-99].[1-9]%|100%"
   )
@@ -331,7 +328,7 @@ test_that("prueba calidad de limpieza de comunas: caracteres faltantes, nivel 2"
 test_that("prueba calidad de limpieza de comunas: caracteres reemplazados", {
   expect_message(
     comunas() |>
-      reemplazar_caracteres(porcentaje = 0.1) |>
+      reemplazar_texto(porcentaje = 0.1) |>
       limpiar_comunas(),
     regexp = "100%"
   )
@@ -342,7 +339,7 @@ test_that("prueba calidad de limpieza de comunas: caracteres reemplazados", {
 test_that("prueba calidad de limpieza de comunas: caracteres reemplazados, nivel 2", {
   expect_message(
     comunas() |>
-      reemplazar_caracteres(porcentaje = 0.3) |>
+      reemplazar_texto(porcentaje = 0.3) |>
       limpiar_comunas(),
     regexp = "[95-99].[1-9]%|100%"
   )

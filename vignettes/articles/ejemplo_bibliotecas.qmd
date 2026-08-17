@@ -1,12 +1,6 @@
 ---
 title: "Ejemplo: préstamos en bibliotecas"
 description: Limpieza de datos comunales de préstamos en bibliotecas públicas de Chile según género, obtenidos desde el Servicio Nacional del Patrimonio Cultural mediante solicitud de transparencia.
-knitr:
-  opts_chunk:
-    collapse: true
-    comment: '#>'
-editor_options: 
-  chunk_output_type: console
 ---
 
 En este ejemplo se limpian datos territoriales sobre préstamo de material bibliográfico en bibliotecas públicas de Chile, a nivel comunal y por género de las personas solicitantes de material. Los datos corresponden al año 2025, y fueron obtenidos desde el Servicio Nacional del Patrimonio Cultural por medio de una solicitud de transparencia realizada el año 2025.

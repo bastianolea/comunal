@@ -256,14 +256,29 @@ limpiar_regiones <- function(
 
       if (length(resultado) == 0) {
         cli::cli_alert_warning(
-          "Alerta, no se encontró ninguna coincidencia para la región `{region_faltante}`"
+          "No se encontró ninguna coincidencia para la región `{region_faltante}`"
         )
       }
 
       if (length(resultado) > 1) {
         cli::cli_alert_warning(
-          "Alerta, se encontraron {length(resultado)} coincidencias para la región `{region_faltante}`: {redactar_comunas(resultado, largo = 0)}"
+          "Se encontraron {length(resultado)} coincidencias para la región `{region_faltante}`: {redactar_comunas(resultado, largo = 0)}"
         )
+
+        # elegir resultado de menor distancia con el original
+        distancia <- adist(
+          region_faltante,
+          resultado
+        )
+
+        distancia <- dplyr::tibble(
+          resultado,
+          distancia = as.vector(distancia)
+        )
+
+        resultado <- distancia |>
+          dplyr::slice_min(distancia, with_ties = FALSE) |>
+          dplyr::pull(resultado)
       }
 
       return(resultado[1])

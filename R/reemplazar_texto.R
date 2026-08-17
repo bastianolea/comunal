@@ -1,4 +1,15 @@
-reemplazar_caracteres <- function(
+#' Reemplazar caracteres al azar para ensuciar texto
+#'
+#' @param texto Vector de texto
+#' @param porcentaje Porcentaje de caracteres a reemplazar
+#' @param caracteres Vector de caracteres para insertar
+#'
+#' @returns Vector de texto con caracteres reemplazados al azar
+#' @export
+#'
+#' @examples
+#' reemplazar_texto(c("mapache", "lindo"), porcentaje = 0.3)
+reemplazar_texto <- function(
   texto,
   porcentaje = 0.1,
   caracteres = c(letters, LETTERS)

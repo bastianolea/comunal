@@ -234,6 +234,7 @@ limpiar_comunas <- function(
     na.omit() |>
     dplyr::pull()
 
+  # browser()
   # por cada comuna faltante, buscar coincidencias aproximadas con agrep
   coincidencias <- purrr::map(
     faltantes$coincidir,
@@ -242,6 +243,16 @@ limpiar_comunas <- function(
         return(NA)
       }
       # comuna_faltante <- faltantes$coincidir[10]
+
+      # comuna_faltante <- "rio urtado" # sale en 2
+      # comuna_faltante <- "dasalanca" # sale en 2
+      # comuna_faltante <- "csablanca" # sale en 2
+      # comuna_faltante <- "as cabras" # sale en 2
+      # comuna_faltante <- "isla de ascua" # sale en 2
+      # comuna_faltante <- "a uiguera" # sale en 2
+      # comuna_faltante <- "ichideguq" # sale en 2
+      # comuna_faltante <- "zsablanca"
+      # comuna_faltante <- "isn des maipo"
 
       resultado <-
         agrep(
@@ -252,19 +263,33 @@ limpiar_comunas <- function(
           ignore.case = FALSE,
           fixed = TRUE,
           costs = list(ins = 1, del = 1, sub = 1)
-        ) |>
-        rev()
+        )
 
       if (length(resultado) == 0) {
         cli::cli_alert_warning(
-          "Alerta, no se encontró ninguna coincidencia para la comuna `{comuna_faltante}`"
+          "No se encontró ninguna coincidencia para la comuna `{comuna_faltante}`"
         )
       }
 
       if (length(resultado) > 1) {
         cli::cli_alert_warning(
-          "Alerta, se encontraron {length(resultado)} coincidencias para la comuna `{comuna_faltante}`: {redactar_comunas(resultado)}"
+          "Se encontraron {length(resultado)} coincidencias para la comuna `{comuna_faltante}`: {redactar_comunas(resultado)}"
         )
+
+        # elegir resultado de menor distancia con el original
+        distancia <- adist(
+          comuna_faltante,
+          resultado
+        )
+
+        distancia <- dplyr::tibble(
+          resultado,
+          distancia = as.vector(distancia)
+        )
+
+        resultado <- distancia |>
+          dplyr::slice_min(distancia, with_ties = FALSE) |>
+          dplyr::pull(resultado)
       }
 
       return(resultado[1])
@@ -283,6 +308,9 @@ limpiar_comunas <- function(
     dplyr::mutate(
       coincidencia = territorial::comunas()[coincidencias_proximidad]
     )
+
+  # resultados |>
+  #   print(n=60)
 
   # extraer limpiadas en este paso
   comunas_coincididas <- resultados |>
@@ -332,6 +360,7 @@ limpiar_comunas <- function(
       dplyr::distinct() |>
       dplyr::select(-comunas_limpias) |>
       print(n = Inf)
+    # browser()
   }
 
   # volver a unir con las originales

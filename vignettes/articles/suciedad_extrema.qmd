@@ -1,0 +1,70 @@
+---
+title: "Prueba de suciedad extrema"
+description: Prueba de limpieza automática de nombres de comunas sobre datos intencionalmente sucios.
+---
+
+
+En este ejemplo, probaremos la función `territorial::limpiar_comunas()` con un caso extremo de datos intencionalmente sucios.
+
+```{r}
+#| message: false
+library(territorial)
+library(dplyr)
+
+set.seed(1234)
+```
+
+Crearemos un vector de nombres de comunas ensuciados, usando algunas funciones utilitarias [inspiradas en el paquete `{messy}`.](https://nrennie.rbind.io/messy/)
+
+```{r}
+sucios <- territorios |> 
+  select(nombre_comuna) |> 
+  mutate(nombres_sucios = nombre_comuna |> 
+      territorial::reemplazar_texto(porcentaje = 0.1) |>
+      territorial::eliminar_texto(porcentaje = 0.1) |>
+      territorial::insertar_texto(porcentaje = 0.1)
+  ) |> 
+  filter_out(nombre_comuna == nombres_sucios) # excluir los que no se ensuciaron por azar
+```
+Como sus nombres lo indican, estas funciones reemplazan, eliminan e insertan texto aleatoriamente, para simular errores de escritura, datos corruptos, u otros problemas de calidad de datos.
+
+Así queda una muestra de los datos sucios:
+
+```{r}
+sucios |> 
+  slice_sample(n = 10)
+```
+
+A partir de la columna `nombres_sucios`, usamos `limpiar_comunas()` para crear la columna `nombres_limpios`:
+
+```{r}
+#| message: false
+
+limpios <- sucios |> 
+  mutate(nombres_limpios = limpiar_comunas(nombres_sucios))
+```
+
+Ahora veamos el resultado de esta prueba de limpieza extrema:
+
+```{r}
+limpios |> 
+  select(nombres_sucios, nombres_limpios) |> 
+  print(n = 30)
+```
+
+Podemos confirmar que la limpieza realizada con `limpiar_comunas()` es capaz de abarcar casos muy extremos: por ejemplo, identifica que `SvnMPmedro d Atacaa` es _San Pedro de Atacama_, o que `SanaWMaríaW` es _Santa María_, por lo que la función podría resultar apropiada para detección de datos escritos a mano o de documentos antiguos procesados con OCR.
+
+A este nivel de dificultad, la limpieza no siempre es 100% correcta. 
+
+```{r}
+problemas <- limpios |> 
+  filter(nombre_comuna != nombres_limpios)
+```
+
+Podemos ver que existen `{r} nrow(problemas)` casos donde los nombres limpios se dedujeron incorrectamente a partir de los nombres sucios:
+
+```{r}
+problemas
+```
+
+

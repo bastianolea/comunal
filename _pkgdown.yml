@@ -57,6 +57,10 @@ reference:
   desc: Funciones para agregar nuevas variables a partir de datos territoriales existentes
   contents:
   - starts_with("agregar_")
+- title: Misceláneas
+  desc: Otras funciones usadas a lo largo del paquete
+  contents:
+  - contains("texto")
 
 articles:
 - title: Viñetas
@@ -76,6 +80,7 @@ articles:
   navbar: Ejemplos
   desc: Casos de uso del paquete con datos reales
   contents:
+  - articles/suciedad_extrema
   - articles/ejemplo_servel
   - articles/ejemplo_bibliotecas
   - articles/ejemplo_sercotec

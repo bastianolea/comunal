@@ -1,10 +1,6 @@
 ---
 title: "Mapas comunales"
 description: "Uso de {territorial} para facilitar la creación de mapas comunales con {chilemapas}"
-knitr:
-  opts_chunk:
-    collapse: true
-    comment: '#>'
 ---
 
 El paquete `{territorial}` puede ser usado para facilitar la visualización de datos espaciales de nivel comunal. Con un par de funciones de limpieza podemos hacer que cualquier base de datos con nombres de comunas (incluso mal escritos) puedan convertirse en mapas.

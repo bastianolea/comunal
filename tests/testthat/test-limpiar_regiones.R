@@ -74,10 +74,9 @@ test_that("prueba de limpieza de regiones 4, casos especiales", {
 test_that("prueba de limpieza de regiones 5, coincidencia aproximada", {
   expect_equal(
     limpiar_regiones(
-      c("rio", "La Araucania"),
-      procedimiento = F
+      c("Bio", "Ríos", "Araucania")
     ),
-    c("Los Ríos", "La Araucanía")
+    c("Biobío", "Los Ríos", "La Araucanía")
   )
 }) |>
   suppressMessages()
@@ -281,7 +280,7 @@ test_that("prueba calidad de limpieza de regiones: mayúsculas, espacios y símb
 test_that("prueba calidad de limpieza de regiones: caracteres faltantes", {
   expect_message(
     regiones() |>
-      eliminar_caracteres(porcentaje = 0.1) |>
+      eliminar_texto(porcentaje = 0.1) |>
       limpiar_regiones(procedimiento = F),
     regexp = "100%"
   )
@@ -291,7 +290,7 @@ test_that("prueba calidad de limpieza de regiones: caracteres faltantes", {
 test_that("prueba calidad de limpieza de regiones: caracteres faltantes, nivel 2", {
   expect_message(
     regiones() |>
-      eliminar_caracteres(porcentaje = 0.2) |>
+      eliminar_texto(porcentaje = 0.2) |>
       limpiar_regiones(procedimiento = F),
     regexp = "[95-99].[1-9]%|100%"
   )
@@ -301,7 +300,7 @@ test_that("prueba calidad de limpieza de regiones: caracteres faltantes, nivel 2
 test_that("prueba calidad de limpieza de regiones: caracteres reemplazados", {
   expect_message(
     regiones() |>
-      reemplazar_caracteres(porcentaje = 0.1) |>
+      reemplazar_texto(porcentaje = 0.1) |>
       limpiar_regiones(procedimiento = F),
     regexp = "100%"
   )
@@ -311,7 +310,7 @@ test_that("prueba calidad de limpieza de regiones: caracteres reemplazados", {
 test_that("prueba calidad de limpieza de regiones: caracteres reemplazados, nivel 2", {
   expect_message(
     regiones() |>
-      reemplazar_caracteres(porcentaje = 0.2) |>
+      reemplazar_texto(porcentaje = 0.2) |>
       limpiar_regiones(procedimiento = F),
     regexp = "[95-99].[1-9]%|100%"
   )
