@@ -63,6 +63,8 @@ ordenarlos, etc.
   : Limpieza de nombres de comunas de Chile a sus nombres oficiales
 - [`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md)
   : Limpieza de nombres de regiones de Chile a sus nombres oficiales
+- [`limpiar_texto()`](https://bastianolea.github.io/territorial/reference/limpiar_texto.md)
+  : Eliminar puntuación, símbolos y números de textos
 
 ## Complementar nombres de territorios
 
@@ -91,3 +93,16 @@ existentes
   : Agregar macrozona del país a regiones
 - [`agregar_orden_region()`](https://bastianolea.github.io/territorial/reference/agregar_orden_region.md)
   : Agregar orden geográfico (norte a sur) a códigos de regiones
+
+## Misceláneas
+
+Otras funciones usadas a lo largo del paquete
+
+- [`eliminar_texto()`](https://bastianolea.github.io/territorial/reference/eliminar_texto.md)
+  : Eliminar caracteres al azar para ensuciar texto
+- [`insertar_texto()`](https://bastianolea.github.io/territorial/reference/insertar_texto.md)
+  : Insertar caracteres al azar para ensuciar texto
+- [`limpiar_texto()`](https://bastianolea.github.io/territorial/reference/limpiar_texto.md)
+  : Eliminar puntuación, símbolos y números de textos
+- [`reemplazar_texto()`](https://bastianolea.github.io/territorial/reference/reemplazar_texto.md)
+  : Reemplazar caracteres al azar para ensuciar texto

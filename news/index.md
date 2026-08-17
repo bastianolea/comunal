@@ -7,6 +7,12 @@
   que funciona igual a
   [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
   pero para las regiones de Chile, en versiones largas o cortas.
+- Mejoras significativas en
+  [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
+  y
+  [`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md)
+  al elegir entre nombres muy sucios que se parecen a varioas
+  comunas/regiones válidas.
 - Pruebas de funcionamiento mucho más estrictas para
   [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
   y

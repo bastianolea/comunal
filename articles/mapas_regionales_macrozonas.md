@@ -4,14 +4,14 @@ Las macrozonas son grupos de regiones de Chile que agrupan
 geográficamente a estos territorios. Son similares a las [regiones
 naturales de
 Chile](https://es.wikipedia.org/wiki/Regiones_naturales_de_Chile), solo
-que éstas no se ajustan a la división político-administriva del país.
+que éstas no se ajustan a la división político-administrativa del país.
 
 En general, las macrozonas de Chile buscan separar al país en
 clasificaciones aproximadamente parecidas a un norte, centro y sur,
-tomando distintas definiciones de acuerso a las distintas formas de
+tomando distintas definiciones de acuerdo a las distintas formas de
 aproximarse a la especificidad de cada uno de estos conceptos. Por
 ejemplo, puede ser necesario o relevante separar el norte de Chile en
-*norte grande* y *norte chico*, el sur de chile en zona *sur* y zona
+*norte grande* y *norte chico*, el sur de Chile en zona *sur* y zona
 *austral*, incluir a la Región Metropolitana en el *centro* del país o
 considerarla como una macrozona en sí misma, etc.
 

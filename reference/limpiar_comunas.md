@@ -112,7 +112,7 @@ limpiar_comunas(c("COLCHANE", "Alto Ospicio", "probidencia", "huara", "laflorida
 #> ℹ Se encontraron 0 casos especiales: 
 #> 
 #> ── Paso 4: coincidencias aproximadas de texto 
-#> ! Alerta, se encontraron 2 coincidencias para la comuna `laflorida`: la florida y florida
+#> ! Se encontraron 2 coincidencias para la comuna `laflorida`: florida y la florida
 #> ℹ Se limpiaron 5 de 5 comunas por medio de coincidencias aproximadas de texto: Alto Hospicio, Providencia, La Florida, Cerrillos y Llaillay
 #> 
 #> ── Conclusión de limpieza de comunas 

@@ -51,6 +51,7 @@
     <li><a class="dropdown-item" href="../articles/mapas_regionales_macrozonas.html">Mapas regionales por macrozona</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Ejemplos</h6></li>
+    <li><a class="dropdown-item" href="../articles/suciedad_extrema.html">Prueba de suciedad extrema</a></li>
     <li><a class="dropdown-item" href="../articles/ejemplo_servel.html">Ejemplo: datos electorales</a></li>
     <li><a class="dropdown-item" href="../articles/ejemplo_bibliotecas.html">Ejemplo: préstamos en bibliotecas</a></li>
     <li><a class="dropdown-item" href="../articles/ejemplo_sercotec.html">Ejemplo: beneficiarios Sercotec</a></li>
@@ -102,59 +103,75 @@
 <span>  <span class="st">"PUENTE ALTO"</span>, <span class="fl">2</span>,</span>
 <span>  <span class="st">"LA PINTANA"</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">datos</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
-<span><span class="co">#&gt;   comuna      valor</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 LA FLORIDA      3</span></span>
-<span><span class="co">#&gt; 2 PUENTE ALTO     2</span></span>
-<span><span class="co">#&gt; 3 LA PINTANA      1</span></span></code></pre></div>
+<span><span class="va">datos</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  comuna      valor
+  &lt;chr&gt;       &lt;dbl&gt;
+1 LA FLORIDA      3
+2 PUENTE ALTO     2
+3 LA PINTANA      1</code></pre>
+</div>
 </div>
 <p>Confirmamos que estos datos tienen nombres de comuna incorrectos (escritos con mayúsculas) gracias a <code><a href="../reference/validar_comunas.html">territorial::validar_comunas()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://bastianolea.github.io/territorial">territorial</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="../reference/validar_comunas.html">validar_comunas</a></span><span class="op">(</span><span class="va">comuna</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ! Resumen: 3 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): LA FLORIDA, PUENTE ALTO y LA PINTANA</span></span>
-<span><span class="co">#&gt; ! Mayúsculas: 3 casos de comunas escritas en mayúsculas: LA FLORIDA, PUENTE ALTO y LA PINTANA</span></span>
-<span><span class="co">#&gt; ✖ Validación de comunas: se encontraron 6 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.</span></span></code></pre></div>
+<span>  <span class="fu"><a href="../reference/validar_comunas.html">validar_comunas</a></span><span class="op">(</span><span class="va">comuna</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Resumen: 3 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): LA FLORIDA, PUENTE ALTO y LA PINTANA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Mayúsculas: 3 casos de comunas escritas en mayúsculas: LA FLORIDA, PUENTE ALTO y LA PINTANA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✖ Validación de comunas: se encontraron 6 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.</code></pre>
+</div>
 </div>
 </section><section class="level3"><h3 id="obtener-mapas-comunales">Obtener mapas comunales<a class="anchor" aria-label="anchor" href="#obtener-mapas-comunales"></a>
 </h3>
 <p>En el ecosistema de R, <a href="https://pacha.dev/chilemapas/" class="external-link">el paquete <code>{chilemapas}</code></a>, desarrollado por <a href="https://pacha.dev" class="external-link">Mauricio Vargas</a> facilita el acceso a polígonos comunales y regionales de Chile, perfectos para visualizar datos en mapas. Pero quizás la principal dificultad al crear mapas comunales de Chile es agregarle los polígonos a los datos de nivel comunal.</p>
 <p>Con <a href="https://pacha.dev/chilemapas/" class="external-link">chilemapas</a> obtenemos los polígonos de las comunas de Chile con <code><a href="https://pacha.dev/chilemapas/reference/mapa_comunas.html" class="external-link">chilemapas::mapa_comunas</a></code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("chilemapas")</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pacha.dev/chilemapas/" class="external-link">chilemapas</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Cargando paquete requerido: sf</span></span>
-<span><span class="co">#&gt; Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE</span></span>
-<span><span class="co">#&gt; La documentacion del paquete y ejemplos de uso se encuentran en https://pacha.dev/chilemapas/.</span></span>
-<span><span class="co">#&gt; Visita https://buymeacoffee.com/pacha/ si deseas donar para contribuir al desarrollo de este software.</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pacha.dev/chilemapas/" class="external-link">chilemapas</a></span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: sf</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>La documentacion del paquete y ejemplos de uso se encuentran en https://pacha.dev/chilemapas/.
+Visita https://buymeacoffee.com/pacha/ si deseas donar para contribuir al desarrollo de este software.</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mapa</span> <span class="op">&lt;-</span> <span class="fu">chilemapas</span><span class="fu">::</span><span class="va"><a href="https://pacha.dev/chilemapas/reference/mapa_comunas.html" class="external-link">mapa_comunas</a></span></span>
 <span></span>
-<span><span class="va">mapa</span></span>
-<span><span class="co">#&gt; # A tibble: 345 × 4</span></span>
-<span><span class="co">#&gt;    codigo_comuna codigo_provincia codigo_region                         geometry</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;            &lt;chr&gt;                       &lt;MULTIPOLYGON [°]&gt;</span></span>
-<span><span class="co">#&gt;  1 01401         014              01            (((-68.86081 -21.28512, -68.921…</span></span>
-<span><span class="co">#&gt;  2 01403         014              01            (((-68.65113 -19.77188, -68.811…</span></span>
-<span><span class="co">#&gt;  3 01405         014              01            (((-68.65113 -19.77188, -68.635…</span></span>
-<span><span class="co">#&gt;  4 01402         014              01            (((-69.31789 -19.13651, -69.271…</span></span>
-<span><span class="co">#&gt;  5 01404         014              01            (((-69.39615 -19.06125, -69.400…</span></span>
-<span><span class="co">#&gt;  6 01107         011              01            (((-70.1095 -20.35131, -70.1243…</span></span>
-<span><span class="co">#&gt;  7 01101         011              01            (((-70.09894 -20.08504, -70.102…</span></span>
-<span><span class="co">#&gt;  8 02104         021              02            (((-68.98863 -25.38016, -68.987…</span></span>
-<span><span class="co">#&gt;  9 02101         021              02            (((-70.60654 -23.43054, -70.601…</span></span>
-<span><span class="co">#&gt; 10 02201         022              02            (((-67.94302 -22.38175, -67.955…</span></span>
-<span><span class="co">#&gt; # ℹ 335 more rows</span></span></code></pre></div>
+<span><span class="va">mapa</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 345 × 4
+   codigo_comuna codigo_provincia codigo_region                         geometry
+   &lt;chr&gt;         &lt;chr&gt;            &lt;chr&gt;                       &lt;MULTIPOLYGON [°]&gt;
+ 1 01401         014              01            (((-68.86081 -21.28512, -68.921…
+ 2 01403         014              01            (((-68.65113 -19.77188, -68.811…
+ 3 01405         014              01            (((-68.65113 -19.77188, -68.635…
+ 4 01402         014              01            (((-69.31789 -19.13651, -69.271…
+ 5 01404         014              01            (((-69.39615 -19.06125, -69.400…
+ 6 01107         011              01            (((-70.1095 -20.35131, -70.1243…
+ 7 01101         011              01            (((-70.09894 -20.08504, -70.102…
+ 8 02104         021              02            (((-68.98863 -25.38016, -68.987…
+ 9 02101         021              02            (((-70.60654 -23.43054, -70.601…
+10 02201         022              02            (((-67.94302 -22.38175, -67.955…
+# ℹ 335 more rows</code></pre>
+</div>
 </div>
 <p>Para agregar estos polígonos a los datos podemos usar <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join()</a></code> (<a href="https://bastianolea.rbind.io/blog/left_join/" class="external-link">revisa este tutorial</a>), pero tenemos el problema de los polígonos vienen solamente con códigos comunales, y nuestros datos no tienen esa variable, sino apenas los nombres de las comunas en mayúscula.</p>
 </section><section class="level3"><h3 id="limpiar-datos-comunales">Limpiar datos comunales<a class="anchor" aria-label="anchor" href="#limpiar-datos-comunales"></a>
@@ -162,58 +179,94 @@
 <p>Podemos usar <a href="https://bastianolea.github.io/territorial">territorial</a> para limpiar los nombres de comunas y luego convertirlos a <a href="https://bastianolea.github.io/territorial/articles/codigos_unicos_territoriales.html">códigos únicos territoriales</a>.</p>
 <p>Primero limpiamos los nombres de comunas para llevarlos a una escritura estandarizada y correcta con <code><a href="../reference/limpiar_comunas.html">territorial::limpiar_comunas()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos_2</span> <span class="op">&lt;-</span> <span class="va">datos</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>comuna <span class="op">=</span> <span class="fu"><a href="../reference/limpiar_comunas.html">limpiar_comunas</a></span><span class="op">(</span><span class="va">comuna</span><span class="op">)</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; ℹ Limpiando 3 nombres de comunas (3 son distintas)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── Paso 1: confirmar comunas correctas</span></span>
-<span><span class="co">#&gt; ℹ De las 3 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── Paso 2: coincidencias por limpieza de texto</span></span>
-<span><span class="co">#&gt; ℹ A partir de la limpieza de texto, se limpiaron 3 de 3 comunas: La Florida, Puente Alto y La Pintana</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── Paso 3: casos especiales</span></span>
-<span><span class="co">#&gt; ℹ Se encontraron 0 casos especiales:</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── Paso 4: coincidencias aproximadas de texto</span></span>
-<span><span class="co">#&gt; ! No se limpiaron comunas como parte de este paso</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── Conclusión de limpieza de comunas</span></span>
-<span><span class="co">#&gt; ✔ De las 3 comunas distintas, se limpiaron 3 en total (100%)</span></span>
-<span></span>
-<span><span class="va">datos_2</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
-<span><span class="co">#&gt;   comuna      valor</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 La Florida      3</span></span>
-<span><span class="co">#&gt; 2 Puente Alto     2</span></span>
-<span><span class="co">#&gt; 3 La Pintana      1</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>comuna <span class="op">=</span> <span class="fu"><a href="../reference/limpiar_comunas.html">limpiar_comunas</a></span><span class="op">(</span><span class="va">comuna</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Limpiando 3 nombres de comunas (3 son distintas)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Paso 1: confirmar comunas correctas </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ De las 3 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Paso 2: coincidencias por limpieza de texto </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ A partir de la limpieza de texto, se limpiaron 3 de 3 comunas: La Florida, Puente Alto y La Pintana</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Paso 3: casos especiales </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Se encontraron 0 casos especiales: </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Paso 4: coincidencias aproximadas de texto </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! No se limpiaron comunas como parte de este paso</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conclusión de limpieza de comunas </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ De las 3 comunas distintas, se limpiaron 3 en total (100%)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">datos_2</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  comuna      valor
+  &lt;chr&gt;       &lt;dbl&gt;
+1 La Florida      3
+2 Puente Alto     2
+3 La Pintana      1</code></pre>
+</div>
 </div>
 <p>Luego podemos agregar los códigos comunales a partir de los nuevos nombres de las comunas con <code><a href="../reference/as_codigo_comuna.html">territorial::as_codigo_comuna()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos_3</span> <span class="op">&lt;-</span> <span class="va">datos_2</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>codigo_comuna <span class="op">=</span> <span class="fu"><a href="../reference/as_codigo_comuna.html">as_codigo_comuna</a></span><span class="op">(</span><span class="va">comuna</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">datos_3</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span><span class="co">#&gt;   comuna      valor codigo_comuna</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;         &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 La Florida      3         13110</span></span>
-<span><span class="co">#&gt; 2 Puente Alto     2         13201</span></span>
-<span><span class="co">#&gt; 3 La Pintana      1         13112</span></span></code></pre></div>
+<span><span class="va">datos_3</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  comuna      valor codigo_comuna
+  &lt;chr&gt;       &lt;dbl&gt;         &lt;dbl&gt;
+1 La Florida      3         13110
+2 Puente Alto     2         13201
+3 La Pintana      1         13112</code></pre>
+</div>
 </div>
 </section><section class="level3"><h3 id="agregar-polígonos-comunales-a-datos-comunales">Agregar polígonos comunales a datos comunales<a class="anchor" aria-label="anchor" href="#agregar-pol%C3%ADgonos-comunales-a-datos-comunales"></a>
 </h3>
 <p>Ahora que los datos tienen códigos comunales, podemos agregarle los polígonos con un <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join()</a></code>, pero primero tenemos que convertir los códigos comunales del mapa a formato numérico:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mapa</span> <span class="op">&lt;-</span> <span class="va">mapa</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>codigo_comuna <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">codigo_comuna</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datos_4</span> <span class="op">&lt;-</span> <span class="va">datos_3</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
 <span>    <span class="va">mapa</span>,</span>
@@ -224,7 +277,7 @@
 </h3>
 <p>Ahora los datos cuentan con los polígonos apropiados, y podemos visualizarlos <a href="https://bastianolea.rbind.io/blog/tutorial_mapa_chile/" class="external-link">siguiendo este tutorial</a>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
 <span></span>
@@ -237,9 +290,11 @@
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">comuna</span><span class="op">)</span>,</span>
 <span>    color <span class="op">=</span> <span class="st">"white"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not</span></span>
-<span><span class="co">#&gt; give correct results for longitude/latitude data</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+give correct results for longitude/latitude data</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure><p><img src="mapas_comunales_files/figure-html/ejemplo_mapa_comunas_santiago-1.png" width="672"></p>

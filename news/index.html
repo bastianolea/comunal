@@ -27,6 +27,7 @@
     <li><a class="dropdown-item" href="../articles/mapas_regionales_macrozonas.html">Mapas regionales por macrozona</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Ejemplos</h6></li>
+    <li><a class="dropdown-item" href="../articles/suciedad_extrema.html">Prueba de suciedad extrema</a></li>
     <li><a class="dropdown-item" href="../articles/ejemplo_servel.html">Ejemplo: datos electorales</a></li>
     <li><a class="dropdown-item" href="../articles/ejemplo_bibliotecas.html">Ejemplo: préstamos en bibliotecas</a></li>
     <li><a class="dropdown-item" href="../articles/ejemplo_sercotec.html">Ejemplo: beneficiarios Sercotec</a></li>
@@ -49,6 +50,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9" id="territorial-09-20260816">territorial 0.9 (2026/08/16)<a class="anchor" aria-label="anchor" href="#territorial-09-20260816"></a></h2>
 <ul><li>Nueva función <code><a href="../reference/limpiar_regiones.html">limpiar_regiones()</a></code>, que funciona igual a <code><a href="../reference/limpiar_comunas.html">limpiar_comunas()</a></code> pero para las regiones de Chile, en versiones largas o cortas.</li>
+<li>Mejoras significativas en <code><a href="../reference/limpiar_comunas.html">limpiar_comunas()</a></code> y <code><a href="../reference/limpiar_regiones.html">limpiar_regiones()</a></code> al elegir entre nombres muy sucios que se parecen a varioas comunas/regiones válidas.</li>
 <li>Pruebas de funcionamiento mucho más estrictas para <code><a href="../reference/limpiar_comunas.html">limpiar_comunas()</a></code> y <code><a href="../reference/limpiar_regiones.html">limpiar_regiones()</a></code> usando <a href="https://nrennie.rbind.io/messy/" class="external-link">el paquete <code>{messy}</code> para ensuciar los datos</a> en distintos niveles: eliminar e insertar caracteres al azar, etc.</li>
 <li>Mejora de limpieza en <code><a href="../reference/limpiar_comunas.html">limpiar_comunas()</a></code> para eliminar “Ilustre Municipalidad” y textos similares en nombres de comunas.</li>
 <li>Mejoras en <code><a href="../reference/agregar_macrozona.html">agregar_macrozona()</a></code> y en tests de <code><a href="../reference/agregar_macrozona.html">agregar_macrozona()</a></code>, <code><a href="../reference/ubicar_comunas.html">ubicar_comunas()</a></code> y <code><a href="../reference/redactar_region.html">redactar_region()</a></code>.</li>

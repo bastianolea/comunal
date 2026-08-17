@@ -40,6 +40,12 @@ Guías explicativas para usar el paquete
 
 Casos de uso del paquete con datos reales
 
+- [Prueba de suciedad
+  extrema](https://bastianolea.github.io/territorial/articles/suciedad_extrema.md):
+
+  Prueba de limpieza automática de nombres de comunas sobre datos
+  intencionalmente sucios.
+
 - [Ejemplo: datos
   electorales](https://bastianolea.github.io/territorial/articles/ejemplo_servel.md):
 

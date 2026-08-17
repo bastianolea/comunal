@@ -9,8 +9,9 @@ articles:
   localidades: localidades.html
   articles/mapas_comunales: mapas_comunales.html
   articles/mapas_regionales_macrozonas: mapas_regionales_macrozonas.html
+  articles/suciedad_extrema: suciedad_extrema.html
   territorial: territorial.html
-last_built: 2026-08-16T21:25Z
+last_built: 2026-08-17T01:19Z
 urls:
   reference: https://bastianolea.github.io/territorial/reference
   article: https://bastianolea.github.io/territorial/articles

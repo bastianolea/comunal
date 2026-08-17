@@ -30,13 +30,14 @@ datos <- tribble(
   "LA PINTANA", 1)
 
 datos
-#> # A tibble: 3 × 2
-#>   comuna      valor
-#>   <chr>       <dbl>
-#> 1 LA FLORIDA      3
-#> 2 PUENTE ALTO     2
-#> 3 LA PINTANA      1
 ```
+
+    # A tibble: 3 × 2
+      comuna      valor
+      <chr>       <dbl>
+    1 LA FLORIDA      3
+    2 PUENTE ALTO     2
+    3 LA PINTANA      1
 
 Confirmamos que estos datos tienen nombres de comuna incorrectos
 (escritos con mayúsculas) gracias a
@@ -51,10 +52,13 @@ library(territorial)
 
 datos |> 
   validar_comunas(comuna)
-#> ! Resumen: 3 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): LA FLORIDA, PUENTE ALTO y LA PINTANA
-#> ! Mayúsculas: 3 casos de comunas escritas en mayúsculas: LA FLORIDA, PUENTE ALTO y LA PINTANA
-#> ✖ Validación de comunas: se encontraron 6 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
 ```
+
+    ! Resumen: 3 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): LA FLORIDA, PUENTE ALTO y LA PINTANA
+
+    ! Mayúsculas: 3 casos de comunas escritas en mayúsculas: LA FLORIDA, PUENTE ALTO y LA PINTANA
+
+    ✖ Validación de comunas: se encontraron 6 problemas con las comunas! Usa `territorial::limpiar_comunas()` para solucionarlos.
 
 ### Obtener mapas comunales
 
@@ -73,32 +77,36 @@ de las comunas de Chile con
 
 # install.packages("chilemapas")
 library(chilemapas)
-#> Cargando paquete requerido: sf
-#> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
-#> La documentacion del paquete y ejemplos de uso se encuentran en https://pacha.dev/chilemapas/.
-#> Visita https://buymeacoffee.com/pacha/ si deseas donar para contribuir al desarrollo de este software.
 ```
+
+    Cargando paquete requerido: sf
+
+    Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
+
+    La documentacion del paquete y ejemplos de uso se encuentran en https://pacha.dev/chilemapas/.
+    Visita https://buymeacoffee.com/pacha/ si deseas donar para contribuir al desarrollo de este software.
 
 ``` r
 
 mapa <- chilemapas::mapa_comunas
 
 mapa
-#> # A tibble: 345 × 4
-#>    codigo_comuna codigo_provincia codigo_region                         geometry
-#>    <chr>         <chr>            <chr>                       <MULTIPOLYGON [°]>
-#>  1 01401         014              01            (((-68.86081 -21.28512, -68.921…
-#>  2 01403         014              01            (((-68.65113 -19.77188, -68.811…
-#>  3 01405         014              01            (((-68.65113 -19.77188, -68.635…
-#>  4 01402         014              01            (((-69.31789 -19.13651, -69.271…
-#>  5 01404         014              01            (((-69.39615 -19.06125, -69.400…
-#>  6 01107         011              01            (((-70.1095 -20.35131, -70.1243…
-#>  7 01101         011              01            (((-70.09894 -20.08504, -70.102…
-#>  8 02104         021              02            (((-68.98863 -25.38016, -68.987…
-#>  9 02101         021              02            (((-70.60654 -23.43054, -70.601…
-#> 10 02201         022              02            (((-67.94302 -22.38175, -67.955…
-#> # ℹ 335 more rows
 ```
+
+    # A tibble: 345 × 4
+       codigo_comuna codigo_provincia codigo_region                         geometry
+       <chr>         <chr>            <chr>                       <MULTIPOLYGON [°]>
+     1 01401         014              01            (((-68.86081 -21.28512, -68.921…
+     2 01403         014              01            (((-68.65113 -19.77188, -68.811…
+     3 01405         014              01            (((-68.65113 -19.77188, -68.635…
+     4 01402         014              01            (((-69.31789 -19.13651, -69.271…
+     5 01404         014              01            (((-69.39615 -19.06125, -69.400…
+     6 01107         011              01            (((-70.1095 -20.35131, -70.1243…
+     7 01101         011              01            (((-70.09894 -20.08504, -70.102…
+     8 02104         021              02            (((-68.98863 -25.38016, -68.987…
+     9 02101         021              02            (((-70.60654 -23.43054, -70.601…
+    10 02201         022              02            (((-67.94302 -22.38175, -67.955…
+    # ℹ 335 more rows
 
 Para agregar estos polígonos a los datos podemos usar
 [`left_join()`](https://dplyr.tidyverse.org/reference/mutate-joins.html)
@@ -122,31 +130,41 @@ estandarizada y correcta con
 
 datos_2 <- datos |> 
   mutate(comuna = limpiar_comunas(comuna)) 
-#> ℹ Limpiando 3 nombres de comunas (3 son distintas)
-#> 
-#> ── Paso 1: confirmar comunas correctas
-#> ℹ De las 3 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza
-#> 
-#> ── Paso 2: coincidencias por limpieza de texto
-#> ℹ A partir de la limpieza de texto, se limpiaron 3 de 3 comunas: La Florida, Puente Alto y La Pintana
-#> 
-#> ── Paso 3: casos especiales
-#> ℹ Se encontraron 0 casos especiales:
-#> 
-#> ── Paso 4: coincidencias aproximadas de texto
-#> ! No se limpiaron comunas como parte de este paso
-#> 
-#> ── Conclusión de limpieza de comunas
-#> ✔ De las 3 comunas distintas, se limpiaron 3 en total (100%)
+```
+
+    ℹ Limpiando 3 nombres de comunas (3 son distintas)
+
+    ── Paso 1: confirmar comunas correctas 
+
+    ℹ De las 3 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza
+
+    ── Paso 2: coincidencias por limpieza de texto 
+
+    ℹ A partir de la limpieza de texto, se limpiaron 3 de 3 comunas: La Florida, Puente Alto y La Pintana
+
+    ── Paso 3: casos especiales 
+
+    ℹ Se encontraron 0 casos especiales: 
+
+    ── Paso 4: coincidencias aproximadas de texto 
+
+    ! No se limpiaron comunas como parte de este paso
+
+    ── Conclusión de limpieza de comunas 
+
+    ✔ De las 3 comunas distintas, se limpiaron 3 en total (100%)
+
+``` r
 
 datos_2
-#> # A tibble: 3 × 2
-#>   comuna      valor
-#>   <chr>       <dbl>
-#> 1 La Florida      3
-#> 2 Puente Alto     2
-#> 3 La Pintana      1
 ```
+
+    # A tibble: 3 × 2
+      comuna      valor
+      <chr>       <dbl>
+    1 La Florida      3
+    2 Puente Alto     2
+    3 La Pintana      1
 
 Luego podemos agregar los códigos comunales a partir de los nuevos
 nombres de las comunas con
@@ -158,13 +176,14 @@ datos_3 <- datos_2 |>
   mutate(codigo_comuna = as_codigo_comuna(comuna))
 
 datos_3
-#> # A tibble: 3 × 3
-#>   comuna      valor codigo_comuna
-#>   <chr>       <dbl>         <dbl>
-#> 1 La Florida      3         13110
-#> 2 Puente Alto     2         13201
-#> 3 La Pintana      1         13112
 ```
+
+    # A tibble: 3 × 3
+      comuna      valor codigo_comuna
+      <chr>       <dbl>         <dbl>
+    1 La Florida      3         13110
+    2 Puente Alto     2         13201
+    3 La Pintana      1         13112
 
 ### Agregar polígonos comunales a datos comunales
 
@@ -210,9 +229,10 @@ datos_4 |>
     color = "white"
   ) +
   theme_minimal()
-#> Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
-#> give correct results for longitude/latitude data
 ```
+
+    Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+    give correct results for longitude/latitude data
 
 ![](mapas_comunales_files/figure-html/ejemplo_mapa_comunas_santiago-1.png)
 

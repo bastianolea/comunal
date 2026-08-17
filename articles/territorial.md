@@ -313,18 +313,18 @@ base
 ```
 
     # A tibble: 972 × 4
-       nombre_comuna   codigo_comuna name     value
-       <chr>                   <dbl> <chr>    <dbl>
-     1 Lampa                   13302 c     0.000122
-     2 Cabo de Hornos          12201 b     0.000364
-     3 Petorca                  5404 b     0.000385
-     4 Putre                   15201 c     0.00451
-     5 Los Ángeles              8301 b     0.00486
-     6 San Javier               7406 c     0.00499
-     7 Combarbalá               4302 b     0.00525
-     8 Curaco de Vélez         10204 a     0.00636
-     9 Huasco                   3304 c     0.00722
-    10 Laja                     8304 a     0.00789
+       nombre_comuna     codigo_comuna name    value
+       <chr>                     <dbl> <chr>   <dbl>
+     1 Quinta de Tilcoco          6114 b     0.00108
+     2 Puyehue                   10304 c     0.00203
+     3 Coyhaique                 11101 c     0.00278
+     4 Lago Verde                11102 a     0.00294
+     5 Talagante                 13601 b     0.00311
+     6 Natales                   12401 b     0.00379
+     7 Peralillo                  6307 b     0.00385
+     8 Quilpué                    5801 b     0.00413
+     9 Quillota                   5501 b     0.00436
+    10 Purén                      9208 b     0.00659
     # ℹ 962 more rows
 
 Esta tabla tiene 972 filas, ¿cómo confirmar si existen datos para todas
@@ -341,7 +341,7 @@ base |>
 
     ! La cantidad de comunas es anómala: hay 324, pero deberían ser 346. Revísalas con `territorial::validar_comunas()`
 
-    → Las comunas faltantes son: Mejillones, Tocopilla, María Elena, Algarrobo, Las Cabras, Pencahue, Río Claro, Villa Alegre, Hualpén, Vilcún, Puerto Montt, Dalcahue, Coyhaique, Cisnes, Río Verde, El Bosque, Lo Prado, Tiltil, San Pedro, Panguipulli, Pinto y San Carlos
+    → Las comunas faltantes son: María Elena, Chañaral, Monte Patria, Calle Larga, Mostazal, Rengo, San Vicente, Litueche, Chimbarongo, Chanco, Rauco, Vichuquén, Linares, Cochamó, Frutillar, Curaco de Vélez, Osorno, Hualaihué, Palena, Recoleta, Cobquecura y San Carlos
 
 La función
 [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
@@ -361,17 +361,17 @@ base |>
 
     ! Se encontraron 30 resultados, mostrando sólo 6.
 
-    ℹ Los resultados más cercanos al término `Alto` son: Alto del Carmen, Alto Biobío, Puente Alto y Alto Hospicio
+    ℹ Los resultados más cercanos al término `Alto` son: Alto Biobío, Alto Hospicio, Alto del Carmen y Puente Alto
 
     # A tibble: 6 × 5
       nombre_comuna   codigo_comuna name   value puntaje
       <chr>                   <dbl> <chr>  <dbl>   <dbl>
-    1 Alto del Carmen          3302 c     0.0159       1
-    2 Alto Biobío              8314 c     0.0205       1
-    3 Alto Biobío              8314 a     0.228        1
-    4 Alto del Carmen          3302 b     0.274        1
-    5 Puente Alto             13201 c     0.479        1
-    6 Alto Hospicio            1107 c     0.587        1
+    1 Alto Biobío              8314 c     0.0955       1
+    2 Alto Hospicio            1107 b     0.0990       1
+    3 Alto del Carmen          3302 c     0.163        1
+    4 Puente Alto             13201 a     0.213        1
+    5 Alto del Carmen          3302 b     0.454        1
+    6 Alto Hospicio            1107 c     0.459        1
 
 ### Crear nombres de comunas a partir de códigos únicos territoriales
 
@@ -855,7 +855,7 @@ regiones |>
 
     ── Paso 4: coincidencias aproximadas de texto 
 
-    ! Alerta, se encontraron 2 coincidencias para la región `ohigins`: ohiggins y libertador general bernardo ohiggins
+    ! Se encontraron 2 coincidencias para la región `ohigins`: ohiggins y libertador general bernardo ohiggins
 
     ℹ Se limpiaron 1 de 1 regiones por medio de coincidencias aproximadas de texto: Libertador General Bernardo O'Higgins
 
