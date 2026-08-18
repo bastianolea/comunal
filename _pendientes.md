@@ -1,15 +1,15 @@
 ## Pendientes
-- [ ] limpiar regiones
+- [x] limpiar regiones
 - [ ] revisar por qué en la viñeta de primeros pasos salen líneas vacías: https://bastianolea.github.io/territorial/articles/territorial.html#limpieza-de-nombres-de-comunas-de-chile
 
 
 ## Ideas
 - [x] `buscar_comunas()` con agrepl
-  - [ ] pero debería poder aplicar a otras tablas
+  - [x] pero debería poder aplicar a otras tablas
 - [ ] `obtener_comunas()` obtener comunas de la región, entregar como vector o redactada 
 - [x] clasificar regiones por zona (norte, centro, sur)
 - [ ] convertir códigos DEIS a comunas
-- [ ] `revisar_comunas()` = cuántas comunas únicas incluye, y si todas son válidas
+- [x] `contar_comunas()` = cuántas comunas únicas incluye, y si todas son válidas
 - [ ] `confirmar_comunas()` = comparar si los códigos comunales corresponden con los nombres de comuna
 
 

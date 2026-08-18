@@ -1,3 +1,6 @@
+# territorial 0.9.1 (2026/08/18)
+- Nueva función `obtener_comunas()` para recibir las comunas que forman parte de una o más regiones.
+
 # territorial 0.9 (2026/08/16)
 - Nueva función `limpiar_regiones()`, que funciona igual a `limpiar_comunas()` pero para las regiones de Chile, en versiones largas o cortas.
 - Mejoras significativas en `limpiar_comunas()` y `limpiar_regiones()` al elegir entre nombres muy sucios que se parecen a varioas comunas/regiones válidas.
