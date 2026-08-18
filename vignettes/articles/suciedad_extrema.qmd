@@ -21,9 +21,9 @@ Crearemos una tabla con nombres de comunas ensuciados, a partir de la tabla `ter
 sucios <- territorios |> 
   select(nombre_comuna) |> 
   mutate(nombres_sucios = nombre_comuna |> 
-      reemplazar_texto(porcentaje = 0.1) |>
+      reemplazar_texto(porcentaje = 0.2) |>
       eliminar_texto(porcentaje = 0.1) |>
-      insertar_texto(porcentaje = 0.1)
+      insertar_texto(porcentaje = 0.2)
   ) |> 
   filter_out(nombre_comuna == nombres_sucios) # excluir los que no se ensuciaron por azar
 ```
@@ -53,6 +53,15 @@ limpios |>
   select(nombres_sucios, nombres_limpios) |> 
   print(n = 30)
 ```
+```{r}
+#| eval: false
+#| echo: false
+
+limpios |> 
+  select(nombres_sucios, nombres_limpios) |> 
+  slice_sample(n = 10)
+```
+
 
 Podemos confirmar que la limpieza realizada con `limpiar_comunas()` es capaz de abarcar casos muy extremos: por ejemplo, identifica que `SvnMPmedro d Atacaa` es _San Pedro de Atacama_, o que `SanaWMaríaW` es _Santa María_, por lo que la función podría resultar apropiada para detección de datos escritos a mano o de documentos antiguos procesados con OCR.
 
@@ -69,4 +78,15 @@ Luego de esta limpieza, quedaron `{r} nrow(problemas)` casos donde los nombres l
 problemas
 ```
 
+
+```{r}
+#| eval: false
+#| echo: false
+
+limpiar_comunas("Senpmedre de Atacaa")
+
+limpiar_comunas("anYguipulyi")
+
+limpiar_comunas("Bprovdenria")
+```
 
