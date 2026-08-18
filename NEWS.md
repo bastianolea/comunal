@@ -1,15 +1,17 @@
 # territorial 0.9.1 (2026/08/18)
-- Nueva función `obtener_comunas()` para recibir las comunas que forman parte de una o más regiones.
+- Nueva función `obtener_comunas()` para recibir las comunas que forman parte de una o más regiones
+- Mejoras en mensajes de algunas funciones
+- Más contenido en la [viñeta principal](https://bastianolea.github.io/territorial/articles/territorial.html) del paquete
 
 # territorial 0.9 (2026/08/16)
-- Nueva función `limpiar_regiones()`, que funciona igual a `limpiar_comunas()` pero para las regiones de Chile, en versiones largas o cortas.
-- Mejoras significativas en `limpiar_comunas()` y `limpiar_regiones()` al elegir entre nombres muy sucios que se parecen a varioas comunas/regiones válidas.
+- Nueva función `limpiar_regiones()`, que funciona igual a `limpiar_comunas()` pero para las regiones de Chile, en versiones largas o cortas
+- Mejoras significativas en `limpiar_comunas()` y `limpiar_regiones()` al elegir entre nombres muy sucios que se parecen a varioas comunas/regiones válidas
 - Pruebas de funcionamiento mucho más estrictas para `limpiar_comunas()` y `limpiar_regiones()` usando [el paquete `{messy}` para ensuciar los datos](https://nrennie.rbind.io/messy/) en distintos niveles: eliminar e insertar caracteres al azar, etc.
-- Mejora de limpieza en `limpiar_comunas()` para eliminar "Ilustre Municipalidad" y textos similares en nombres de comunas.
-- Mejoras en `agregar_macrozona()` y en tests de `agregar_macrozona()`, `ubicar_comunas()` y `redactar_region()`.
+- Mejora de limpieza en `limpiar_comunas()` para eliminar "Ilustre Municipalidad" y textos similares en nombres de comunas
+- Mejoras en `agregar_macrozona()` y en tests de `agregar_macrozona()`, `ubicar_comunas()` y `redactar_region()`
 
 # territorial 0.8.13 (2026/08/14)
-- Mejoras en `preposicion_region()` para formas alternativas de escribir regiones.
+- Mejoras en `preposicion_region()` para formas alternativas de escribir regiones
 - Mejoras en viñetas
 - Menos mensajes irrelevantes en `validar_comunas()`.
 
@@ -19,7 +21,7 @@
 - Se eliminan `poblacion_proyeccion` y `agregar_poblacion()` porque se traspasan al [nuevo paquete `{poblador}` especializado en datos de población de Chile.](https://bastianolea.github.io/poblador/)
 
 # territorial 0.8.11 (2026/08/11)
-- Nueva función `buscar_comuna()`, que facilita la búsqueda de comunas por texto parcial o inexacto en cualquier tabal de datos, o por defecto en `territorial::territorios`.
+- Nueva función `buscar_comuna()`, que facilita la búsqueda de comunas por texto parcial o inexacto en cualquier tabla de datos, o por defecto en `territorial::territorios`.
 - Agregados ejemplos a `as_nombre_comuna()` y `as_nombre_region()`, gracias a `pkgcheck::pkgcheck()`
 
 # territorial 0.8.9.2 (2026/08/06)

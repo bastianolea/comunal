@@ -9,6 +9,7 @@
 #' @export
 #'
 #' @examples
+#' obtener_comunas("Tarapacá")
 obtener_comunas <- function(
   nombre_region = NULL,
   codigo_region = NULL

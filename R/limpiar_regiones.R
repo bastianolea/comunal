@@ -122,7 +122,7 @@ limpiar_regiones <- function(
     dplyr::pull()
 
   # informar
-  cli::cli_h3("Paso 1: confirmar regiones correctas")
+  cli::cli_alert("Paso 1: confirmar regiones correctas")
   if (length(regiones_correctas) == 0) {
     cli::cli_alert_info(
       "De las {nrow(resultados)} regiones distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza"
@@ -136,7 +136,7 @@ limpiar_regiones <- function(
   # limpiar ----
   # bajar a minúsculas y sacar tildes, comparar con correctas con mismo tratamiento
   # si coinciden, usar correctas
-  cli::cli_h3("Paso 2: coincidencias por limpieza de texto")
+  cli::cli_alert("Paso 2: coincidencias por limpieza de texto")
 
   # limpiar nombres de regiones oficiales (largos y cortos)
   regiones_oficiales_limpias <- limpiar_texto(regiones_validas)
@@ -166,7 +166,7 @@ limpiar_regiones <- function(
   )
 
   # casos especiales ----
-  cli::cli_h3("Paso 3: casos especiales")
+  cli::cli_alert("Paso 3: casos especiales")
 
   resultados <- resultados |>
     dplyr::mutate(
@@ -209,7 +209,7 @@ limpiar_regiones <- function(
 
   # coincidir ----
   # las demás, aproximarlas con agrepl, retornar con advertencia
-  cli::cli_h3("Paso 4: coincidencias aproximadas de texto")
+  cli::cli_alert("Paso 4: coincidencias aproximadas de texto")
 
   if (aproximar) {
     faltantes <- resultados |>
@@ -316,7 +316,7 @@ limpiar_regiones <- function(
   }
 
   # terminar ----
-  cli::cli_h3("Conclusión de limpieza de regiones")
+  cli::cli_alert("Conclusión de limpieza de regiones")
 
   # separar las originales, y unir los resultados en una sola columna
   limpiado <- resultados |>

@@ -1,5 +1,5 @@
 ---
-title: "Introducción al paquete"
+title: "Introducción al paquete {territorial}"
 description: "Instalación y primeros pasos con el paquete {territorial}."
 vignette: >
   %\VignetteIndexEntry{territorial}
@@ -21,6 +21,14 @@ Los siguientes ejemplos te ayudarán a familiarizarte con algunas de las funcion
 
 ## Datos comunales
 
+Quizás lo más básico que podemos hacer a nivel comunal con `{territorial}` es obtener un vector con las comunas del país:
+
+```{r}
+library(territorial)
+
+sample(comunas(), 12)
+```
+
 
 ### Tabla de comunas, provincias y regiones de Chile
 
@@ -32,7 +40,7 @@ Para ver la tabla de comunas, provincias y regiones, ejecuta `territorial::terri
 #| message: false
 #| warning: false
 
-library(territorial)
+
 library(dplyr)
 
 names(territorial::territorios)
@@ -58,7 +66,7 @@ DT::datatable(
 )
 ```
 
-Esta tabla es la fuente de toda la información territorial usada en el paquete, y corresponde a los datos oficiales de la [Subsecretría de Desarrollo Regional y Administrativo, Ministerio del Interior de Chile](https://www.subdere.gov.cl/documentacion/códigos-únicos-territoriales-actualizados-al-06-de-septiembre-2018).
+Esta tabla es la _fuente de verdad_ de toda la información territorial usada en el paquete, y corresponde a los datos oficiales de la [Subsecretría de Desarrollo Regional y Administrativo, Ministerio del Interior de Chile](https://www.subdere.gov.cl/documentacion/códigos-únicos-territoriales-actualizados-al-06-de-septiembre-2018).
 
 
 ### Validación de calidad de nombres de comunas
@@ -303,37 +311,41 @@ Estas funciones son particularmente útiles para cuando estés [creando reportes
 
 ## Datos regionales
 
+Las siguientes son funciones de R centradas en las regiones de Chile. Puedes obtener las regiones con la función `regiones()`:
+
+```{r}
+library(territorial)
+
+regiones()
+```
+
+Las regiones con sus códigos territoriales puedes sacarlas de la tabla `territorial::territorios`:
+
+```{r datos_ordenar_regiones}
+#| message: false
+#| warning: false
+
+library(dplyr)
+
+regiones <- territorios |> 
+  select(contains("region")) |> 
+  distinct()
+
+regiones
+```
+
+
 ### Ordenar regiones de Chile
 
 Cuando trabajamos datos de nivel regional, una necesidad común es [ordenar las regiones en el orden geográfico](https://bastianolea.rbind.io/blog/ordenar_regiones/); es decir, de norte a sur. Para ello existe la función `ordenar_regiones()`:
 
-```{r datos_ordenar_regiones}
-regiones <- tribble(
-  ~codigo_region,                  ~nombre_region,
-  1,                                   "Tarapacá",
-  2,                                "Antofagasta",
-  3,                                    "Atacama",
-  4,                                   "Coquimbo",
-  5,                                 "Valparaíso",
-  6,      "Libertador General Bernardo O'Higgins",
-  7,                                      "Maule",
-  8,                                     "Biobío",
-  9,                               "La Araucanía",
-  10,                                 "Los Lagos",
-  11, "Aysén del General Carlos Ibáñez del Campo",
-  12,      "Magallanes y de la Antártica Chilena",
-  13,                 "Metropolitana de Santiago",
-  14,                                  "Los Ríos",
-  15,                        "Arica y Parinacota",
-  16,                                     "Ñuble"
-)
+```{r}
+regiones
 ```
 
 Aquí tenemos las regiones en orden según su numeración, pero queremos ordenarlas de norte a sur:
 
 ```{r ordenar_regiones}
-regiones
-
 regiones |> 
   ordenar_regiones()
 ```
@@ -347,7 +359,6 @@ regiones |>
   ordenar_regiones() |> 
   mutate(nombre_region_corto = acortar_regiones(nombre_region))
 ```
-
 
 
 ### Clasificar regiones de Chile en macrozonas
@@ -403,6 +414,18 @@ regiones |>
 ```
 
 
+### Obtener comunas de una región
+
+Para saber qué comunas forman parte de una región, usa `obtener_comunas()`:
+
+```{r}
+region <- regiones()[4]
+
+region
+
+obtener_comunas(region)
+```
+
 ### Otras funciones para regiones
 
 Si tienes nombres de región y estás creando reportes o aplicaciones que usan las regiones dentro de párrafos, sabrás que hay regiones que se anteceden por preposiciones distintas (_Región "del" Maule, Región "de" O'Higgins_), e incluso sin preposiciones (no se escribe _Región "de" Metropolitana_). Para eso existe la función `preposicion_region()`:
@@ -418,6 +441,29 @@ La mejor forma de obtener el nombre redactado de la región sería con, obviamen
 ```{r redactar_region}
 redactar_region(region)
 ```
+
+
+## Datos de localidades
+
+El paquete también contiene datos a nivel sub-comunal de Chile, como son las localidades. Las localidades son asentamientos o áreas subcomunales que no son entidades administrativas. Puedes consultarlas en la tabla `territorial::localidades`: 
+
+```{r}
+localidades
+```
+
+Esta tabla de localidades proviene del estudio de _Identificación de localidades en condición de aislamiento_, realizado por la Subsecretaría de Desarrollo Regional y Administrativo y publicado el año 2021.
+
+
+### Ubicar localidades del país en comunas
+Con la función `ubicar_localidades()`, podemos consultar nombres de localidades de Chile para ubicarlas geográficamente en la comuna donde se emplazan:
+
+```{r}
+ubicar_localidades(c("Chada", "La Dormida", "Mallarauco"))
+```
+
+
+
+
 
 ----
 

@@ -132,7 +132,7 @@ limpiar_comunas <- function(
     dplyr::pull()
 
   # informar
-  cli::cli_h3("Paso 1: confirmar comunas correctas")
+  cli::cli_alert("Paso 1: confirmar comunas correctas")
   if (length(comunas_correctas) == 0) {
     cli::cli_alert_info(
       "De las {nrow(resultados)} comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza"
@@ -147,7 +147,7 @@ limpiar_comunas <- function(
   # limpiar ----
   # bajar a minúsculas y sacar tildes, comparar con correctas con mismo tratamiento
   # si coinciden, usar correctas
-  cli::cli_h3("Paso 2: coincidencias por limpieza de texto")
+  cli::cli_alert("Paso 2: coincidencias por limpieza de texto")
 
   # limpiar nombres de comunas oficiales
   comunas_oficiales_limpias <- limpiar_texto(comunas())
@@ -178,7 +178,7 @@ limpiar_comunas <- function(
   # cli::cli_par()
 
   # casos especiales ----
-  cli::cli_h3("Paso 3: casos especiales")
+  cli::cli_alert("Paso 3: casos especiales")
 
   resultados <- resultados |>
     dplyr::mutate(
@@ -209,7 +209,7 @@ limpiar_comunas <- function(
 
   # coincidir ----
   # las demás, aproximarlas con agrepl, retornar con advertencia
-  cli::cli_h3("Paso 4: coincidencias aproximadas de texto")
+  cli::cli_alert("Paso 4: coincidencias aproximadas de texto")
 
   if (aproximar) {
     faltantes <- resultados |>
@@ -331,7 +331,7 @@ limpiar_comunas <- function(
   # cli::cli_par()
 
   # terminar ----
-  cli::cli_h3("Conclusión de limpieza de comunas")
+  cli::cli_alert("Conclusión de limpieza de comunas")
 
   # separar las originales, y unir los resultados en una sola columna
   limpiado <- resultados |>

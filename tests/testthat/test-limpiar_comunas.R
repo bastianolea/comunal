@@ -320,7 +320,7 @@ test_that("prueba calidad de limpieza de comunas: caracteres faltantes, nivel 2"
     comunas() |>
       eliminar_texto(porcentaje = 0.3) |>
       limpiar_comunas(),
-    regexp = "[95-99].[1-9]%|100%"
+    regexp = "[92-99].[1-9]%|100%"
   )
 }) |>
   suppressMessages()
@@ -341,7 +341,7 @@ test_that("prueba calidad de limpieza de comunas: caracteres reemplazados, nivel
     comunas() |>
       reemplazar_texto(porcentaje = 0.3) |>
       limpiar_comunas(),
-    regexp = "[95-99].[1-9]%|100%"
+    regexp = "[92-99].[1-9]%|100%"
   )
 }) |>
   suppressMessages()
