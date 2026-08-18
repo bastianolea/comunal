@@ -4,8 +4,8 @@
 
 Información general sobre el paquete
 
-- [Introducción al
-  paquete](https://bastianolea.github.io/territorial/articles/territorial.md):
+- [Introducción al paquete
+  {territorial}](https://bastianolea.github.io/territorial/articles/territorial.md):
 
   Instalación y primeros pasos con el paquete {territorial}.
 

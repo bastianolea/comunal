@@ -17,10 +17,20 @@ Funciones y tablas de datos que entregan datos de uso territorial
 - [`localidades`](https://bastianolea.github.io/territorial/reference/localidades.md)
   : Tabla de localidades de Chile
 
-## Evaluación de unidades territoriales
+## Validación de datos territoriales
 
-Funciones que permiten probar la calidad de los datos, o pueden ser
-usados para lógica condicional
+Funciones que permiten probar la calidad de los datos territoriales
+
+- [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md)
+  : Validación de calidad de nombres de comunas de Chile
+- [`validar_regiones()`](https://bastianolea.github.io/territorial/reference/validar_regiones.md)
+  : Validación de calidad de nombres de regiones de Chile
+- [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
+  : Conteo de comunas disponibles, indicando las faltantes
+
+## Consulta de datos territoriales
+
+Funciones y utilidades para navegar datos territoriales
 
 - [`is_codigo_comuna()`](https://bastianolea.github.io/territorial/reference/is_codigo_comuna.md)
   : Evaluar si un dato corresponde a un código territorial válido de una
@@ -31,14 +41,10 @@ usados para lógica condicional
 - [`is_nombre_region()`](https://bastianolea.github.io/territorial/reference/is_nombre_region.md)
   : Evaluar si un texto corresponde a un nombre de región de Chile
   válido
-- [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md)
-  : Validación de calidad de nombres de comunas de Chile
-- [`validar_regiones()`](https://bastianolea.github.io/territorial/reference/validar_regiones.md)
-  : Validación de calidad de nombres de regiones de Chile
 - [`buscar_comuna()`](https://bastianolea.github.io/territorial/reference/buscar_comuna.md)
   : Buscar comunas por similitud
-- [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
-  : Conteo de comunas disponibles, indicando las faltantes
+- [`obtener_comunas()`](https://bastianolea.github.io/territorial/reference/obtener_comunas.md)
+  : Obtener las comunas de una región de Chile
 
 ## Limpieza y corrección de territorios
 
@@ -71,8 +77,6 @@ ordenarlos, etc.
 Funciones que toman los nombres de territorios y hacen más cosas con
 ellos
 
-- [`preposicion_region()`](https://bastianolea.github.io/territorial/reference/preposicion_region.md)
-  : Preposición (de/del) de cada región de Chile
 - [`redactar_comunas()`](https://bastianolea.github.io/territorial/reference/redactar_comunas.md)
   : Redactar una secuencia de comunas en una oración
 - [`redactar_region()`](https://bastianolea.github.io/territorial/reference/redactar_region.md)
@@ -81,6 +85,8 @@ ellos
   : Crear abreviaciones de 3 letras desde nombres comunas
 - [`acortar_regiones()`](https://bastianolea.github.io/territorial/reference/acortar_regiones.md)
   : Acortar nombres de las regiones de Chile
+- [`preposicion_region()`](https://bastianolea.github.io/territorial/reference/preposicion_region.md)
+  : Preposición (de/del) de cada región de Chile
 
 ## Complementar datos territoriales
 

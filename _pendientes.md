@@ -13,15 +13,15 @@ revisar por qué en la viñeta de primeros pasos salen líneas vacías:
 
 pero debería poder aplicar a otras tablas
 
-`obtener_comunas()` obtener comunas de la región, entregar como vector o
-redactada
+[`obtener_comunas()`](https://bastianolea.github.io/territorial/reference/obtener_comunas.md)
+obtener comunas de la región, entregar como vector o redactada
 
 clasificar regiones por zona (norte, centro, sur)
 
 convertir códigos DEIS a comunas
 
-`revisar_comunas()` = cuántas comunas únicas incluye, y si todas son
-válidas
+[`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
+= cuántas comunas únicas incluye, y si todas son válidas
 
 `confirmar_comunas()` = comparar si los códigos comunales corresponden
 con los nombres de comuna

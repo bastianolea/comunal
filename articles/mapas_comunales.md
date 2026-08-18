@@ -134,23 +134,23 @@ datos_2 <- datos |>
 
     ℹ Limpiando 3 nombres de comunas (3 son distintas)
 
-    ── Paso 1: confirmar comunas correctas 
+    → Paso 1: confirmar comunas correctas
 
     ℹ De las 3 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza
 
-    ── Paso 2: coincidencias por limpieza de texto 
+    → Paso 2: coincidencias por limpieza de texto
 
     ℹ A partir de la limpieza de texto, se limpiaron 3 de 3 comunas: La Florida, Puente Alto y La Pintana
 
-    ── Paso 3: casos especiales 
+    → Paso 3: casos especiales
 
     ℹ Se encontraron 0 casos especiales: 
 
-    ── Paso 4: coincidencias aproximadas de texto 
+    → Paso 4: coincidencias aproximadas de texto
 
     ! No se limpiaron comunas como parte de este paso
 
-    ── Conclusión de limpieza de comunas 
+    → Conclusión de limpieza de comunas
 
     ✔ De las 3 comunas distintas, se limpiaron 3 en total (100%)
 

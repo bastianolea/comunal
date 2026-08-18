@@ -1,18 +1,28 @@
 # Registro de cambios
 
+## territorial 0.9.1 (2026/08/18)
+
+- Nueva función
+  [`obtener_comunas()`](https://bastianolea.github.io/territorial/reference/obtener_comunas.md)
+  para recibir las comunas que forman parte de una o más regiones
+- Mejoras en mensajes de algunas funciones
+- Más contenido en la [viñeta
+  principal](https://bastianolea.github.io/territorial/articles/territorial.html)
+  del paquete
+
 ## territorial 0.9 (2026/08/16)
 
 - Nueva función
   [`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md),
   que funciona igual a
   [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
-  pero para las regiones de Chile, en versiones largas o cortas.
+  pero para las regiones de Chile, en versiones largas o cortas
 - Mejoras significativas en
   [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
   y
   [`limpiar_regiones()`](https://bastianolea.github.io/territorial/reference/limpiar_regiones.md)
   al elegir entre nombres muy sucios que se parecen a varioas
-  comunas/regiones válidas.
+  comunas/regiones válidas
 - Pruebas de funcionamiento mucho más estrictas para
   [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
   y
@@ -23,20 +33,20 @@
 - Mejora de limpieza en
   [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
   para eliminar “Ilustre Municipalidad” y textos similares en nombres de
-  comunas.
+  comunas
 - Mejoras en
   [`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md)
   y en tests de
   [`agregar_macrozona()`](https://bastianolea.github.io/territorial/reference/agregar_macrozona.md),
   [`ubicar_comunas()`](https://bastianolea.github.io/territorial/reference/ubicar_comunas.md)
   y
-  [`redactar_region()`](https://bastianolea.github.io/territorial/reference/redactar_region.md).
+  [`redactar_region()`](https://bastianolea.github.io/territorial/reference/redactar_region.md)
 
 ## territorial 0.8.13 (2026/08/14)
 
 - Mejoras en
   [`preposicion_region()`](https://bastianolea.github.io/territorial/reference/preposicion_region.md)
-  para formas alternativas de escribir regiones.
+  para formas alternativas de escribir regiones
 - Mejoras en viñetas
 - Menos mensajes irrelevantes en
   [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md).
@@ -58,7 +68,7 @@
 - Nueva función
   [`buscar_comuna()`](https://bastianolea.github.io/territorial/reference/buscar_comuna.md),
   que facilita la búsqueda de comunas por texto parcial o inexacto en
-  cualquier tabal de datos, o por defecto en
+  cualquier tabla de datos, o por defecto en
   [`territorial::territorios`](https://bastianolea.github.io/territorial/reference/territorios.md).
 - Agregados ejemplos a
   [`as_nombre_comuna()`](https://bastianolea.github.io/territorial/reference/as_nombre_comuna.md)

@@ -167,19 +167,19 @@ servel_limpio <- servel |>
 
     ℹ Limpiando 12091 nombres de comunas (347 son distintas)
 
-    ── Paso 1: confirmar comunas correctas 
+    → Paso 1: confirmar comunas correctas
 
     ℹ De las 347 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza
 
-    ── Paso 2: coincidencias por limpieza de texto 
+    → Paso 2: coincidencias por limpieza de texto
 
     ℹ A partir de la limpieza de texto, se limpiaron 343 de 347 comunas: Antofagasta, Calama, María Elena, Mejillones, Ollagüe, San Pedro de Atacama, Sierra Gorda, Taltal, Tocopilla, Arica y 333 comunas más
 
-    ── Paso 3: casos especiales 
+    → Paso 3: casos especiales
 
     ℹ Se encontró 1 caso especial: Cabo de Hornos
 
-    ── Paso 4: coincidencias aproximadas de texto 
+    → Paso 4: coincidencias aproximadas de texto
 
     ! Se encontraron 2 coincidencias para la comuna `marchigue`: la higuera y marchihue
 
@@ -187,7 +187,7 @@ servel_limpio <- servel |>
 
     ℹ Se limpiaron 2 de 3 comunas por medio de coincidencias aproximadas de texto: Paihuano y Marchihue
 
-    ── Conclusión de limpieza de comunas 
+    → Conclusión de limpieza de comunas
 
     ✔ De las 347 comunas distintas, se limpiaron 346 en total (99.7%)
 

@@ -150,19 +150,19 @@ sercotec_limpio <- sercotec |>
 
     ℹ Limpiando 958 nombres de comunas (346 son distintas)
 
-    ── Paso 1: confirmar comunas correctas 
+    → Paso 1: confirmar comunas correctas
 
     ℹ De las 346 comunas distintas, 338 ya eran correctas: Algarrobo, Alhué, Alto Biobío, Alto Hospicio, Alto del Carmen, Ancud, Andacollo, Angol, Antofagasta, Antuco y 328 comunas más
 
-    ── Paso 2: coincidencias por limpieza de texto 
+    → Paso 2: coincidencias por limpieza de texto
 
     ℹ A partir de la limpieza de texto, se limpiaron 341 de 346 comunas: Algarrobo, Alhué, Alto Biobío, Alto Hospicio, Alto del Carmen, Ancud, Andacollo, Angol, Antofagasta, Antuco y 331 comunas más
 
-    ── Paso 3: casos especiales 
+    → Paso 3: casos especiales
 
     ℹ Se encontraron 3 casos especiales: Aysén, Cabo de Hornos y Saavedra
 
-    ── Paso 4: coincidencias aproximadas de texto 
+    → Paso 4: coincidencias aproximadas de texto
 
     ! No se encontró ninguna coincidencia para la comuna `no informada`
 
@@ -170,7 +170,7 @@ sercotec_limpio <- sercotec |>
 
     ℹ Se limpiaron 1 de 3 comunas por medio de coincidencias aproximadas de texto: Trehuaco
 
-    ── Conclusión de limpieza de comunas 
+    → Conclusión de limpieza de comunas
 
     ✔ De las 346 comunas distintas, se limpiaron 344 en total (99.4%)
 

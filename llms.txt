@@ -158,23 +158,23 @@ datos |>
 ``` R
 ℹ Limpiando 9 nombres de comunas (9 son distintas)
 
-── Paso 1: confirmar comunas correctas 
+→ Paso 1: confirmar comunas correctas
 
 ℹ De las 9 comunas distintas, 1 ya eran correctas: El Monte
 
-── Paso 2: coincidencias por limpieza de texto 
+→ Paso 2: coincidencias por limpieza de texto
 
 ℹ A partir de la limpieza de texto, se limpiaron 8 de 9 comunas: Pirque, El Monte, Maipú, Ñuñoa, Santiago, Cerrillos, San José de Maipo y O'Higgins
 
-── Paso 3: casos especiales 
+→ Paso 3: casos especiales
 
 ℹ Se encontraron 0 casos especiales: 
 
-── Paso 4: coincidencias aproximadas de texto 
+→ Paso 4: coincidencias aproximadas de texto
 
 ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
 
-── Conclusión de limpieza de comunas 
+→ Conclusión de limpieza de comunas
 
 ✔ De las 9 comunas distintas, se limpiaron 9 en total (100%)
 
@@ -284,7 +284,16 @@ datos |>
 
 Estas son algunas de las funciones principales, pero existen muchas más
 que facilitan el trabajo con datos territoriales de Chile: [revisa el
-índice!](https://bastianolea.github.io/territorial/reference/index.html)
+índice](https://bastianolea.github.io/territorial/reference/index.html)
+para verlas todas, o [lee la
+viñeta](http://127.0.0.1:59562/articles/territorial.md) para una guía de
+uso más completa.
+
+------------------------------------------------------------------------
+
+Paquete desarrollado bajo el [programa de Campeones de
+ROpenSci](https://ropensci.org/es/champions/), con el apoyo de mi
+mentora [Andrea Gómez Vargas](https://github.com/SoyAndrea).
 
 ## Código de conducta
 
@@ -292,12 +301,6 @@ Ten en cuenta que este proyecto se publica con un [Código de Conducta
 para
 Colaboradores](https://bastianolea.github.io/territorial/CODE_OF_CONDUCT.html).
 Al contribuir a este proyecto, aceptas cumplir con sus términos.
-
-------------------------------------------------------------------------
-
-Paquete desarrollado bajo el [programa de Campeones de
-ROpenSci](https://ropensci.org/es/champions/), con el apoyo de mi
-mentora [Andrea Gómez Vargas](https://github.com/SoyAndrea)
 
 # Índice del paquete
 
@@ -318,10 +321,20 @@ Funciones y tablas de datos que entregan datos de uso territorial
 - [`localidades`](https://bastianolea.github.io/territorial/reference/localidades.md)
   : Tabla de localidades de Chile
 
-## Evaluación de unidades territoriales
+## Validación de datos territoriales
 
-Funciones que permiten probar la calidad de los datos, o pueden ser
-usados para lógica condicional
+Funciones que permiten probar la calidad de los datos territoriales
+
+- [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md)
+  : Validación de calidad de nombres de comunas de Chile
+- [`validar_regiones()`](https://bastianolea.github.io/territorial/reference/validar_regiones.md)
+  : Validación de calidad de nombres de regiones de Chile
+- [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
+  : Conteo de comunas disponibles, indicando las faltantes
+
+## Consulta de datos territoriales
+
+Funciones y utilidades para navegar datos territoriales
 
 - [`is_codigo_comuna()`](https://bastianolea.github.io/territorial/reference/is_codigo_comuna.md)
   : Evaluar si un dato corresponde a un código territorial válido de una
@@ -332,14 +345,10 @@ usados para lógica condicional
 - [`is_nombre_region()`](https://bastianolea.github.io/territorial/reference/is_nombre_region.md)
   : Evaluar si un texto corresponde a un nombre de región de Chile
   válido
-- [`validar_comunas()`](https://bastianolea.github.io/territorial/reference/validar_comunas.md)
-  : Validación de calidad de nombres de comunas de Chile
-- [`validar_regiones()`](https://bastianolea.github.io/territorial/reference/validar_regiones.md)
-  : Validación de calidad de nombres de regiones de Chile
 - [`buscar_comuna()`](https://bastianolea.github.io/territorial/reference/buscar_comuna.md)
   : Buscar comunas por similitud
-- [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
-  : Conteo de comunas disponibles, indicando las faltantes
+- [`obtener_comunas()`](https://bastianolea.github.io/territorial/reference/obtener_comunas.md)
+  : Obtener las comunas de una región de Chile
 
 ## Limpieza y corrección de territorios
 
@@ -372,8 +381,6 @@ ordenarlos, etc.
 Funciones que toman los nombres de territorios y hacen más cosas con
 ellos
 
-- [`preposicion_region()`](https://bastianolea.github.io/territorial/reference/preposicion_region.md)
-  : Preposición (de/del) de cada región de Chile
 - [`redactar_comunas()`](https://bastianolea.github.io/territorial/reference/redactar_comunas.md)
   : Redactar una secuencia de comunas en una oración
 - [`redactar_region()`](https://bastianolea.github.io/territorial/reference/redactar_region.md)
@@ -382,6 +389,8 @@ ellos
   : Crear abreviaciones de 3 letras desde nombres comunas
 - [`acortar_regiones()`](https://bastianolea.github.io/territorial/reference/acortar_regiones.md)
   : Acortar nombres de las regiones de Chile
+- [`preposicion_region()`](https://bastianolea.github.io/territorial/reference/preposicion_region.md)
+  : Preposición (de/del) de cada región de Chile
 
 ## Complementar datos territoriales
 
@@ -414,8 +423,8 @@ Otras funciones usadas a lo largo del paquete
 
 Información general sobre el paquete
 
-- [Introducción al
-  paquete](https://bastianolea.github.io/territorial/articles/territorial.md):
+- [Introducción al paquete
+  {territorial}](https://bastianolea.github.io/territorial/articles/territorial.md):
 
   Instalación y primeros pasos con el paquete {territorial}.
 

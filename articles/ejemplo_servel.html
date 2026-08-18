@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -226,37 +226,25 @@
 <pre><code>ℹ Limpiando 12091 nombres de comunas (347 son distintas)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Paso 1: confirmar comunas correctas </code></pre>
+<pre><code>→ Paso 1: confirmar comunas correctas</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>ℹ De las 347 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Paso 2: coincidencias por limpieza de texto </code></pre>
+<pre><code>→ Paso 2: coincidencias por limpieza de texto</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>ℹ A partir de la limpieza de texto, se limpiaron 343 de 347 comunas: Antofagasta, Calama, María Elena, Mejillones, Ollagüe, San Pedro de Atacama, Sierra Gorda, Taltal, Tocopilla, Arica y 333 comunas más</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Paso 3: casos especiales </code></pre>
+<pre><code>→ Paso 3: casos especiales</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>ℹ Se encontró 1 caso especial: Cabo de Hornos</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Paso 4: coincidencias aproximadas de texto </code></pre>
+<pre><code>→ Paso 4: coincidencias aproximadas de texto</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>! Se encontraron 2 coincidencias para la comuna `marchigue`: la higuera y marchihue</code></pre>
@@ -268,10 +256,7 @@
 <pre><code>ℹ Se limpiaron 2 de 3 comunas por medio de coincidencias aproximadas de texto: Paihuano y Marchihue</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conclusión de limpieza de comunas </code></pre>
+<pre><code>→ Conclusión de limpieza de comunas</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>✔ De las 347 comunas distintas, se limpiaron 346 en total (99.7%)</code></pre>
@@ -286,7 +271,7 @@
 </ul>
 <p>Ahora vemos cómo quedaron los datos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">servel_limpio</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12,091 × 6
@@ -307,7 +292,7 @@
 </div>
 <p>Queda limpiar las regiones. Primero las validamos con <code><a href="../reference/validar_regiones.html">validar_regiones()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">servel_limpio</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_regiones.html">validar_regiones</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -322,7 +307,7 @@
 </div>
 <p>Nuevamente encontramos un caos de nombres de regiones. Pero, como ya obtuvimos las comunas limpias, podemos usar la función <code><a href="../reference/contextualizar.html">contextualizar()</a></code> para basarnos en las comunas limpias para agregar columnas que contextualicen dichas comunas en sus respectivas provincias y regiones:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">servel_limpio</span> <span class="op">&lt;-</span> <span class="va">servel_limpio</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/contextualizar.html">contextualizar</a></span><span class="op">(</span><span class="va">nombre_comuna</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># agregar columnas territoriales nuevas</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">region</span>, <span class="op">-</span><span class="va">comuna</span><span class="op">)</span> <span class="co"># remover columnas originales</span></span></code></pre></div>
@@ -335,7 +320,7 @@
 </div>
 <p>Repetimos la validación para confirmar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">servel_limpio</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/validar_regiones.html">validar_regiones</a></span><span class="op">(</span><span class="va">nombre_region</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -344,7 +329,7 @@
 </div>
 <p>Terminamos con datos territoriales limpios!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">servel_limpio</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12,091 × 9
@@ -364,7 +349,7 @@
 # ℹ 4 more variables: nombre_comuna &lt;chr&gt;, partido &lt;chr&gt;, sexo &lt;chr&gt;,
 #   afiliados &lt;dbl&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">servel_limpio</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 12,091

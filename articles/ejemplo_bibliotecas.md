@@ -287,23 +287,23 @@ biblio_limpio <- biblio_ancho |>
 
     ℹ Limpiando 325 nombres de comunas (325 son distintas)
 
-    ── Paso 1: confirmar comunas correctas 
+    → Paso 1: confirmar comunas correctas
 
     ℹ De las 325 comunas distintas, 318 ya eran correctas: Arica, Camarones, General Lagos, Putre, Alto Hospicio, Huara, Iquique, Pica, Pozo Almonte, Antofagasta y 308 comunas más
 
-    ── Paso 2: coincidencias por limpieza de texto 
+    → Paso 2: coincidencias por limpieza de texto
 
     ℹ A partir de la limpieza de texto, se limpiaron 321 de 325 comunas: Arica, Camarones, General Lagos, Putre, Alto Hospicio, Huara, Iquique, Pica, Pozo Almonte, Antofagasta y 311 comunas más
 
-    ── Paso 3: casos especiales 
+    → Paso 3: casos especiales
 
     ℹ Se encontraron 3 casos especiales: Calera, Aysén y Coyhaique
 
-    ── Paso 4: coincidencias aproximadas de texto 
+    → Paso 4: coincidencias aproximadas de texto
 
     ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Trehuaco
 
-    ── Conclusión de limpieza de comunas 
+    → Conclusión de limpieza de comunas
 
     ✔ De las 325 comunas distintas, se limpiaron 325 en total (100%)
 

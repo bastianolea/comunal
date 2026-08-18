@@ -1,4 +1,4 @@
-# Introducción al paquete
+# Introducción al paquete {territorial}
 
 ## Instalación
 
@@ -16,6 +16,22 @@ funciones de [territorial](https://bastianolea.github.io/territorial).
 
 ## Datos comunales
 
+Quizás lo más básico que podemos hacer a nivel comunal con
+[territorial](https://bastianolea.github.io/territorial) es obtener un
+vector con las comunas del país:
+
+``` r
+
+library(territorial)
+
+sample(comunas(), 12)
+```
+
+     [1] "Tucapel"           "Quinta de Tilcoco" "Trehuaco"
+     [4] "Yerbas Buenas"     "Melipeuco"         "Los Ángeles"
+     [7] "Calama"            "Renaico"           "Florida"
+    [10] "Pumanque"          "Pica"              "Algarrobo"        
+
 ### Tabla de comunas, provincias y regiones de Chile
 
 El paquete ofrece una tabla de datos que contiene todas las comunas del
@@ -28,7 +44,6 @@ Para ver la tabla de comunas, provincias y regiones, ejecuta
 
 ``` r
 
-library(territorial)
 library(dplyr)
 
 names(territorial::territorios)
@@ -58,9 +73,10 @@ territorios
     # ℹ 336 more rows
     # ℹ 1 more variable: nombre_comuna <chr>
 
-Esta tabla es la fuente de toda la información territorial usada en el
-paquete, y corresponde a los datos oficiales de la [Subsecretría de
-Desarrollo Regional y Administrativo, Ministerio del Interior de
+Esta tabla es la *fuente de verdad* de toda la información territorial
+usada en el paquete, y corresponde a los datos oficiales de la
+[Subsecretría de Desarrollo Regional y Administrativo, Ministerio del
+Interior de
 Chile](https://www.subdere.gov.cl/documentacion/c%C3%B3digos-%C3%BAnicos-territoriales-actualizados-al-06-de-septiembre-2018).
 
 ### Validación de calidad de nombres de comunas
@@ -138,23 +154,23 @@ datos |>
 
     ℹ Limpiando 9 nombres de comunas (9 son distintas)
 
-    ── Paso 1: confirmar comunas correctas 
+    → Paso 1: confirmar comunas correctas
 
     ℹ De las 9 comunas distintas, 1 ya eran correctas: El Monte
 
-    ── Paso 2: coincidencias por limpieza de texto 
+    → Paso 2: coincidencias por limpieza de texto
 
     ℹ A partir de la limpieza de texto, se limpiaron 7 de 9 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
 
-    ── Paso 3: casos especiales 
+    → Paso 3: casos especiales
 
     ℹ Se encontró 1 caso especial: Saavedra
 
-    ── Paso 4: coincidencias aproximadas de texto 
+    → Paso 4: coincidencias aproximadas de texto
 
     ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
 
-    ── Conclusión de limpieza de comunas 
+    → Conclusión de limpieza de comunas
 
     ✔ De las 9 comunas distintas, se limpiaron 9 en total (100%)
 
@@ -219,23 +235,23 @@ datos |>
 
     ℹ Limpiando 9 nombres de comunas (9 son distintas)
 
-    ── Paso 1: confirmar comunas correctas 
+    → Paso 1: confirmar comunas correctas
 
     ℹ De las 9 comunas distintas, 1 ya eran correctas: El Monte
 
-    ── Paso 2: coincidencias por limpieza de texto 
+    → Paso 2: coincidencias por limpieza de texto
 
     ℹ A partir de la limpieza de texto, se limpiaron 7 de 9 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
 
-    ── Paso 3: casos especiales 
+    → Paso 3: casos especiales
 
     ℹ Se encontró 1 caso especial: Saavedra
 
-    ── Paso 4: coincidencias aproximadas de texto 
+    → Paso 4: coincidencias aproximadas de texto
 
     ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
 
-    ── Conclusión de limpieza de comunas 
+    → Conclusión de limpieza de comunas
 
     ✔ De las 9 comunas distintas, se limpiaron 9 en total (100%)
 
@@ -313,18 +329,18 @@ base
 ```
 
     # A tibble: 972 × 4
-       nombre_comuna     codigo_comuna name    value
-       <chr>                     <dbl> <chr>   <dbl>
-     1 Quinta de Tilcoco          6114 b     0.00108
-     2 Puyehue                   10304 c     0.00203
-     3 Coyhaique                 11101 c     0.00278
-     4 Lago Verde                11102 a     0.00294
-     5 Talagante                 13601 b     0.00311
-     6 Natales                   12401 b     0.00379
-     7 Peralillo                  6307 b     0.00385
-     8 Quilpué                    5801 b     0.00413
-     9 Quillota                   5501 b     0.00436
-    10 Purén                      9208 b     0.00659
+       nombre_comuna codigo_comuna name     value
+       <chr>                 <dbl> <chr>    <dbl>
+     1 Marchihue              6204 c     0.000180
+     2 Puerto Varas          10109 c     0.000184
+     3 Mejillones             2102 b     0.000309
+     4 San Javier             7406 c     0.00365
+     5 Santa María            5706 b     0.00457
+     6 Longaví                7403 b     0.00502
+     7 Colina                13301 c     0.00533
+     8 San Joaquín           13129 a     0.00569
+     9 Quilicura             13125 a     0.00837
+    10 Los Sauces             9206 a     0.00975
     # ℹ 962 more rows
 
 Esta tabla tiene 972 filas, ¿cómo confirmar si existen datos para todas
@@ -341,7 +357,7 @@ base |>
 
     ! La cantidad de comunas es anómala: hay 324, pero deberían ser 346. Revísalas con `territorial::validar_comunas()`
 
-    → Las comunas faltantes son: María Elena, Chañaral, Monte Patria, Calle Larga, Mostazal, Rengo, San Vicente, Litueche, Chimbarongo, Chanco, Rauco, Vichuquén, Linares, Cochamó, Frutillar, Curaco de Vélez, Osorno, Hualaihué, Palena, Recoleta, Cobquecura y San Carlos
+    → Las comunas faltantes son: Huasco, Río Hurtado, Casablanca, Puchuncaví, La Ligua, Papudo, Algarrobo, Panquehue, Coinco, Graneros, Machalí, Rauco, Arauco, Toltén, Calbuco, Fresia, Los Muermos, Chaitén, Cisnes, La Pintana, Pinto y Ñiquén
 
 La función
 [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
@@ -361,17 +377,17 @@ base |>
 
     ! Se encontraron 30 resultados, mostrando sólo 6.
 
-    ℹ Los resultados más cercanos al término `Alto` son: Alto Biobío, Alto Hospicio, Alto del Carmen y Puente Alto
+    ℹ Los resultados más cercanos al término `Alto` son: Alto del Carmen, Alto Biobío y Puente Alto
 
     # A tibble: 6 × 5
       nombre_comuna   codigo_comuna name   value puntaje
       <chr>                   <dbl> <chr>  <dbl>   <dbl>
-    1 Alto Biobío              8314 c     0.0955       1
-    2 Alto Hospicio            1107 b     0.0990       1
-    3 Alto del Carmen          3302 c     0.163        1
-    4 Puente Alto             13201 a     0.213        1
-    5 Alto del Carmen          3302 b     0.454        1
-    6 Alto Hospicio            1107 c     0.459        1
+    1 Alto del Carmen          3302 a     0.0540       1
+    2 Alto Biobío              8314 a     0.125        1
+    3 Alto Biobío              8314 c     0.317        1
+    4 Alto del Carmen          3302 c     0.343        1
+    5 Puente Alto             13201 c     0.393        1
+    6 Puente Alto             13201 b     0.460        1
 
 ### Crear nombres de comunas a partir de códigos únicos territoriales
 
@@ -596,6 +612,68 @@ reportes](https://bastianolea.rbind.io/blog/quarto_reportes/) o
 
 ## Datos regionales
 
+Las siguientes son funciones de R centradas en las regiones de Chile.
+Puedes obtener las regiones con la función
+[`regiones()`](https://bastianolea.github.io/territorial/reference/regiones.md):
+
+``` r
+
+library(territorial)
+
+regiones()
+```
+
+     [1] "Arica y Parinacota"
+     [2] "Tarapacá"
+     [3] "Antofagasta"
+     [4] "Atacama"
+     [5] "Coquimbo"
+     [6] "Valparaíso"
+     [7] "Metropolitana de Santiago"
+     [8] "Libertador General Bernardo O'Higgins"
+     [9] "Maule"
+    [10] "Ñuble"
+    [11] "Biobío"
+    [12] "La Araucanía"
+    [13] "Los Ríos"
+    [14] "Los Lagos"
+    [15] "Aysén del General Carlos Ibáñez del Campo"
+    [16] "Magallanes y de la Antártica Chilena"     
+
+Las regiones con sus códigos territoriales puedes sacarlas de la tabla
+[`territorial::territorios`](https://bastianolea.github.io/territorial/reference/territorios.md):
+
+``` r
+
+library(dplyr)
+
+regiones <- territorios |> 
+  select(contains("region")) |> 
+  distinct()
+
+regiones
+```
+
+    # A tibble: 16 × 2
+       codigo_region nombre_region
+               <dbl> <chr>
+     1             1 Tarapacá
+     2             2 Antofagasta
+     3             3 Atacama
+     4             4 Coquimbo
+     5             5 Valparaíso
+     6             6 Libertador General Bernardo O'Higgins
+     7             7 Maule
+     8             8 Biobío
+     9             9 La Araucanía
+    10            10 Los Lagos
+    11            11 Aysén del General Carlos Ibáñez del Campo
+    12            12 Magallanes y de la Antártica Chilena
+    13            13 Metropolitana de Santiago
+    14            14 Los Ríos
+    15            15 Arica y Parinacota
+    16            16 Ñuble                                    
+
 ### Ordenar regiones de Chile
 
 Cuando trabajamos datos de nivel regional, una necesidad común es
@@ -603,32 +681,6 @@ Cuando trabajamos datos de nivel regional, una necesidad común es
 geográfico](https://bastianolea.rbind.io/blog/ordenar_regiones/); es
 decir, de norte a sur. Para ello existe la función
 [`ordenar_regiones()`](https://bastianolea.github.io/territorial/reference/ordenar_regiones.md):
-
-``` r
-
-regiones <- tribble(
-  ~codigo_region,                  ~nombre_region,
-  1,                                   "Tarapacá",
-  2,                                "Antofagasta",
-  3,                                    "Atacama",
-  4,                                   "Coquimbo",
-  5,                                 "Valparaíso",
-  6,      "Libertador General Bernardo O'Higgins",
-  7,                                      "Maule",
-  8,                                     "Biobío",
-  9,                               "La Araucanía",
-  10,                                 "Los Lagos",
-  11, "Aysén del General Carlos Ibáñez del Campo",
-  12,      "Magallanes y de la Antártica Chilena",
-  13,                 "Metropolitana de Santiago",
-  14,                                  "Los Ríos",
-  15,                        "Arica y Parinacota",
-  16,                                     "Ñuble"
-)
-```
-
-Aquí tenemos las regiones en orden según su numeración, pero queremos
-ordenarlas de norte a sur:
 
 ``` r
 
@@ -654,6 +706,9 @@ regiones
     14            14 Los Ríos
     15            15 Arica y Parinacota
     16            16 Ñuble                                    
+
+Aquí tenemos las regiones en orden según su numeración, pero queremos
+ordenarlas de norte a sur:
 
 ``` r
 
@@ -841,25 +896,25 @@ regiones |>
 
     ℹ Limpiando 4 nombres de región (4 son distintos)
 
-    ── Paso 1: confirmar regiones correctas 
+    → Paso 1: confirmar regiones correctas
 
     ℹ De las 4 regiones distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza
 
-    ── Paso 2: coincidencias por limpieza de texto 
+    → Paso 2: coincidencias por limpieza de texto
 
     ℹ A partir de la limpieza de texto, se limpiaron 1 de 4 regiones: Ñuble
 
-    ── Paso 3: casos especiales 
+    → Paso 3: casos especiales
 
     ℹ Se encontraron 2 casos especiales: Aysén del General Carlos Ibáñez del Campo y Metropolitana de Santiago
 
-    ── Paso 4: coincidencias aproximadas de texto 
+    → Paso 4: coincidencias aproximadas de texto
 
     ! Se encontraron 2 coincidencias para la región `ohigins`: ohiggins y libertador general bernardo ohiggins
 
     ℹ Se limpiaron 1 de 1 regiones por medio de coincidencias aproximadas de texto: Libertador General Bernardo O'Higgins
 
-    ── Conclusión de limpieza de regiones 
+    → Conclusión de limpieza de regiones
 
     ✔ De las 4 regiones distintas, se limpiaron 4 en total (100%)
 
@@ -870,6 +925,31 @@ regiones |>
     2 Aysén del General Carlos Ibáñez del Campo
     3 Libertador General Bernardo O'Higgins
     4 Metropolitana de Santiago                
+
+### Obtener comunas de una región
+
+Para saber qué comunas forman parte de una región, usa
+[`obtener_comunas()`](https://bastianolea.github.io/territorial/reference/obtener_comunas.md):
+
+``` r
+
+region <- regiones()[4]
+
+region
+```
+
+    [1] "Atacama"
+
+``` r
+
+obtener_comunas(region)
+```
+
+    ℹ Comunas de la región: Copiapó, Caldera, Tierra Amarilla, Chañaral, Diego de Almagro, Vallenar, Alto del Carmen, Freirina y Huasco
+
+    [1] "Copiapó"          "Caldera"          "Tierra Amarilla"  "Chañaral"
+    [5] "Diego de Almagro" "Vallenar"         "Alto del Carmen"  "Freirina"
+    [9] "Huasco"          
 
 ### Otras funciones para regiones
 
@@ -899,6 +979,88 @@ redactar_region(region)
 ```
 
     [1] "Región del Maule"    "Región de O'Higgins"
+
+## Datos de localidades
+
+El paquete también contiene datos a nivel sub-comunal de Chile, como son
+las localidades. Las localidades son asentamientos o áreas subcomunales
+que no son entidades administrativas. Puedes consultarlas en la tabla
+[`territorial::localidades`](https://bastianolea.github.io/territorial/reference/localidades.md):
+
+``` r
+
+localidades
+```
+
+    # A tibble: 29,256 × 6
+       codigo_comuna localidad              tipo        subtipo habitantes viviendas
+               <dbl> <chr>                  <chr>       <chr>        <dbl>     <dbl>
+     1          1101 Indeterminada          Localidad … Indete…         30        12
+     2          1101 Río Seco               Localidad … Caserío        131       117
+     3          1101 Cholito                Localidad … Asenta…          2         2
+     4          1101 Complejo Aduana El Loa Localidad … Parcel…          0         1
+     5          1101 Caleta San Marcos      Localidad … Asenta…        259       153
+     6          1101 Caleta Chipana         Localidad … Caserío         84        57
+     7          1101 Ike Ike                Localidad … Asenta…         29        11
+     8          1101 Indeterminada          Localidad … Indete…         11         7
+     9          1101 Piedra Polo            Localidad … Asenta…          5         7
+    10          1101 Altos de Río Seco      Localidad … Caserío         14        13
+    # ℹ 29,246 more rows
+
+Esta tabla de localidades proviene del estudio de *Identificación de
+localidades en condición de aislamiento*, realizado por la Subsecretaría
+de Desarrollo Regional y Administrativo y publicado el año 2021.
+
+### Ubicar localidades del país en comunas
+
+Con la función
+[`ubicar_localidades()`](https://bastianolea.github.io/territorial/reference/ubicar_localidades.md),
+podemos consultar nombres de localidades de Chile para ubicarlas
+geográficamente en la comuna donde se emplazan:
+
+``` r
+
+ubicar_localidades(c("Chada", "La Dormida", "Mallarauco"))
+```
+
+    ℹ Buscando localidad 'Chada'
+
+    ! Se encontraron 5 localidades coincidentes:
+
+    # A tibble: 5 × 5
+      nombre_region                         nombre_comuna localidad tipo     subtipo
+      <chr>                                 <chr>         <chr>     <chr>    <chr>
+    1 Metropolitana de Santiago             Paine         Chada     Localid… Parcel…
+    2 La Araucanía                          Pitrufquén    Chada     Localid… Parcel…
+    3 Metropolitana de Santiago             Paine         Chada     Localid… Fundo-…
+    4 Libertador General Bernardo O'Higgins Codegua       Chada     Localid… Fundo-…
+    5 Metropolitana de Santiago             Paine         Chada     Urbano   Pueblo 
+
+    ℹ Retornando la primera localidad: Chada, ubicada en la comuna de Paine, Región Metropolitana de Santiago
+
+    ℹ Buscando localidad 'La Dormida'
+
+    ! Se encontró 1 localidad coincidente:
+
+    # A tibble: 1 × 5
+      nombre_region nombre_comuna localidad  tipo            subtipo
+      <chr>         <chr>         <chr>      <chr>           <chr>
+    1 Valparaíso    Olmué         La Dormida Localidad rural Parcela de agrado
+
+    ℹ Localidad encontrada: La Dormida, ubicada en la comuna de Olmué, Región de Valparaíso
+
+    ℹ Buscando localidad 'Mallarauco'
+
+    ! Se encontró 1 localidad coincidente:
+
+    # A tibble: 1 × 5
+      nombre_region             nombre_comuna localidad  tipo            subtipo
+      <chr>                     <chr>         <chr>      <chr>           <chr>
+    1 Metropolitana de Santiago Peñaflor      Mallarauco Localidad rural Parcela de…
+
+    ℹ Localidad encontrada: Mallarauco, ubicada en la comuna de Peñaflor, Región Metropolitana de Santiago
+
+    [1] "Paine"    "Olmué"    "Peñaflor"
 
 ------------------------------------------------------------------------
 

@@ -158,23 +158,23 @@ datos |>
 ``` R
 ℹ Limpiando 9 nombres de comunas (9 son distintas)
 
-── Paso 1: confirmar comunas correctas 
+→ Paso 1: confirmar comunas correctas
 
 ℹ De las 9 comunas distintas, 1 ya eran correctas: El Monte
 
-── Paso 2: coincidencias por limpieza de texto 
+→ Paso 2: coincidencias por limpieza de texto
 
 ℹ A partir de la limpieza de texto, se limpiaron 8 de 9 comunas: Pirque, El Monte, Maipú, Ñuñoa, Santiago, Cerrillos, San José de Maipo y O'Higgins
 
-── Paso 3: casos especiales 
+→ Paso 3: casos especiales
 
 ℹ Se encontraron 0 casos especiales: 
 
-── Paso 4: coincidencias aproximadas de texto 
+→ Paso 4: coincidencias aproximadas de texto
 
 ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
 
-── Conclusión de limpieza de comunas 
+→ Conclusión de limpieza de comunas
 
 ✔ De las 9 comunas distintas, se limpiaron 9 en total (100%)
 
@@ -284,7 +284,16 @@ datos |>
 
 Estas son algunas de las funciones principales, pero existen muchas más
 que facilitan el trabajo con datos territoriales de Chile: [revisa el
-índice!](https://bastianolea.github.io/territorial/reference/index.html)
+índice](https://bastianolea.github.io/territorial/reference/index.html)
+para verlas todas, o [lee la
+viñeta](http://127.0.0.1:59562/articles/territorial.md) para una guía de
+uso más completa.
+
+------------------------------------------------------------------------
+
+Paquete desarrollado bajo el [programa de Campeones de
+ROpenSci](https://ropensci.org/es/champions/), con el apoyo de mi
+mentora [Andrea Gómez Vargas](https://github.com/SoyAndrea).
 
 ## Código de conducta
 
@@ -292,9 +301,3 @@ Ten en cuenta que este proyecto se publica con un [Código de Conducta
 para
 Colaboradores](https://bastianolea.github.io/territorial/CODE_OF_CONDUCT.html).
 Al contribuir a este proyecto, aceptas cumplir con sus términos.
-
-------------------------------------------------------------------------
-
-Paquete desarrollado bajo el [programa de Campeones de
-ROpenSci](https://ropensci.org/es/champions/), con el apoyo de mi
-mentora [Andrea Gómez Vargas](https://github.com/SoyAndrea)

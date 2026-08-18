@@ -1,5 +1,12 @@
 # Prueba de suciedad extrema
 
+Una de las utilidades principales del paquete
+[territorial](https://bastianolea.github.io/territorial) es poder
+[limpiar automáticamente las
+comunas](https://bastianolea.github.io/territorial/reference/limpiar_comunas.html)
+de una base de datos que venga con datos sucios: comunas mal escritas,
+en mayúsculas, sin tildes, sin eñes, etc.
+
 En este ejemplo, probaremos la función
 [`territorial::limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
 con un caso extremo de datos intencionalmente sucios.
@@ -12,18 +19,19 @@ library(dplyr)
 set.seed(1234)
 ```
 
-Crearemos un vector de nombres de comunas ensuciados, usando algunas
-funciones utilitarias [inspiradas en el paquete
-`{messy}`.](https://nrennie.rbind.io/messy/)
+Crearemos una tabla con nombres de comunas ensuciados, a partir de la
+tabla `territorios` que viene con el paquete, y usando algunas funciones
+utilitarias [inspiradas en el paquete
+`{messy}`](https://nrennie.rbind.io/messy/) para ensuciar los datos.
 
 ``` r
 
 sucios <- territorios |> 
   select(nombre_comuna) |> 
   mutate(nombres_sucios = nombre_comuna |> 
-      territorial::reemplazar_texto(porcentaje = 0.1) |>
-      territorial::eliminar_texto(porcentaje = 0.1) |>
-      territorial::insertar_texto(porcentaje = 0.1)
+      reemplazar_texto(porcentaje = 0.2) |>
+      eliminar_texto(porcentaje = 0.1) |>
+      insertar_texto(porcentaje = 0.2)
   ) |> 
   filter_out(nombre_comuna == nombres_sucios) # excluir los que no se ensuciaron por azar
 ```
@@ -41,22 +49,22 @@ sucios |>
 ```
 
     # A tibble: 10 × 2
-       nombre_comuna  nombres_sucios
-       <chr>          <chr>
-     1 Puerto Montt   Suemro Montt
-     2 San Bernardo   GSa Bgrnardo
-     3 Puchuncaví     Pwhuncaví
-     4 San Felipe     San FYlie
-     5 La Pintana     LaPUntana
-     6 San Esteban    SaQn stebQn
-     7 Alto Biobío    EAfto Bioío
-     8 Juan Fernández dJuan Ftnández
-     9 San Carlos     fan Crlos
-    10 Pozo Almonte   ozo Aolmovte  
+       nombre_comuna       nombres_sucios
+       <chr>               <chr>
+     1 Arica               AUicaD
+     2 Cunco               CCEnco
+     3 Calera de Tango     CaArFa Lde iZngo
+     4 San José de Maipo   Szn GfKox de Maiplo
+     5 Tirúa               wTirúp
+     6 Pedro Aguirre Cerda PeiBoV AguHrrzeHCerda
+     7 Constitución        CJnszthiucióP
+     8 Villarrica          CVillaTica
+     9 Futaleufú           Gutjaleufú
+    10 San Ignacio         Sa Qzgnancio         
 
-A partir de la columna `nombres_sucios`, usamos
+Ahora que tenemos la columna `nombres_sucios`, usamos
 [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
-para crear la columna `nombres_limpios`:
+para limpiar los datos, creando la columna `nombres_limpios`:
 
 ``` r
 
@@ -73,40 +81,40 @@ limpios |>
   print(n = 30)
 ```
 
-    # A tibble: 109 × 2
-       nombres_sucios      nombres_limpios
-       <chr>               <chr>
-     1 Alo Hvospicpo       Alto Hospicio
-     2 ozo Aolmovte        Pozo Almonte
-     3 AnoRagKasta         Antofagasta
-     4 ejillones           Mejillones
-     5 Sierrp GrdaA        Sierra Gorda
-     6 SvnMPmedro d Atacaa San Pedro de Atacama
-     7 María EleaZ         María Elena
-     8 Tiera AVmarilln     Tierra Amarilla
-     9 DiXeno de Almgro    Diego de Almagro
-    10 Alto del Cawmdn     Alto del Carmen
-    11 a uiguera           La Higuera
-    12 Combrbtlá           Combarbalá
-    13 Monte PJctia        Monte Patria
-    14 RíoEHrtasdo         Río Hurtado
-    15 Valparase           Valparaíso
-    16 Csablanca           Casablanca
-    17 dJuan Ftnández      Juan Fernández
-    18 Pwhuncaví           Puchuncaví
-    19 Viña denYMar        Viña del Mar
-    20 Isla e Pamscua      Isla de Pascua
-    21 Calle LFgaP         Calle Larga
-    22 SaQn stebQn         San Esteban
-    23 Son UAtonio         San Antonio
-    24 SantWDominJgo       Santo Domingo
-    25 San FYlie           San Felipe
-    26 SanaWMaríaW         Santa María
-    27 Vvila AlemanF       Villa Alemana
-    28 as Cabras           Las Cabras
-    29 ichideguq           Pichidegua
-    30 Quinta mPe Tilcco   Quinta de Tilcoco
-    # ℹ 79 more rows
+    # A tibble: 339 × 2
+       nombres_sucios        nombres_limpios
+       <chr>                 <chr>
+     1 IqupquEe              Iquique
+     2 lAlto RopLKcio        <NA>
+     3 fPozopAlmLtne         <NA>
+     4 CamHñax               Camiña
+     5 ColchavKe             Colchane
+     6 pHfara                Huara
+     7 Antdwfagdist          <NA>
+     8 MejOtloces            Mejillones
+     9 Sideera Gobqa         Sierra Gorda
+    10 TaYltaU               Taltal
+    11 CatamZa               Calama
+    12 Oyllcgüe              Ollagüe
+    13 anJQPKedbFVde AtacaPa <NA>
+    14 TocoIoilla            Tocopilla
+    15 YaPrbíLElena          <NA>
+    16 CopciaWó              Copiapó
+    17 CalldFra              Caldera
+    18 ziervra Yhqailla      <NA>
+    19 CFiañaral             Chañaral
+    20 qDicAgoRpde Almago    <NA>
+    21 VallejarY             Vallenar
+    22 AltKo yScCarBmen      <NA>
+    23 FkrXirina             Freirina
+    24 HIuaszo               Huasco
+    25 La Serfcna            La Serena
+    26 Coqtimibo             Coquimbo
+    27 Angdacollg            Andacollo
+    28 LaKiAIuera            <NA>
+    29 Peaihuano             Paihuano
+    30 VicaIña               Vicuña
+    # ℹ 309 more rows
 
 Podemos confirmar que la limpieza realizada con
 [`limpiar_comunas()`](https://bastianolea.github.io/territorial/reference/limpiar_comunas.md)
@@ -124,14 +132,19 @@ problemas <- limpios |>
   filter(nombre_comuna != nombres_limpios)
 ```
 
-Podemos ver que existen 0 casos donde los nombres limpios se dedujeron
-incorrectamente a partir de los nombres sucios:
+Luego de esta limpieza, quedaron 5 casos donde los nombres limpios se
+dedujeron incorrectamente a partir de los nombres sucios:
 
 ``` r
 
 problemas
 ```
 
-    # A tibble: 0 × 3
-    # ℹ 3 variables: nombre_comuna <chr>, nombres_sucios <chr>,
-    #   nombres_limpios <chr>
+    # A tibble: 5 × 3
+      nombre_comuna nombres_sucios nombres_limpios
+      <chr>         <chr>          <chr>
+    1 Malloa        OMallEa        Ovalle
+    2 Talca         Talwat         Taltal
+    3 Chanco        ChGInco        Coinco
+    4 Cunco         CCEnco         Coinco
+    5 Colina        Eoylina        Molina         

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -99,20 +99,15 @@ Finalmente, se muestra una tabla que describe el proceso de limpieza para su rev
     <h2 id="ref-examples">Ejemplos<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">limpiar_regiones</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MAULE"</span>, <span class="st">"biobio"</span>, <span class="st">"la araucania"</span>, <span class="st">"Los rios"</span>, <span class="st">"RM"</span>, <span class="st">"aisen"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Limpiando 6 nombres de región (6 son distintos)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 1: confirmar regiones correctas </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 1: confirmar regiones correctas</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> De las 6 regiones distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 2: coincidencias por limpieza de texto </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 2: coincidencias por limpieza de texto</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> A partir de la limpieza de texto, se limpiaron 4 de 6 regiones: Maule, Biobío, La Araucanía y Los Ríos</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 3: casos especiales </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 3: casos especiales</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se encontraron 3 casos especiales: Biobío, Metropolitana de Santiago y Aysén del General Carlos Ibáñez del Campo</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 4: coincidencias aproximadas de texto </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 4: coincidencias aproximadas de texto</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No se limpiaron regiones como parte de este paso</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Conclusión de limpieza de regiones </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Conclusión de limpieza de regiones</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> De las 6 regiones distintas, se limpiaron 6 en total (100%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Maule"                                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2] "Biobío"                                   </span>
@@ -131,20 +126,15 @@ Finalmente, se muestra una tabla que describe el proceso de limpieza para su rev
 <span class="r-in"><span><span class="va">datos</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">limpiar_regiones</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Limpiando 6 nombres de región (6 son distintos)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 1: confirmar regiones correctas </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 1: confirmar regiones correctas</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> De las 6 regiones distintas, 1 ya eran correctas: Coquimbo</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 2: coincidencias por limpieza de texto </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 2: coincidencias por limpieza de texto</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> A partir de la limpieza de texto, se limpiaron 5 de 6 regiones: Tarapacá, Coquimbo, Valparaíso, Libertador General Bernardo O'Higgins y Ñuble</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 3: casos especiales </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 3: casos especiales</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se encontró 1 caso especial: Metropolitana de Santiago</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 4: coincidencias aproximadas de texto </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 4: coincidencias aproximadas de texto</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No se limpiaron regiones como parte de este paso</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Conclusión de limpieza de regiones </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Conclusión de limpieza de regiones</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> De las 6 regiones distintas, se limpiaron 6 en total (100%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   nombre_region                         valores</span>
@@ -160,20 +150,15 @@ Finalmente, se muestra una tabla que describe el proceso de limpieza para su rev
 <span class="r-in"><span><span class="va">datos</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>nombre_corregido <span class="op">=</span> <span class="fu">limpiar_regiones</span><span class="op">(</span><span class="va">nombre_region</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Limpiando 6 nombres de región (6 son distintos)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 1: confirmar regiones correctas </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 1: confirmar regiones correctas</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> De las 6 regiones distintas, 1 ya eran correctas: Coquimbo</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 2: coincidencias por limpieza de texto </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 2: coincidencias por limpieza de texto</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> A partir de la limpieza de texto, se limpiaron 5 de 6 regiones: Tarapacá, Coquimbo, Valparaíso, Libertador General Bernardo O'Higgins y Ñuble</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 3: casos especiales </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 3: casos especiales</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se encontró 1 caso especial: Metropolitana de Santiago</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Paso 4: coincidencias aproximadas de texto </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 4: coincidencias aproximadas de texto</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No se limpiaron regiones como parte de este paso</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Conclusión de limpieza de regiones </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Conclusión de limpieza de regiones</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> De las 6 regiones distintas, se limpiaron 6 en total (100%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   nombre_region valores nombre_corregido                     </span>
