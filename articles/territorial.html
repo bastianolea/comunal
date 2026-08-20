@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -102,10 +102,9 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="../reference/comunas.html">comunas</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Hualaihué"           "Chillán Viejo"       "Coyhaique"
- [4] "Aysén"               "San Gregorio"        "Algarrobo"
- [7] "Pica"                "Coronel"             "San Ramón"
-[10] "Puyehue"             "Antuco"              "Pedro Aguirre Cerda"</code></pre>
+<pre><code> [1] "Cabrero"    "Rancagua"   "Chanco"     "Combarbalá" "Futrono"
+ [6] "Arauco"     "Hualaihué"  "Navidad"    "Valparaíso" "Putre"
+[11] "Portezuelo" "Trehuaco"  </code></pre>
 </div>
 </div>
 <section class="level3"><h3 id="tabla-de-comunas-provincias-y-regiones-de-chile">Tabla de comunas, provincias y regiones de Chile<a class="anchor" aria-label="anchor" href="#tabla-de-comunas-provincias-y-regiones-de-chile"></a>
@@ -233,7 +232,7 @@
 <pre><code>→ Paso 4: coincidencias aproximadas de texto</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia</code></pre>
+<pre><code>ℹ Se limpió la comuna por medio de coincidencia aproximada de texto: Providencia</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>→ Conclusión de limpieza de comunas</code></pre>
@@ -312,7 +311,7 @@
 <pre><code>→ Paso 4: coincidencias aproximadas de texto</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia</code></pre>
+<pre><code>ℹ Se limpió la comuna por medio de coincidencia aproximada de texto: Providencia</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>→ Conclusión de limpieza de comunas</code></pre>
@@ -383,18 +382,18 @@
 <span><span class="va">base</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 972 × 4
-   nombre_comuna     codigo_comuna name    value
-   &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
- 1 Loncoche                   9109 b     0.00131
- 2 Linares                    7401 a     0.00648
- 3 Conchalí                  13104 b     0.00695
- 4 Vichuquén                  7309 a     0.00810
- 5 San Gregorio              12104 b     0.00975
- 6 San José de Maipo         13203 a     0.0110
- 7 Purén                      9208 a     0.0134
- 8 Santo Domingo              5606 c     0.0141
- 9 Los Muermos               10106 b     0.0149
-10 Cañete                     8203 a     0.0154
+   nombre_comuna   codigo_comuna name    value
+   &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
+ 1 Molina                   7304 a     0.00119
+ 2 Villa Alemana            5804 b     0.00295
+ 3 Osorno                  10301 b     0.00399
+ 4 Mariquina               14106 c     0.00441
+ 5 Teodoro Schmidt          9117 a     0.00462
+ 6 Purranque               10303 c     0.00578
+ 7 Freirina                 3303 b     0.00712
+ 8 Vallenar                 3301 c     0.00862
+ 9 Linares                  7401 c     0.0102
+10 La Cruz                  5504 b     0.0103
 # ℹ 962 more rows</code></pre>
 </div>
 </div>
@@ -410,7 +409,7 @@
 <pre><code>! La cantidad de comunas es anómala: hay 324, pero deberían ser 346. Revísalas con `territorial::validar_comunas()`</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>→ Las comunas faltantes son: Antofagasta, Huasco, San Esteban, Quilpué, Las Cabras, Rengo, Sagrada Familia, Parral, Los Sauces, Lumaco, Traiguén, Chaitén, Hualaihué, Palena, Río Verde, Torres del Paine, Cerro Navia, Independencia, Quinta Normal, Futrono, General Lagos y Cobquecura</code></pre>
+<pre><code>→ Las comunas faltantes son: Illapel, Monte Patria, Hijuelas, Santa María, Codegua, Coltauco, La Estrella, Chanco, Pelluhue, Cañete, Curanilahue, Vilcún, Collipulli, Renaico, Puqueldón, Futaleufú, Río Verde, El Bosque, Independencia, La Granja, Buin y San Nicolás</code></pre>
 </div>
 </div>
 <p>La función <code><a href="../reference/contar_comunas.html">contar_comunas()</a></code> nos indica cuántas comunas únicas hay, y las que faltan. Esto es útil porque muchas veces las bases de datos reales no tienen datos para todas las comunas, sobre todo las más pequeñas y remotas.</p>
@@ -420,21 +419,21 @@
 <code class="sourceCode R"><span><span class="va">base</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/buscar_comuna.html">buscar_comuna</a></span><span class="op">(</span><span class="st">"Alto"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>! Se encontraron 27 resultados, mostrando sólo 6.</code></pre>
+<pre><code>! Se encontraron 30 resultados, mostrando sólo 6.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ Los resultados más cercanos al término `Alto` son: Alto del Carmen, Alto Hospicio, Alto Biobío y Puente Alto</code></pre>
+<pre><code>ℹ Los resultados más cercanos al término `Alto` son: Alto Hospicio, Puente Alto, Alto Biobío y Alto del Carmen</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   nombre_comuna   codigo_comuna name  value puntaje
   &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;
-1 Alto del Carmen          3302 a     0.155       1
-2 Alto Hospicio            1107 a     0.162       1
-3 Alto Biobío              8314 b     0.162       1
-4 Puente Alto             13201 a     0.198       1
-5 Alto Hospicio            1107 c     0.284       1
-6 Alto del Carmen          3302 b     0.333       1</code></pre>
+1 Alto Hospicio            1107 b     0.390       1
+2 Alto Hospicio            1107 c     0.454       1
+3 Puente Alto             13201 b     0.513       1
+4 Alto Biobío              8314 b     0.520       1
+5 Alto Hospicio            1107 a     0.555       1
+6 Alto del Carmen          3302 b     0.568       1</code></pre>
 </div>
 </div>
 </section><section class="level3"><h3 id="crear-nombres-de-comunas-a-partir-de-códigos-únicos-territoriales">Crear nombres de comunas a partir de códigos únicos territoriales<a class="anchor" aria-label="anchor" href="#crear-nombres-de-comunas-a-partir-de-c%C3%B3digos-%C3%BAnicos-territoriales"></a>
@@ -570,7 +569,7 @@
 <code class="sourceCode R"><span><span class="va">datos</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/contextualizar.html">contextualizar</a></span><span class="op">(</span><span class="va">nombre_comuna</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna</code></pre>
+<pre><code>ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 7

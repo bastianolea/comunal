@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -228,13 +228,13 @@
 <pre><code>→ Paso 4: coincidencias aproximadas de texto</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>! No se encontró ninguna coincidencia para la comuna `no informada`</code></pre>
+<pre><code>! No se encontró ninguna coincidencia para la comuna "no informada"</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>! No se encontró ninguna coincidencia para la comuna `otro lugar`</code></pre>
+<pre><code>! No se encontró ninguna coincidencia para la comuna "otro lugar"</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ Se limpiaron 1 de 3 comunas por medio de coincidencias aproximadas de texto: Trehuaco</code></pre>
+<pre><code>ℹ Se limpió la comuna por medio de coincidencia aproximada de texto: Trehuaco</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>→ Conclusión de limpieza de comunas</code></pre>
@@ -310,10 +310,10 @@
 <code class="sourceCode R"><span><span class="va">sercotec_limpio</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/contextualizar.html">contextualizar</a></span><span class="op">(</span><span class="va">nombre_comuna</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>! más de una variable territorial detectada en los datos! descartando todas excepto `nombre_comuna`.</code></pre>
+<pre><code>! Más de una variable territorial detectada en los datos! descartando todas excepto `nombre_comuna`.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna</code></pre>
+<pre><code>ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 951 × 8

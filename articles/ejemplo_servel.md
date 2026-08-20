@@ -169,7 +169,7 @@ servel_limpio <- servel |>
 
     → Paso 1: confirmar comunas correctas
 
-    ℹ De las 347 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza
+    ℹ De las 347 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza...
 
     → Paso 2: coincidencias por limpieza de texto
 
@@ -181,9 +181,9 @@ servel_limpio <- servel |>
 
     → Paso 4: coincidencias aproximadas de texto
 
-    ! Se encontraron 2 coincidencias para la comuna `marchigue`: la higuera y marchihue
+    ! Se encontraron 2 coincidencias para la comuna "marchigue": la higuera y marchihue
 
-    ! No se encontró ninguna coincidencia para la comuna `fuera del pais`
+    ! No se encontró ninguna coincidencia para la comuna "fuera del pais"
 
     ℹ Se limpiaron 2 de 3 comunas por medio de coincidencias aproximadas de texto: Paihuano y Marchihue
 
@@ -256,7 +256,7 @@ servel_limpio <- servel_limpio |>
 
     ! 46 filas no coincidieron con `territorial::territorios` y quedarán con NA
 
-    ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
+    ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
 
 Repetimos la validación para confirmar:
 

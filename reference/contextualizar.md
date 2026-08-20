@@ -51,7 +51,7 @@ datos <- dplyr::tribble(
 
 datos |>
   contextualizar(nombre_comuna)
-#> ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
+#> ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
 #> # A tibble: 3 × 7
 #>   codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna
 #>           <dbl> <chr>                       <dbl> <chr>                    <dbl>
@@ -64,7 +64,7 @@ datos |>
 datos |>
   contextualizar()
 #> ℹ No se especificó la variable: asumiendo columna `nombre_comuna`
-#> ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
+#> ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
 #> # A tibble: 3 × 7
 #>   codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna
 #>           <dbl> <chr>                       <dbl> <chr>                    <dbl>

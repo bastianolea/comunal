@@ -136,7 +136,7 @@ datos_2 <- datos |>
 
     → Paso 1: confirmar comunas correctas
 
-    ℹ De las 3 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza
+    ℹ De las 3 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza...
 
     → Paso 2: coincidencias por limpieza de texto
 
@@ -144,7 +144,7 @@ datos_2 <- datos |>
 
     → Paso 3: casos especiales
 
-    ℹ Se encontraron 0 casos especiales: 
+    ℹ No se encontraron casos especiales
 
     → Paso 4: coincidencias aproximadas de texto
 

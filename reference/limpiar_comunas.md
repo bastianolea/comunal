@@ -102,13 +102,13 @@ Los nombres se limpian en cuatro pasos:
 limpiar_comunas(c("COLCHANE", "Alto Ospicio", "probidencia", "huara", "laflorida", "cerritos", "llay-llay"))
 #> ℹ Limpiando 7 nombres de comunas (7 son distintas)
 #> → Paso 1: confirmar comunas correctas
-#> ℹ De las 7 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza
+#> ℹ De las 7 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza...
 #> → Paso 2: coincidencias por limpieza de texto
 #> ℹ A partir de la limpieza de texto, se limpiaron 2 de 7 comunas: Colchane y Huara
 #> → Paso 3: casos especiales
-#> ℹ Se encontraron 0 casos especiales: 
+#> ℹ No se encontraron casos especiales
 #> → Paso 4: coincidencias aproximadas de texto
-#> ! Se encontraron 2 coincidencias para la comuna `laflorida`: florida y la florida
+#> ! Se encontraron 2 coincidencias para la comuna "laflorida": florida y la florida
 #> ℹ Se limpiaron 5 de 5 comunas por medio de coincidencias aproximadas de texto: Alto Hospicio, Providencia, La Florida, Cerrillos y Llaillay
 #> → Conclusión de limpieza de comunas
 #> ✔ De las 7 comunas distintas, se limpiaron 7 en total (100%)
@@ -131,9 +131,9 @@ datos |>
 #> → Paso 2: coincidencias por limpieza de texto
 #> ℹ A partir de la limpieza de texto, se limpiaron 7 de 8 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
 #> → Paso 3: casos especiales
-#> ℹ Se encontraron 0 casos especiales: 
+#> ℹ No se encontraron casos especiales
 #> → Paso 4: coincidencias aproximadas de texto
-#> ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
+#> ℹ Se limpió la comuna por medio de coincidencia aproximada de texto: Providencia
 #> → Conclusión de limpieza de comunas
 #> ✔ De las 8 comunas distintas, se limpiaron 8 en total (100%)
 #> # A tibble: 8 × 2
@@ -157,9 +157,9 @@ datos |>
 #> → Paso 2: coincidencias por limpieza de texto
 #> ℹ A partir de la limpieza de texto, se limpiaron 7 de 8 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins
 #> → Paso 3: casos especiales
-#> ℹ Se encontraron 0 casos especiales: 
+#> ℹ No se encontraron casos especiales
 #> → Paso 4: coincidencias aproximadas de texto
-#> ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
+#> ℹ Se limpió la comuna por medio de coincidencia aproximada de texto: Providencia
 #> → Conclusión de limpieza de comunas
 #> ✔ De las 8 comunas distintas, se limpiaron 8 en total (100%)
 #> # A tibble: 8 × 3

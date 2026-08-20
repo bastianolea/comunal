@@ -164,11 +164,11 @@ sercotec_limpio <- sercotec |>
 
     → Paso 4: coincidencias aproximadas de texto
 
-    ! No se encontró ninguna coincidencia para la comuna `no informada`
+    ! No se encontró ninguna coincidencia para la comuna "no informada"
 
-    ! No se encontró ninguna coincidencia para la comuna `otro lugar`
+    ! No se encontró ninguna coincidencia para la comuna "otro lugar"
 
-    ℹ Se limpiaron 1 de 3 comunas por medio de coincidencias aproximadas de texto: Trehuaco
+    ℹ Se limpió la comuna por medio de coincidencia aproximada de texto: Trehuaco
 
     → Conclusión de limpieza de comunas
 
@@ -261,9 +261,9 @@ sercotec_limpio |>
   contextualizar(nombre_comuna)
 ```
 
-    ! más de una variable territorial detectada en los datos! descartando todas excepto `nombre_comuna`.
+    ! Más de una variable territorial detectada en los datos! descartando todas excepto `nombre_comuna`.
 
-    ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
+    ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
 
     # A tibble: 951 × 8
        codigo_region nombre_region   codigo_provincia nombre_provincia codigo_comuna

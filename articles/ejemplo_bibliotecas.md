@@ -301,7 +301,7 @@ biblio_limpio <- biblio_ancho |>
 
     → Paso 4: coincidencias aproximadas de texto
 
-    ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Trehuaco
+    ℹ Se limpió la comuna por medio de coincidencia aproximada de texto: Trehuaco
 
     → Conclusión de limpieza de comunas
 

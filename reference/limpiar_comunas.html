@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">territorial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar la navegación">
@@ -100,13 +100,13 @@ Finalmente, se muestra una tabla que describe el proceso de limpieza para su rev
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">limpiar_comunas</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"COLCHANE"</span>, <span class="st">"Alto Ospicio"</span>, <span class="st">"probidencia"</span>, <span class="st">"huara"</span>, <span class="st">"laflorida"</span>, <span class="st">"cerritos"</span>, <span class="st">"llay-llay"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Limpiando 7 nombres de comunas (7 son distintas)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 1: confirmar comunas correctas</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> De las 7 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> De las 7 comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 2: coincidencias por limpieza de texto</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> A partir de la limpieza de texto, se limpiaron 2 de 7 comunas: Colchane y Huara</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 3: casos especiales</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se encontraron 0 casos especiales: </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> No se encontraron casos especiales</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 4: coincidencias aproximadas de texto</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Se encontraron 2 coincidencias para la comuna `laflorida`: florida y la florida</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Se encontraron 2 coincidencias para la comuna "laflorida": florida y la florida</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se limpiaron 5 de 5 comunas por medio de coincidencias aproximadas de texto: Alto Hospicio, Providencia, La Florida, Cerrillos y Llaillay</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Conclusión de limpieza de comunas</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> De las 7 comunas distintas, se limpiaron 7 en total (100%)</span>
@@ -129,9 +129,9 @@ Finalmente, se muestra una tabla que describe el proceso de limpieza para su rev
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 2: coincidencias por limpieza de texto</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> A partir de la limpieza de texto, se limpiaron 7 de 8 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 3: casos especiales</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se encontraron 0 casos especiales: </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> No se encontraron casos especiales</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 4: coincidencias aproximadas de texto</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se limpió la comuna por medio de coincidencia aproximada de texto: Providencia</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Conclusión de limpieza de comunas</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> De las 8 comunas distintas, se limpiaron 8 en total (100%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 2</span></span>
@@ -155,9 +155,9 @@ Finalmente, se muestra una tabla que describe el proceso de limpieza para su rev
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 2: coincidencias por limpieza de texto</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> A partir de la limpieza de texto, se limpiaron 7 de 8 comunas: Pirque, El Monte, Maipú, Santiago, Cerrillos, San José de Maipo y O'Higgins</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 3: casos especiales</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se encontraron 0 casos especiales: </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> No se encontraron casos especiales</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Paso 4: coincidencias aproximadas de texto</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Se limpió la comuna por medio de coincidencia aproximada de texto: Providencia</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Conclusión de limpieza de comunas</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> De las 8 comunas distintas, se limpiaron 8 en total (100%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 3</span></span>

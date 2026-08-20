@@ -27,10 +27,9 @@ library(territorial)
 sample(comunas(), 12)
 ```
 
-     [1] "Hualaihué"           "Chillán Viejo"       "Coyhaique"
-     [4] "Aysén"               "San Gregorio"        "Algarrobo"
-     [7] "Pica"                "Coronel"             "San Ramón"
-    [10] "Puyehue"             "Antuco"              "Pedro Aguirre Cerda"
+     [1] "Cabrero"    "Rancagua"   "Chanco"     "Combarbalá" "Futrono"
+     [6] "Arauco"     "Hualaihué"  "Navidad"    "Valparaíso" "Putre"
+    [11] "Portezuelo" "Trehuaco"  
 
 ### Tabla de comunas, provincias y regiones de Chile
 
@@ -168,7 +167,7 @@ datos |>
 
     → Paso 4: coincidencias aproximadas de texto
 
-    ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
+    ℹ Se limpió la comuna por medio de coincidencia aproximada de texto: Providencia
 
     → Conclusión de limpieza de comunas
 
@@ -249,7 +248,7 @@ datos |>
 
     → Paso 4: coincidencias aproximadas de texto
 
-    ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
+    ℹ Se limpió la comuna por medio de coincidencia aproximada de texto: Providencia
 
     → Conclusión de limpieza de comunas
 
@@ -329,18 +328,18 @@ base
 ```
 
     # A tibble: 972 × 4
-       nombre_comuna     codigo_comuna name    value
-       <chr>                     <dbl> <chr>   <dbl>
-     1 Loncoche                   9109 b     0.00131
-     2 Linares                    7401 a     0.00648
-     3 Conchalí                  13104 b     0.00695
-     4 Vichuquén                  7309 a     0.00810
-     5 San Gregorio              12104 b     0.00975
-     6 San José de Maipo         13203 a     0.0110
-     7 Purén                      9208 a     0.0134
-     8 Santo Domingo              5606 c     0.0141
-     9 Los Muermos               10106 b     0.0149
-    10 Cañete                     8203 a     0.0154
+       nombre_comuna   codigo_comuna name    value
+       <chr>                   <dbl> <chr>   <dbl>
+     1 Molina                   7304 a     0.00119
+     2 Villa Alemana            5804 b     0.00295
+     3 Osorno                  10301 b     0.00399
+     4 Mariquina               14106 c     0.00441
+     5 Teodoro Schmidt          9117 a     0.00462
+     6 Purranque               10303 c     0.00578
+     7 Freirina                 3303 b     0.00712
+     8 Vallenar                 3301 c     0.00862
+     9 Linares                  7401 c     0.0102
+    10 La Cruz                  5504 b     0.0103
     # ℹ 962 more rows
 
 Esta tabla tiene 972 filas, ¿cómo confirmar si existen datos para todas
@@ -357,7 +356,7 @@ base |>
 
     ! La cantidad de comunas es anómala: hay 324, pero deberían ser 346. Revísalas con `territorial::validar_comunas()`
 
-    → Las comunas faltantes son: Antofagasta, Huasco, San Esteban, Quilpué, Las Cabras, Rengo, Sagrada Familia, Parral, Los Sauces, Lumaco, Traiguén, Chaitén, Hualaihué, Palena, Río Verde, Torres del Paine, Cerro Navia, Independencia, Quinta Normal, Futrono, General Lagos y Cobquecura
+    → Las comunas faltantes son: Illapel, Monte Patria, Hijuelas, Santa María, Codegua, Coltauco, La Estrella, Chanco, Pelluhue, Cañete, Curanilahue, Vilcún, Collipulli, Renaico, Puqueldón, Futaleufú, Río Verde, El Bosque, Independencia, La Granja, Buin y San Nicolás
 
 La función
 [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
@@ -375,19 +374,19 @@ base |>
   buscar_comuna("Alto")
 ```
 
-    ! Se encontraron 27 resultados, mostrando sólo 6.
+    ! Se encontraron 30 resultados, mostrando sólo 6.
 
-    ℹ Los resultados más cercanos al término `Alto` son: Alto del Carmen, Alto Hospicio, Alto Biobío y Puente Alto
+    ℹ Los resultados más cercanos al término `Alto` son: Alto Hospicio, Puente Alto, Alto Biobío y Alto del Carmen
 
     # A tibble: 6 × 5
       nombre_comuna   codigo_comuna name  value puntaje
       <chr>                   <dbl> <chr> <dbl>   <dbl>
-    1 Alto del Carmen          3302 a     0.155       1
-    2 Alto Hospicio            1107 a     0.162       1
-    3 Alto Biobío              8314 b     0.162       1
-    4 Puente Alto             13201 a     0.198       1
-    5 Alto Hospicio            1107 c     0.284       1
-    6 Alto del Carmen          3302 b     0.333       1
+    1 Alto Hospicio            1107 b     0.390       1
+    2 Alto Hospicio            1107 c     0.454       1
+    3 Puente Alto             13201 b     0.513       1
+    4 Alto Biobío              8314 b     0.520       1
+    5 Alto Hospicio            1107 a     0.555       1
+    6 Alto del Carmen          3302 b     0.568       1
 
 ### Crear nombres de comunas a partir de códigos únicos territoriales
 
@@ -551,7 +550,7 @@ datos |>
   contextualizar(nombre_comuna)
 ```
 
-    ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
+    ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
 
     # A tibble: 3 × 7
       codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna

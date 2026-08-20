@@ -55,7 +55,7 @@ territorial::localidades |>
   glimpse()
 ```
 
-    ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y nombre_comuna
+    ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y nombre_comuna
 
     Rows: 29,256
     Columns: 11
