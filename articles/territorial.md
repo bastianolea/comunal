@@ -27,10 +27,10 @@ library(territorial)
 sample(comunas(), 12)
 ```
 
-     [1] "Tucapel"           "Quinta de Tilcoco" "Trehuaco"
-     [4] "Yerbas Buenas"     "Melipeuco"         "Los Ángeles"
-     [7] "Calama"            "Renaico"           "Florida"
-    [10] "Pumanque"          "Pica"              "Algarrobo"        
+     [1] "Hualaihué"           "Chillán Viejo"       "Coyhaique"
+     [4] "Aysén"               "San Gregorio"        "Algarrobo"
+     [7] "Pica"                "Coronel"             "San Ramón"
+    [10] "Puyehue"             "Antuco"              "Pedro Aguirre Cerda"
 
 ### Tabla de comunas, provincias y regiones de Chile
 
@@ -329,18 +329,18 @@ base
 ```
 
     # A tibble: 972 × 4
-       nombre_comuna codigo_comuna name     value
-       <chr>                 <dbl> <chr>    <dbl>
-     1 Marchihue              6204 c     0.000180
-     2 Puerto Varas          10109 c     0.000184
-     3 Mejillones             2102 b     0.000309
-     4 San Javier             7406 c     0.00365
-     5 Santa María            5706 b     0.00457
-     6 Longaví                7403 b     0.00502
-     7 Colina                13301 c     0.00533
-     8 San Joaquín           13129 a     0.00569
-     9 Quilicura             13125 a     0.00837
-    10 Los Sauces             9206 a     0.00975
+       nombre_comuna     codigo_comuna name    value
+       <chr>                     <dbl> <chr>   <dbl>
+     1 Loncoche                   9109 b     0.00131
+     2 Linares                    7401 a     0.00648
+     3 Conchalí                  13104 b     0.00695
+     4 Vichuquén                  7309 a     0.00810
+     5 San Gregorio              12104 b     0.00975
+     6 San José de Maipo         13203 a     0.0110
+     7 Purén                      9208 a     0.0134
+     8 Santo Domingo              5606 c     0.0141
+     9 Los Muermos               10106 b     0.0149
+    10 Cañete                     8203 a     0.0154
     # ℹ 962 more rows
 
 Esta tabla tiene 972 filas, ¿cómo confirmar si existen datos para todas
@@ -357,7 +357,7 @@ base |>
 
     ! La cantidad de comunas es anómala: hay 324, pero deberían ser 346. Revísalas con `territorial::validar_comunas()`
 
-    → Las comunas faltantes son: Huasco, Río Hurtado, Casablanca, Puchuncaví, La Ligua, Papudo, Algarrobo, Panquehue, Coinco, Graneros, Machalí, Rauco, Arauco, Toltén, Calbuco, Fresia, Los Muermos, Chaitén, Cisnes, La Pintana, Pinto y Ñiquén
+    → Las comunas faltantes son: Antofagasta, Huasco, San Esteban, Quilpué, Las Cabras, Rengo, Sagrada Familia, Parral, Los Sauces, Lumaco, Traiguén, Chaitén, Hualaihué, Palena, Río Verde, Torres del Paine, Cerro Navia, Independencia, Quinta Normal, Futrono, General Lagos y Cobquecura
 
 La función
 [`contar_comunas()`](https://bastianolea.github.io/territorial/reference/contar_comunas.md)
@@ -375,19 +375,19 @@ base |>
   buscar_comuna("Alto")
 ```
 
-    ! Se encontraron 30 resultados, mostrando sólo 6.
+    ! Se encontraron 27 resultados, mostrando sólo 6.
 
-    ℹ Los resultados más cercanos al término `Alto` son: Alto del Carmen, Alto Biobío y Puente Alto
+    ℹ Los resultados más cercanos al término `Alto` son: Alto del Carmen, Alto Hospicio, Alto Biobío y Puente Alto
 
     # A tibble: 6 × 5
-      nombre_comuna   codigo_comuna name   value puntaje
-      <chr>                   <dbl> <chr>  <dbl>   <dbl>
-    1 Alto del Carmen          3302 a     0.0540       1
-    2 Alto Biobío              8314 a     0.125        1
-    3 Alto Biobío              8314 c     0.317        1
-    4 Alto del Carmen          3302 c     0.343        1
-    5 Puente Alto             13201 c     0.393        1
-    6 Puente Alto             13201 b     0.460        1
+      nombre_comuna   codigo_comuna name  value puntaje
+      <chr>                   <dbl> <chr> <dbl>   <dbl>
+    1 Alto del Carmen          3302 a     0.155       1
+    2 Alto Hospicio            1107 a     0.162       1
+    3 Alto Biobío              8314 b     0.162       1
+    4 Puente Alto             13201 a     0.198       1
+    5 Alto Hospicio            1107 c     0.284       1
+    6 Alto del Carmen          3302 b     0.333       1
 
 ### Crear nombres de comunas a partir de códigos únicos territoriales
 

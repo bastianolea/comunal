@@ -101,9 +101,9 @@
 <code class="sourceCode R"><span><span class="va">sucios</span> <span class="op">&lt;-</span> <span class="va">territorios</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">nombre_comuna</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>nombres_sucios <span class="op">=</span> <span class="va">nombre_comuna</span> <span class="op">|&gt;</span> </span>
-<span>      <span class="fu"><a href="../reference/reemplazar_texto.html">reemplazar_texto</a></span><span class="op">(</span>porcentaje <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="../reference/reemplazar_texto.html">reemplazar_texto</a></span><span class="op">(</span>porcentaje <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>      <span class="fu"><a href="../reference/eliminar_texto.html">eliminar_texto</a></span><span class="op">(</span>porcentaje <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>      <span class="fu"><a href="../reference/insertar_texto.html">insertar_texto</a></span><span class="op">(</span>porcentaje <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span>
+<span>      <span class="fu"><a href="../reference/insertar_texto.html">insertar_texto</a></span><span class="op">(</span>porcentaje <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter_out</a></span><span class="op">(</span><span class="va">nombre_comuna</span> <span class="op">==</span> <span class="va">nombres_sucios</span><span class="op">)</span> <span class="co"># excluir los que no se ensuciaron por azar</span></span></code></pre></div>
 </div>
@@ -115,18 +115,18 @@
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 2
-   nombre_comuna       nombres_sucios
-   &lt;chr&gt;               &lt;chr&gt;
- 1 Arica               AUicaD
- 2 Cunco               CCEnco
- 3 Calera de Tango     CaArFa Lde iZngo
- 4 San José de Maipo   Szn GfKox de Maiplo
- 5 Tirúa               wTirúp
- 6 Pedro Aguirre Cerda PeiBoV AguHrrzeHCerda
- 7 Constitución        CJnszthiucióP
- 8 Villarrica          CVillaTica
- 9 Futaleufú           Gutjaleufú
-10 San Ignacio         Sa Qzgnancio         </code></pre>
+   nombre_comuna  nombres_sucios
+   &lt;chr&gt;          &lt;chr&gt;
+ 1 Puerto Montt   Suemro Montt
+ 2 San Bernardo   GSa Bgrnardo
+ 3 Puchuncaví     Pwhuncaví
+ 4 San Felipe     San FYlie
+ 5 La Pintana     LaPUntana
+ 6 San Esteban    SaQn stebQn
+ 7 Alto Biobío    EAfto Bioío
+ 8 Juan Fernández dJuan Ftnández
+ 9 San Carlos     fan Crlos
+10 Pozo Almonte   ozo Aolmovte  </code></pre>
 </div>
 </div>
 <p>Ahora que tenemos la columna <code>nombres_sucios</code>, usamos <code><a href="../reference/limpiar_comunas.html">limpiar_comunas()</a></code> para limpiar los datos, creando la columna <code>nombres_limpios</code>:</p>
@@ -142,40 +142,40 @@
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">nombres_sucios</span>, <span class="va">nombres_limpios</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 339 × 2
-   nombres_sucios        nombres_limpios
-   &lt;chr&gt;                 &lt;chr&gt;
- 1 IqupquEe              Iquique
- 2 lAlto RopLKcio        &lt;NA&gt;
- 3 fPozopAlmLtne         &lt;NA&gt;
- 4 CamHñax               Camiña
- 5 ColchavKe             Colchane
- 6 pHfara                Huara
- 7 Antdwfagdist          &lt;NA&gt;
- 8 MejOtloces            Mejillones
- 9 Sideera Gobqa         Sierra Gorda
-10 TaYltaU               Taltal
-11 CatamZa               Calama
-12 Oyllcgüe              Ollagüe
-13 anJQPKedbFVde AtacaPa &lt;NA&gt;
-14 TocoIoilla            Tocopilla
-15 YaPrbíLElena          &lt;NA&gt;
-16 CopciaWó              Copiapó
-17 CalldFra              Caldera
-18 ziervra Yhqailla      &lt;NA&gt;
-19 CFiañaral             Chañaral
-20 qDicAgoRpde Almago    &lt;NA&gt;
-21 VallejarY             Vallenar
-22 AltKo yScCarBmen      &lt;NA&gt;
-23 FkrXirina             Freirina
-24 HIuaszo               Huasco
-25 La Serfcna            La Serena
-26 Coqtimibo             Coquimbo
-27 Angdacollg            Andacollo
-28 LaKiAIuera            &lt;NA&gt;
-29 Peaihuano             Paihuano
-30 VicaIña               Vicuña
-# ℹ 309 more rows</code></pre>
+<pre><code># A tibble: 109 × 2
+   nombres_sucios      nombres_limpios
+   &lt;chr&gt;               &lt;chr&gt;
+ 1 Alo Hvospicpo       Alto Hospicio
+ 2 ozo Aolmovte        Pozo Almonte
+ 3 AnoRagKasta         Antofagasta
+ 4 ejillones           Mejillones
+ 5 Sierrp GrdaA        Sierra Gorda
+ 6 SvnMPmedro d Atacaa San Pedro de Atacama
+ 7 María EleaZ         María Elena
+ 8 Tiera AVmarilln     Tierra Amarilla
+ 9 DiXeno de Almgro    Diego de Almagro
+10 Alto del Cawmdn     Alto del Carmen
+11 a uiguera           La Higuera
+12 Combrbtlá           Combarbalá
+13 Monte PJctia        Monte Patria
+14 RíoEHrtasdo         Río Hurtado
+15 Valparase           Valparaíso
+16 Csablanca           Casablanca
+17 dJuan Ftnández      Juan Fernández
+18 Pwhuncaví           Puchuncaví
+19 Viña denYMar        Viña del Mar
+20 Isla e Pamscua      Isla de Pascua
+21 Calle LFgaP         Calle Larga
+22 SaQn stebQn         San Esteban
+23 Son UAtonio         San Antonio
+24 SantWDominJgo       Santo Domingo
+25 San FYlie           San Felipe
+26 SanaWMaríaW         Santa María
+27 Vvila AlemanF       Villa Alemana
+28 as Cabras           Las Cabras
+29 ichideguq           Pichidegua
+30 Quinta mPe Tilcco   Quinta de Tilcoco
+# ℹ 79 more rows</code></pre>
 </div>
 </div>
 <p>Podemos confirmar que la limpieza realizada con <code><a href="../reference/limpiar_comunas.html">limpiar_comunas()</a></code> es capaz de abarcar casos muy extremos: por ejemplo, identifica que <code>SvnMPmedro d Atacaa</code> es <em>San Pedro de Atacama</em>, o que <code>SanaWMaríaW</code> es <em>Santa María</em>, por lo que la función podría resultar apropiada para detección de datos escritos a mano o de documentos antiguos procesados con OCR.</p>
@@ -183,21 +183,16 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">problemas</span> <span class="op">&lt;-</span> <span class="va">limpios</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">nombre_comuna</span> <span class="op">!=</span> <span class="va">nombres_limpios</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">nombres_limpios</span><span class="op">)</span> <span class="op">|</span> <span class="va">nombre_comuna</span> <span class="op">!=</span> <span class="va">nombres_limpios</span><span class="op">)</span></span></code></pre></div>
 </div>
-<p>Luego de esta limpieza, quedaron 5 casos donde los nombres limpios se dedujeron incorrectamente a partir de los nombres sucios:</p>
+<p>Luego de esta limpieza, quedaron 0 casos donde los nombres limpios se dedujeron incorrectamente a partir de los nombres sucios:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">problemas</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 3
-  nombre_comuna nombres_sucios nombres_limpios
-  &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;
-1 Malloa        OMallEa        Ovalle
-2 Talca         Talwat         Taltal
-3 Chanco        ChGInco        Coinco
-4 Cunco         CCEnco         Coinco
-5 Colina        Eoylina        Molina         </code></pre>
+<pre><code><span><span class="co"># A tibble: 0 × 3</span></span>
+<span><span class="co"># ℹ 3 variables: nombre_comuna &lt;chr&gt;, nombres_sucios &lt;chr&gt;,</span></span>
+<span><span class="co">#   nombres_limpios &lt;chr&gt;</span></span></code></pre>
 </div>
 </div>
 
