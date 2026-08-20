@@ -84,24 +84,25 @@ Probemos `{territorial}` con una tabla con datos de ejemplo:
 # crear una tabla con datos de ejemplo
 datos <- dplyr::tibble(
   nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "nunoa",
-                    "santiago", "prohibidencia", "CERRILLOS", 
-                    "San José De Maipo", "OHiggins"))
+                    "La calera", "prohibidencia", "Penialolen",
+                    "CERRILLOS", "San José De Maipo", "OHiggins"))
 
 datos
 ```
 
-    # A tibble: 9 × 1
-      nombre_comuna    
-      <chr>            
-    1 PIRQUE           
-    2 El Monte         
-    3 Maipu            
-    4 nunoa            
-    5 santiago         
-    6 prohibidencia    
-    7 CERRILLOS        
-    8 San José De Maipo
-    9 OHiggins         
+    # A tibble: 10 × 1
+       nombre_comuna    
+       <chr>            
+     1 PIRQUE           
+     2 El Monte         
+     3 Maipu            
+     4 nunoa            
+     5 La calera        
+     6 prohibidencia    
+     7 Penialolen       
+     8 CERRILLOS        
+     9 San José De Maipo
+    10 OHiggins         
 
 Estas comunas vienen en mayúsculas, con faltas de ortografía, y mal
 escritas!
@@ -114,11 +115,11 @@ datos |>
   validar_comunas(nombre_comuna) # cuando la columna con nombres de comunas se llama `nombre_comuna`, no es necesario especificarla
 ```
 
-    ! Resumen: 8 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): PIRQUE, Maipu, nunoa, santiago, prohibidencia, CERRILLOS, San José De Maipo y OHiggins
+    ! Resumen: 9 casos de comunas que no conciden con comunas correctamente escritas (ver `territorial::comunas()`): PIRQUE, Maipu, nunoa, La calera, prohibidencia, Penialolen, CERRILLOS, San José De Maipo y OHiggins
 
     ! Mayúsculas: 2 casos de comunas escritas en mayúsculas: PIRQUE y CERRILLOS
 
-    ! Minúsculas: 3 casos de comunas escritas en minúsculas: nunoa, santiago y prohibidencia
+    ! Minúsculas: 2 casos de comunas escritas en minúsculas: nunoa y prohibidencia
 
     ! Mayúsculas: 1 caso de comunas con preposiciones ('de', 'del') escritas en mayúsculas: San José De Maipo
 
@@ -142,40 +143,41 @@ datos |>
   limpiar_comunas(nombre_comuna)
 ```
 
-    ℹ Limpiando 9 nombres de comunas (9 son distintas)
+    ℹ Limpiando 10 nombres de comunas (10 son distintas)
 
     → Paso 1: confirmar comunas correctas
 
-    ℹ De las 9 comunas distintas, 1 ya eran correctas: El Monte
+    ℹ De las 10 comunas distintas, 1 ya eran correctas: El Monte
 
     → Paso 2: coincidencias por limpieza de texto
 
-    ℹ A partir de la limpieza de texto, se limpiaron 8 de 9 comunas: Pirque, El Monte, Maipú, Ñuñoa, Santiago, Cerrillos, San José de Maipo y O'Higgins
+    ℹ A partir de la limpieza de texto, se limpiaron 7 de 10 comunas: Pirque, El Monte, Maipú, Ñuñoa, Cerrillos, San José de Maipo y O'Higgins
 
     → Paso 3: casos especiales
 
-    ℹ Se encontraron 0 casos especiales: 
+    ℹ Se encontró 1 caso especial: Calera
 
     → Paso 4: coincidencias aproximadas de texto
 
-    ℹ Se limpiaron 1 de 1 comunas por medio de coincidencias aproximadas de texto: Providencia
+    ℹ Se limpiaron 2 de 2 comunas por medio de coincidencias aproximadas de texto: Providencia y Peñalolén
 
     → Conclusión de limpieza de comunas
 
-    ✔ De las 9 comunas distintas, se limpiaron 9 en total (100%)
+    ✔ De las 10 comunas distintas, se limpiaron 10 en total (100%)
 
-    # A tibble: 9 × 1
-      nombre_comuna    
-      <chr>            
-    1 Pirque           
-    2 El Monte         
-    3 Maipú            
-    4 Ñuñoa            
-    5 Santiago         
-    6 Providencia      
-    7 Cerrillos        
-    8 San José de Maipo
-    9 O'Higgins        
+    # A tibble: 10 × 1
+       nombre_comuna    
+       <chr>            
+     1 Pirque           
+     2 El Monte         
+     3 Maipú            
+     4 Ñuñoa            
+     5 Calera           
+     6 Providencia      
+     7 Peñalolén        
+     8 Cerrillos        
+     9 San José de Maipo
+    10 O'Higgins        
 
 Esta función usa varias técnicas para limpiar automáticamente los
 nombres de las comunas y municipios de Chile. Si encuentras casos que no
@@ -204,7 +206,7 @@ datos |>
   contextualizar(nombre_comuna)
 ```
 
-    ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
+    ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y codigo_comuna
 
     # A tibble: 4 × 7
       codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna
@@ -243,7 +245,7 @@ datos |>
   contextualizar(codigo_comuna)
 ```
 
-    ℹ columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y nombre_comuna
+    ℹ Columnas agregadas: codigo_region, nombre_region, codigo_provincia, nombre_provincia y nombre_comuna
 
     # A tibble: 4 × 7
       codigo_region nombre_region    codigo_provincia nombre_provincia codigo_comuna
@@ -257,7 +259,8 @@ datos |>
 ------------------------------------------------------------------------
 
 Estas son algunas de las funciones principales, pero existen muchas más
-que facilitan el trabajo con datos territoriales de Chile: [revisa el
+que facilitan el trabajo con datos comunales y regionales de Chile:
+[revisa el
 índice](https://bastianolea.github.io/territorial/reference/index.html)
 para verlas todas, o [lee la
 viñeta](http://127.0.0.1:59562/articles/territorial.html) para una guía

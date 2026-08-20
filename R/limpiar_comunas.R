@@ -93,7 +93,7 @@ limpiar_comunas <- function(
     dplyr::distinct()
 
   cli::cli_alert_info(
-    "Limpiando {nrow(comunas_originales)} nombres de comuna{?s} ({dplyr::n_distinct(nombre_comuna)} son distintas)"
+    "Limpiando {nrow(comunas_originales)} nombre{?s} de comuna{?s} ({dplyr::n_distinct(nombre_comuna)} son distintas)"
   )
 
   # preprocesar ----
@@ -135,7 +135,7 @@ limpiar_comunas <- function(
   cli::cli_alert("Paso 1: confirmar comunas correctas")
   if (length(comunas_correctas) == 0) {
     cli::cli_alert_info(
-      "De las {nrow(resultados)} comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza"
+      "De las {nrow(resultados)} comunas distintas, ninguna tiene nombres 100% correctos. Los siguientes pasos intentarán la limpieza..."
     )
   } else {
     cli::cli_alert_info(
@@ -172,9 +172,19 @@ limpiar_comunas <- function(
     dplyr::pull()
 
   # informar
-  cli::cli_alert_info(
-    "A partir de la limpieza de texto, se limpiaron {length(comunas_limpias)} de {nrow(resultados)} comunas: {redactar_comunas(comunas_limpias)}"
-  )
+  if (length(comunas_limpias) == 0) {
+    cli::cli_alert_info(
+      "No se limpiaron comunas por medio de limpieza de texto"
+    )
+  } else if (length(comunas_limpias) == 1) {
+    cli::cli_alert_info(
+      "Se limpió la comuna a partir de limpieza de texto: {redactar_comunas(comunas_limpias)}"
+    )
+  } else {
+    cli::cli_alert_info(
+      "A partir de la limpieza de texto, se limpiaron {length(comunas_limpias)} de {nrow(resultados)} comunas: {redactar_comunas(comunas_limpias)}"
+    )
+  }
   # cli::cli_par()
 
   # casos especiales ----
@@ -199,12 +209,16 @@ limpiar_comunas <- function(
     dplyr::pull()
 
   # informar
-  mensaje <- cli::pluralize(
-    "Se encontr{?ó/aron} {length(comunas_especiales)} caso{?s} especial{?es}"
-  )
-  cli::cli_alert_info(
-    "{mensaje}: {redactar_comunas(comunas_especiales)}"
-  )
+  if (length(comunas_especiales) == 0) {
+    cli::cli_alert_info("No se encontraron casos especiales")
+  } else {
+    mensaje <- cli::pluralize(
+      "Se encontr{?ó/aron} {length(comunas_especiales)} caso{?s} especial{?es}"
+    )
+    cli::cli_alert_info(
+      "{mensaje}: {redactar_comunas(comunas_especiales)}"
+    )
+  }
   # cli::cli_par()
 
   # coincidir ----
@@ -242,7 +256,7 @@ limpiar_comunas <- function(
       if (is.na(comuna_faltante)) {
         return(NA)
       }
-      # comuna_faltante <- faltantes$coincidir[10]
+      # comuna_faltante <- faltantes$coincidir[11]
 
       # comuna_faltante <- "rio urtado" # sale en 2
       # comuna_faltante <- "dasalanca" # sale en 2
@@ -265,15 +279,18 @@ limpiar_comunas <- function(
           costs = list(ins = 1, del = 1, sub = 1)
         )
 
+      # si no hay coincidencias, avisar
       if (length(resultado) == 0) {
         cli::cli_alert_warning(
-          "No se encontró ninguna coincidencia para la comuna `{comuna_faltante}`"
+          'No se encontró ninguna coincidencia para la comuna "{comuna_faltante}"'
         )
+        return(NA)
       }
 
+      # si hay más de una, elegir
       if (length(resultado) > 1) {
         cli::cli_alert_warning(
-          "Se encontraron {length(resultado)} coincidencias para la comuna `{comuna_faltante}`: {redactar_comunas(resultado)}"
+          'Se encontraron {length(resultado)} coincidencias para la comuna "{comuna_faltante}": {redactar_comunas(resultado)}'
         )
 
         # elegir resultado de menor distancia con el original
@@ -319,7 +336,11 @@ limpiar_comunas <- function(
     dplyr::pull()
 
   # informar
-  if (length(comunas_coincididas) > 0) {
+  if (length(comunas_coincididas) == 1) {
+    cli::cli_alert_info(
+      "Se limpió la comuna por medio de coincidencia aproximada de texto: {redactar_comunas(comunas_coincididas)}"
+    )
+  } else if (length(comunas_coincididas) > 1) {
     cli::cli_alert_info(
       "Se limpiaron {length(comunas_coincididas)} de {length(comunas_coincidir)} comunas por medio de coincidencias aproximadas de texto: {redactar_comunas(comunas_coincididas)}"
     )
@@ -349,9 +370,15 @@ limpiar_comunas <- function(
   porcentaje <- length(comunas_limpiadas) / nrow(resultados)
 
   # informar
-  cli::cli_alert_success(
-    "De las {nrow(resultados)} comunas distintas, se limpiaron {length(comunas_limpiadas)} en total ({round(porcentaje, 3) * 100}%)"
-  )
+  if (nrow(resultados) == 1) {
+    cli::cli_alert_success(
+      "La comuna se limpió correctamente"
+    )
+  } else {
+    cli::cli_alert_success(
+      "De las {nrow(resultados)} comunas distintas, se limpiaron {length(comunas_limpiadas)} en total ({round(porcentaje, 3) * 100}%)"
+    )
+  }
 
   # opcionalmente, mostrar una tabla con las columnas intermedias
   if (procedimiento) {

@@ -360,3 +360,13 @@ test_that("prueba de limpieza eliminando prefijos", {
   )
 }) |>
   suppressMessages()
+
+
+test_that(
+  "limpiar una sola comuna",
+  expect_message(
+    limpiar_comunas("Pancagua"),
+    "se limpió correctamente"
+  )
+) |>
+  suppressMessages()

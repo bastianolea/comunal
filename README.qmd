@@ -60,8 +60,8 @@ Probemos `{territorial}` con una tabla con datos de ejemplo:
 # crear una tabla con datos de ejemplo
 datos <- dplyr::tibble(
   nombre_comuna = c("PIRQUE", "El Monte", "Maipu", "nunoa",
-                    "santiago", "prohibidencia", "CERRILLOS", 
-                    "San José De Maipo", "OHiggins"))
+                    "La calera", "prohibidencia", "Penialolen",
+                    "CERRILLOS", "San José De Maipo", "OHiggins"))
 
 datos
 ```
@@ -128,7 +128,7 @@ datos |>
 
 ---
 
-Estas son algunas de las funciones principales, pero existen muchas más que facilitan el trabajo con datos territoriales de Chile: [revisa el índice](https://bastianolea.github.io/territorial/reference/index.html) para verlas todas, o [lee la viñeta](http://127.0.0.1:59562/articles/territorial.html) para una guía de uso más completa.
+Estas son algunas de las funciones principales, pero existen muchas más que facilitan el trabajo con datos comunales y regionales de Chile: [revisa el índice](https://bastianolea.github.io/territorial/reference/index.html) para verlas todas, o [lee la viñeta](http://127.0.0.1:59562/articles/territorial.html) para una guía de uso más completa.
 
 ----
 

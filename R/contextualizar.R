@@ -42,7 +42,7 @@ contextualizar <- function(
       !rlang::is_symbol(rlang::quo_get_expr(col_expr))
   ) {
     cli::cli_abort(
-      "se debe especificar solo una variable territorial sin comillas (p.ej. {.code nombre_comuna})"
+      "Se debe especificar solo una variable territorial sin comillas (p.ej. {.code nombre_comuna})"
     )
   }
 
@@ -58,13 +58,13 @@ contextualizar <- function(
 
   # chequear si existe la variable
   if (!variable %in% names(datos)) {
-    cli::cli_abort("los datos no contienen la columna {.var {variable}}")
+    cli::cli_abort("Los datos no contienen la columna {.var {variable}}")
   }
 
   # caso 3: codigo_comuna entregado como character en vez de numérico
   if (variable == "codigo_comuna" && is.character(datos[[variable]])) {
     cli::cli_abort(
-      "la columna {.var codigo_comuna} debe ser numérica, no de texto. Usa {.code as.numeric(codigo_comuna)} para convertirla!"
+      "La columna {.var codigo_comuna} debe ser numérica, no de texto. Usa {.code as.numeric(codigo_comuna)} para convertirla!"
     )
   }
 
@@ -76,7 +76,7 @@ contextualizar <- function(
 
   if (variables_territoriales_presentes > 1) {
     cli::cli_alert_warning(
-      "más de una variable territorial detectada en los datos! descartando todas excepto `{variable}`."
+      "Más de una variable territorial detectada en los datos! descartando todas excepto `{variable}`."
     )
 
     # todas las otras
@@ -116,14 +116,14 @@ contextualizar <- function(
   # confirmar que tengan las mismas filas
   if (!nrow(datos_b) == nrow(datos)) {
     cli::cli_alert_warning(
-      "problemas con el {.code left_join()}: cambió el número de filas"
+      "Problemas con el {.code left_join()}: cambió el número de filas"
     )
   }
 
   # confirmar que tenga más columnas
   if (!length(datos_b) > length(datos)) {
     cli::cli_alert_warning(
-      "problemas con el {.code left_join()}: no aumentó el número de columnas"
+      "Problemas con el {.code left_join()}: no aumentó el número de columnas"
     )
   }
 
@@ -131,7 +131,7 @@ contextualizar <- function(
   # revisar columnas nuevas y avisar
   diferencia <- setdiff(names(datos_b), names(datos))
   cli::cli_alert_info(
-    "columnas agregadas: {glue::glue_collapse(diferencia, sep = ', ', last = ' y ')}"
+    "Columnas agregadas: {glue::glue_collapse(diferencia, sep = ', ', last = ' y ')}"
   )
 
   return(datos_b)
